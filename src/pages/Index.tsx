@@ -59,7 +59,7 @@ const Index = () => {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-2xl"
           >
-            <h1 className="font-display text-5xl md:text-6xl lg:text-[5.5rem] font-extrabold text-[hsl(var(--nav-foreground))] tracking-tight leading-[1.05] uppercase">
+            <h1 className="font-display text-5xl md:text-6xl lg:text-[5.5rem] font-semibold text-[hsl(var(--nav-foreground))] tracking-tight leading-[1.05] uppercase">
               Đánh thức
               <br />
               <span className="text-gradient">sức mạnh</span>
