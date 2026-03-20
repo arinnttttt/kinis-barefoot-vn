@@ -31,7 +31,7 @@ const Footer = () => (
             className="text-[hsl(var(--nav-foreground))]/50 hover:text-secondary transition-colors"
             aria-label="Zalo"
           >
-            <img src={zaloLogo} alt="Zalo" className="w-5 h-5 brightness-0 invert" />
+            <img src={zaloLogo} alt="Zalo" className="w-5 h-5" style={{ filter: 'brightness(0) invert(1)' }} />
           </a>
           <a
             href="https://www.facebook.com/KinisAi.VN"
