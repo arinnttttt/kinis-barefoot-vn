@@ -117,6 +117,11 @@ const Index = () => {
 
             {/* Glass content panel */}
             <div className="relative z-10 rounded-2xl border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] backdrop-blur-xl shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] p-8 md:p-12 -mt-px">
+              {/* Border trace animation on tab switch */}
+              <motion.div
+                key={activeTab}
+                className="absolute inset-0 rounded-2xl pointer-events-none border-trace"
+              />
 
           {/* Product Content */}
           <AnimatePresence mode="wait">

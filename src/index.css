@@ -164,7 +164,33 @@
     border-bottom-left-radius: 16px;
     box-shadow: -6px 0 0 0 hsl(var(--primary));
   }
-}
+  }
+
+  /* Border trace animation - draws border from top down */
+  .border-trace {
+    border: 2px solid hsl(var(--primary));
+    clip-path: inset(0 100% 100% 0);
+    animation: border-trace-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes border-trace-reveal {
+    0% {
+      clip-path: inset(0 100% 100% 0);
+      opacity: 1;
+    }
+    50% {
+      clip-path: inset(0 0 50% 0);
+      opacity: 1;
+    }
+    80% {
+      clip-path: inset(0 0 0 0);
+      opacity: 1;
+    }
+    100% {
+      clip-path: inset(0 0 0 0);
+      opacity: 0;
+    }
+  }
 
 @layer utilities {
   .animate-fade-up {
