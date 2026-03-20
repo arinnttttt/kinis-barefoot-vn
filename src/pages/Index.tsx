@@ -1,136 +1,220 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ArrowRight, Shield, Zap, Footprints } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Award } from "lucide-react";
 import Layout from "@/components/layout/Layout";
-import heroImage from "@/assets/hero-insoles.jpg";
-import lucyImage from "@/assets/product-lucy.jpg";
-import nomadImage from "@/assets/product-nomad.jpg";
+import heroImage from "@/assets/hero-person.jpg";
+import lucyShowcase from "@/assets/lucy-showcase.jpg";
+import nomadShowcase from "@/assets/nomad-showcase.jpg";
 
-const features = [
-  { icon: Shield, title: "Bảo vệ bàn chân", desc: "Hỗ trợ vòm chân, giảm áp lực lên gót và mũi chân" },
-  { icon: Zap, title: "Hiệu suất tối ưu", desc: "Tăng cường phản hồi năng lượng cho mỗi bước di chuyển" },
-  { icon: Footprints, title: "Phù hợp mọi đối tượng", desc: "Từ vận động viên đến người có vấn đề bàn chân bẹt" },
-];
+const products = {
+  lucy: {
+    label: "Kinis Lucy",
+    badge: "Chứng nhận APMA",
+    subtitle: "Giày đi bộ hàng ngày",
+    description:
+      "Kinis Lucy được thiết kế tối giản dựa trên khoa học bàn chân, phù hợp cho cuộc sống hàng ngày. Đây là sản phẩm trong Hệ sinh thái chăm sóc vận động bền vững Kinis, được Hiệp Hội Y Học Bàn Chân Hoa Kỳ (APMA) chứng nhận tốt cho sức khỏe bàn chân.",
+    image: lucyShowcase,
+    tags: ["Đi bộ", "Du lịch", "Sử dụng hàng ngày", "Cải thiện thăng bằng", "Bàn chân bẹt"],
+    href: "/san-pham/lucy",
+  },
+  nomad: {
+    label: "Kinis Nomad",
+    badge: "Giày barefoot",
+    subtitle: "Giày tập luyện chân trần",
+    description:
+      'Kinis Nomad là giày chân trần (barefoot) điển hình, giúp "đánh thức" sức mạnh cơ - xương - hệ thần kinh bản năng của đôi chân bạn. Đặc biệt phù hợp với người tập luyện, vận động viên chạy bộ và người có bàn chân bẹt.',
+    image: nomadShowcase,
+    tags: ["Tập gym", "Yoga/Pilates", "Bàn chân bẹt", "Tăng sức mạnh cơ chân"],
+    href: "/san-pham/nomad",
+  },
+};
 
-const Index = () => (
-  <Layout>
-    {/* Hero */}
-    <section className="relative overflow-hidden bg-[hsl(var(--nav))]">
-      <div className="absolute inset-0">
-        <img src={heroImage} alt="Kinis Insoles" className="w-full h-full object-cover opacity-50" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[hsl(0_0%_0%/0.85)] via-[hsl(0_0%_0%/0.6)] to-transparent" />
-      </div>
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-28 md:py-40">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="max-w-xl"
-        >
-          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-[hsl(var(--nav-foreground))] tracking-tight leading-[1.1]">
-            Nâng niu<br />
-            <span className="text-gradient">mỗi bước chân</span>
-          </h1>
-          <p className="mt-6 text-lg text-[hsl(var(--nav-foreground))]/70 leading-relaxed">
-            Lót giày công nghệ cao Kinis — được thiết kế dựa trên khoa học sinh cơ học, mang đến sự thoải mái và bảo vệ tối ưu cho đôi chân của bạn.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              to="/san-pham/lucy"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-secondary-foreground font-display font-semibold text-sm rounded-lg hover:opacity-90 transition-opacity"
-            >
-              Khám phá sản phẩm <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              to="/khoa-hoc"
-              className="inline-flex items-center gap-2 px-6 py-3 glass-card font-display font-semibold text-sm rounded-lg text-[hsl(var(--nav-foreground))] hover:text-secondary transition-colors"
-            >
-              Tìm hiểu khoa học
-            </Link>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+type ProductKey = keyof typeof products;
 
-    {/* Features */}
-    <section className="section-padding bg-background">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {features.map((f, i) => (
-            <motion.div
-              key={f.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              viewport={{ once: true }}
-              className="p-8 rounded-2xl glass-light hover:shadow-lg transition-shadow"
-            >
-              <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-5">
-                <f.icon className="w-6 h-6 text-secondary" />
-              </div>
-              <h3 className="font-display text-lg font-semibold text-foreground">{f.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
-            </motion.div>
-          ))}
+const Index = () => {
+  const [activeTab, setActiveTab] = useState<ProductKey>("lucy");
+  const product = products[activeTab];
+
+  return (
+    <Layout>
+      {/* ===== SECTION 1: HERO BANNER ===== */}
+      <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-[hsl(var(--nav))]">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img
+            src={heroImage}
+            alt="Kinis shoes"
+            className="w-full h-full object-cover opacity-50"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[hsl(0_0%_0%/0.88)] via-[hsl(0_0%_0%/0.55)] to-[hsl(0_0%_0%/0.3)]" />
+          {/* Subtle orange glow */}
+          <div className="absolute bottom-0 left-1/4 w-[600px] h-[400px] bg-secondary/10 rounded-full blur-[120px]" />
         </div>
-      </div>
-    </section>
 
-    {/* Products */}
-    <section className="section-padding bg-muted">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-12">
-          Sản phẩm của chúng tôi
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {[
-            { name: "Kinis Lucy", desc: "Dành cho vận động & tập luyện hàng ngày", img: lucyImage, href: "/san-pham/lucy" },
-            { name: "Kinis Nomad", desc: "Dành cho phiêu lưu & khám phá", img: nomadImage, href: "/san-pham/nomad" },
-          ].map((p, i) => (
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-2xl"
+          >
+            <h1 className="font-display text-5xl md:text-6xl lg:text-[5.5rem] font-extrabold text-[hsl(var(--nav-foreground))] tracking-tight leading-[1.05] uppercase">
+              Đánh thức
+              <br />
+              <span className="text-gradient">sức mạnh</span>
+              <br />
+              bàn chân Việt
+            </h1>
+
+            <p className="mt-6 text-lg md:text-xl text-[hsl(var(--nav-foreground))]/65 leading-relaxed max-w-lg">
+              Khôi phục cơ chế sinh học và vận động tự nhiên của bàn chân
+            </p>
+
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link
+                to="/san-pham/lucy"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-secondary-foreground font-display font-bold text-sm rounded-xl hover:brightness-110 transition-all"
+              >
+                Tìm hiểu giày Kinis
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                to="/khoa-hoc"
+                className="inline-flex items-center gap-2 px-7 py-3.5 glass-card rounded-xl text-[hsl(var(--nav-foreground))] font-display font-bold text-sm hover:text-secondary transition-colors"
+              >
+                Thông tin khoa học
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ===== SECTION 2: SẢN PHẨM (Tab Switcher) ===== */}
+      <section className="section-padding bg-background overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          {/* Section heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-14"
+          >
+            <h2 className="font-display text-3xl md:text-5xl font-extrabold text-foreground uppercase tracking-tight">
+              Sản phẩm
+            </h2>
+          </motion.div>
+
+          {/* Tab Switcher */}
+          <div className="flex justify-center mb-12">
+            <div className="relative inline-flex rounded-2xl bg-muted p-1.5">
+              {/* Sliding indicator */}
+              <motion.div
+                className="absolute top-1.5 bottom-1.5 rounded-xl bg-primary shadow-lg"
+                layout
+                transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                style={{
+                  left: activeTab === "lucy" ? "6px" : "50%",
+                  right: activeTab === "nomad" ? "6px" : "50%",
+                }}
+              />
+              {(["lucy", "nomad"] as ProductKey[]).map((key) => (
+                <button
+                  key={key}
+                  onClick={() => setActiveTab(key)}
+                  className={`relative z-10 px-8 md:px-12 py-3 rounded-xl font-display font-bold text-sm md:text-base transition-colors duration-200 ${
+                    activeTab === key
+                      ? "text-primary-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {products[key].label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Product Content */}
+          <AnimatePresence mode="wait">
             <motion.div
-              key={p.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.15, duration: 0.5 }}
-              viewport={{ once: true }}
+              key={activeTab}
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -24 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
             >
-              <Link to={p.href} className="group block rounded-2xl overflow-hidden glass-light hover:shadow-xl transition-all">
-                <div className="aspect-square overflow-hidden">
-                  <img src={p.img} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-display text-xl font-bold text-foreground">{p.name}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{p.desc}</p>
-                  <span className="inline-flex items-center gap-1 mt-4 text-sm font-semibold text-secondary">
-                    Xem chi tiết <ArrowRight className="w-4 h-4" />
+              {/* Text side */}
+              <div className="order-2 lg:order-1">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 mb-6">
+                  <Award className="w-4 h-4 text-secondary" />
+                  <span className="text-xs font-bold text-secondary uppercase tracking-wider">
+                    {product.badge}
                   </span>
                 </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
 
-    {/* CTA */}
-    <section className="relative overflow-hidden bg-[hsl(var(--nav))] section-padding">
-      <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 via-transparent to-secondary/5" />
-      <div className="relative max-w-3xl mx-auto text-center">
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-[hsl(var(--nav-foreground))] mb-4">
-          Sẵn sàng trải nghiệm sự khác biệt?
-        </h2>
-        <p className="text-[hsl(var(--nav-foreground))]/60 text-lg mb-8">
-          Tìm hiểu sản phẩm Kinis phù hợp nhất với bạn
-        </p>
-        <Link
-          to="/san-pham/lucy"
-          className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-secondary-foreground font-display font-semibold rounded-lg hover:opacity-90 transition-opacity"
-        >
-          Bắt đầu ngay <ArrowRight className="w-5 h-5" />
-        </Link>
-      </div>
-    </section>
-  </Layout>
-);
+                <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">
+                  {product.subtitle}
+                </p>
+
+                <h3 className="font-display text-3xl md:text-4xl font-extrabold text-foreground mb-5">
+                  {product.label}
+                </h3>
+
+                <p className="text-muted-foreground leading-relaxed text-base mb-8">
+                  {product.description}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-10">
+                  {product.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-4 py-2 rounded-full glass-light text-sm font-medium text-foreground"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* CTA */}
+                <Link
+                  to={product.href}
+                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-primary-foreground font-display font-bold text-sm rounded-xl hover:opacity-90 transition-opacity"
+                >
+                  Xem Chi Tiết
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+
+              {/* Image side */}
+              <div className="order-1 lg:order-2">
+                <motion.div
+                  initial={{ scale: 0.92, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="relative rounded-3xl overflow-hidden aspect-square"
+                >
+                  <img
+                    src={product.image}
+                    alt={product.label}
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Glass overlay at bottom */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[hsl(0_0%_0%/0.5)] to-transparent">
+                    <span className="font-display text-xl font-bold text-[hsl(var(--nav-foreground))]">
+                      {product.label}
+                    </span>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </section>
+    </Layout>
+  );
+};
 
 export default Index;
