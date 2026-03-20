@@ -126,7 +126,7 @@ const Index = () => {
             </div>
 
             {/* Glass content panel */}
-            <div className="relative z-10 rounded-[24px] border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] backdrop-blur-xl shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] p-8 md:p-12 -mt-px">
+            <div className="relative z-10 rounded-2xl border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] backdrop-blur-xl shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] p-8 md:p-12 -mt-px">
               {/* Animated accent line flowing from tab into panel */}
               <motion.div
                 key={activeTab}
