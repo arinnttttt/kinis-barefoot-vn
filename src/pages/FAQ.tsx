@@ -76,9 +76,9 @@ const FAQ = () => {
     <Layout>
       <PageHero title="Câu hỏi thường gặp" subtitle="Những thắc mắc phổ biến về giày barefoot và sản phẩm Kinis." />
 
-      {/* Mobile horizontal nav — pure HTML anchors, no JS state */}
-      <div className="lg:hidden sticky top-16 z-20 bg-muted/80 backdrop-blur-lg border-b border-border/50">
-        <nav className="overflow-x-auto scrollbar-hide -mx-0">
+      {/* Mobile horizontal nav — visible below lg breakpoint */}
+      <div className="faq-mobile-nav sticky top-16 z-20 bg-muted/80 backdrop-blur-lg border-b border-border/50">
+        <nav className="overflow-x-auto scrollbar-hide">
           <div className="flex gap-1.5 px-3 sm:px-4 py-2.5 sm:py-3 min-w-max">
             {faqCategories.map((cat, catIdx) => {
               const slug = toSlug(cat.category);
