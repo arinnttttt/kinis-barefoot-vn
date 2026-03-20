@@ -4,11 +4,11 @@ import { Phone, Mail } from "lucide-react";
 const Footer = () => (
   <footer className="relative bg-[hsl(var(--nav))] text-[hsl(var(--nav-foreground))]">
     {/* Angled top edge */}
-    
+    <div className="absolute -top-16 left-0 right-0 h-16 bg-[hsl(var(--nav))] [clip-path:polygon(100%_0,100%_100%,0_100%)]" />
 
     <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-10">
       {/* Top row: Logo + tagline | Social icons */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-10">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-10 border-b border-[hsl(var(--nav-foreground))]/10">
         <div className="flex items-center gap-4">
           <a href="/">
             <img src={logoBlack} alt="Kinis" className="h-8 brightness-0 invert" />
@@ -30,8 +30,8 @@ const Footer = () => (
             className="text-[hsl(var(--nav-foreground))]/50 hover:text-secondary transition-colors"
             aria-label="Zalo"
           >
-            <svg viewBox="0 0 1024 1024" className="w-5 h-5 fill-current">
-              <path d="M512 0C229.2 0 0 229.2 0 512s229.2 512 512 512 512-229.2 512-512S794.8 0 512 0zM364.8 636.3c-11.1 0-62.8-1.6-96.2-43.5-19.6-24.6-29.1-57.3-29.1-100.1 0-125.7 109.1-271.4 295.1-271.4 117.4 0 214.7 75.3 214.7 186.1 0 129.5-112.3 232.3-225.6 232.3-29 0-50-6.6-60.6-11.5l-17.3 55c-5.2 15.6-19.4 15.6-28.1 1.7L364.8 636.3zM793 625.4c-48.9 72.5-132 131.8-233.2 150.8l-43.7 7.7h-34.4c-12.4 0-92.3-3.3-153.4-45.2-29-19.9-53.1-45.8-71.5-77 0 0 14.1-12.5 44.9-43.5 5.1-5.1 12.9-5.4 18.3 0 24.3 23.3 42.7 37.4 71.6 57.1 5.7 3.9 9.7 4.1 12.9-5.1 2.5-7.5 14.4-43.5 19-57.4 41.3 22.3 93.1 33.7 140.3 33.7 147.9 0 287.3-113 287.3-285.9 0-21.7-3-42.6-8.4-62.5 7.2 1 14.3 2.3 21.3 3.7 53.2 44 72.2 99.3 72.2 140.7 0 74.6-29 148.8-62.5 183.4l-80.4-.5z" />
+            <svg viewBox="0 0 48 48" className="w-5 h-5 fill-current">
+              <path d="M24 0C10.745 0 0 10.745 0 24s10.745 24 24 24 24-10.745 24-24S37.255 0 24 0zm11.14 16.32c-.34 0-.674.034-1.008.084a11.96 11.96 0 0 0-6.13-5.56 11.88 11.88 0 0 0-8.14-.44c-2.86.936-5.19 2.936-6.59 5.556a11.88 11.88 0 0 0-.94 7.94 11.94 11.94 0 0 0 4.32 6.92c-.24.74-.78 2.42-.9 2.78-.16.44-.32.44-.58.26-1.78-1.2-2.88-2.06-4.32-3.44a.62.62 0 0 0-.86 0c-1.56 1.56-2.58 2.5-2.58 2.5s-.26.24 0 .6c.26.36 2.4 2.96 5.76 4.7 3.36 1.74 6.14 1.74 6.14 1.74h1.12c5.12-.2 9.68-2.7 12.48-6.86a14.16 14.16 0 0 0 2.2-10.3 6.84 6.84 0 0 0-1.86-4.48z" />
             </svg>
           </a>
           <a
