@@ -41,7 +41,7 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
   >
     <div className="order-2 lg:order-1">
       <div className="inline-flex items-center gap-3 mb-6">
-        <img src={apmaBadge} alt="Chứng nhận APMA" className="h-8" />
+        <img src={apmaBadge} alt="Chứng nhận APMA" className="h-14 md:h-16" />
       </div>
 
       <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">
@@ -139,7 +139,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="section-padding bg-background overflow-hidden">
+      <section className="py-20 px-4 md:px-6 bg-background overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="product-tabs relative" data-component="tabs">
             <input
@@ -185,7 +185,7 @@ const Index = () => {
             </div>
 
             <div
-              className="product-tabs-panel-container relative z-10 -mt-px overflow-hidden rounded-2xl border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] p-8 shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] backdrop-blur-xl md:p-12"
+              className="product-tabs-panel-container relative z-10 -mt-px overflow-hidden rounded-2xl border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] p-6 shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] backdrop-blur-xl md:p-8"
               data-tabs-panels
             >
               <ProductPanel product={lucy} tabKey="lucy" />
