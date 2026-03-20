@@ -1,5 +1,4 @@
 import Layout from "@/components/layout/Layout";
-import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import lucyImage from "@/assets/product-lucy.jpg";
 
@@ -17,20 +16,11 @@ const ProductLucy = () => (
     <section className="section-padding bg-background">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="rounded-2xl overflow-hidden bg-muted"
-          >
+          <div className="rounded-2xl overflow-hidden bg-muted animate-fade-up">
             <img src={lucyImage} alt="Kinis Lucy" className="w-full h-full object-cover" />
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
+          <div className="animate-fade-up [animation-delay:200ms]">
             <span className="text-sm font-display font-semibold text-secondary uppercase tracking-wider">Sản phẩm</span>
             <h1 className="mt-2 font-display text-4xl md:text-5xl font-bold text-foreground tracking-tight">
               Kinis Lucy
@@ -53,7 +43,7 @@ const ProductLucy = () => (
             <button className="mt-10 px-8 py-3.5 bg-primary text-primary-foreground font-display font-semibold rounded-lg hover:opacity-90 transition-opacity">
               Liên hệ mua hàng
             </button>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

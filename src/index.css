@@ -145,7 +145,7 @@
     box-shadow: 0 1px 12px -2px hsl(0 0% 0% / 0.06);
   }
 
-  /* Product tabs compatible with static HTML exports */
+  /* ====== Product Tabs (CSS-only, WP-compatible) ====== */
   .product-tabs {
     position: relative;
   }
@@ -216,6 +216,43 @@
   #product-tab-lucy:checked ~ [data-tabs-panels] [data-tab-content="lucy"],
   #product-tab-nomad:checked ~ [data-tabs-panels] [data-tab-content="nomad"] {
     display: grid;
+  }
+
+  /* Border trace effect on tab switch */
+  .product-tabs-panel-container {
+    position: relative;
+  }
+
+  .product-tabs-panel-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--secondary)) 25%,
+      hsl(var(--secondary)) 75%,
+      transparent 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  #product-tab-nomad:checked ~ [data-tabs-panels].product-tabs-panel-container::before,
+  #product-tab-lucy:checked ~ [data-tabs-panels].product-tabs-panel-container::before {
+    animation: borderTrace 0.8s ease-out forwards;
+  }
+
+  @keyframes borderTrace {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    100% { opacity: 0; }
   }
 
   @media (prefers-reduced-motion: reduce) {

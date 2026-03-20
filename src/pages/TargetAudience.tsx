@@ -1,7 +1,5 @@
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import { ArrowRight, Check } from "lucide-react";
 import gymImage from "@/assets/gym-fitness.jpg";
 import runnerImage from "@/assets/runner.jpg";
@@ -62,21 +60,11 @@ const TargetAudience = ({ variant }: TargetPageProps) => {
 
       <section className="section-padding bg-background">
         <div className="max-w-4xl mx-auto">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-lg text-muted-foreground leading-relaxed mb-12"
-          >
+          <p className="text-lg text-muted-foreground leading-relaxed mb-12 animate-fade-in">
             {d.intro}
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="p-8 rounded-2xl bg-card border border-border"
-          >
+          <div className="p-8 rounded-2xl bg-card border border-border animate-fade-up">
             <h3 className="font-display text-xl font-semibold text-card-foreground mb-6">Lợi ích khi sử dụng Kinis</h3>
             <ul className="space-y-4">
               {d.benefits.map((b) => (
@@ -88,22 +76,17 @@ const TargetAudience = ({ variant }: TargetPageProps) => {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="mt-10 text-center"
-          >
+          <div className="mt-10 text-center animate-fade-up [animation-delay:200ms]">
             <p className="text-muted-foreground mb-4">Sản phẩm phù hợp cho bạn:</p>
-            <Link
-              to={d.product.href}
+            <a
+              href={d.product.href}
               className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-secondary-foreground font-display font-semibold rounded-lg hover:opacity-90 transition-opacity"
             >
               {d.product.name} <ArrowRight className="w-4 h-4" />
-            </Link>
-          </motion.div>
+            </a>
+          </div>
         </div>
       </section>
     </Layout>

@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { ArrowRight, Award } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import heroImage from "@/assets/hero-person.jpg";
@@ -71,13 +69,13 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
         ))}
       </div>
 
-      <Link
-        to={product.href}
+      <a
+        href={product.href}
         className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-body font-semibold text-base rounded-xl hover:opacity-90 transition-opacity"
       >
         Xem Chi Tiết
         <ArrowRight className="w-4 h-4" />
-      </Link>
+      </a>
     </div>
 
     <div className="order-1 lg:order-2">
@@ -111,12 +109,7 @@ const Index = () => {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-2xl"
-          >
+          <div className="max-w-2xl animate-fade-up">
             <h1 className="font-display text-5xl md:text-6xl lg:text-[5.5rem] font-semibold text-[hsl(var(--nav-foreground))] tracking-tight leading-[1.05] uppercase">
               Đánh thức
               <br />
@@ -130,21 +123,21 @@ const Index = () => {
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
-              <Link
-                to="/san-pham/lucy"
+              <a
+                href="/san-pham/lucy"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-secondary-foreground font-body font-semibold text-base rounded-xl hover:brightness-110 transition-all"
               >
                 Tìm hiểu giày Kinis
                 <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                to="/khoa-hoc"
+              </a>
+              <a
+                href="/khoa-hoc"
                 className="inline-flex items-center gap-2 px-8 py-4 glass-card rounded-xl text-[hsl(var(--nav-foreground))] font-body font-semibold text-base hover:text-secondary transition-colors"
               >
                 Thông tin khoa học
-              </Link>
+              </a>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -194,7 +187,7 @@ const Index = () => {
             </div>
 
             <div
-              className="relative z-10 -mt-px overflow-hidden rounded-2xl border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] p-8 shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] backdrop-blur-xl md:p-12"
+              className="product-tabs-panel-container relative z-10 -mt-px overflow-hidden rounded-2xl border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] p-8 shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] backdrop-blur-xl md:p-12"
               data-tabs-panels
             >
               <ProductPanel product={lucy} tabKey="lucy" />

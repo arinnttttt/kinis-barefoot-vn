@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 interface PageHeroProps {
   title: string;
   subtitle?: string;
@@ -16,23 +14,17 @@ const PageHero = ({ title, subtitle, image, dark = true }: PageHeroProps) => (
       </div>
     )}
     <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-24 md:py-32">
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className={`font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight ${dark ? "text-[hsl(var(--nav-foreground))]" : "text-foreground"}`}
+      <h1
+        className={`font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight animate-fade-up ${dark ? "text-[hsl(var(--nav-foreground))]" : "text-foreground"}`}
       >
         {title}
-      </motion.h1>
+      </h1>
       {subtitle && (
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className={`mt-4 text-lg md:text-xl max-w-2xl ${dark ? "text-[hsl(var(--nav-foreground))]/70" : "text-muted-foreground"}`}
+        <p
+          className={`mt-4 text-lg md:text-xl max-w-2xl animate-fade-up [animation-delay:100ms] ${dark ? "text-[hsl(var(--nav-foreground))]/70" : "text-muted-foreground"}`}
         >
           {subtitle}
-        </motion.p>
+        </p>
       )}
     </div>
   </section>
