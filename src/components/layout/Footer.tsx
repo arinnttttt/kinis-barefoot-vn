@@ -118,7 +118,6 @@ const Footer = () => (
             </li>
           </ul>
         </div>
-        </div>
 
         {/* Tagline */}
         <div>
