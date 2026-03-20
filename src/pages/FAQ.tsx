@@ -158,7 +158,7 @@ const FAQ = () => {
         </nav>
       </div>
 
-      <section className="section-padding bg-muted/60">
+      <section className="py-10 sm:py-12 md:py-16 px-3 sm:px-6 lg:px-8 bg-muted/60">
         <div className="max-w-5xl mx-auto flex gap-10">
           {/* Desktop sidebar navigation */}
           <nav className="hidden lg:block w-56 shrink-0 sticky top-28 self-start">
@@ -185,23 +185,23 @@ const FAQ = () => {
           </nav>
 
           {/* FAQ content */}
-          <div className="flex-1 min-w-0 space-y-12">
+          <div className="flex-1 min-w-0 space-y-8 sm:space-y-12">
             {faqCategories.map((cat, catIdx) => (
               <div key={catIdx} id={toSlug(cat.category)} className="scroll-mt-28">
-                <h2 className="font-display text-2xl font-semibold text-foreground mb-1 pb-4 border-b border-border">
+                <h2 className="font-display text-xl sm:text-2xl font-semibold text-foreground mb-1 pb-3 sm:pb-4 border-b border-border">
                   {cat.category}
                 </h2>
-                <Accordion type="single" collapsible className="space-y-3 mt-4">
+                <Accordion type="single" collapsible className="space-y-2 sm:space-y-3 mt-3 sm:mt-4">
                   {cat.faqs.map((faq, i) => (
                     <AccordionItem
                       key={i}
                       value={`cat-${catIdx}-item-${i}`}
-                      className="glass-light rounded-xl px-6 data-[state=open]:shadow-md transition-shadow border-0"
+                      className="glass-light rounded-xl px-4 sm:px-6 data-[state=open]:shadow-md transition-shadow border-0"
                     >
-                      <AccordionTrigger className="font-body text-left text-base font-medium text-card-foreground hover:text-secondary hover:no-underline py-5">
+                      <AccordionTrigger className="font-body text-left text-sm sm:text-base font-medium text-card-foreground hover:text-secondary hover:no-underline py-4 sm:py-5">
                         {faq.q}
                       </AccordionTrigger>
-                      <AccordionContent className="text-foreground/80 text-[15px] leading-relaxed pb-5 whitespace-pre-line">
+                      <AccordionContent className="text-foreground/80 text-[13px] sm:text-[15px] leading-relaxed pb-4 sm:pb-5 whitespace-pre-line">
                         {faq.a}
                       </AccordionContent>
                     </AccordionItem>
