@@ -58,17 +58,28 @@ const Footer = () => (
       </div>
 
       {/* Main content: Sitemap | Contact | About */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 py-10 border-t border-[hsl(var(--nav-foreground))]/10">
-        {/* Sitemap */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-10 py-10 border-t border-[hsl(var(--nav-foreground))]/10">
+        {/* Sitemap col 1 */}
         <div>
           <h4 className="font-body font-semibold text-sm mb-5">Khám phá</h4>
           <ul className="space-y-2.5">
-            {sitemapLinks.map((link) => (
+            {sitemapLinks.slice(0, 5).map((link) => (
               <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors"
-                >
+                <a href={link.href} className="text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
+                  › {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Sitemap col 2 */}
+        <div>
+          <h4 className="font-body font-semibold text-sm mb-5 invisible">‎</h4>
+          <ul className="space-y-2.5">
+            {sitemapLinks.slice(5).map((link) => (
+              <li key={link.href}>
+                <a href={link.href} className="text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
                   › {link.label}
                 </a>
               </li>
