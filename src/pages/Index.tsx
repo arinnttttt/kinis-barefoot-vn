@@ -139,7 +139,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="section-padding bg-background overflow-hidden">
+      <section className="py-20 px-4 md:px-6 bg-background overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="product-tabs relative" data-component="tabs">
             <input
