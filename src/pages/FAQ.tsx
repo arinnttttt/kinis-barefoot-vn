@@ -108,9 +108,9 @@ const renderAnswer = (answer: string) => {
   return blocks.map((block, index) => {
     if (block.type === "list") {
       return (
-        <ul key={`${index}-${String(block.content)}`} className="list-disc space-y-2 pl-5 marker:text-secondary">
+        <ul key={`${index}-${String(block.content)}`} className="list-disc space-y-2 pl-5">
           {(block.content as string[]).map((item, itemIndex) => (
-            <li key={`${itemIndex}-${item}`} className="text-foreground/80">
+            <li key={`${itemIndex}-${item}`} className="faq-answer-text">
               {item}
             </li>
           ))}
@@ -127,7 +127,7 @@ const renderAnswer = (answer: string) => {
     }
 
     return (
-      <p key={`${index}-${String(block.content)}`} className="text-foreground/80">
+      <p key={`${index}-${String(block.content)}`} className="faq-answer-text">
         {block.content as string}
       </p>
     );
