@@ -63,7 +63,7 @@ const Footer = () => (
       </div>
 
       {/* Main content: Sitemap | Contact | About */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-10 py-10 border-t border-[hsl(var(--nav-foreground))]/10">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-10 py-10 border-t border-[hsl(var(--nav-foreground))]/10">
         {/* Sitemap col 1 */}
         <div>
           <h4 className="font-body font-semibold text-sm mb-5">Khám phá</h4>
