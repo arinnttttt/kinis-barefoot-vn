@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { ChevronDown } from "lucide-react";
 
 const faqCategories = [
   {
@@ -58,43 +58,13 @@ const faqCategories = [
     faqs: [
       { q: "Giày barefoot Kinis có thoải mái ngay từ lần đầu mang không?", a: "Điều này tùy thuộc vào tình trạng của mỗi người.\n- Nếu bạn đã làm quen với giày barefoot trước đó thì hoàn toàn cảm thấy thoải mái và linh hoạt ngay.\n- Còn nếu bạn chưa từng đi giày thiết kế barefoot trước đó, thì bạn cần thời gian để bàn chân thích nghi tối đa 6 tháng." },
       { q: "Giày Kinis có phù hợp cho vận động cường độ cao không?", a: "Hiện tại, Kinis Barefoot phân phối 2 dòng sản phẩm chính tại Hệ thống Bye Beo gồm: Kinis Nomad và Kinis Lucy.\n- Đối với dòng giày barefoot Kinis Nomad: Bạn có thể dùng tập gym, các bài tập huấn luyện chức năng hoặc tập yoga, pilates trong nhà.\n- Đối với dòng giày Kinis Lucy sẽ phù hợp đi bộ, sinh hoạt hằng ngày, đi làm, đi học, không khuyến khích sử dụng trong trường hợp vận động cao.\nNếu bạn muốn sử dụng giày barefoot Kinis chạy đường dài, tập luyện cường độ cao trong phòng gym thì bạn cần làm quen với giày barefoot ít nhất 6 tháng." },
-      { q: "Giày barefoot Kinis có giúp giảm đau lưng hoặc đau gối không?", a: "Trong nhiều trường hợp, giày barefoot Kinis có thể hỗ trợ cải thiện tư thế và phân bổ lực tự nhiên, từ đó giúp giảm áp lực lên lưng và gối. Tuy nhiên, nếu cơn đau do chấn thương, bệnh lý hoặc sai lệch cấu trúc nghiêm trọng thì bạn nên kết hợp với tư vấn y tế hoặc giải pháp chuyên sâu hơn, bởi vì giày barefoot Kinis không phải là giày chuyên dụng trong y tế." },
-      { q: "Tôi có thể mang giày barefoot Kinis cả ngày không?", a: "Hoàn toàn được nếu bạn đã thích nghi và hoàn toàn cảm thấy thoải mái khi mang giày barefoot Kinis.\nCòn nếu bạn là người mới tập mang giày barefoot, Kinis khuyến nghị dùng xen kẽ với giày khác trong giai đoạn đầu, sau đó tăng dần thời gian sử dụng để tránh quá tải cơ bàn chân." },
-      { q: "Người lớn tuổi có phù hợp đi giày barefoot Kinis không?", a: "Hoàn toàn phù hợp. Giày barefoot Kinis có nhiều lợi ích phù hợp với người lớn tuổi:\n- Cải thiện thăng bằng: Giày barefoot Kinis cho phép ngón chân xòe rộng, tạo nền tảng vững chắc, giúp phân bổ trọng lượng tốt hơn, tăng cường sức mạnh cơ gấp ngón chân, rất quan trọng để duy trì thăng bằng, đặc biệt ở người trên 60 tuổi.\n- Tăng cường sức mạnh bàn chân & mắt cá chân: Giày barefoot Kinis cho phép chuyển động tự nhiên, giúp các cơ, gân và dây chằng hoạt động nhiều hơn.\n- Cải thiện tư thế: Giúp dáng đi tự nhiên hơn, giảm căng thẳng lên các chi dưới.\n- Tăng cảm nhận môi trường xung quanh, kích hoạt cảm giác từ chân truyền lên não bộ.\nTuy nhiên, tùy vào thể trạng của mỗi người để có thời gian làm quen và thích ứng với giày barefoot Kinis phù hợp." },
-      { q: "Tôi bị bàn chân bẹt có thể mang giày barefoot Kinis được không?", a: "Có, bàn chân bẹt có thể mang giày barefoot Kinis, bởi vì giày barefoot không có đệm nâng đỡ, mũi giày rộng và thiết kế vừa vặn tự nhiên giúp hỗ trợ quá trình điều trị những vấn đề liên quan đến bàn chân như bàn chân bẹt, giảm tình trạng đau nhức, mất thăng bằng khi vận động.\nTUY NHIÊN, bạn cần lưu ý:\n- Giày barefoot Kinis không phải là giày chuyên dụng trong y tế.\n- Giày barefoot Kinis đóng vai trò là sản phẩm hỗ trợ, không phải là sản phẩm thay thế cho phương pháp điều trị về bệnh lý bàn chân bẹt nhẹ.\n- Đối với người có tình trạng bàn chân bẹt nặng và liên quan đến các bệnh lý khác, cần tham khảo ý kiến bác sĩ." },
-      { q: "Tôi thường xuyên bị đau nhức chân thì dùng giày barefoot Kinis có đỡ hơn không?", a: "Trước tiên phải xác định nguyên nhân đau nhức đến từ đâu.\nNếu nguyên nhân đến từ giày truyền thống/giày cao gót quá chật gây đau/nhức, thì bạn hoàn toàn có thể cân nhắc chuyển sang giày barefoot Kinis để bàn chân có thể chuyển động tự nhiên (natural movement) vốn có, giúp tăng cường cơ bàn chân và cải thiện dáng đi tự nhiên, nhưng cần chuyển đổi dần dần.\nCòn nếu nguyên nhân đau nhức từ các bệnh lý khác, bạn cần thăm khám bác sĩ chuyên môn để có phác đồ chuyên sâu." },
-    ],
-  },
-  {
-    category: "Mua sắm và quyền lợi",
-    faqs: [
-      { q: "Tôi có thể đặt mua giày Kinis ở đâu?", a: "Hiện tại Bye Beo là Nhà phân phối ĐỘC QUYỀN giày barefoot Kinis duy nhất tại Việt Nam. Bạn có thể mua trực tiếp giày Kinis tại Hệ sinh thái Bye Beo." },
-      { q: "Có ưu đãi gì khi mua giày barefoot Kinis không?", a: "Có. Khi mua sắm giày Kinis tại hệ sinh thái phân phối Bye Béo, bạn còn nhận được nhiều quyền lợi chăm sóc sức khỏe vận động toàn diện đến từ Kinis, bao gồm:\n- Miễn phí tạo tài khoản và thực hiện kiểm tra chỉ số thăng bằng Kinis BalancePro tích hợp AI tiên phong tại Việt Nam\n- Miễn phí bài tập luyện cải thiện thăng bằng được cá nhân hóa, dựa trên nghiên cứu khoa học và đội ngũ chuyên môn đến từ Hoa Kỳ\n- Hỗ trợ kiểm tra và tư vấn trực tiếp lộ trình chăm sóc sức khỏe vận động tại Hệ thống Balance Center Buôn Mê Thuột." },
-    ],
-  },
-  {
-    category: "Chăm sóc và vệ sinh",
-    faqs: [
-      { q: "Khi nào nên thay một đôi giày barefoot Kinis?", a: "Thời gian sử dụng phụ thuộc tần suất và bề mặt dùng giày. Nếu giày barefoot Kinis của bạn có những dấu hiệu này thì nên thay:\n- Đế mòn đáng kể làm giảm độ bám\n- Cảm giác bảo vệ giảm đáng kể\n- Dấu hiệu mất form dáng, rách." },
-      { q: "Vệ sinh giày Kinis như thế nào?", a: "Các mẫu giày Kinis gồm giày barefoot Kinis Nomad và giày Kinis Lucy hoàn toàn có thể giặt tay hoặc giặt máy ở chế độ nhẹ, sau đó phơi khô tự nhiên. Không sử dụng máy sấy nhiệt độ cao để làm khô giày." },
-      { q: "Làm sao hạn chế mùi khi mang giày barefoot Kinis?", a: "Giày barefoot Kinis được làm từ chất liệu vải chuyên biệt, có khả năng kháng khuẩn, hạn chế mùi. Tuy nhiên, để giày luôn thơm tho và sạch sẽ, bạn nên:\n- Phơi giày nơi thoáng khí sau khi sử dụng\n- Có thể dùng tất mỏng hoặc xịt khử mùi tự nhiên\n- Tránh mang liên tục nhiều giờ trong môi trường ẩm kín" },
-    ],
-  },
-  {
-    category: "Giày cho bàn chân bẹt",
-    faqs: [
-      { q: "Bàn chân bẹt là gì?", a: "Bàn chân bẹt là tình trạng vòm bàn chân thấp hoặc xẹp xuống, khiến toàn bộ lòng bàn chân gần như tiếp xúc với mặt đất khi đứng. Điều này có thể ảnh hưởng đến: khả năng thăng bằng, dáng đi, áp lực lên gối, hông và cột sống." },
-      { q: "Người bàn chân bẹt nên chọn giày như thế nào?", a: "Một đôi giày phù hợp cho bàn chân bẹt nên chọn giày có thiết kế phù hợp:\n- Có mũi giày rộng\n- Đế phẳng, không ép dáng đi\n- Không bó ngón, không gò vòm\n- Cho phép bàn chân tự điều chỉnh khi tiếp đất\n👉 Đây cũng chính là triết lý thiết kế của giày barefoot Kinis để phù hợp cho người bàn chân bẹt muốn bàn chân được hoạt động về đúng cấu trúc tự nhiên, từ đó cải thiện sức mạnh của bàn chân và dáng đi tổng thể." },
-      { q: "Vì sao Kinis là giày cho bàn chân bẹt theo hướng tự nhiên?", a: "Kinis là giày cho bàn chân bẹt được thiết kế để không nâng vòm cứng, không làm bàn chân phụ thuộc, mà giúp cơ bàn chân hoạt động và thích nghi tốt hơn theo thời gian. Giày hỗ trợ thăng bằng, dáng đi và cảm nhận mặt đất cho người bàn chân bẹt trong sinh hoạt hằng ngày." },
-      { q: "Vì sao người bàn chân bẹt nên cân nhắc giày Kinis?", a: "Vì Kinis không \"sửa\" bàn chân bằng đệm nhân tạo mà tôn trọng cấu trúc tự nhiên, giúp bàn chân hoạt động đúng chức năng. Bên cạnh đó, giày Kinis còn hỗ trợ cải thiện cảm giác thăng bằng và giảm nguy cơ lệch trục vận động do giày không phù hợp." },
-      { q: "Kinis Nomad hay Kinis Lucy phù hợp hơn cho người bàn chân bẹt?", a: "Tùy mục đích sử dụng & mức độ thích nghi để bạn lựa chọn mẫu giày Kinis phù hợp:\n- Kinis Lucy phù hợp người mới bắt đầu, sử dụng đi bộ, sinh hoạt hằng ngày và không cần thời gian làm quen\n- Kinis Nomad phù hợp người đã quen barefoot (chân trần), tập gym, yoga, vận động nhẹ. Mẫu giày này cần lộ trình thích nghi." },
-      { q: "Mang giày Kinis có giúp cải thiện thăng bằng cho người bàn chân bẹt không?", a: "Có thể. Với người bàn chân bẹt, giày Kinis sẽ giúp đôi chân hoạt động về đúng cấu trúc tự nhiên và cơ chế sinh học của bàn chân. Đặc biệt thiết kế zero-drop + mũi rộng sẽ giúp tăng cảm nhận mặt đất, kích hoạt cơ bàn chân & cổ chân và cải thiện khả năng kiểm soát trọng tâm khi vận động." },
+      { q: "Giày barefoot Kinis có giặt được không?", a: "- Giày Kinis Nomad: Có, vì chất liệu của Kinis Nomad có thể giặt tay hoặc giặt máy dễ dàng.\n- Giày Kinis Lucy: Bạn có thể vệ sinh bề mặt bằng khăn ẩm. Bạn tháo lót giày ra và giặt riêng." },
     ],
   },
 ];
 
-const toSlug = (str: string) =>
-  str
+const toSlug = (text: string) =>
+  text
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
@@ -184,29 +154,29 @@ const FAQ = () => {
             </ul>
           </nav>
 
-          {/* FAQ content */}
+          {/* FAQ content — native <details>/<summary> for WP compatibility */}
           <div className="flex-1 min-w-0 space-y-8 sm:space-y-12">
             {faqCategories.map((cat, catIdx) => (
               <div key={catIdx} id={toSlug(cat.category)} className="scroll-mt-28">
                 <h2 className="font-display text-xl sm:text-2xl font-semibold text-foreground mb-1 pb-3 sm:pb-4 border-b border-border">
                   {cat.category}
                 </h2>
-                <Accordion type="single" collapsible className="space-y-2 sm:space-y-3 mt-3 sm:mt-4">
+                <div className="space-y-2 sm:space-y-3 mt-3 sm:mt-4">
                   {cat.faqs.map((faq, i) => (
-                    <AccordionItem
+                    <details
                       key={i}
-                      value={`cat-${catIdx}-item-${i}`}
-                      className="glass-light rounded-xl px-4 sm:px-6 data-[state=open]:shadow-md transition-shadow border-0"
+                      className="group glass-light rounded-xl px-4 sm:px-6 transition-shadow open:shadow-md border-0"
                     >
-                      <AccordionTrigger className="font-body text-left text-sm sm:text-base font-medium text-card-foreground hover:text-secondary hover:no-underline py-4 sm:py-5">
-                        {faq.q}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-foreground/80 text-[13px] sm:text-[15px] leading-relaxed pb-4 sm:pb-5 whitespace-pre-line">
+                      <summary className="flex items-center justify-between cursor-pointer font-body text-left text-sm sm:text-base font-medium text-card-foreground hover:text-secondary py-4 sm:py-5 list-none [&::-webkit-details-marker]:hidden">
+                        <span>{faq.q}</span>
+                        <ChevronDown className="w-4 h-4 shrink-0 ml-2 text-muted-foreground transition-transform duration-200 group-open:rotate-180" />
+                      </summary>
+                      <div className="text-foreground/80 text-[13px] sm:text-[15px] leading-relaxed pb-4 sm:pb-5 whitespace-pre-line">
                         {faq.a}
-                      </AccordionContent>
-                    </AccordionItem>
+                      </div>
+                    </details>
                   ))}
-                </Accordion>
+                </div>
               </div>
             ))}
           </div>
