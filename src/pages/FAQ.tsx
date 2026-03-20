@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -101,57 +102,85 @@ const toSlug = (str: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 
-const FAQ = () => (
-  <Layout>
-    <PageHero title="Câu hỏi thường gặp" subtitle="Những thắc mắc phổ biến về giày barefoot và sản phẩm Kinis." />
+const FAQ = () => {
+  const [activeSection, setActiveSection] = useState("");
 
-    <section className="section-padding bg-muted/60">
-      <div className="max-w-5xl mx-auto flex gap-10">
-        {/* Sidebar navigation */}
-        <nav className="hidden lg:block w-56 shrink-0 sticky top-28 self-start">
-          <ul className="space-y-1">
+  useEffect(() => {
+    const slugs = faqCategories.map((cat) => toSlug(cat.category));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((e) => e.isIntersecting);
+        if (visible) setActiveSection(visible.target.id);
+      },
+      { rootMargin: "-120px 0px -60% 0px", threshold: 0 }
+    );
+    slugs.forEach((slug) => {
+      const el = document.getElementById(slug);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <Layout>
+      <PageHero title="Câu hỏi thường gặp" subtitle="Những thắc mắc phổ biến về giày barefoot và sản phẩm Kinis." />
+
+      <section className="section-padding bg-muted/60">
+        <div className="max-w-5xl mx-auto flex gap-10">
+          {/* Sidebar navigation */}
+          <nav className="hidden lg:block w-56 shrink-0 sticky top-28 self-start">
+            <ul className="space-y-1">
+              {faqCategories.map((cat, catIdx) => {
+                const slug = toSlug(cat.category);
+                const isActive = activeSection === slug;
+                return (
+                  <li key={catIdx}>
+                    <a
+                      href={`#${slug}`}
+                      className={`block px-4 py-2.5 text-sm font-body font-medium rounded-lg transition-colors border-l-2 ${
+                        isActive
+                          ? "border-secondary text-foreground bg-background"
+                          : "border-transparent text-muted-foreground hover:text-foreground hover:bg-background"
+                      }`}
+                    >
+                      {cat.category}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          {/* FAQ content */}
+          <div className="flex-1 min-w-0 space-y-12">
             {faqCategories.map((cat, catIdx) => (
-              <li key={catIdx}>
-                <a
-                  href={`#${toSlug(cat.category)}`}
-                  className="block px-4 py-2.5 text-sm font-body font-medium text-muted-foreground hover:text-foreground hover:bg-background rounded-lg transition-colors"
-                >
+              <div key={catIdx} id={toSlug(cat.category)} className="scroll-mt-28">
+                <h2 className="font-display text-2xl font-semibold text-foreground mb-1 pb-4 border-b border-border">
                   {cat.category}
-                </a>
-              </li>
+                </h2>
+                <Accordion type="single" collapsible className="space-y-3 mt-4">
+                  {cat.faqs.map((faq, i) => (
+                    <AccordionItem
+                      key={i}
+                      value={`cat-${catIdx}-item-${i}`}
+                      className="glass-light rounded-xl px-6 data-[state=open]:shadow-md transition-shadow border-0"
+                    >
+                      <AccordionTrigger className="font-body text-left text-base font-medium text-card-foreground hover:text-secondary hover:no-underline py-5">
+                        {faq.q}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-foreground/70 text-base leading-relaxed pb-5 whitespace-pre-line">
+                        {faq.a}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
             ))}
-          </ul>
-        </nav>
-
-        {/* FAQ content */}
-        <div className="flex-1 min-w-0 space-y-12">
-          {faqCategories.map((cat, catIdx) => (
-            <div key={catIdx} id={toSlug(cat.category)} className="scroll-mt-28">
-              <h2 className="font-display text-2xl font-semibold text-foreground mb-1 pb-4 border-b border-border">
-                {cat.category}
-              </h2>
-              <Accordion type="single" collapsible className="space-y-3 mt-4">
-                {cat.faqs.map((faq, i) => (
-                  <AccordionItem
-                    key={i}
-                    value={`cat-${catIdx}-item-${i}`}
-                    className="glass-light rounded-xl px-6 data-[state=open]:shadow-md transition-shadow border-0"
-                  >
-                    <AccordionTrigger className="font-body text-left text-lg font-medium text-card-foreground hover:text-secondary hover:no-underline py-5">
-                      {faq.q}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-5 whitespace-pre-line">
-                      {faq.a}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
-          ))}
+          </div>
         </div>
-      </div>
-    </section>
-  </Layout>
-);
+      </section>
+    </Layout>
+  );
+};
 
 export default FAQ;
