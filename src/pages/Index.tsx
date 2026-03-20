@@ -40,11 +40,8 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
     data-tab-content={tabKey}
   >
     <div className="order-2 lg:order-1">
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 mb-6">
-        <Award className="w-4 h-4 text-secondary" />
-        <span className="text-xs font-bold text-secondary uppercase tracking-wider">
-          {product.badge}
-        </span>
+      <div className="inline-flex items-center gap-3 mb-6">
+        <img src={apmaBadge} alt="Chứng nhận APMA" className="h-8" />
       </div>
 
       <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">
