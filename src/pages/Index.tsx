@@ -196,7 +196,7 @@ const Index = () => {
                   initial={{ scale: 0.92, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative rounded-3xl overflow-hidden aspect-square"
+                  className="relative rounded-2xl overflow-hidden aspect-square"
                 >
                   <img
                     src={product.image}
