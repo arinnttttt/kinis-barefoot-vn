@@ -38,8 +38,8 @@ const Science = () => (
               viewport={{ once: true }}
               className="p-8 rounded-2xl bg-card border border-border"
             >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <span className="font-display text-lg font-bold text-primary">{String(i + 1).padStart(2, "0")}</span>
+              <div className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center mb-4">
+                <span className="font-display text-lg font-bold text-secondary">{String(i + 1).padStart(2, "0")}</span>
               </div>
               <h3 className="font-display text-xl font-semibold text-card-foreground">{p.title}</h3>
               <p className="mt-3 text-muted-foreground leading-relaxed">{p.desc}</p>

@@ -31,7 +31,7 @@ const ProductNomad = () => (
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <span className="text-sm font-display font-semibold text-primary uppercase tracking-wider">Sản phẩm</span>
+            <span className="text-sm font-display font-semibold text-secondary uppercase tracking-wider">Sản phẩm</span>
             <h1 className="mt-2 font-display text-4xl md:text-5xl font-bold text-foreground tracking-tight">
               Kinis Nomad
             </h1>
@@ -42,8 +42,8 @@ const ProductNomad = () => (
             <ul className="mt-8 space-y-3">
               {specs.map((s) => (
                 <li key={s} className="flex items-start gap-3">
-                  <div className="mt-0.5 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3 h-3 text-primary" />
+                  <div className="mt-0.5 w-5 h-5 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0">
+                    <Check className="w-3 h-3 text-secondary" />
                   </div>
                   <span className="text-foreground">{s}</span>
                 </li>

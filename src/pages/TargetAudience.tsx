@@ -81,8 +81,8 @@ const TargetAudience = ({ variant }: TargetPageProps) => {
             <ul className="space-y-4">
               {d.benefits.map((b) => (
                 <li key={b} className="flex items-start gap-3">
-                  <div className="mt-0.5 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3 h-3 text-primary" />
+                  <div className="mt-0.5 w-5 h-5 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0">
+                    <Check className="w-3 h-3 text-secondary" />
                   </div>
                   <span className="text-card-foreground">{b}</span>
                 </li>
@@ -99,7 +99,7 @@ const TargetAudience = ({ variant }: TargetPageProps) => {
             <p className="text-muted-foreground mb-4">Sản phẩm phù hợp cho bạn:</p>
             <Link
               to={d.product.href}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-display font-semibold rounded-lg hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-secondary-foreground font-display font-semibold rounded-lg hover:opacity-90 transition-opacity"
             >
               {d.product.name} <ArrowRight className="w-4 h-4" />
             </Link>
