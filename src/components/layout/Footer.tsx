@@ -1,72 +1,113 @@
 import logoBlack from "@/assets/logo-kinis-black.png";
 import { Phone, Mail } from "lucide-react";
 
-const contactItems = [
-  {
-    label: "Zalo OA",
-    href: "https://zalo.me/kinis",
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 8.16c-.169 0-.337.017-.504.042a5.98 5.98 0 0 0-3.065-2.78 5.94 5.94 0 0 0-4.07-.22C8.476 5.67 7.31 6.67 6.61 7.98a5.94 5.94 0 0 0-.47 3.97 5.97 5.97 0 0 0 2.16 3.46c-.12.37-.39 1.21-.45 1.39-.08.22-.16.22-.29.13-.89-.6-1.44-1.03-2.16-1.72a.31.31 0 0 0-.43 0c-.78.78-1.29 1.25-1.29 1.25s-.13.12 0 .3c.13.18 1.2 1.48 2.88 2.35 1.68.87 3.07.87 3.07.87h.56c2.56-.1 4.84-1.35 6.24-3.43a7.08 7.08 0 0 0 1.1-5.15 3.42 3.42 0 0 0-.93-2.24z" />
-      </svg>
-    ),
-  },
-  {
-    label: "Email",
-    href: "mailto:hello@kinis.com",
-    detail: "hello@kinis.com",
-    icon: <Mail className="w-5 h-5" />,
-  },
-  {
-    label: "Hotline",
-    href: "tel:+84708803573",
-    detail: "(+84) 708 803 573",
-    icon: <Phone className="w-5 h-5" />,
-  },
-  {
-    label: "Facebook Kinis AI Vietnam",
-    href: "https://www.facebook.com/KinisAi.VN",
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
-        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-      </svg>
-    ),
-  },
-];
-
 const Footer = () => (
-  <footer className="bg-[hsl(var(--nav))] text-[hsl(var(--nav-foreground))]">
-    <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-      {/* Contact row */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-        {contactItems.map((item) => (
-          <a
-            key={item.label}
-            href={item.href}
-            target={item.href.startsWith("http") ? "_blank" : undefined}
-            rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="group flex flex-col items-center text-center gap-3 p-5 rounded-2xl border border-[hsl(var(--nav-foreground))]/10 hover:border-secondary/40 hover:bg-[hsl(var(--nav-foreground))]/5 transition-colors"
-          >
-            <span className="text-[hsl(var(--nav-foreground))]/60 group-hover:text-secondary transition-colors">
-              {item.icon}
-            </span>
-            <span className="font-body text-sm font-semibold">{item.label}</span>
-            {item.detail && (
-              <span className="text-xs text-[hsl(var(--nav-foreground))]/50">{item.detail}</span>
-            )}
+  <footer className="relative bg-[hsl(var(--nav))] text-[hsl(var(--nav-foreground))]">
+    {/* Angled top edge */}
+    <div className="absolute -top-16 left-0 right-0 h-16 bg-[hsl(var(--nav))] [clip-path:polygon(100%_0,100%_100%,0_100%)]" />
+
+    <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-10">
+      {/* Top row: Logo + tagline | Social icons */}
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-10 border-b border-[hsl(var(--nav-foreground))]/10">
+        <div className="flex items-center gap-4">
+          <a href="/">
+            <img src={logoBlack} alt="Kinis" className="h-8 brightness-0 invert" />
           </a>
-        ))}
+          <span className="hidden sm:block text-[hsl(var(--nav-foreground))]/30">
+            /
+          </span>
+          <p className="hidden sm:block text-sm text-[hsl(var(--nav-foreground))]/50">
+            Hệ sinh thái chăm sóc sức khỏe vận động
+          </p>
+        </div>
+
+        {/* Social icons */}
+        <div className="flex items-center gap-4">
+          <a
+            href="https://zalo.me/kinis"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[hsl(var(--nav-foreground))]/50 hover:text-secondary transition-colors"
+            aria-label="Zalo"
+          >
+            <svg viewBox="0 0 48 48" className="w-5 h-5 fill-current">
+              <path d="M24 0C10.745 0 0 10.745 0 24s10.745 24 24 24 24-10.745 24-24S37.255 0 24 0zm11.14 16.32c-.34 0-.674.034-1.008.084a11.96 11.96 0 0 0-6.13-5.56 11.88 11.88 0 0 0-8.14-.44c-2.86.936-5.19 2.936-6.59 5.556a11.88 11.88 0 0 0-.94 7.94 11.94 11.94 0 0 0 4.32 6.92c-.24.74-.78 2.42-.9 2.78-.16.44-.32.44-.58.26-1.78-1.2-2.88-2.06-4.32-3.44a.62.62 0 0 0-.86 0c-1.56 1.56-2.58 2.5-2.58 2.5s-.26.24 0 .6c.26.36 2.4 2.96 5.76 4.7 3.36 1.74 6.14 1.74 6.14 1.74h1.12c5.12-.2 9.68-2.7 12.48-6.86a14.16 14.16 0 0 0 2.2-10.3 6.84 6.84 0 0 0-1.86-4.48z" />
+            </svg>
+          </a>
+          <a
+            href="https://www.facebook.com/KinisAi.VN"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[hsl(var(--nav-foreground))]/50 hover:text-secondary transition-colors"
+            aria-label="Facebook"
+          >
+            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+          </a>
+        </div>
       </div>
 
-      {/* Logo + tagline */}
-      <div className="flex flex-col items-center text-center gap-4 pt-8 border-t border-[hsl(var(--nav-foreground))]/10">
-        <a href="/">
-          <img src={logoBlack} alt="Kinis" className="h-8 brightness-0 invert" />
-        </a>
-        <p className="text-sm text-[hsl(var(--nav-foreground))]/50 max-w-lg leading-relaxed">
-          Kinis — Hơn cả một đôi giày, đó là sức khỏe vận động, giúp bàn chân tự chữa lành thông qua vận động tự nhiên.
-        </p>
-        <p className="text-xs text-[hsl(var(--nav-foreground))]/30 mt-4">
+      {/* Main content: Quick Links | Contact */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 py-10">
+        {/* Quick Links */}
+        <div>
+          <h4 className="font-body font-semibold text-sm mb-5">Liên kết nhanh</h4>
+          <ul className="space-y-3">
+            <li>
+              <a href="/san-pham/lucy" className="text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
+                › Kinis Lucy
+              </a>
+            </li>
+            <li>
+              <a href="/san-pham/nomad" className="text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
+                › Kinis Nomad
+              </a>
+            </li>
+            <li>
+              <a href="/khoa-hoc" className="text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
+                › Khoa học
+              </a>
+            </li>
+            <li>
+              <a href="/faq" className="text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
+                › FAQ
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div>
+          <h4 className="font-body font-semibold text-sm mb-5">Liên hệ</h4>
+          <ul className="space-y-4">
+            <li>
+              <a href="tel:+84708803573" className="flex items-center gap-3 text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
+                <Phone className="w-4 h-4 shrink-0" />
+                (+84) 708 803 573
+              </a>
+            </li>
+            <li>
+              <a href="mailto:hello@kinis.com" className="flex items-center gap-3 text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
+                <Mail className="w-4 h-4 shrink-0" />
+                hello@kinis.com
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Tagline */}
+        <div>
+          <h4 className="font-body font-semibold text-sm mb-5">Về Kinis</h4>
+          <p className="text-sm text-[hsl(var(--nav-foreground))]/50 leading-relaxed">
+            Hơn cả một đôi giày, đó là sức khỏe vận động, giúp bàn chân tự chữa lành thông qua vận động tự nhiên.
+          </p>
+        </div>
+      </div>
+
+      {/* Bottom bar */}
+      <div className="pt-6 border-t border-[hsl(var(--nav-foreground))]/10 text-center">
+        <p className="text-xs text-[hsl(var(--nav-foreground))]/30">
           © {new Date().getFullYear()} Kinis. All rights reserved.
         </p>
       </div>
