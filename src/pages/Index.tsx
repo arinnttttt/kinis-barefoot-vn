@@ -33,7 +33,7 @@ type Product = (typeof products)[ProductKey];
 
 const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKey }) => (
   <div
-    className="product-tab-panel grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 lg:gap-16 items-center"
+    className="product-tab-panel grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 lg:gap-12 items-center"
     role="tabpanel"
     id={`tabpanel-${tabKey}`}
     aria-labelledby={`product-tab-label-${tabKey}`}
