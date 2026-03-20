@@ -33,36 +33,36 @@ type Product = (typeof products)[ProductKey];
 
 const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKey }) => (
   <div
-    className="product-tab-panel grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 lg:gap-16 items-center"
+    className="product-tab-panel grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 lg:gap-16 items-center"
     role="tabpanel"
     id={`tabpanel-${tabKey}`}
     aria-labelledby={`product-tab-label-${tabKey}`}
     data-tab-content={tabKey}
   >
-    <div className="order-2 lg:order-1">
-      <div className="flex items-center gap-3 mb-2 sm:mb-4">
+    <div className="order-2 md:order-1">
+      <div className="flex items-center gap-3 mb-3 md:mb-4">
         {tabKey === 'lucy' && (
-          <img src={apmaBadge} alt="Chứng nhận APMA" className="h-10 sm:h-14 md:h-16" />
+          <img src={apmaBadge} alt="Chứng nhận APMA" className="h-10 md:h-14 lg:h-16" />
         )}
         <div>
-          <p className="text-[10px] sm:text-xs font-medium text-muted-foreground uppercase tracking-wider">
+          <p className="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider">
             {product.subtitle}
           </p>
-          <h3 className="font-display text-xl sm:text-3xl md:text-4xl font-semibold text-foreground">
+          <h3 className="font-display text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground">
             {product.label}
           </h3>
         </div>
       </div>
 
-      <p className="text-muted-foreground leading-relaxed text-xs sm:text-sm md:text-base mb-3 sm:mb-6 line-clamp-3 sm:line-clamp-none">
+      <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-4 md:mb-6">
         {product.description}
       </p>
 
-      <div className="flex flex-wrap gap-1 sm:gap-1.5 md:gap-2 mb-4 sm:mb-8">
+      <div className="flex flex-wrap gap-1.5 md:gap-2 mb-5 md:mb-8">
         {product.tags.map((tag) => (
           <span
             key={tag}
-            className="px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 rounded-full bg-white shadow-[inset_-1px_-2px_6px_0_rgba(255,118,12,0.20)] text-[10px] sm:text-xs md:text-sm font-medium text-foreground"
+            className="px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-white shadow-[inset_-1px_-2px_6px_0_rgba(255,118,12,0.20)] text-xs md:text-sm font-medium text-foreground"
           >
             {tag}
           </span>
@@ -71,18 +71,18 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
 
       <a
         href={product.href}
-        className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3.5 md:px-8 md:py-4 bg-primary text-primary-foreground font-body font-semibold text-xs sm:text-sm md:text-base rounded-xl hover:opacity-90 transition-opacity"
+        className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-primary text-primary-foreground font-body font-semibold text-sm md:text-base rounded-xl hover:opacity-90 transition-opacity"
       >
         Xem Chi Tiết
-        <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+        <ArrowRight className="w-4 h-4" />
       </a>
     </div>
 
-    <div className="order-1 lg:order-2">
-      <div className="relative rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[4/4]">
+    <div className="order-1 md:order-2">
+      <div className="relative rounded-2xl overflow-hidden aspect-[16/10] md:aspect-[4/5]">
         <img src={product.image} alt={product.label} className="w-full h-full object-cover" />
-        <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-6 bg-gradient-to-t from-[hsl(0_0%_0%/0.5)] to-transparent">
-          <span className="font-display text-base sm:text-xl font-bold text-[hsl(var(--nav-foreground))]">
+        <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 bg-gradient-to-t from-[hsl(0_0%_0%/0.5)] to-transparent">
+          <span className="font-display text-lg md:text-xl font-bold text-[hsl(var(--nav-foreground))]">
             {product.label}
           </span>
         </div>
