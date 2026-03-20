@@ -155,7 +155,7 @@ const Index = () => {
                   {product.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-4 py-2 rounded-full glass-light text-sm font-medium text-foreground"
+                      className="px-4 py-2 rounded-full bg-[hsl(0_0%_100%/0.5)] backdrop-blur-md border border-[hsl(0_0%_0%/0.06)] shadow-[0_2px_8px_-2px_hsl(0_0%_0%/0.06)] text-sm font-medium text-foreground"
                     >
                       {tag}
                     </span>
