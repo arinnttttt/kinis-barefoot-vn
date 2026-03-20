@@ -108,21 +108,15 @@ const FAQ = () => {
         data-wp-taxonomy="faq_category"
       >
         <div className="max-w-5xl mx-auto flex gap-10">
-          {/* Desktop sidebar navigation */}
-          <nav className="hidden lg:block w-56 shrink-0 sticky top-28 self-start">
+           <nav className="hidden lg:block w-56 shrink-0 sticky top-28 self-start">
             <ul className="space-y-1">
               {faqCategories.map((cat, catIdx) => {
                 const slug = toSlug(cat.category);
-                const isActive = activeSection === slug;
                 return (
                   <li key={catIdx}>
                     <a
                       href={`#${slug}`}
-                      className={`block px-4 py-2.5 text-sm font-body font-medium rounded-lg transition-colors border-l-2 ${
-                        isActive
-                          ? "border-secondary text-foreground bg-background"
-                          : "border-transparent text-muted-foreground hover:text-foreground hover:bg-background"
-                      }`}
+                      className="block px-4 py-2.5 text-sm font-body font-medium rounded-lg transition-colors border-l-2 border-transparent text-muted-foreground hover:text-foreground hover:bg-background hover:border-secondary"
                     >
                       {cat.category}
                     </a>
