@@ -1,4 +1,5 @@
 import logoBlack from "@/assets/logo-kinis-black.png";
+import zaloLogo from "@/assets/zalo-logo.png";
 import { Phone, Mail } from "lucide-react";
 
 const Footer = () => (
@@ -8,7 +9,7 @@ const Footer = () => (
 
     <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-10">
       {/* Top row: Logo + tagline | Social icons */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-10 border-b border-[hsl(var(--nav-foreground))]/10">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-10">
         <div className="flex items-center gap-4">
           <a href="/">
             <img src={logoBlack} alt="Kinis" className="h-8 brightness-0 invert" />
@@ -30,9 +31,7 @@ const Footer = () => (
             className="text-[hsl(var(--nav-foreground))]/50 hover:text-secondary transition-colors"
             aria-label="Zalo"
           >
-            <svg viewBox="0 0 48 48" className="w-5 h-5 fill-current">
-              <path d="M24 0C10.745 0 0 10.745 0 24s10.745 24 24 24 24-10.745 24-24S37.255 0 24 0zm11.14 16.32c-.34 0-.674.034-1.008.084a11.96 11.96 0 0 0-6.13-5.56 11.88 11.88 0 0 0-8.14-.44c-2.86.936-5.19 2.936-6.59 5.556a11.88 11.88 0 0 0-.94 7.94 11.94 11.94 0 0 0 4.32 6.92c-.24.74-.78 2.42-.9 2.78-.16.44-.32.44-.58.26-1.78-1.2-2.88-2.06-4.32-3.44a.62.62 0 0 0-.86 0c-1.56 1.56-2.58 2.5-2.58 2.5s-.26.24 0 .6c.26.36 2.4 2.96 5.76 4.7 3.36 1.74 6.14 1.74 6.14 1.74h1.12c5.12-.2 9.68-2.7 12.48-6.86a14.16 14.16 0 0 0 2.2-10.3 6.84 6.84 0 0 0-1.86-4.48z" />
-            </svg>
+            <img src={zaloLogo} alt="Zalo" className="w-5 h-5 brightness-0 invert" />
           </a>
           <a
             href="https://www.facebook.com/KinisAi.VN"
