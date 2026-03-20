@@ -59,7 +59,7 @@ const Index = () => {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-2xl"
           >
-            <h1 className="font-display text-5xl md:text-6xl lg:text-[5.5rem] font-extrabold text-[hsl(var(--nav-foreground))] tracking-tight leading-[1.05] uppercase">
+            <h1 className="font-display text-5xl md:text-6xl lg:text-[5.5rem] font-semibold text-[hsl(var(--nav-foreground))] tracking-tight leading-[1.05] uppercase">
               Đánh thức
               <br />
               <span className="text-gradient">sức mạnh</span>
@@ -74,14 +74,14 @@ const Index = () => {
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 to="/san-pham/lucy"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-secondary-foreground font-display font-bold text-sm rounded-xl hover:brightness-110 transition-all"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-secondary-foreground font-body font-semibold text-sm rounded-xl hover:brightness-110 transition-all"
               >
                 Tìm hiểu giày Kinis
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/khoa-hoc"
-                className="inline-flex items-center gap-2 px-7 py-3.5 glass-card rounded-xl text-[hsl(var(--nav-foreground))] font-display font-bold text-sm hover:text-secondary transition-colors"
+                className="inline-flex items-center gap-2 px-7 py-3.5 glass-card rounded-xl text-[hsl(var(--nav-foreground))] font-body font-semibold text-sm hover:text-secondary transition-colors"
               >
                 Thông tin khoa học
               </Link>
@@ -100,39 +100,42 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mb-14"
           >
-            <h2 className="font-display text-3xl md:text-5xl font-extrabold text-foreground uppercase tracking-tight">
+            <h2 className="font-display text-3xl md:text-5xl font-medium text-foreground uppercase tracking-tight">
               Sản phẩm
             </h2>
           </motion.div>
 
-          {/* Tab Switcher */}
-          <div className="flex justify-center mb-12">
-            <div className="relative inline-flex rounded-2xl bg-muted p-1.5">
-              {/* Sliding indicator */}
-              <motion.div
-                className="absolute top-1.5 bottom-1.5 rounded-xl bg-primary shadow-lg"
-                layout
-                transition={{ type: "spring", stiffness: 400, damping: 35 }}
-                style={{
-                  left: activeTab === "lucy" ? "6px" : "50%",
-                  right: activeTab === "nomad" ? "6px" : "50%",
-                }}
-              />
-              {(["lucy", "nomad"] as ProductKey[]).map((key) => (
-                <button
-                  key={key}
-                  onClick={() => setActiveTab(key)}
-                  className={`relative z-10 px-8 md:px-12 py-3 rounded-xl font-display font-bold text-sm md:text-base transition-colors duration-200 ${
-                    activeTab === key
-                      ? "text-primary-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {products[key].label}
-                </button>
-              ))}
+          {/* Folder-style Tab Switcher */}
+          <div className="flex justify-center mb-0">
+            <div className="relative inline-flex items-end gap-0">
+              {(["lucy", "nomad"] as ProductKey[]).map((key) => {
+                const isActive = activeTab === key;
+                return (
+                  <button
+                    key={key}
+                    onClick={() => setActiveTab(key)}
+                    className={`relative px-10 md:px-14 py-3.5 font-body font-semibold text-sm md:text-base transition-all duration-200 rounded-t-2xl border border-b-0 ${
+                      isActive
+                        ? "bg-[hsl(0_0%_100%/0.7)] backdrop-blur-xl border-[hsl(0_0%_0%/0.08)] text-foreground z-10 shadow-[0_-4px_20px_-4px_hsl(0_0%_0%/0.08)]"
+                        : "bg-[hsl(0_0%_100%/0.25)] backdrop-blur-md border-[hsl(0_0%_0%/0.04)] text-muted-foreground hover:bg-[hsl(0_0%_100%/0.4)] hover:text-foreground"
+                    }`}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="active-tab-indicator"
+                        className="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-0.5 rounded-full bg-secondary"
+                        transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                      />
+                    )}
+                    {products[key].label}
+                  </button>
+                );
+              })}
             </div>
           </div>
+
+          {/* Glass content panel */}
+          <div className="rounded-2xl rounded-tl-none border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] backdrop-blur-xl shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] p-8 md:p-12">
 
           {/* Product Content */}
           <AnimatePresence mode="wait">
@@ -158,7 +161,7 @@ const Index = () => {
                   {product.subtitle}
                 </p>
 
-                <h3 className="font-display text-3xl md:text-4xl font-extrabold text-foreground mb-5">
+                <h3 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-5">
                   {product.label}
                 </h3>
 
@@ -181,7 +184,7 @@ const Index = () => {
                 {/* CTA */}
                 <Link
                   to={product.href}
-                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-primary-foreground font-display font-bold text-sm rounded-xl hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-primary-foreground font-body font-semibold text-sm rounded-xl hover:opacity-90 transition-opacity"
                 >
                   Xem Chi Tiết
                   <ArrowRight className="w-4 h-4" />
@@ -211,6 +214,7 @@ const Index = () => {
               </div>
             </motion.div>
           </AnimatePresence>
+          </div>
         </div>
       </section>
     </Layout>
