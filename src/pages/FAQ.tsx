@@ -1,6 +1,5 @@
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
-import { ChevronDown } from "lucide-react";
 
 const faqCategories = [
   {
@@ -108,9 +107,9 @@ const renderAnswer = (answer: string) => {
   return blocks.map((block, index) => {
     if (block.type === "list") {
       return (
-        <ul key={`${index}-${String(block.content)}`} className="list-disc space-y-2 pl-5">
+        <ul key={`${index}-${String(block.content)}`} className="faq-answer-list">
           {(block.content as string[]).map((item, itemIndex) => (
-            <li key={`${itemIndex}-${item}`} className="faq-answer-text">
+            <li key={`${itemIndex}-${item}`} className="faq-answer-item">
               {item}
             </li>
           ))}
@@ -120,14 +119,14 @@ const renderAnswer = (answer: string) => {
 
     if (block.type === "heading") {
       return (
-        <p key={`${index}-${String(block.content)}`} className="pt-2 font-semibold text-foreground">
+        <p key={`${index}-${String(block.content)}`} className="faq-answer-heading">
           {block.content as string}
         </p>
       );
     }
 
     return (
-      <p key={`${index}-${String(block.content)}`} className="faq-answer-text">
+      <p key={`${index}-${String(block.content)}`} className="faq-answer-paragraph">
         {block.content as string}
       </p>
     );
@@ -202,12 +201,15 @@ const FAQ = () => {
                         key={faq.q}
                         className="faq-details overflow-hidden rounded-2xl bg-background"
                       >
-                        <summary className="faq-summary flex cursor-pointer items-center justify-between gap-3 px-5 py-4 text-left text-sm font-medium leading-6 text-foreground sm:px-6 sm:py-5 sm:text-base">
-                          <span className="break-words pr-4">{faq.q}</span>
-                          <ChevronDown className="faq-chevron h-4 w-4 shrink-0 text-muted-foreground" />
+                        <summary className="faq-summary">
+                          <span className="faq-summary-text">{faq.q}</span>
+                          <span className="faq-toggle-icon" aria-hidden="true">
+                            <span className="faq-toggle-icon-closed">+</span>
+                            <span className="faq-toggle-icon-open">−</span>
+                          </span>
                         </summary>
 
-                        <div className="faq-answer space-y-3 border-t border-border px-5 pb-5 pt-4 text-sm leading-7 sm:px-6 sm:pb-6 sm:pt-5">
+                        <div className="faq-answer">
                           {renderAnswer(faq.a)}
                         </div>
                       </details>

@@ -322,20 +322,112 @@ html {
 
 .faq-summary {
   list-style: none;
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  color: hsl(var(--foreground));
+  text-align: left;
+}
+.faq-summary::marker {
+  content: "";
 }
 .faq-summary::-webkit-details-marker {
   display: none;
 }
 
-.faq-chevron {
-  transition: transform 0.2s ease;
-}
-.faq-details[open] > .faq-summary .faq-chevron {
-  transform: rotate(180deg);
+.faq-summary-text {
+  flex: 1 1 auto;
+  padding-right: 1rem;
+  color: hsl(var(--foreground));
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
 }
 
-.faq-answer-text {
-  color: hsl(0 0% 30%);
+.faq-toggle-icon {
+  display: inline-flex;
+  height: 1.5rem;
+  width: 1.5rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  color: hsl(var(--muted-foreground));
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.faq-toggle-icon-open {
+  display: none;
+}
+
+.faq-details[open] > .faq-summary .faq-toggle-icon {
+  color: hsl(var(--foreground));
+}
+
+.faq-details[open] > .faq-summary .faq-toggle-icon-closed {
+  display: none;
+}
+
+.faq-details[open] > .faq-summary .faq-toggle-icon-open {
+  display: inline;
+}
+
+.faq-answer {
+  border-top: 1px solid hsl(var(--border));
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.faq-answer,
+.faq-answer * {
+  color: hsl(var(--foreground));
+  overflow-wrap: anywhere;
+}
+
+.faq-answer-paragraph,
+.faq-answer-item {
+  color: hsl(var(--foreground));
+  line-height: 1.875;
+}
+
+.faq-answer-heading {
+  padding-top: 0.5rem;
+  color: hsl(var(--foreground));
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+.faq-answer-list {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.faq-answer-list + .faq-answer-paragraph,
+.faq-answer-paragraph + .faq-answer-list,
+.faq-answer-heading + .faq-answer-list,
+.faq-answer-paragraph + .faq-answer-heading,
+.faq-answer-heading + .faq-answer-paragraph {
+  margin-top: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .faq-summary {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .faq-summary-text {
+    font-size: 1rem;
+  }
+
+  .faq-answer {
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
 }
 
 /* FAQ responsive sidebar/mobile nav — explicit @media for WPConvert compatibility */
