@@ -111,12 +111,8 @@ const Header = () => {
                 >
                   <button
                     type="button"
-                    className={`flex items-center gap-1 px-4 py-2 text-sm lg:text-base font-medium transition-colors ${
-                      isParentActive(item.children)
-                        ? "text-secondary"
-                        : isDark
-                          ? "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
-                          : "text-foreground/70 hover:text-secondary"
+                    className={`header-nav-link header-submenu-trigger flex items-center gap-1 px-4 py-2 text-sm lg:text-base font-medium ${
+                      isParentActive(item.children) ? "text-secondary" : ""
                     }`}
                     aria-haspopup="true"
                     data-dropdown-button
@@ -126,7 +122,7 @@ const Header = () => {
                   </button>
 
                   <div
-                    className="pointer-events-none invisible absolute left-0 top-full mt-2 w-64 translate-y-2 overflow-hidden rounded-xl bg-[hsl(0_0%_10%)] opacity-0 shadow-2xl transition-all duration-200 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100"
+                    className="header-dropdown-panel pointer-events-none invisible absolute left-0 top-full mt-2 w-64 translate-y-2 overflow-hidden rounded-xl opacity-0 shadow-2xl transition-all duration-200 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100"
                     data-dropdown-menu
                     role="menu"
                   >
@@ -134,11 +130,8 @@ const Header = () => {
                       <a
                         key={child.href}
                         href={child.href}
-                        className={`block px-4 py-3 text-sm lg:text-base transition-colors ${
-                          isActive(child.href)
-                            ? "bg-[hsl(0_0%_100%/0.1)] text-secondary"
-                            : "text-[hsl(0_0%_100%/0.8)] hover:bg-[hsl(0_0%_100%/0.1)] hover:text-secondary"
-                        }`}
+                        className="header-dropdown-link block px-4 py-3 text-sm lg:text-base"
+                        data-active={isActive(child.href) ? "true" : "false"}
                         role="menuitem"
                       >
                         {child.name}
@@ -150,12 +143,8 @@ const Header = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className={`px-4 py-2 text-sm lg:text-base font-medium transition-colors ${
-                    isActive(item.href)
-                      ? "text-secondary"
-                      : isDark
-                        ? "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
-                        : "text-foreground/70 hover:text-secondary"
+                  className={`header-nav-link px-4 py-2 text-sm lg:text-base font-medium ${
+                    isActive(item.href) ? "text-secondary" : ""
                   }`}
                 >
                   {item.name}
