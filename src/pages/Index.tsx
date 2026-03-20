@@ -74,14 +74,14 @@ const Index = () => {
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 to="/san-pham/lucy"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-secondary-foreground font-body font-semibold text-sm rounded-xl hover:brightness-110 transition-all"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-secondary-foreground font-body font-semibold text-base rounded-xl hover:brightness-110 transition-all"
               >
                 Tìm hiểu giày Kinis
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/khoa-hoc"
-                className="inline-flex items-center gap-2 px-7 py-3.5 glass-card rounded-xl text-[hsl(var(--nav-foreground))] font-body font-semibold text-sm hover:text-secondary transition-colors"
+                className="inline-flex items-center gap-2 px-8 py-4 glass-card rounded-xl text-[hsl(var(--nav-foreground))] font-body font-semibold text-base hover:text-secondary transition-colors"
               >
                 Thông tin khoa học
               </Link>
@@ -165,7 +165,7 @@ const Index = () => {
                 {/* CTA */}
                 <Link
                   to={product.href}
-                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-primary-foreground font-body font-semibold text-sm rounded-xl hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-body font-semibold text-base rounded-xl hover:opacity-90 transition-opacity"
                 >
                   Xem Chi Tiết
                   <ArrowRight className="w-4 h-4" />
