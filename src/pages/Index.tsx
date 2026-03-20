@@ -198,7 +198,7 @@ const Index = () => {
             </div>
 
             <div
-              className="product-tabs-panel-container relative z-10 -mt-px overflow-hidden rounded-2xl border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] p-4 sm:p-6 shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] backdrop-blur-xl md:p-8"
+              className="product-tabs-panel-container relative z-10 -mt-px overflow-hidden rounded-2xl border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] p-4 sm:p-6 shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] backdrop-blur-xl md:p-8 lg:p-6"
               data-tabs-panels
             >
               <ProductPanel product={lucy} tabKey="lucy" />
