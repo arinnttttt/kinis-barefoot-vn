@@ -121,6 +121,13 @@ const FAQ = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Auto-scroll active mobile pill into view
+  useEffect(() => {
+    if (!activeSection) return;
+    const pill = document.querySelector(`[data-mobile-nav="${activeSection}"]`);
+    if (pill) pill.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  }, [activeSection]);
+
   return (
     <Layout>
       <PageHero title="Câu hỏi thường gặp" subtitle="Những thắc mắc phổ biến về giày barefoot và sản phẩm Kinis." />
