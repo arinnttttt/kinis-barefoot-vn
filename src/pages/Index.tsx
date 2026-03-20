@@ -161,7 +161,7 @@ const Index = () => {
                   {product.subtitle}
                 </p>
 
-                <h3 className="font-display text-3xl md:text-4xl font-extrabold text-foreground mb-5">
+                <h3 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-5">
                   {product.label}
                 </h3>
 
