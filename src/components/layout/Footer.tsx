@@ -15,134 +15,143 @@ const sitemapLinks = [
 ];
 
 const Footer = () => (
-  <footer className="relative bg-[hsl(var(--nav))] text-[hsl(var(--nav-foreground))]">
-    {/* Angled top edge — SVG instead of clip-path for WPConvert compatibility */}
-    <div className="absolute -top-16 left-0 right-0 h-16 overflow-hidden">
-      <svg className="absolute bottom-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        <polygon points="100,0 100,100 0,100" fill="hsl(var(--nav))" />
+  <>
+    {/* Angled transition — in-flow SVG block, not absolute positioned.
+        Hardcoded fill #000 instead of CSS variable for WPConvert compatibility. */}
+    <div className="w-full leading-none -mb-px" style={{ background: "transparent" }}>
+      <svg
+        className="block w-full"
+        viewBox="0 0 1440 80"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+        style={{ height: "clamp(40px, 5vw, 80px)" }}
+      >
+        <polygon points="1440,0 1440,80 0,80" fill="#000000" />
       </svg>
     </div>
 
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-8 sm:pb-10">
-      {/* Top row: Logo + tagline | Social icons */}
-      <div className="flex flex-col gap-5 pb-8 sm:pb-10">
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5">
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-3 sm:gap-4">
-              <a href="/">
-                <img src={logoBlack} alt="Kinis" className="h-9 sm:h-12 brightness-0 invert" />
-              </a>
-              <span className="hidden sm:block text-xl text-[hsl(var(--nav-foreground))]/30">/</span>
-              <p className="hidden sm:block text-lg md:text-xl font-display text-[hsl(var(--nav-foreground))]/50">
+    <footer className="bg-[#000000] text-[hsl(var(--nav-foreground))]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-8 sm:pb-10">
+        {/* Top row: Logo + tagline | Social icons */}
+        <div className="flex flex-col gap-5 pb-8 sm:pb-10">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5">
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <a href="/">
+                  <img src={logoBlack} alt="Kinis" className="h-9 sm:h-12 brightness-0 invert" />
+                </a>
+                <span className="hidden sm:block text-xl text-[hsl(var(--nav-foreground))]/30">/</span>
+                <p className="hidden sm:block text-lg md:text-xl font-display text-[hsl(var(--nav-foreground))]/50">
+                  Hệ sinh thái chăm sóc sức khỏe vận động
+                </p>
+              </div>
+              {/* Mobile tagline */}
+              <p className="sm:hidden text-sm font-display text-[hsl(var(--nav-foreground))]/50">
                 Hệ sinh thái chăm sóc sức khỏe vận động
               </p>
+              <p className="text-xs sm:text-sm text-[hsl(var(--nav-foreground))]/50 leading-relaxed">
+                Hơn cả một đôi giày, đó là sức khỏe vận động, giúp bàn chân tự chữa lành thông qua vận động tự nhiên.
+              </p>
             </div>
-            {/* Mobile tagline */}
-            <p className="sm:hidden text-sm font-display text-[hsl(var(--nav-foreground))]/50">
-              Hệ sinh thái chăm sóc sức khỏe vận động
-            </p>
-            <p className="text-xs sm:text-sm text-[hsl(var(--nav-foreground))]/50 leading-relaxed">
-              Hơn cả một đôi giày, đó là sức khỏe vận động, giúp bàn chân tự chữa lành thông qua vận động tự nhiên.
-            </p>
-          </div>
 
-          {/* Social icons */}
-          <div className="flex items-center gap-4 shrink-0">
-            <a
-              href="https://zalo.me/kinis"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-80 transition-opacity"
-              aria-label="Zalo"
-            >
-              <img src={zaloIcon} alt="Zalo" className="w-6 h-6" />
-            </a>
-            <a
-              href="https://www.facebook.com/KinisAi.VN"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[hsl(var(--nav-foreground))]/50 hover:text-secondary transition-colors"
-              aria-label="Facebook"
-            >
-              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-              </svg>
-            </a>
+            {/* Social icons */}
+            <div className="flex items-center gap-4 shrink-0">
+              <a
+                href="https://zalo.me/kinis"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+                aria-label="Zalo"
+              >
+                <img src={zaloIcon} alt="Zalo" className="w-6 h-6" />
+              </a>
+              <a
+                href="https://www.facebook.com/KinisAi.VN"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[hsl(var(--nav-foreground))]/50 hover:text-secondary transition-colors"
+                aria-label="Facebook"
+              >
+                <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Main content grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 py-8 sm:py-10 border-t border-[hsl(var(--nav-foreground))]/10">
-        {/* Sitemap col 1 */}
-        <div>
-          <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5">Khám phá</h4>
-          <ul className="space-y-2 sm:space-y-2.5">
-            {sitemapLinks.slice(0, 5).map((link) => (
-              <li key={link.href}>
-                <a href={link.href} className="text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
-                  › {link.label}
+        {/* Main content grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 py-8 sm:py-10 border-t border-[hsl(var(--nav-foreground))]/10">
+          {/* Sitemap col 1 */}
+          <div>
+            <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5">Khám phá</h4>
+            <ul className="space-y-2 sm:space-y-2.5">
+              {sitemapLinks.slice(0, 5).map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
+                    › {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Sitemap col 2 */}
+          <div>
+            <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5 md:invisible">‎</h4>
+            <ul className="space-y-2 sm:space-y-2.5">
+              {sitemapLinks.slice(5).map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
+                    › {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5">Liên hệ</h4>
+            <ul className="space-y-3 sm:space-y-4">
+              <li>
+                <a href="tel:+84708803573" className="flex items-center gap-3 text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
+                  <Phone className="w-4 h-4 shrink-0" />
+                  (+84) 708 803 573
                 </a>
               </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Sitemap col 2 */}
-        <div>
-          <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5 md:invisible">‎</h4>
-          <ul className="space-y-2 sm:space-y-2.5">
-            {sitemapLinks.slice(5).map((link) => (
-              <li key={link.href}>
-                <a href={link.href} className="text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
-                  › {link.label}
+              <li>
+                <a href="mailto:hello@kinis.com" className="flex items-center gap-3 text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
+                  <Mail className="w-4 h-4 shrink-0" />
+                  hello@kinis.com
                 </a>
               </li>
-            ))}
-          </ul>
+            </ul>
+          </div>
+
+          {/* Đặt mua */}
+          <div>
+            <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5">Đặt mua tại</h4>
+            <ul className="space-y-2 sm:space-y-2.5">
+              <li className="text-sm text-[hsl(var(--nav-foreground))]/60">
+                › Hệ thống phân phối Bye Béo
+              </li>
+              <li className="text-sm text-[hsl(var(--nav-foreground))]/60">
+                › Kinis Balance Hub Buôn Mê Thuột
+              </li>
+            </ul>
+          </div>
         </div>
 
-        {/* Contact */}
-        <div>
-          <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5">Liên hệ</h4>
-          <ul className="space-y-3 sm:space-y-4">
-            <li>
-              <a href="tel:+84708803573" className="flex items-center gap-3 text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
-                <Phone className="w-4 h-4 shrink-0" />
-                (+84) 708 803 573
-              </a>
-            </li>
-            <li>
-              <a href="mailto:hello@kinis.com" className="flex items-center gap-3 text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
-                <Mail className="w-4 h-4 shrink-0" />
-                hello@kinis.com
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Đặt mua */}
-        <div>
-          <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5">Đặt mua tại</h4>
-          <ul className="space-y-2 sm:space-y-2.5">
-            <li className="text-sm text-[hsl(var(--nav-foreground))]/60">
-              › Hệ thống phân phối Bye Béo
-            </li>
-            <li className="text-sm text-[hsl(var(--nav-foreground))]/60">
-              › Kinis Balance Hub Buôn Mê Thuột
-            </li>
-          </ul>
+        {/* Bottom bar */}
+        <div className="pt-6 border-t border-[hsl(var(--nav-foreground))]/10 text-center">
+          <p className="text-xs text-[hsl(var(--nav-foreground))]/30">
+            © {new Date().getFullYear()} Kinis. All rights reserved.
+          </p>
         </div>
       </div>
-
-      {/* Bottom bar */}
-      <div className="pt-6 border-t border-[hsl(var(--nav-foreground))]/10 text-center">
-        <p className="text-xs text-[hsl(var(--nav-foreground))]/30">
-          © {new Date().getFullYear()} Kinis. All rights reserved.
-        </p>
-      </div>
-    </div>
-  </footer>
+    </footer>
+  </>
 );
 
 export default Footer;
