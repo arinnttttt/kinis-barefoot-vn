@@ -198,21 +198,18 @@
     bottom: 0;
     width: 16px;
     height: 16px;
-    background: transparent;
     opacity: 0;
     transition: opacity 200ms ease;
   }
 
   .product-tab-trigger::before {
     left: -16px;
-    border-bottom-right-radius: 16px;
-    box-shadow: 6px 0 0 0 hsl(var(--primary));
+    background: radial-gradient(circle at 0 0, transparent 16px, hsl(var(--primary)) 16px);
   }
 
   .product-tab-trigger::after {
     right: -16px;
-    border-bottom-left-radius: 16px;
-    box-shadow: -6px 0 0 0 hsl(var(--primary));
+    background: radial-gradient(circle at 100% 0, transparent 16px, hsl(var(--primary)) 16px);
   }
 
   /* Hide all panels, show only checked */

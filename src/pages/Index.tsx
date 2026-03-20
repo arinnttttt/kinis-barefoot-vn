@@ -160,8 +160,8 @@ const Index = () => {
               data-tab-control="nomad"
             />
 
-            <div
-              className="relative z-20 flex justify-center"
+             <div
+              className="relative z-20 flex justify-center gap-1"
               data-tabs-labels
               role="tablist"
               aria-label="Sản phẩm Kinis"
