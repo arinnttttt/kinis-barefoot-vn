@@ -71,99 +71,151 @@ const toSlug = (text: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 
+const renderAnswer = (answer: string) => {
+  const lines = answer
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  const blocks: Array<{ type: "paragraph" | "heading" | "list"; content: string | string[] }> = [];
+  let currentList: string[] = [];
+
+  const flushList = () => {
+    if (currentList.length > 0) {
+      blocks.push({ type: "list", content: currentList });
+      currentList = [];
+    }
+  };
+
+  lines.forEach((line) => {
+    if (line.startsWith("- ")) {
+      currentList.push(line.slice(2));
+      return;
+    }
+
+    flushList();
+
+    if (line.startsWith("🔹")) {
+      blocks.push({ type: "heading", content: line.replace(/^🔹\s*/, "") });
+      return;
+    }
+
+    blocks.push({ type: "paragraph", content: line });
+  });
+
+  flushList();
+
+  return blocks.map((block, index) => {
+    if (block.type === "list") {
+      return (
+        <ul key={`${index}-${String(block.content)}`} className="list-disc space-y-2 pl-5 marker:text-secondary">
+          {(block.content as string[]).map((item, itemIndex) => (
+            <li key={`${itemIndex}-${item}`} className="text-foreground/80">
+              {item}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+    if (block.type === "heading") {
+      return (
+        <p key={`${index}-${String(block.content)}`} className="pt-2 font-semibold text-foreground">
+          {block.content as string}
+        </p>
+      );
+    }
+
+    return (
+      <p key={`${index}-${String(block.content)}`} className="text-foreground/80">
+        {block.content as string}
+      </p>
+    );
+  });
+};
+
 const FAQ = () => {
   return (
     <Layout>
       <PageHero title="Câu hỏi thường gặp" subtitle="Những thắc mắc phổ biến về giày barefoot và sản phẩm Kinis." />
 
-      {/* Mobile horizontal nav — visible below lg breakpoint */}
-      <div className="faq-mobile-nav sticky top-16 z-20 bg-muted/80 backdrop-blur-lg border-b border-border/50">
-        <nav className="overflow-x-auto scrollbar-hide">
-          <div className="flex gap-1.5 px-3 sm:px-4 py-2.5 sm:py-3 min-w-max">
-            {faqCategories.map((cat, catIdx) => {
+      <div className="faq-mobile-nav sticky top-16 z-20 border-b border-border bg-background/95 backdrop-blur-lg">
+        <div className="mx-auto max-w-6xl overflow-x-auto scrollbar-hide">
+          <div className="flex min-w-max gap-2 px-3 py-3 sm:px-4">
+            {faqCategories.map((cat) => {
               const slug = toSlug(cat.category);
+
               return (
                 <a
-                  key={catIdx}
+                  key={slug}
                   href={`#${slug}`}
-                  className="shrink-0 px-3 sm:px-4 py-2 text-xs sm:text-sm font-body font-medium rounded-full transition-colors whitespace-nowrap bg-background text-muted-foreground hover:text-foreground hover:bg-foreground/5"
+                  className="shrink-0 rounded-full border border-border bg-background px-4 py-2 text-xs font-medium text-muted-foreground transition-colors hover:border-secondary hover:text-foreground"
                 >
                   {cat.category}
                 </a>
               );
             })}
           </div>
-        </nav>
+        </div>
       </div>
 
-      {/* FAQ Section — WordPress: Custom Post Type "faq" + Taxonomy "faq_category"
-           - Each category = a term in faq_category taxonomy
-           - Each FAQ = a post (title = question, content = answer)
-           - WPConvert.ai mapping: data-wp-query, data-wp-taxonomy, data-wp-post, data-wp-field
-      */}
-      <section
-        className="py-10 sm:py-12 md:py-16 px-3 sm:px-6 lg:px-8 bg-muted/60"
-        data-component="faq-section"
-        data-wp-query="faq"
-        data-wp-taxonomy="faq_category"
-      >
-        <div className="max-w-5xl mx-auto flex gap-10">
-           {/* Desktop sidebar — visible at lg+ via CSS class */}
-           <nav className="faq-desktop-sidebar w-56 shrink-0 sticky top-28 self-start">
-            <ul className="space-y-1">
-              {faqCategories.map((cat, catIdx) => {
-                const slug = toSlug(cat.category);
-                return (
-                  <li key={catIdx}>
+      <section className="bg-muted/60 px-3 py-10 sm:px-6 sm:py-12 md:py-16">
+        <div className="mx-auto max-w-6xl lg:grid lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-10">
+          <aside className="faq-desktop-sidebar">
+            <div className="sticky top-28 rounded-2xl bg-background p-4 shadow-[var(--card-shadow)]">
+              <p className="px-3 pb-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                Danh mục FAQ
+              </p>
+              <div className="space-y-1">
+                {faqCategories.map((cat) => {
+                  const slug = toSlug(cat.category);
+
+                  return (
                     <a
+                      key={slug}
                       href={`#${slug}`}
-                      className="block px-4 py-2.5 text-sm font-body font-medium rounded-lg transition-colors border-l-2 border-transparent text-muted-foreground hover:text-foreground hover:bg-background hover:border-secondary"
+                      className="block rounded-xl px-3 py-3 text-sm leading-6 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                     >
                       {cat.category}
                     </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
-
-          {/* FAQ content — native <details>/<summary> for WP compatibility */}
-          <div className="flex-1 min-w-0 space-y-8 sm:space-y-12">
-            {faqCategories.map((cat, catIdx) => (
-              <div
-                key={catIdx}
-                id={toSlug(cat.category)}
-                className="scroll-mt-28"
-                data-wp-term="faq_category"
-              >
-                <h2
-                  className="font-display text-xl sm:text-2xl font-semibold text-foreground mb-1 pb-3 sm:pb-4 border-b border-border"
-                  data-wp-term-name
-                >
-                  {cat.category}
-                </h2>
-                <div className="space-y-2 sm:space-y-3 mt-3 sm:mt-4">
-                  {cat.faqs.map((faq, i) => (
-                    <details
-                      key={i}
-                      className="group glass-light rounded-xl px-4 sm:px-6 transition-shadow open:shadow-md border-0"
-                      data-wp-post="faq"
-                    >
-                      <summary className="flex items-center justify-between cursor-pointer font-body text-left text-sm sm:text-base font-medium text-card-foreground hover:text-secondary py-4 sm:py-5 list-none [&::-webkit-details-marker]:hidden">
-                        <span data-wp-field="post_title">{faq.q}</span>
-                        <ChevronDown className="w-4 h-4 shrink-0 ml-2 text-muted-foreground transition-transform duration-200 group-open:rotate-180" />
-                      </summary>
-                      <div
-                        className="text-foreground/80 text-[13px] sm:text-[15px] leading-relaxed pb-4 sm:pb-5 whitespace-pre-line"
-                        data-wp-field="post_content"
-                      >
-                        {faq.a}
-                      </div>
-                    </details>
-                  ))}
-                </div>
+                  );
+                })}
               </div>
-            ))}
+            </div>
+          </aside>
+
+          <div className="space-y-10 sm:space-y-12">
+            {faqCategories.map((cat) => {
+              const slug = toSlug(cat.category);
+
+              return (
+                <section key={slug} id={slug} className="scroll-mt-28">
+                  <div className="border-b border-border pb-3 sm:pb-4">
+                    <h2 className="text-balance break-words font-display text-xl font-semibold uppercase leading-tight text-foreground sm:text-2xl">
+                      {cat.category}
+                    </h2>
+                  </div>
+
+                  <div className="mt-4 space-y-3 sm:mt-5">
+                    {cat.faqs.map((faq) => (
+                      <details
+                        key={faq.q}
+                        className="group overflow-hidden rounded-2xl bg-background shadow-[var(--card-shadow)] transition-[box-shadow] open:shadow-[var(--card-shadow-hover)]"
+                      >
+                        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-left text-sm font-medium leading-6 text-foreground [&::-webkit-details-marker]:hidden sm:px-6 sm:py-5 sm:text-base">
+                          <span className="break-words pr-4">{faq.q}</span>
+                          <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180" />
+                        </summary>
+
+                        <div className="space-y-3 border-t border-border px-5 pb-5 pt-4 text-[15px] leading-7 sm:px-6 sm:pb-6 sm:pt-5">
+                          {renderAnswer(faq.a)}
+                        </div>
+                      </details>
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
           </div>
         </div>
       </section>
