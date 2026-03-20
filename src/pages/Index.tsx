@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, Award } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import heroImage from "@/assets/hero-person.jpg";
@@ -31,16 +30,76 @@ const products = {
 };
 
 type ProductKey = keyof typeof products;
+type Product = (typeof products)[ProductKey];
+
+const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKey }) => (
+  <div
+    className="product-tab-panel grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+    role="tabpanel"
+    id={`tabpanel-${tabKey}`}
+    aria-labelledby={`product-tab-label-${tabKey}`}
+    data-tab-content={tabKey}
+  >
+    <div className="order-2 lg:order-1">
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 mb-6">
+        <Award className="w-4 h-4 text-secondary" />
+        <span className="text-xs font-bold text-secondary uppercase tracking-wider">
+          {product.badge}
+        </span>
+      </div>
+
+      <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">
+        {product.subtitle}
+      </p>
+
+      <h3 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-5">
+        {product.label}
+      </h3>
+
+      <p className="text-muted-foreground leading-relaxed text-base mb-8">
+        {product.description}
+      </p>
+
+      <div className="flex flex-wrap gap-2 mb-10">
+        {product.tags.map((tag) => (
+          <span
+            key={tag}
+            className="px-4 py-2 rounded-full bg-[hsl(0_0%_100%/0.5)] backdrop-blur-md border border-[hsl(0_0%_0%/0.06)] shadow-[0_2px_8px_-2px_hsl(0_0%_0%/0.06)] text-sm font-medium text-foreground"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <Link
+        to={product.href}
+        className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-body font-semibold text-base rounded-xl hover:opacity-90 transition-opacity"
+      >
+        Xem Chi Tiết
+        <ArrowRight className="w-4 h-4" />
+      </Link>
+    </div>
+
+    <div className="order-1 lg:order-2">
+      <div className="relative rounded-2xl overflow-hidden aspect-[4/5]">
+        <img src={product.image} alt={product.label} className="w-full h-full object-cover" />
+        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[hsl(0_0%_0%/0.5)] to-transparent">
+          <span className="font-display text-xl font-bold text-[hsl(var(--nav-foreground))]">
+            {product.label}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState<ProductKey>("lucy");
-  const product = products[activeTab];
+  const lucy = products.lucy;
+  const nomad = products.nomad;
 
   return (
     <Layout>
-      {/* ===== SECTION 1: HERO BANNER ===== */}
       <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-[hsl(var(--nav))]">
-        {/* Background image */}
         <div className="absolute inset-0">
           <img
             src={heroImage}
@@ -48,7 +107,6 @@ const Index = () => {
             className="w-full h-full object-cover opacity-50"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[hsl(0_0%_0%/0.88)] via-[hsl(0_0%_0%/0.55)] to-[hsl(0_0%_0%/0.3)]" />
-          {/* Subtle orange glow */}
           <div className="absolute bottom-0 left-1/4 w-[600px] h-[400px] bg-secondary/10 rounded-full blur-[120px]" />
         </div>
 
@@ -90,124 +148,57 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ===== SECTION 2: SẢN PHẨM (Tab Switcher) ===== */}
       <section className="section-padding bg-background overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          {/* Browser-style Tab Switcher + Content as one unit */}
-          <div className="relative" data-component="tabs" data-tabs-active="lucy">
-            {/* Tabs row - centered */}
-            <div className="flex justify-center relative z-20" role="tablist">
-              {(["lucy", "nomad"] as ProductKey[]).map((key) => {
-                const isActive = activeTab === key;
-                return (
-                  <button
-                    key={key}
-                    onClick={() => setActiveTab(key)}
-                    role="tab"
-                    aria-selected={isActive}
-                    aria-controls={`tabpanel-${key}`}
-                    data-tab-trigger={key}
-                    className={`tab-folder relative px-10 md:px-14 py-3.5 font-body font-semibold text-sm md:text-base transition-all duration-200 cursor-pointer select-none ${
-                      isActive
-                        ? "tab-folder-active bg-primary text-primary-foreground"
-                        : "bg-[hsl(0_0%_0%/0.06)] text-muted-foreground hover:bg-[hsl(0_0%_0%/0.1)] hover:text-foreground rounded-t-2xl"
-                    }`}
-                    style={{ pointerEvents: 'auto' }}
-                  >
-                    {products[key].label}
-                  </button>
-                );
-              })}
+          <div className="product-tabs relative" data-component="tabs">
+            <input
+              id="product-tab-lucy"
+              type="radio"
+              name="product-tabs"
+              className="product-tab-input"
+              data-tab-control="lucy"
+              defaultChecked
+            />
+            <input
+              id="product-tab-nomad"
+              type="radio"
+              name="product-tabs"
+              className="product-tab-input"
+              data-tab-control="nomad"
+            />
+
+            <div
+              className="relative z-20 flex justify-center"
+              data-tabs-labels
+              role="tablist"
+              aria-label="Sản phẩm Kinis"
+            >
+              <label
+                id="product-tab-label-lucy"
+                htmlFor="product-tab-lucy"
+                className="product-tab-trigger px-10 py-3.5 font-body text-sm font-semibold md:px-14 md:text-base"
+                data-tab-trigger="lucy"
+                aria-controls="tabpanel-lucy"
+              >
+                {lucy.label}
+              </label>
+              <label
+                id="product-tab-label-nomad"
+                htmlFor="product-tab-nomad"
+                className="product-tab-trigger px-10 py-3.5 font-body text-sm font-semibold md:px-14 md:text-base"
+                data-tab-trigger="nomad"
+                aria-controls="tabpanel-nomad"
+              >
+                {nomad.label}
+              </label>
             </div>
 
-            {/* Glass content panel */}
-            <div className="relative z-10 rounded-2xl border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] backdrop-blur-xl shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] p-8 md:p-12 -mt-px">
-              {/* Border trace animation on tab switch */}
-              <motion.div
-                key={activeTab}
-                className="absolute inset-0 rounded-2xl pointer-events-none border-trace"
-              />
-
-          {/* Product Content */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -24 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
-              role="tabpanel"
-              id={`tabpanel-${activeTab}`}
-              data-tab-content={activeTab}
+            <div
+              className="relative z-10 -mt-px overflow-hidden rounded-2xl border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] p-8 shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] backdrop-blur-xl md:p-12"
+              data-tabs-panels
             >
-              {/* Text side */}
-              <div className="order-2 lg:order-1">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 mb-6">
-                  <Award className="w-4 h-4 text-secondary" />
-                  <span className="text-xs font-bold text-secondary uppercase tracking-wider">
-                    {product.badge}
-                  </span>
-                </div>
-
-                <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">
-                  {product.subtitle}
-                </p>
-
-                <h3 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-5">
-                  {product.label}
-                </h3>
-
-                <p className="text-muted-foreground leading-relaxed text-base mb-8">
-                  {product.description}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-10">
-                  {product.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-4 py-2 rounded-full bg-[hsl(0_0%_100%/0.5)] backdrop-blur-md border border-[hsl(0_0%_0%/0.06)] shadow-[0_2px_8px_-2px_hsl(0_0%_0%/0.06)] text-sm font-medium text-foreground"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* CTA */}
-                <Link
-                  to={product.href}
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-body font-semibold text-base rounded-xl hover:opacity-90 transition-opacity"
-                >
-                  Xem Chi Tiết
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-
-              {/* Image side */}
-              <div className="order-1 lg:order-2">
-                <motion.div
-                  initial={{ scale: 0.92, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative rounded-2xl overflow-hidden aspect-[4/5]"
-                >
-                  <img
-                    src={product.image}
-                    alt={product.label}
-                    className="w-full h-full object-cover"
-                  />
-                  {/* Glass overlay at bottom */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[hsl(0_0%_0%/0.5)] to-transparent">
-                    <span className="font-display text-xl font-bold text-[hsl(var(--nav-foreground))]">
-                      {product.label}
-                    </span>
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+              <ProductPanel product={lucy} tabKey="lucy" />
+              <ProductPanel product={nomad} tabKey="nomad" />
             </div>
           </div>
         </div>

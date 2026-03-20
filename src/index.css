@@ -145,60 +145,87 @@
     box-shadow: 0 1px 12px -2px hsl(0 0% 0% / 0.06);
   }
 
-  /* Browser-style folder tabs with curved scoops */
-  .tab-folder-active {
-    border-radius: 16px 16px 0 0;
+  /* Product tabs compatible with static HTML exports */
+  .product-tabs {
     position: relative;
   }
 
-  .tab-folder-active::before,
-  .tab-folder-active::after {
-    content: '';
+  .product-tab-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .product-tab-trigger {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 16px 16px 0 0;
+    background: hsl(0 0% 0% / 0.06);
+    color: hsl(var(--muted-foreground));
+    transition: background-color 200ms ease, color 200ms ease, transform 200ms ease;
+  }
+
+  .product-tab-trigger:hover {
+    background: hsl(0 0% 0% / 0.1);
+    color: hsl(var(--foreground));
+  }
+
+  .product-tab-trigger::before,
+  .product-tab-trigger::after {
+    content: "";
     position: absolute;
     bottom: 0;
     width: 16px;
     height: 16px;
     background: transparent;
+    opacity: 0;
+    transition: opacity 200ms ease;
   }
 
-  .tab-folder-active::before {
+  .product-tab-trigger::before {
     left: -16px;
     border-bottom-right-radius: 16px;
     box-shadow: 6px 0 0 0 hsl(var(--primary));
   }
 
-  .tab-folder-active::after {
+  .product-tab-trigger::after {
     right: -16px;
     border-bottom-left-radius: 16px;
     box-shadow: -6px 0 0 0 hsl(var(--primary));
   }
+
+  #product-tab-lucy:checked ~ [data-tabs-labels] [for="product-tab-lucy"],
+  #product-tab-nomad:checked ~ [data-tabs-labels] [for="product-tab-nomad"] {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
   }
 
-  /* Border trace animation - draws border from top down */
-  .border-trace {
-    border: 1px solid hsl(var(--primary));
-    clip-path: inset(0 100% 100% 0);
-    animation: border-trace-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  #product-tab-lucy:checked ~ [data-tabs-labels] [for="product-tab-lucy"]::before,
+  #product-tab-lucy:checked ~ [data-tabs-labels] [for="product-tab-lucy"]::after,
+  #product-tab-nomad:checked ~ [data-tabs-labels] [for="product-tab-nomad"]::before,
+  #product-tab-nomad:checked ~ [data-tabs-labels] [for="product-tab-nomad"]::after {
+    opacity: 1;
   }
 
-  @keyframes border-trace-reveal {
-    0% {
-      clip-path: inset(0 100% 100% 0);
-      opacity: 1;
-    }
-    50% {
-      clip-path: inset(0 0 50% 0);
-      opacity: 1;
-    }
-    80% {
-      clip-path: inset(0 0 0 0);
-      opacity: 1;
-    }
-    100% {
-      clip-path: inset(0 0 0 0);
-      opacity: 0;
+  [data-tabs-panels] .product-tab-panel {
+    display: none;
+    animation: fadeUp 0.4s ease-out forwards;
+  }
+
+  #product-tab-lucy:checked ~ [data-tabs-panels] [data-tab-content="lucy"],
+  #product-tab-nomad:checked ~ [data-tabs-panels] [data-tab-content="nomad"] {
+    display: grid;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .product-tab-trigger,
+    [data-tabs-panels] .product-tab-panel {
+      transition: none;
+      animation: none;
     }
   }
+}
 
 @layer utilities {
   .animate-fade-up {
