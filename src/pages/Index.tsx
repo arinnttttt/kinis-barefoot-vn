@@ -105,34 +105,37 @@ const Index = () => {
             </h2>
           </motion.div>
 
-          {/* Tab Switcher */}
-          <div className="flex justify-center mb-12">
-            <div className="relative inline-flex rounded-2xl bg-muted p-1.5">
-              {/* Sliding indicator */}
-              <motion.div
-                className="absolute top-1.5 bottom-1.5 rounded-xl bg-primary shadow-lg"
-                layout
-                transition={{ type: "spring", stiffness: 400, damping: 35 }}
-                style={{
-                  left: activeTab === "lucy" ? "6px" : "50%",
-                  right: activeTab === "nomad" ? "6px" : "50%",
-                }}
-              />
-              {(["lucy", "nomad"] as ProductKey[]).map((key) => (
-                <button
-                  key={key}
-                  onClick={() => setActiveTab(key)}
-                  className={`relative z-10 px-8 md:px-12 py-3 rounded-xl font-display font-bold text-sm md:text-base transition-colors duration-200 ${
-                    activeTab === key
-                      ? "text-primary-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {products[key].label}
-                </button>
-              ))}
+          {/* Folder-style Tab Switcher */}
+          <div className="flex justify-center mb-0">
+            <div className="relative inline-flex items-end gap-0">
+              {(["lucy", "nomad"] as ProductKey[]).map((key) => {
+                const isActive = activeTab === key;
+                return (
+                  <button
+                    key={key}
+                    onClick={() => setActiveTab(key)}
+                    className={`relative px-10 md:px-14 py-3.5 font-body font-semibold text-sm md:text-base transition-all duration-200 rounded-t-2xl border border-b-0 ${
+                      isActive
+                        ? "bg-[hsl(0_0%_100%/0.7)] backdrop-blur-xl border-[hsl(0_0%_0%/0.08)] text-foreground z-10 shadow-[0_-4px_20px_-4px_hsl(0_0%_0%/0.08)]"
+                        : "bg-[hsl(0_0%_100%/0.25)] backdrop-blur-md border-[hsl(0_0%_0%/0.04)] text-muted-foreground hover:bg-[hsl(0_0%_100%/0.4)] hover:text-foreground"
+                    }`}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="active-tab-indicator"
+                        className="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-0.5 rounded-full bg-secondary"
+                        transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                      />
+                    )}
+                    {products[key].label}
+                  </button>
+                );
+              })}
             </div>
           </div>
+
+          {/* Glass content panel */}
+          <div className="rounded-2xl rounded-tl-none border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] backdrop-blur-xl shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] p-8 md:p-12">
 
           {/* Product Content */}
           <AnimatePresence mode="wait">
