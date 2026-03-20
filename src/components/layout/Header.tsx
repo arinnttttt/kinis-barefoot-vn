@@ -30,22 +30,55 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [headerTheme, setHeaderTheme] = useState<"dark" | "light">("dark");
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 20);
+
+      // Detect background color at header position
+      const headerHeight = 80;
+      const elements = document.elementsFromPoint(window.innerWidth / 2, headerHeight);
+      const section = elements.find(
+        (el) => el.tagName === "SECTION" || el.tagName === "FOOTER"
+      );
+      if (section) {
+        const bg = window.getComputedStyle(section).backgroundColor;
+        // Parse RGB to determine if dark or light
+        const match = bg.match(/\d+/g);
+        if (match) {
+          const [r, g, b] = match.map(Number);
+          const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+          setHeaderTheme(luminance < 0.5 ? "dark" : "light");
+        }
+      }
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial check
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const isActive = (href: string) => location.pathname === href;
 
+  const isDark = headerTheme === "dark";
+
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass" : "bg-transparent"}`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? isDark
+            ? "glass"
+            : "glass-header-light"
+          : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link to="/" className="flex items-center">
-            <img src={logoBlack} alt="Kinis" className="h-6 lg:h-7 brightness-0 invert" />
+            <img src={logoBlack} alt="Kinis" className={`h-6 lg:h-7 transition-all duration-500 ${isDark ? "brightness-0 invert" : ""}`} />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
@@ -57,7 +90,7 @@ const Header = () => {
                   onMouseEnter={() => setOpenDropdown(item.name)}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-[hsl(var(--nav-foreground))]/70 hover:text-secondary transition-colors">
+                  <button className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors ${isDark ? "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary" : "text-foreground/70 hover:text-secondary"}`}>
                     {item.name}
                     <ChevronDown className="w-3.5 h-3.5" />
                   </button>
@@ -90,7 +123,9 @@ const Header = () => {
                   className={`px-4 py-2 text-sm font-medium transition-colors ${
                     isActive(item.href)
                       ? "text-secondary"
-                      : "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
+                      : isDark
+                        ? "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
+                        : "text-foreground/70 hover:text-secondary"
                   }`}
                 >
                   {item.name}
@@ -101,7 +136,7 @@ const Header = () => {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden text-[hsl(var(--nav-foreground))] p-2"
+            className={`lg:hidden p-2 transition-colors duration-500 ${isDark ? "text-[hsl(var(--nav-foreground))]" : "text-foreground"}`}
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
