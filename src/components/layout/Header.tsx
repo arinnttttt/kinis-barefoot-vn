@@ -33,15 +33,13 @@ const Header = () => {
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-secondary/95 backdrop-blur-md border-b border-secondary-foreground/10">
+    <header className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <Link to="/" className="font-display text-2xl font-bold text-secondary-foreground tracking-tight">
+          <Link to="/" className="font-display text-2xl font-bold text-[hsl(var(--nav-foreground))] tracking-tight">
             KINIS
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-1">
             {navigation.map((item) =>
               item.children ? (
@@ -51,7 +49,7 @@ const Header = () => {
                   onMouseEnter={() => setOpenDropdown(item.name)}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-secondary-foreground/80 hover:text-secondary transition-colors">
+                  <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-[hsl(var(--nav-foreground))]/70 hover:text-secondary transition-colors">
                     {item.name}
                     <ChevronDown className="w-3.5 h-3.5" />
                   </button>
@@ -62,13 +60,13 @@ const Header = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 8 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute top-full left-0 mt-1 w-64 bg-card rounded-lg shadow-lg border border-border overflow-hidden"
+                        className="absolute top-full left-0 mt-2 w-64 glass-card rounded-xl overflow-hidden shadow-2xl"
                       >
                         {item.children.map((child) => (
                           <Link
                             key={child.href}
                             to={child.href}
-                            className="block px-4 py-3 text-sm text-card-foreground hover:bg-muted hover:text-secondary transition-colors"
+                            className="block px-4 py-3 text-sm text-[hsl(var(--nav-foreground))]/80 hover:text-secondary hover:bg-[hsl(0_0%_100%/0.06)] transition-colors"
                           >
                             {child.name}
                           </Link>
@@ -84,7 +82,7 @@ const Header = () => {
                   className={`px-4 py-2 text-sm font-medium transition-colors ${
                     isActive(item.href)
                       ? "text-secondary"
-                      : "text-secondary-foreground/80 hover:text-secondary"
+                      : "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
                   }`}
                 >
                   {item.name}
@@ -93,24 +91,22 @@ const Header = () => {
             )}
           </nav>
 
-          {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden text-secondary-foreground p-2"
+            className="lg:hidden text-[hsl(var(--nav-foreground))] p-2"
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="lg:hidden bg-secondary border-t border-secondary-foreground/10 overflow-hidden"
+            className="lg:hidden glass-card overflow-hidden"
           >
             <div className="px-6 py-4 space-y-1">
               {navigation.map((item) =>
@@ -118,7 +114,7 @@ const Header = () => {
                   <div key={item.name}>
                     <button
                       onClick={() => setOpenDropdown(openDropdown === item.name ? null : item.name)}
-                      className="flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium text-secondary-foreground/80"
+                      className="flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium text-[hsl(var(--nav-foreground))]/70"
                     >
                       {item.name}
                       <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.name ? "rotate-180" : ""}`} />
@@ -136,7 +132,7 @@ const Header = () => {
                               key={child.href}
                               to={child.href}
                               onClick={() => setMobileOpen(false)}
-                              className="block px-3 py-2 text-sm text-secondary-foreground/60 hover:text-secondary"
+                              className="block px-3 py-2 text-sm text-[hsl(var(--nav-foreground))]/50 hover:text-secondary"
                             >
                               {child.name}
                             </Link>
@@ -151,7 +147,7 @@ const Header = () => {
                     to={item.href}
                     onClick={() => setMobileOpen(false)}
                     className={`block px-3 py-2.5 text-sm font-medium ${
-                      isActive(item.href) ? "text-secondary" : "text-secondary-foreground/80 hover:text-secondary"
+                      isActive(item.href) ? "text-secondary" : "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
                     }`}
                   >
                     {item.name}
