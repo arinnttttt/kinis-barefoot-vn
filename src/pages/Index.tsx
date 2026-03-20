@@ -65,7 +65,7 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
         </div>
       )}
 
-      <p className="text-muted-foreground leading-relaxed text-sm md:text-base lg:text-sm mb-4 md:mb-6 lg:mb-4">
+      <p className="text-muted-foreground leading-relaxed text-sm md:text-base lg:text-[13px] mb-4 md:mb-6 lg:mb-3">
         {product.description}
       </p>
 
