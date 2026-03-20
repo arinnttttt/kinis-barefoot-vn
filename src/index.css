@@ -311,16 +311,24 @@ html {
   }
 }
 
-/* FAQ details/summary — plain CSS for WPConvert compatibility */
-.faq-details {
+/* FAQ accordion — checkbox/label version for WordPress compatibility */
+.faq-item {
+  position: relative;
   box-shadow: var(--card-shadow);
   transition: box-shadow 0.2s ease;
 }
-.faq-details[open] {
+
+.faq-item:has(.faq-toggle-input:checked) {
   box-shadow: var(--card-shadow-hover);
 }
 
-.faq-summary {
+.faq-toggle-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.faq-question {
   list-style: none;
   display: flex;
   width: 100%;
@@ -331,25 +339,6 @@ html {
   padding: 1rem 1.25rem;
   color: hsl(var(--foreground));
   text-align: left;
-}
-
-.faq-details > .faq-summary {
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-.faq-details > .faq-summary::marker {
-  content: "";
-}
-
-.faq-details > .faq-summary::-webkit-details-marker {
-  display: none;
-}
-
-.faq-details > .faq-summary::before,
-.faq-details > .faq-summary::after {
-  content: none !important;
-  display: none;
 }
 
 .faq-summary-text {
@@ -381,11 +370,11 @@ html {
   line-height: 1;
 }
 
-.faq-details[open] > .faq-summary .faq-toggle-glyph {
+.faq-toggle-input:checked + .faq-question .faq-toggle-glyph {
   color: hsl(var(--foreground));
 }
 
-.faq-details[open] > .faq-summary .faq-toggle-glyph::before {
+.faq-toggle-input:checked + .faq-question .faq-toggle-glyph::before {
   content: "−";
 }
 
@@ -396,7 +385,7 @@ html {
   background: hsl(var(--background));
 }
 
-.faq-details[open] > .faq-answer {
+.faq-toggle-input:checked ~ .faq-answer {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -442,7 +431,7 @@ html {
 }
 
 @media (min-width: 640px) {
-  .faq-summary {
+  .faq-question {
     padding: 1.25rem 1.5rem;
   }
 

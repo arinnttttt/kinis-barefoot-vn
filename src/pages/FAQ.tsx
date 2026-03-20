@@ -196,21 +196,31 @@ const FAQ = () => {
                   </div>
 
                   <div className="mt-4 space-y-3 sm:mt-5">
-                    {cat.faqs.map((faq) => (
-                      <details
-                        key={faq.q}
-                        className="faq-details overflow-hidden rounded-2xl bg-background"
-                      >
-                        <summary className="faq-summary">
-                          <span className="faq-summary-text">{faq.q}</span>
-                          <span className="faq-toggle-glyph" aria-hidden="true" />
-                        </summary>
+                    {cat.faqs.map((faq, faqIndex) => {
+                      const faqId = `${slug}-faq-${faqIndex}`;
 
-                        <div className="faq-answer">
-                          {renderAnswer(faq.a)}
+                      return (
+                        <div
+                          key={faq.q}
+                          className="faq-item overflow-hidden rounded-2xl bg-background"
+                        >
+                          <input
+                            id={faqId}
+                            type="checkbox"
+                            className="faq-toggle-input"
+                          />
+
+                          <label htmlFor={faqId} className="faq-question">
+                            <span className="faq-summary-text">{faq.q}</span>
+                            <span className="faq-toggle-glyph" aria-hidden="true" />
+                          </label>
+
+                          <div className="faq-answer">
+                            {renderAnswer(faq.a)}
+                          </div>
                         </div>
-                      </details>
-                    ))}
+                      );
+                    })}
                   </div>
                 </section>
               );
