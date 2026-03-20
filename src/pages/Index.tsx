@@ -117,14 +117,6 @@ const Index = () => {
 
             {/* Glass content panel */}
             <div className="relative z-10 rounded-2xl border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] backdrop-blur-xl shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] p-8 md:p-12 -mt-px">
-              {/* Animated accent line flowing from tab into panel */}
-              <motion.div
-                key={activeTab}
-                className="absolute top-0 left-1/2 -translate-x-1/2 h-0.5 bg-secondary rounded-full"
-                initial={{ width: 0, opacity: 0 }}
-                animate={{ width: 120, opacity: 1 }}
-                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-              />
 
           {/* Product Content */}
           <AnimatePresence mode="wait">
