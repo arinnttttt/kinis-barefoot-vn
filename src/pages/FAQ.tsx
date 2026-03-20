@@ -203,10 +203,7 @@ const FAQ = () => {
                       >
                         <summary className="faq-summary">
                           <span className="faq-summary-text">{faq.q}</span>
-                          <span className="faq-toggle-icon" aria-hidden="true">
-                            <span className="faq-toggle-icon-closed">+</span>
-                            <span className="faq-toggle-icon-open">−</span>
-                          </span>
+                          <span className="faq-toggle-glyph" aria-hidden="true" />
                         </summary>
 
                         <div className="faq-answer">

@@ -332,10 +332,23 @@ html {
   color: hsl(var(--foreground));
   text-align: left;
 }
-.faq-summary::marker {
+
+.faq-details > .faq-summary {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.faq-details > .faq-summary::marker {
   content: "";
 }
-.faq-summary::-webkit-details-marker {
+
+.faq-details > .faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-details > .faq-summary::before,
+.faq-details > .faq-summary::after {
+  content: none !important;
   display: none;
 }
 
@@ -349,7 +362,7 @@ html {
   overflow-wrap: anywhere;
 }
 
-.faq-toggle-icon {
+.faq-toggle-glyph {
   display: inline-flex;
   height: 1.5rem;
   width: 1.5rem;
@@ -358,45 +371,56 @@ html {
   justify-content: center;
   border-radius: 9999px;
   color: hsl(var(--muted-foreground));
-  font-size: 1.25rem;
-  line-height: 1;
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.faq-toggle-icon-open {
-  display: none;
+.faq-toggle-glyph::before {
+  content: "+";
+  display: block;
+  font-size: 1.25rem;
+  line-height: 1;
 }
 
-.faq-details[open] > .faq-summary .faq-toggle-icon {
+.faq-details[open] > .faq-summary .faq-toggle-glyph {
   color: hsl(var(--foreground));
 }
 
-.faq-details[open] > .faq-summary .faq-toggle-icon-closed {
-  display: none;
-}
-
-.faq-details[open] > .faq-summary .faq-toggle-icon-open {
-  display: inline;
+.faq-details[open] > .faq-summary .faq-toggle-glyph::before {
+  content: "−";
 }
 
 .faq-answer {
+  display: none;
   border-top: 1px solid hsl(var(--border));
   padding: 1rem 1.25rem 1.25rem;
+  background: hsl(var(--background));
+}
+
+.faq-details[open] > .faq-answer {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .faq-answer,
-.faq-answer * {
-  color: hsl(var(--foreground));
+.faq-answer p,
+.faq-answer li,
+.faq-answer ul,
+.faq-answer div,
+.faq-answer span {
+  color: hsl(var(--foreground)) !important;
   overflow-wrap: anywhere;
 }
 
 .faq-answer-paragraph,
 .faq-answer-item {
+  display: block !important;
   color: hsl(var(--foreground));
   line-height: 1.875;
 }
 
 .faq-answer-heading {
+  display: block !important;
   padding-top: 0.5rem;
   color: hsl(var(--foreground));
   font-weight: 600;
@@ -404,6 +428,7 @@ html {
 }
 
 .faq-answer-list {
+  display: block !important;
   margin: 0;
   padding-left: 1.25rem;
 }
