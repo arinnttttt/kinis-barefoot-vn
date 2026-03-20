@@ -136,7 +136,7 @@ const Header = () => {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden text-[hsl(var(--nav-foreground))] p-2"
+            className={`lg:hidden p-2 transition-colors duration-500 ${isDark ? "text-[hsl(var(--nav-foreground))]" : "text-foreground"}`}
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
