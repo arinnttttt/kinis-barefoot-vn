@@ -200,14 +200,14 @@ const FAQ = () => {
                     {cat.faqs.map((faq) => (
                       <details
                         key={faq.q}
-                        className="group overflow-hidden rounded-2xl bg-background shadow-[var(--card-shadow)] transition-[box-shadow] open:shadow-[var(--card-shadow-hover)]"
+                        className="faq-details overflow-hidden rounded-2xl bg-background"
                       >
-                        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-left text-sm font-medium leading-6 text-foreground [&::-webkit-details-marker]:hidden sm:px-6 sm:py-5 sm:text-base">
+                        <summary className="faq-summary flex cursor-pointer items-center justify-between gap-3 px-5 py-4 text-left text-sm font-medium leading-6 text-foreground sm:px-6 sm:py-5 sm:text-base">
                           <span className="break-words pr-4">{faq.q}</span>
-                          <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180" />
+                          <ChevronDown className="faq-chevron h-4 w-4 shrink-0 text-muted-foreground" />
                         </summary>
 
-                        <div className="space-y-3 border-t border-border px-5 pb-5 pt-4 text-[15px] leading-7 sm:px-6 sm:pb-6 sm:pt-5">
+                        <div className="faq-answer space-y-3 border-t border-border px-5 pb-5 pt-4 text-sm leading-7 sm:px-6 sm:pb-6 sm:pt-5">
                           {renderAnswer(faq.a)}
                         </div>
                       </details>
