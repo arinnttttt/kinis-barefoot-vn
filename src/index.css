@@ -190,7 +190,67 @@
     opacity: 1;
   }
 
-  /* Border trace: use DIFFERENT animation names per tab so switching re-triggers */
+  /* Scooped corner pseudo-elements */
+  .product-tab-trigger::before,
+  .product-tab-trigger::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 16px;
+    height: 16px;
+    background: transparent;
+    opacity: 0;
+    transition: opacity 200ms ease;
+  }
+
+  .product-tab-trigger::before {
+    left: -16px;
+    border-bottom-right-radius: 16px;
+    box-shadow: 6px 0 0 0 hsl(var(--primary));
+  }
+
+  .product-tab-trigger::after {
+    right: -16px;
+    border-bottom-left-radius: 16px;
+    box-shadow: -6px 0 0 0 hsl(var(--primary));
+  }
+
+  /* Hide all panels, show only checked */
+  [data-tabs-panels] .product-tab-panel {
+    display: none;
+    animation: fadeUp 0.4s ease-out forwards;
+  }
+
+  #product-tab-lucy:checked ~ [data-tabs-panels] [data-tab-content="lucy"],
+  #product-tab-nomad:checked ~ [data-tabs-panels] [data-tab-content="nomad"] {
+    display: grid;
+  }
+
+  /* Border trace panel container */
+  .product-tabs-panel-container {
+    position: relative;
+  }
+
+  .product-tabs-panel-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--primary)) 25%,
+      hsl(var(--primary)) 75%,
+      transparent 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    pointer-events: none;
+  }
+
   #product-tab-lucy:checked ~ [data-tabs-panels].product-tabs-panel-container::before {
     animation: borderTraceLucy 0.8s ease-out forwards;
   }
