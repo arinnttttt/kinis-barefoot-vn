@@ -9,7 +9,7 @@ const Footer = () => (
 
     <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-10">
       {/* Top row: Logo + tagline | Social icons */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-10 border-b border-[hsl(var(--nav-foreground))]/10">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-10">
         <div className="flex items-center gap-4">
           <a href="/">
             <img src={logoBlack} alt="Kinis" className="h-8 brightness-0 invert" />
