@@ -86,7 +86,7 @@ const Header = () => {
               item.children ? (
                 <div
                   key={item.name}
-                  className="relative"
+                  className="relative z-50"
                   onMouseEnter={() => setOpenDropdown(item.name)}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
