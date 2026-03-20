@@ -90,7 +90,7 @@ const Header = () => {
                   onMouseEnter={() => setOpenDropdown(item.name)}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-[hsl(var(--nav-foreground))]/70 hover:text-secondary transition-colors">
+                  <button className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors ${isDark ? "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary" : "text-foreground/70 hover:text-secondary"}`}>
                     {item.name}
                     <ChevronDown className="w-3.5 h-3.5" />
                   </button>
