@@ -48,7 +48,7 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
             <p className="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider">
               {product.subtitle}
             </p>
-            <h3 className="font-display text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground">
+            <h3 className="font-display text-2xl md:text-3xl lg:text-[2rem] font-semibold text-foreground">
               {product.label}
             </h3>
           </div>
