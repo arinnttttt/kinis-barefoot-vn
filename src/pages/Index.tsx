@@ -41,7 +41,7 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
   >
     <div className="order-2 lg:order-1">
       <div className="inline-flex items-center gap-3 mb-6">
-        <img src={apmaBadge} alt="Chứng nhận APMA" className="h-8" />
+        <img src={apmaBadge} alt="Chứng nhận APMA" className="h-14 md:h-16" />
       </div>
 
       <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">
