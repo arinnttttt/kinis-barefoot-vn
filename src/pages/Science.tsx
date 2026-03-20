@@ -36,7 +36,7 @@ const Science = () => (
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="p-8 rounded-2xl bg-card border border-border"
+              className="p-8 rounded-2xl glass-light"
             >
               <div className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center mb-4">
                 <span className="font-display text-lg font-bold text-secondary">{String(i + 1).padStart(2, "0")}</span>
