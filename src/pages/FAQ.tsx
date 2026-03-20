@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
 import { ChevronDown } from "lucide-react";
@@ -73,52 +72,21 @@ const toSlug = (text: string) =>
     .replace(/(^-|-$)/g, "");
 
 const FAQ = () => {
-  const [activeSection, setActiveSection] = useState("");
-
-  useEffect(() => {
-    const slugs = faqCategories.map((cat) => toSlug(cat.category));
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.find((e) => e.isIntersecting);
-        if (visible) setActiveSection(visible.target.id);
-      },
-      { rootMargin: "-120px 0px -60% 0px", threshold: 0 }
-    );
-    slugs.forEach((slug) => {
-      const el = document.getElementById(slug);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
-
-  // Auto-scroll active mobile pill into view
-  useEffect(() => {
-    if (!activeSection) return;
-    const pill = document.querySelector(`[data-mobile-nav="${activeSection}"]`);
-    if (pill) pill.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-  }, [activeSection]);
-
   return (
     <Layout>
       <PageHero title="Câu hỏi thường gặp" subtitle="Những thắc mắc phổ biến về giày barefoot và sản phẩm Kinis." />
 
-      {/* Mobile horizontal nav */}
+      {/* Mobile horizontal nav — pure HTML anchors, no JS state */}
       <div className="lg:hidden sticky top-16 z-20 bg-muted/80 backdrop-blur-lg border-b border-border/50">
         <nav className="overflow-x-auto scrollbar-hide -mx-0">
           <div className="flex gap-1.5 px-3 sm:px-4 py-2.5 sm:py-3 min-w-max">
             {faqCategories.map((cat, catIdx) => {
               const slug = toSlug(cat.category);
-              const isActive = activeSection === slug;
               return (
                 <a
                   key={catIdx}
                   href={`#${slug}`}
-                  data-mobile-nav={slug}
-                  className={`shrink-0 px-3 sm:px-4 py-2 text-xs sm:text-sm font-body font-medium rounded-full transition-colors whitespace-nowrap ${
-                    isActive
-                      ? "bg-foreground text-background"
-                      : "bg-background text-muted-foreground hover:text-foreground"
-                  }`}
+                  className="shrink-0 px-3 sm:px-4 py-2 text-xs sm:text-sm font-body font-medium rounded-full transition-colors whitespace-nowrap bg-background text-muted-foreground hover:text-foreground hover:bg-foreground/5"
                 >
                   {cat.category}
                 </a>
@@ -140,21 +108,15 @@ const FAQ = () => {
         data-wp-taxonomy="faq_category"
       >
         <div className="max-w-5xl mx-auto flex gap-10">
-          {/* Desktop sidebar navigation */}
-          <nav className="hidden lg:block w-56 shrink-0 sticky top-28 self-start">
+           <nav className="hidden lg:block w-56 shrink-0 sticky top-28 self-start">
             <ul className="space-y-1">
               {faqCategories.map((cat, catIdx) => {
                 const slug = toSlug(cat.category);
-                const isActive = activeSection === slug;
                 return (
                   <li key={catIdx}>
                     <a
                       href={`#${slug}`}
-                      className={`block px-4 py-2.5 text-sm font-body font-medium rounded-lg transition-colors border-l-2 ${
-                        isActive
-                          ? "border-secondary text-foreground bg-background"
-                          : "border-transparent text-muted-foreground hover:text-foreground hover:bg-background"
-                      }`}
+                      className="block px-4 py-2.5 text-sm font-body font-medium rounded-lg transition-colors border-l-2 border-transparent text-muted-foreground hover:text-foreground hover:bg-background hover:border-secondary"
                     >
                       {cat.category}
                     </a>
