@@ -163,44 +163,26 @@
     border-radius: 16px 16px 0 0;
     background: hsl(0 0% 0% / 0.06);
     color: hsl(var(--muted-foreground));
-    transition: background-color 200ms ease, color 200ms ease, transform 200ms ease;
+    transform: scale(0.9);
+    transform-origin: bottom center;
+    transition: background-color 200ms ease, color 200ms ease, transform 300ms ease;
   }
 
   .product-tab-trigger:hover {
     background: hsl(0 0% 0% / 0.1);
     color: hsl(var(--foreground));
+    transform: scale(0.95);
   }
 
-  .product-tab-trigger::before,
-  .product-tab-trigger::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    width: 16px;
-    height: 16px;
-    background: transparent;
-    opacity: 0;
-    transition: opacity 200ms ease;
-  }
-
-  .product-tab-trigger::before {
-    left: -16px;
-    border-bottom-right-radius: 16px;
-    box-shadow: 6px 0 0 0 hsl(var(--primary));
-  }
-
-  .product-tab-trigger::after {
-    right: -16px;
-    border-bottom-left-radius: 16px;
-    box-shadow: -6px 0 0 0 hsl(var(--primary));
-  }
-
+  /* Selected tab: full size */
   #product-tab-lucy:checked ~ [data-tabs-labels] [for="product-tab-lucy"],
   #product-tab-nomad:checked ~ [data-tabs-labels] [for="product-tab-nomad"] {
     background: hsl(var(--primary));
     color: hsl(var(--primary-foreground));
+    transform: scale(1);
   }
 
+  /* Scooped corners for selected tab */
   #product-tab-lucy:checked ~ [data-tabs-labels] [for="product-tab-lucy"]::before,
   #product-tab-lucy:checked ~ [data-tabs-labels] [for="product-tab-lucy"]::after,
   #product-tab-nomad:checked ~ [data-tabs-labels] [for="product-tab-nomad"]::before,
@@ -208,48 +190,22 @@
     opacity: 1;
   }
 
-  [data-tabs-panels] .product-tab-panel {
-    display: none;
-    animation: fadeUp 0.4s ease-out forwards;
-  }
-
-  #product-tab-lucy:checked ~ [data-tabs-panels] [data-tab-content="lucy"],
-  #product-tab-nomad:checked ~ [data-tabs-panels] [data-tab-content="nomad"] {
-    display: grid;
-  }
-
-  /* Border trace effect on tab switch */
-  .product-tabs-panel-container {
-    position: relative;
-  }
-
-  .product-tabs-panel-container::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      hsl(var(--secondary)) 25%,
-      hsl(var(--secondary)) 75%,
-      transparent 100%
-    );
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-  }
-
-  #product-tab-nomad:checked ~ [data-tabs-panels].product-tabs-panel-container::before,
+  /* Border trace: use DIFFERENT animation names per tab so switching re-triggers */
   #product-tab-lucy:checked ~ [data-tabs-panels].product-tabs-panel-container::before {
-    animation: borderTrace 0.8s ease-out forwards;
+    animation: borderTraceLucy 0.8s ease-out forwards;
   }
 
-  @keyframes borderTrace {
+  #product-tab-nomad:checked ~ [data-tabs-panels].product-tabs-panel-container::before {
+    animation: borderTraceNomad 0.8s ease-out forwards;
+  }
+
+  @keyframes borderTraceLucy {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  @keyframes borderTraceNomad {
     0% { opacity: 0; }
     20% { opacity: 1; }
     100% { opacity: 0; }
