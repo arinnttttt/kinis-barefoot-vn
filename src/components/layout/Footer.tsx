@@ -58,7 +58,7 @@ const Footer = () => (
       </div>
 
       {/* Main content: Sitemap | Contact | About */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-10 py-10 border-t border-[hsl(var(--nav-foreground))]/10">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-10 py-10 border-t border-[hsl(var(--nav-foreground))]/10">
         {/* Sitemap col 1 */}
         <div>
           <h4 className="font-body font-semibold text-sm mb-5">Khám phá</h4>
@@ -102,6 +102,19 @@ const Footer = () => (
                 <Mail className="w-4 h-4 shrink-0" />
                 hello@kinis.com
               </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Đặt mua */}
+        <div>
+          <h4 className="font-body font-semibold text-sm mb-5">Đặt mua tại</h4>
+          <ul className="space-y-2.5">
+            <li className="text-sm text-[hsl(var(--nav-foreground))]/60">
+              › Hệ thống phân phối Bye Béo
+            </li>
+            <li className="text-sm text-[hsl(var(--nav-foreground))]/60">
+              › Kinis Balance Hub Buôn Mê Thuột
             </li>
           </ul>
         </div>
