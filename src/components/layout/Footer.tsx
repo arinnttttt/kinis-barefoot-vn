@@ -4,7 +4,7 @@ import { Phone, Mail } from "lucide-react";
 const Footer = () => (
   <footer className="relative bg-[hsl(var(--nav))] text-[hsl(var(--nav-foreground))]">
     {/* Angled top edge */}
-    <div className="absolute -top-16 left-0 right-0 h-16 bg-[hsl(var(--nav))] [clip-path:polygon(100%_0,100%_100%,0_100%)]" />
+    
 
     <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-10">
       {/* Top row: Logo + tagline | Social icons */}
