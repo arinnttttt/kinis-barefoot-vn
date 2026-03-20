@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
+import logoBlack from "@/assets/logo-kinis-black.png";
 
 const Footer = () => (
   <footer className="bg-[hsl(var(--nav))] text-[hsl(var(--nav-foreground))]">
     <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
         <div className="md:col-span-1">
-          <h3 className="font-display text-2xl font-bold tracking-tight mb-4">KINIS</h3>
+          <Link to="/">
+            <img src={logoBlack} alt="Kinis" className="h-7 mb-4 brightness-0 invert" />
+          </Link>
           <p className="text-[hsl(var(--nav-foreground))]/60 text-sm leading-relaxed">
             Lót giày công nghệ cao — nâng niu mỗi bước chân của bạn.
           </p>
