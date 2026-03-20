@@ -74,7 +74,7 @@ const Index = () => {
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 to="/san-pham/lucy"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-secondary-foreground font-display font-bold text-sm rounded-xl hover:brightness-110 transition-all"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-secondary-foreground font-body font-semibold text-sm rounded-xl hover:brightness-110 transition-all"
               >
                 Tìm hiểu giày Kinis
                 <ArrowRight className="w-4 h-4" />
