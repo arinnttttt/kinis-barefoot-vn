@@ -110,7 +110,7 @@ const FAQ = () => (
                   value={`cat-${catIdx}-item-${i}`}
                   className="glass-light rounded-xl px-6 data-[state=open]:shadow-md transition-shadow border-0"
                 >
-                  <AccordionTrigger className="font-display text-left font-semibold text-card-foreground hover:text-secondary hover:no-underline py-5">
+                  <AccordionTrigger className="font-display text-left text-lg font-medium text-card-foreground hover:text-secondary hover:no-underline py-5">
                     {faq.q}
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground leading-relaxed pb-5 whitespace-pre-line">
