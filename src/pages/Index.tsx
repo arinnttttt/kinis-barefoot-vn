@@ -65,8 +65,8 @@ const Index = () => (
               viewport={{ once: true }}
               className="p-8 rounded-2xl bg-card border border-border hover:shadow-lg transition-shadow"
             >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-                <f.icon className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-5">
+                <f.icon className="w-6 h-6 text-secondary" />
               </div>
               <h3 className="font-display text-lg font-semibold text-card-foreground">{f.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
@@ -101,7 +101,7 @@ const Index = () => (
                 <div className="p-6">
                   <h3 className="font-display text-xl font-bold text-card-foreground">{p.name}</h3>
                   <p className="mt-1 text-sm text-muted-foreground">{p.desc}</p>
-                  <span className="inline-flex items-center gap-1 mt-4 text-sm font-semibold text-primary">
+                  <span className="inline-flex items-center gap-1 mt-4 text-sm font-semibold text-secondary">
                     Xem chi tiết <ArrowRight className="w-4 h-4" />
                   </span>
                 </div>

@@ -35,8 +35,8 @@ const Story = () => (
               viewport={{ once: true }}
               className="flex gap-6"
             >
-              <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center">
-                <span className="font-display text-xl font-bold text-primary">{m.year}</span>
+              <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-secondary/10 flex items-center justify-center">
+                <span className="font-display text-xl font-bold text-secondary">{m.year}</span>
               </div>
               <div>
                 <h3 className="font-display text-xl font-semibold text-foreground">{m.title}</h3>

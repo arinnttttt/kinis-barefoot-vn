@@ -51,7 +51,7 @@ const Header = () => {
                   onMouseEnter={() => setOpenDropdown(item.name)}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-secondary-foreground/80 hover:text-primary transition-colors">
+                  <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-secondary-foreground/80 hover:text-secondary transition-colors">
                     {item.name}
                     <ChevronDown className="w-3.5 h-3.5" />
                   </button>
@@ -68,7 +68,7 @@ const Header = () => {
                           <Link
                             key={child.href}
                             to={child.href}
-                            className="block px-4 py-3 text-sm text-card-foreground hover:bg-muted hover:text-primary transition-colors"
+                            className="block px-4 py-3 text-sm text-card-foreground hover:bg-muted hover:text-secondary transition-colors"
                           >
                             {child.name}
                           </Link>
@@ -83,8 +83,8 @@ const Header = () => {
                   to={item.href}
                   className={`px-4 py-2 text-sm font-medium transition-colors ${
                     isActive(item.href)
-                      ? "text-primary"
-                      : "text-secondary-foreground/80 hover:text-primary"
+                      ? "text-secondary"
+                      : "text-secondary-foreground/80 hover:text-secondary"
                   }`}
                 >
                   {item.name}
@@ -136,7 +136,7 @@ const Header = () => {
                               key={child.href}
                               to={child.href}
                               onClick={() => setMobileOpen(false)}
-                              className="block px-3 py-2 text-sm text-secondary-foreground/60 hover:text-primary"
+                              className="block px-3 py-2 text-sm text-secondary-foreground/60 hover:text-secondary"
                             >
                               {child.name}
                             </Link>
@@ -151,7 +151,7 @@ const Header = () => {
                     to={item.href}
                     onClick={() => setMobileOpen(false)}
                     className={`block px-3 py-2.5 text-sm font-medium ${
-                      isActive(item.href) ? "text-primary" : "text-secondary-foreground/80 hover:text-primary"
+                      isActive(item.href) ? "text-secondary" : "text-secondary-foreground/80 hover:text-secondary"
                     }`}
                   >
                     {item.name}

@@ -14,26 +14,26 @@ const Footer = () => (
         <div>
           <h4 className="font-display font-semibold text-sm uppercase tracking-wider mb-4 text-secondary-foreground/40">Sản phẩm</h4>
           <ul className="space-y-2.5">
-            <li><Link to="/san-pham/lucy" className="text-sm text-secondary-foreground/70 hover:text-primary transition-colors">Kinis Lucy</Link></li>
-            <li><Link to="/san-pham/nomad" className="text-sm text-secondary-foreground/70 hover:text-primary transition-colors">Kinis Nomad</Link></li>
+            <li><Link to="/san-pham/lucy" className="text-sm text-secondary-foreground/70 hover:text-secondary transition-colors">Kinis Lucy</Link></li>
+            <li><Link to="/san-pham/nomad" className="text-sm text-secondary-foreground/70 hover:text-secondary transition-colors">Kinis Nomad</Link></li>
           </ul>
         </div>
 
         <div>
           <h4 className="font-display font-semibold text-sm uppercase tracking-wider mb-4 text-secondary-foreground/40">Đối tượng</h4>
           <ul className="space-y-2.5">
-            <li><Link to="/doi-tuong/gym-fitness" className="text-sm text-secondary-foreground/70 hover:text-primary transition-colors">Gym / Fitness</Link></li>
-            <li><Link to="/doi-tuong/chay-bo" className="text-sm text-secondary-foreground/70 hover:text-primary transition-colors">Chạy bộ</Link></li>
-            <li><Link to="/doi-tuong/ban-chan-bet" className="text-sm text-secondary-foreground/70 hover:text-primary transition-colors">Bàn chân bẹt</Link></li>
+            <li><Link to="/doi-tuong/gym-fitness" className="text-sm text-secondary-foreground/70 hover:text-secondary transition-colors">Gym / Fitness</Link></li>
+            <li><Link to="/doi-tuong/chay-bo" className="text-sm text-secondary-foreground/70 hover:text-secondary transition-colors">Chạy bộ</Link></li>
+            <li><Link to="/doi-tuong/ban-chan-bet" className="text-sm text-secondary-foreground/70 hover:text-secondary transition-colors">Bàn chân bẹt</Link></li>
           </ul>
         </div>
 
         <div>
           <h4 className="font-display font-semibold text-sm uppercase tracking-wider mb-4 text-secondary-foreground/40">Tìm hiểu</h4>
           <ul className="space-y-2.5">
-            <li><Link to="/cau-chuyen" className="text-sm text-secondary-foreground/70 hover:text-primary transition-colors">Câu chuyện</Link></li>
-            <li><Link to="/khoa-hoc" className="text-sm text-secondary-foreground/70 hover:text-primary transition-colors">Khoa học</Link></li>
-            <li><Link to="/faq" className="text-sm text-secondary-foreground/70 hover:text-primary transition-colors">FAQ</Link></li>
+            <li><Link to="/cau-chuyen" className="text-sm text-secondary-foreground/70 hover:text-secondary transition-colors">Câu chuyện</Link></li>
+            <li><Link to="/khoa-hoc" className="text-sm text-secondary-foreground/70 hover:text-secondary transition-colors">Khoa học</Link></li>
+            <li><Link to="/faq" className="text-sm text-secondary-foreground/70 hover:text-secondary transition-colors">FAQ</Link></li>
           </ul>
         </div>
       </div>
