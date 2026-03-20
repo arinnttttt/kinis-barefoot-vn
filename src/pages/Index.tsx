@@ -184,7 +184,7 @@ const Index = () => {
                 {/* CTA */}
                 <Link
                   to={product.href}
-                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-primary-foreground font-display font-bold text-sm rounded-xl hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-primary-foreground font-body font-semibold text-sm rounded-xl hover:opacity-90 transition-opacity"
                 >
                   Xem Chi Tiết
                   <ArrowRight className="w-4 h-4" />
