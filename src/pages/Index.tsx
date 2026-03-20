@@ -100,7 +100,7 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mb-14"
           >
-            <h2 className="font-display text-3xl md:text-5xl font-extrabold text-foreground uppercase tracking-tight">
+            <h2 className="font-display text-3xl md:text-5xl font-medium text-foreground uppercase tracking-tight">
               Sản phẩm
             </h2>
           </motion.div>
