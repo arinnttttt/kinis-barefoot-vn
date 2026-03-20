@@ -106,6 +106,20 @@ const Footer = () => (
           </ul>
         </div>
 
+        {/* Đặt mua */}
+        <div>
+          <h4 className="font-body font-semibold text-sm mb-5">Đặt mua tại</h4>
+          <ul className="space-y-2.5">
+            <li className="text-sm text-[hsl(var(--nav-foreground))]/60">
+              › Hệ thống phân phối Bye Béo
+            </li>
+            <li className="text-sm text-[hsl(var(--nav-foreground))]/60">
+              › Kinis Balance Hub Buôn Mê Thuột
+            </li>
+          </ul>
+        </div>
+        </div>
+
         {/* Tagline */}
         <div>
           <h4 className="font-body font-semibold text-sm mb-5">Về Kinis</h4>
