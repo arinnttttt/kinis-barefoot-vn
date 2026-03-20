@@ -155,7 +155,7 @@ const Index = () => {
                   {product.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-4 py-2 rounded-full glass-light text-sm font-medium text-foreground"
+                      className="px-4 py-2 rounded-full bg-[hsl(0_0%_100%/0.5)] backdrop-blur-md border border-[hsl(0_0%_0%/0.06)] shadow-[0_2px_8px_-2px_hsl(0_0%_0%/0.06)] text-sm font-medium text-foreground"
                     >
                       {tag}
                     </span>
@@ -178,7 +178,7 @@ const Index = () => {
                   initial={{ scale: 0.92, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative rounded-2xl overflow-hidden aspect-square"
+                  className="relative rounded-2xl overflow-hidden aspect-[4/5]"
                 >
                   <img
                     src={product.image}
