@@ -106,9 +106,9 @@ const Index = () => {
           </motion.div>
 
           {/* Browser-style Tab Switcher */}
-          <div className="flex justify-center mb-0">
+          <div className="flex mb-0 pl-4">
             <div className="relative inline-flex items-end gap-0">
-              {(["lucy", "nomad"] as ProductKey[]).map((key, idx) => {
+              {(["lucy", "nomad"] as ProductKey[]).map((key) => {
                 const isActive = activeTab === key;
                 return (
                   <button
@@ -117,7 +117,7 @@ const Index = () => {
                     className={`tab-folder relative px-10 md:px-14 py-3.5 font-body font-semibold text-sm md:text-base transition-all duration-200 ${
                       isActive
                         ? "tab-folder-active bg-primary text-primary-foreground z-10"
-                        : "bg-[hsl(0_0%_100%/0.25)] backdrop-blur-md text-muted-foreground hover:bg-[hsl(0_0%_100%/0.4)] hover:text-foreground rounded-t-2xl"
+                        : "bg-[hsl(0_0%_0%/0.08)] text-muted-foreground hover:bg-[hsl(0_0%_0%/0.12)] hover:text-foreground rounded-t-2xl"
                     }`}
                   >
                     {products[key].label}
@@ -127,8 +127,8 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Glass content panel */}
-          <div className="rounded-2xl rounded-tl-none border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] backdrop-blur-xl shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] p-8 md:p-12">
+          {/* Glass content panel - seamlessly connected to tabs */}
+          <div className="rounded-3xl border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] backdrop-blur-xl shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] p-8 md:p-12 -mt-px">
 
           {/* Product Content */}
           <AnimatePresence mode="wait">
