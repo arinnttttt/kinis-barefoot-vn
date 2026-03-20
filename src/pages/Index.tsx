@@ -42,7 +42,7 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
     <div className="order-2 md:order-1">
       {/* Mobile: badge + text inline | Tablet+Desktop: badge on top, text below */}
       {tabKey === 'lucy' && (
-        <div className="flex flex-row-reverse md:flex-col items-center md:items-start gap-3 mb-3 md:mb-5">
+        <div className="flex flex-row md:flex-col justify-between md:justify-start items-center md:items-start gap-3 mb-3 md:mb-5">
           <img src={apmaBadge} alt="Chứng nhận APMA" className="h-10 md:h-12 lg:h-16 shrink-0" />
           <div>
             <p className="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider">
