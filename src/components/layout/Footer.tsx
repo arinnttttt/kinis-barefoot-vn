@@ -21,14 +21,19 @@ const Footer = () => (
 
     <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-10">
       {/* Top row: Logo + tagline | Social icons */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-10">
-        <div className="flex items-center gap-4">
-          <a href="/">
-            <img src={logoBlack} alt="Kinis" className="h-8 brightness-0 invert" />
-          </a>
-          <span className="hidden sm:block text-[hsl(var(--nav-foreground))]/30">/</span>
-          <p className="hidden sm:block text-base font-display text-[hsl(var(--nav-foreground))]/50">
-            Hệ sinh thái chăm sóc sức khỏe vận động
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 pb-10">
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center gap-4">
+            <a href="/">
+              <img src={logoBlack} alt="Kinis" className="h-10 brightness-0 invert" />
+            </a>
+            <span className="hidden sm:block text-[hsl(var(--nav-foreground))]/30">/</span>
+            <p className="hidden sm:block text-lg font-display text-[hsl(var(--nav-foreground))]/50">
+              Hệ sinh thái chăm sóc sức khỏe vận động
+            </p>
+          </div>
+          <p className="text-sm text-[hsl(var(--nav-foreground))]/50 leading-relaxed max-w-md">
+            Hơn cả một đôi giày, đó là sức khỏe vận động, giúp bàn chân tự chữa lành thông qua vận động tự nhiên.
           </p>
         </div>
 
