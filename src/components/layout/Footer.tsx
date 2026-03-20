@@ -27,7 +27,7 @@ const Footer = () => (
             <img src={logoBlack} alt="Kinis" className="h-8 brightness-0 invert" />
           </a>
           <span className="hidden sm:block text-[hsl(var(--nav-foreground))]/30">/</span>
-          <p className="hidden sm:block text-base font-heading text-[hsl(var(--nav-foreground))]/50">
+          <p className="hidden sm:block text-base font-display text-[hsl(var(--nav-foreground))]/50">
             Hệ sinh thái chăm sóc sức khỏe vận động
           </p>
         </div>
