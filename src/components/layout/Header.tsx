@@ -81,16 +81,23 @@ const Header = () => {
             <img src={logoBlack} alt="Kinis" className={`h-6 lg:h-7 transition-all duration-500 ${isDark ? "brightness-0 invert" : ""}`} />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1" data-component="navigation">
             {navigation.map((item) =>
               item.children ? (
                 <div
                   key={item.name}
                   className="relative z-50"
+                  data-component="dropdown"
+                  data-dropdown-trigger="hover"
                   onMouseEnter={() => setOpenDropdown(item.name)}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <button className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors ${isDark ? "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary" : "text-foreground/70 hover:text-secondary"}`}>
+                  <button
+                    className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors ${isDark ? "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary" : "text-foreground/70 hover:text-secondary"}`}
+                    aria-expanded={openDropdown === item.name}
+                    aria-haspopup="true"
+                    data-dropdown-button
+                  >
                     {item.name}
                     <ChevronDown className="w-3.5 h-3.5" />
                   </button>
@@ -102,12 +109,15 @@ const Header = () => {
                         exit={{ opacity: 0, y: 8 }}
                         transition={{ duration: 0.15 }}
                         className="absolute top-full left-0 mt-2 w-64 glass-card rounded-xl overflow-hidden shadow-2xl"
+                        data-dropdown-menu
+                        role="menu"
                       >
                         {item.children.map((child) => (
                           <Link
                             key={child.href}
                             to={child.href}
                             className="block px-4 py-3 text-sm text-[hsl(var(--nav-foreground))]/80 hover:text-secondary hover:bg-[hsl(0_0%_100%/0.06)] transition-colors"
+                            role="menuitem"
                           >
                             {child.name}
                           </Link>
