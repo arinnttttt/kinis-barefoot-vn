@@ -103,11 +103,12 @@ const Index = () => {
                   <button
                     key={key}
                     onClick={() => setActiveTab(key)}
-                    className={`tab-folder relative px-10 md:px-14 py-3.5 font-body font-semibold text-sm md:text-base transition-all duration-200 ${
+                    className={`tab-folder relative px-10 md:px-14 py-3.5 font-body font-semibold text-sm md:text-base transition-all duration-200 cursor-pointer select-none ${
                       isActive
                         ? "tab-folder-active bg-primary text-primary-foreground"
                         : "bg-[hsl(0_0%_0%/0.06)] text-muted-foreground hover:bg-[hsl(0_0%_0%/0.1)] hover:text-foreground rounded-t-2xl"
                     }`}
+                    style={{ pointerEvents: 'auto' }}
                   >
                     {products[key].label}
                   </button>
