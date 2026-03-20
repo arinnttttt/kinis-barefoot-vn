@@ -82,7 +82,7 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
 
       <a
         href={product.href}
-        className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 lg:px-6 lg:py-3 bg-primary text-primary-foreground font-body font-semibold text-sm md:text-base lg:text-sm rounded-xl hover:opacity-90 transition-opacity"
+        className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 lg:px-5 lg:py-2.5 bg-primary text-primary-foreground font-body font-semibold text-sm md:text-base lg:text-xs rounded-xl hover:opacity-90 transition-opacity"
       >
         Xem Chi Tiết
         <ArrowRight className="w-4 h-4" />
