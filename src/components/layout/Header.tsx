@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import logoBlack from "@/assets/logo-kinis-black.png";
 
 const navigation = [
   { name: "Trang chủ", href: "/" },
