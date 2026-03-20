@@ -1,4 +1,5 @@
 import logoBlack from "@/assets/logo-kinis-black.png";
+import zaloLogo from "@/assets/zalo-logo.png";
 import { Phone, Mail } from "lucide-react";
 
 const Footer = () => (
