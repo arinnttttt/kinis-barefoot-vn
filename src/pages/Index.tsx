@@ -62,7 +62,7 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
         {product.tags.map((tag) => (
           <span
             key={tag}
-            className="px-4 py-2 rounded-full bg-[hsl(0_0%_100%/0.5)] backdrop-blur-md border border-[hsl(0_0%_0%/0.06)] shadow-[0_2px_8px_-2px_hsl(0_0%_0%/0.06)] text-sm font-medium text-foreground"
+            className="px-4 py-2 rounded-full bg-white shadow-[inset_-2px_-4px_6px_0_rgba(255,118,12,0.40)] text-sm font-medium text-foreground"
           >
             {tag}
           </span>
