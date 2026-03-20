@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -121,13 +121,46 @@ const FAQ = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Auto-scroll active mobile pill into view
+  useEffect(() => {
+    if (!activeSection) return;
+    const pill = document.querySelector(`[data-mobile-nav="${activeSection}"]`);
+    if (pill) pill.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  }, [activeSection]);
+
   return (
     <Layout>
       <PageHero title="Câu hỏi thường gặp" subtitle="Những thắc mắc phổ biến về giày barefoot và sản phẩm Kinis." />
 
+      {/* Mobile horizontal nav */}
+      <div className="lg:hidden sticky top-16 z-20 bg-muted/80 backdrop-blur-lg border-b border-border/50">
+        <nav className="overflow-x-auto scrollbar-hide">
+          <div className="flex gap-2 px-4 py-3 min-w-max">
+            {faqCategories.map((cat, catIdx) => {
+              const slug = toSlug(cat.category);
+              const isActive = activeSection === slug;
+              return (
+                <a
+                  key={catIdx}
+                  href={`#${slug}`}
+                  data-mobile-nav={slug}
+                  className={`shrink-0 px-4 py-2 text-sm font-body font-medium rounded-full transition-colors whitespace-nowrap ${
+                    isActive
+                      ? "bg-foreground text-background"
+                      : "bg-background text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {cat.category}
+                </a>
+              );
+            })}
+          </div>
+        </nav>
+      </div>
+
       <section className="section-padding bg-muted/60">
         <div className="max-w-5xl mx-auto flex gap-10">
-          {/* Sidebar navigation */}
+          {/* Desktop sidebar navigation */}
           <nav className="hidden lg:block w-56 shrink-0 sticky top-28 self-start">
             <ul className="space-y-1">
               {faqCategories.map((cat, catIdx) => {
