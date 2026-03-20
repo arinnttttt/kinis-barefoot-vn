@@ -28,7 +28,6 @@ const navigation = [
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [headerTheme, setHeaderTheme] = useState<"dark" | "light">("dark");
   const location = useLocation();
@@ -38,16 +37,16 @@ const Header = () => {
       const y = window.scrollY;
       setScrolled(y > 20);
 
-      // Detect background color at header position
       const headerHeight = 80;
       const elements = document.elementsFromPoint(window.innerWidth / 2, headerHeight);
       const section = elements.find(
         (el) => el.tagName === "SECTION" || el.tagName === "FOOTER"
       );
+
       if (section) {
         const bg = window.getComputedStyle(section).backgroundColor;
-        // Parse RGB to determine if dark or light
         const match = bg.match(/\d+/g);
+
         if (match) {
           const [r, g, b] = match.map(Number);
           const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
@@ -57,11 +56,18 @@ const Header = () => {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial check
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
   const isActive = (href: string) => location.pathname === href;
+  const isParentActive = (children?: { href: string }[]) =>
+    Boolean(children?.some((child) => isActive(child.href)));
 
   const isDark = headerTheme === "dark";
 
@@ -78,7 +84,11 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link to="/" className="flex items-center">
-            <img src={logoBlack} alt="Kinis" className={`h-6 lg:h-7 transition-all duration-500 ${isDark ? "brightness-0 invert" : ""}`} />
+            <img
+              src={logoBlack}
+              alt="Kinis"
+              className={`h-6 lg:h-7 transition-all duration-500 ${isDark ? "brightness-0 invert" : ""}`}
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1" data-component="navigation">
@@ -86,45 +96,46 @@ const Header = () => {
               item.children ? (
                 <div
                   key={item.name}
-                  className="relative z-50"
+                  className="group relative z-50"
                   data-component="dropdown"
                   data-dropdown-trigger="hover"
-                  onMouseEnter={() => setOpenDropdown(item.name)}
-                  onMouseLeave={() => setOpenDropdown(null)}
                 >
                   <button
-                    className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors ${isDark ? "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary" : "text-foreground/70 hover:text-secondary"}`}
-                    aria-expanded={openDropdown === item.name}
+                    type="button"
+                    className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors ${
+                      isParentActive(item.children)
+                        ? "text-secondary"
+                        : isDark
+                          ? "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
+                          : "text-foreground/70 hover:text-secondary"
+                    }`}
                     aria-haspopup="true"
                     data-dropdown-button
                   >
                     {item.name}
-                    <ChevronDown className="w-3.5 h-3.5" />
+                    <ChevronDown className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" />
                   </button>
-                  <AnimatePresence>
-                    {openDropdown === item.name && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 8 }}
-                        transition={{ duration: 0.15 }}
-                        className="absolute top-full left-0 mt-2 w-64 glass-card rounded-xl overflow-hidden shadow-2xl"
-                        data-dropdown-menu
-                        role="menu"
+
+                  <div
+                    className="pointer-events-none invisible absolute left-0 top-full mt-2 w-64 translate-y-2 overflow-hidden rounded-xl glass-card opacity-0 shadow-2xl transition-all duration-200 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100"
+                    data-dropdown-menu
+                    role="menu"
+                  >
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        to={child.href}
+                        className={`block px-4 py-3 text-sm transition-colors ${
+                          isActive(child.href)
+                            ? "bg-[hsl(0_0%_100%/0.06)] text-secondary"
+                            : "text-[hsl(var(--nav-foreground))]/80 hover:bg-[hsl(0_0%_100%/0.06)] hover:text-secondary"
+                        }`}
+                        role="menuitem"
                       >
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            to={child.href}
-                            className="block px-4 py-3 text-sm text-[hsl(var(--nav-foreground))]/80 hover:text-secondary hover:bg-[hsl(0_0%_100%/0.06)] transition-colors"
-                            role="menuitem"
-                          >
-                            {child.name}
-                          </Link>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                        {child.name}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               ) : (
                 <Link
@@ -147,6 +158,7 @@ const Header = () => {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className={`lg:hidden p-2 transition-colors duration-500 ${isDark ? "text-[hsl(var(--nav-foreground))]" : "text-foreground"}`}
+            aria-label={mobileOpen ? "Đóng menu" : "Mở menu"}
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -164,43 +176,42 @@ const Header = () => {
             <div className="px-6 py-4 space-y-1">
               {navigation.map((item) =>
                 item.children ? (
-                  <div key={item.name}>
-                    <button
-                      onClick={() => setOpenDropdown(openDropdown === item.name ? null : item.name)}
-                      className="flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium text-[hsl(var(--nav-foreground))]/70"
+                  <details key={item.name} className="group rounded-lg">
+                    <summary
+                      className={`flex cursor-pointer list-none items-center justify-between px-3 py-2.5 text-sm font-medium transition-colors [&::-webkit-details-marker]:hidden ${
+                        isParentActive(item.children)
+                          ? "text-secondary"
+                          : "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
+                      }`}
                     >
                       {item.name}
-                      <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.name ? "rotate-180" : ""}`} />
-                    </button>
-                    <AnimatePresence>
-                      {openDropdown === item.name && (
-                        <motion.div
-                          initial={{ height: 0 }}
-                          animate={{ height: "auto" }}
-                          exit={{ height: 0 }}
-                          className="overflow-hidden pl-4"
+                      <ChevronDown className="w-4 h-4 transition-transform group-open:rotate-180" />
+                    </summary>
+
+                    <div className="pl-4 pb-2">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          to={child.href}
+                          className={`block px-3 py-2 text-sm transition-colors ${
+                            isActive(child.href)
+                              ? "text-secondary"
+                              : "text-[hsl(var(--nav-foreground))]/50 hover:text-secondary"
+                          }`}
                         >
-                          {item.children.map((child) => (
-                            <Link
-                              key={child.href}
-                              to={child.href}
-                              onClick={() => setMobileOpen(false)}
-                              className="block px-3 py-2 text-sm text-[hsl(var(--nav-foreground))]/50 hover:text-secondary"
-                            >
-                              {child.name}
-                            </Link>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
+                          {child.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </details>
                 ) : (
                   <Link
                     key={item.name}
                     to={item.href}
-                    onClick={() => setMobileOpen(false)}
                     className={`block px-3 py-2.5 text-sm font-medium ${
-                      isActive(item.href) ? "text-secondary" : "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
+                      isActive(item.href)
+                        ? "text-secondary"
+                        : "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
                     }`}
                   >
                     {item.name}
