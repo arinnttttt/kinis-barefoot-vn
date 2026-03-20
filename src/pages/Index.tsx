@@ -110,16 +110,6 @@ const Index = () => {
                     }`}
                   >
                     {products[key].label}
-                    {/* Animated border that flows from tab down into panel */}
-                    {isActive && (
-                      <motion.div
-                        layoutId="tab-border-glow"
-                        className="absolute bottom-0 left-4 right-4 h-0.5 bg-secondary rounded-full"
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                      />
-                    )}
                   </button>
                 );
               })}
