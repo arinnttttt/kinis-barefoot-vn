@@ -58,31 +58,31 @@ const TargetAudience = ({ variant }: TargetPageProps) => {
     <Layout>
       <PageHero title={d.title} subtitle={d.subtitle} image={d.image} />
 
-      <section className="section-padding bg-background">
+      <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-4xl mx-auto">
-          <p className="text-lg text-muted-foreground leading-relaxed mb-12 animate-fade-in">
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8 sm:mb-12 animate-fade-in">
             {d.intro}
           </p>
 
-          <div className="p-8 rounded-2xl bg-card border border-border animate-fade-up">
-            <h3 className="font-display text-xl font-semibold text-card-foreground mb-6">Lợi ích khi sử dụng Kinis</h3>
-            <ul className="space-y-4">
+          <div className="p-6 sm:p-8 rounded-2xl bg-card border border-border animate-fade-up">
+            <h3 className="font-display text-lg sm:text-xl font-semibold text-card-foreground mb-5 sm:mb-6">Lợi ích khi sử dụng Kinis</h3>
+            <ul className="space-y-3 sm:space-y-4">
               {d.benefits.map((b) => (
                 <li key={b} className="flex items-start gap-3">
                   <div className="mt-0.5 w-5 h-5 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0">
                     <Check className="w-3 h-3 text-secondary" />
                   </div>
-                  <span className="text-card-foreground">{b}</span>
+                  <span className="text-sm sm:text-base text-card-foreground">{b}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="mt-10 text-center animate-fade-up [animation-delay:200ms]">
-            <p className="text-muted-foreground mb-4">Sản phẩm phù hợp cho bạn:</p>
+          <div className="mt-8 sm:mt-10 text-center animate-fade-up [animation-delay:200ms]">
+            <p className="text-sm sm:text-base text-muted-foreground mb-4">Sản phẩm phù hợp cho bạn:</p>
             <a
               href={d.product.href}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-secondary-foreground font-display font-semibold rounded-lg hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-secondary-foreground font-body font-semibold text-sm sm:text-base rounded-xl hover:opacity-90 transition-opacity"
             >
               {d.product.name} <ArrowRight className="w-4 h-4" />
             </a>
