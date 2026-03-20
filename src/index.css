@@ -168,7 +168,7 @@
 
   /* Border trace animation - draws border from top down */
   .border-trace {
-    border: 2px solid hsl(var(--primary));
+    border: 1px solid hsl(var(--primary));
     clip-path: inset(0 100% 100% 0);
     animation: border-trace-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }

@@ -30,18 +30,51 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [headerTheme, setHeaderTheme] = useState<"dark" | "light">("dark");
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 20);
+
+      // Detect background color at header position
+      const headerHeight = 80;
+      const elements = document.elementsFromPoint(window.innerWidth / 2, headerHeight);
+      const section = elements.find(
+        (el) => el.tagName === "SECTION" || el.tagName === "FOOTER"
+      );
+      if (section) {
+        const bg = window.getComputedStyle(section).backgroundColor;
+        // Parse RGB to determine if dark or light
+        const match = bg.match(/\d+/g);
+        if (match) {
+          const [r, g, b] = match.map(Number);
+          const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+          setHeaderTheme(luminance < 0.5 ? "dark" : "light");
+        }
+      }
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial check
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const isActive = (href: string) => location.pathname === href;
 
+  const isDark = headerTheme === "dark";
+
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass" : "bg-transparent"}`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? isDark
+            ? "glass"
+            : "glass-header-light"
+          : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link to="/" className="flex items-center">
