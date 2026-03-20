@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import logoBlack from "@/assets/logo-kinis-black.png";
 
 const navigation = [
   { name: "Trang chủ", href: "/" },
@@ -36,8 +37,8 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <Link to="/" className="font-display text-2xl font-bold text-[hsl(var(--nav-foreground))] tracking-tight">
-            KINIS
+          <Link to="/" className="flex items-center">
+            <img src={logoBlack} alt="Kinis" className="h-6 lg:h-7 brightness-0 invert" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
