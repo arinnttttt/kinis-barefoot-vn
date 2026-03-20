@@ -20,7 +20,7 @@ const FAQ = () => (
       <div className="max-w-3xl mx-auto">
         <Accordion type="single" collapsible className="space-y-3">
           {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="bg-card border border-border rounded-xl px-6 data-[state=open]:shadow-md transition-shadow">
+            <AccordionItem key={i} value={`item-${i}`} className="glass-light rounded-xl px-6 data-[state=open]:shadow-md transition-shadow border-0">
               <AccordionTrigger className="font-display text-left font-semibold text-card-foreground hover:text-secondary hover:no-underline py-5">
                 {faq.q}
               </AccordionTrigger>
