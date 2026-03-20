@@ -1,4 +1,5 @@
-import { ArrowRight, Award } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import apmaBadge from "@/assets/apma-badge.png";
 import Layout from "@/components/layout/Layout";
 import heroImage from "@/assets/hero-person.jpg";
 import lucyShowcase from "@/assets/lucy-showcase.jpg";
