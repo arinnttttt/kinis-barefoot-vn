@@ -93,22 +93,10 @@ const Index = () => {
       {/* ===== SECTION 2: SẢN PHẨM (Tab Switcher) ===== */}
       <section className="section-padding bg-background overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          {/* Section heading */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-14"
-          >
-            <h2 className="font-display text-3xl md:text-5xl font-medium text-foreground uppercase tracking-tight">
-              Sản phẩm
-            </h2>
-          </motion.div>
-
           {/* Browser-style Tab Switcher + Content as one unit */}
           <div className="relative">
-            {/* Tabs row */}
-            <div className="flex ml-8 relative z-20">
+            {/* Tabs row - centered */}
+            <div className="flex justify-center relative z-20">
               {(["lucy", "nomad"] as ProductKey[]).map((key) => {
                 const isActive = activeTab === key;
                 return (
@@ -122,13 +110,31 @@ const Index = () => {
                     }`}
                   >
                     {products[key].label}
+                    {/* Animated border that flows from tab down into panel */}
+                    {isActive && (
+                      <motion.div
+                        layoutId="tab-border-glow"
+                        className="absolute bottom-0 left-4 right-4 h-0.5 bg-secondary rounded-full"
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
+                    )}
                   </button>
                 );
               })}
             </div>
 
             {/* Glass content panel */}
-            <div className="relative z-10 rounded-3xl rounded-tl-none border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] backdrop-blur-xl shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] p-8 md:p-12 -mt-px">
+            <div className="relative z-10 rounded-3xl border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] backdrop-blur-xl shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] p-8 md:p-12 -mt-px">
+              {/* Animated accent line flowing from tab into panel */}
+              <motion.div
+                key={activeTab}
+                className="absolute top-0 left-1/2 -translate-x-1/2 h-0.5 bg-secondary rounded-full"
+                initial={{ width: 0, opacity: 0 }}
+                animate={{ width: 120, opacity: 1 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+              />
 
           {/* Product Content */}
           <AnimatePresence mode="wait">
