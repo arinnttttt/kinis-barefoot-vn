@@ -111,7 +111,7 @@ const Header = () => {
                 >
                   <button
                     type="button"
-                    className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors ${
+                    className={`flex items-center gap-1 px-4 py-2 text-sm lg:text-base font-medium transition-colors ${
                       isParentActive(item.children)
                         ? "text-secondary"
                         : isDark
@@ -150,7 +150,7 @@ const Header = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className={`px-4 py-2 text-sm font-medium transition-colors ${
+                  className={`px-4 py-2 text-sm lg:text-base font-medium transition-colors ${
                     isActive(item.href)
                       ? "text-secondary"
                       : isDark
