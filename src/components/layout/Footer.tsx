@@ -16,8 +16,12 @@ const sitemapLinks = [
 
 const Footer = () => (
   <footer className="relative bg-[hsl(var(--nav))] text-[hsl(var(--nav-foreground))]">
-    {/* Angled top edge */}
-    <div className="absolute -top-16 left-0 right-0 h-16 bg-[hsl(var(--nav))] [clip-path:polygon(100%_0,100%_100%,0_100%)]" />
+    {/* Angled top edge — SVG instead of clip-path for WPConvert compatibility */}
+    <div className="absolute -top-16 left-0 right-0 h-16 overflow-hidden">
+      <svg className="absolute bottom-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <polygon points="100,0 100,100 0,100" fill="hsl(var(--nav))" />
+      </svg>
+    </div>
 
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-8 sm:pb-10">
       {/* Top row: Logo + tagline | Social icons */}
