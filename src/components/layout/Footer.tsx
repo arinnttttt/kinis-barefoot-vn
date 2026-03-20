@@ -19,55 +19,61 @@ const Footer = () => (
     {/* Angled top edge */}
     <div className="absolute -top-16 left-0 right-0 h-16 bg-[hsl(var(--nav))] [clip-path:polygon(100%_0,100%_100%,0_100%)]" />
 
-    <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-10">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-8 sm:pb-10">
       {/* Top row: Logo + tagline | Social icons */}
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 pb-10">
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-4">
-            <a href="/">
-              <img src={logoBlack} alt="Kinis" className="h-12 brightness-0 invert" />
-            </a>
-            <span className="hidden sm:block text-xl text-[hsl(var(--nav-foreground))]/30">/</span>
-            <p className="hidden sm:block text-xl font-display text-[hsl(var(--nav-foreground))]/50">
+      <div className="flex flex-col gap-5 pb-8 sm:pb-10">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5">
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <a href="/">
+                <img src={logoBlack} alt="Kinis" className="h-9 sm:h-12 brightness-0 invert" />
+              </a>
+              <span className="hidden sm:block text-xl text-[hsl(var(--nav-foreground))]/30">/</span>
+              <p className="hidden sm:block text-lg md:text-xl font-display text-[hsl(var(--nav-foreground))]/50">
+                Hệ sinh thái chăm sóc sức khỏe vận động
+              </p>
+            </div>
+            {/* Mobile tagline */}
+            <p className="sm:hidden text-sm font-display text-[hsl(var(--nav-foreground))]/50">
               Hệ sinh thái chăm sóc sức khỏe vận động
             </p>
+            <p className="text-xs sm:text-sm text-[hsl(var(--nav-foreground))]/50 leading-relaxed">
+              Hơn cả một đôi giày, đó là sức khỏe vận động, giúp bàn chân tự chữa lành thông qua vận động tự nhiên.
+            </p>
           </div>
-          <p className="text-sm text-[hsl(var(--nav-foreground))]/50 leading-relaxed max-w-none whitespace-nowrap">
-            Hơn cả một đôi giày, đó là sức khỏe vận động, giúp bàn chân tự chữa lành thông qua vận động tự nhiên.
-          </p>
-        </div>
 
-        {/* Social icons */}
-        <div className="flex items-center gap-4">
-          <a
-            href="https://zalo.me/kinis"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:opacity-80 transition-opacity"
-            aria-label="Zalo"
-          >
-            <img src={zaloIcon} alt="Zalo" className="w-6 h-6" />
-          </a>
-          <a
-            href="https://www.facebook.com/KinisAi.VN"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[hsl(var(--nav-foreground))]/50 hover:text-secondary transition-colors"
-            aria-label="Facebook"
-          >
-            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-            </svg>
-          </a>
+          {/* Social icons */}
+          <div className="flex items-center gap-4 shrink-0">
+            <a
+              href="https://zalo.me/kinis"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+              aria-label="Zalo"
+            >
+              <img src={zaloIcon} alt="Zalo" className="w-6 h-6" />
+            </a>
+            <a
+              href="https://www.facebook.com/KinisAi.VN"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[hsl(var(--nav-foreground))]/50 hover:text-secondary transition-colors"
+              aria-label="Facebook"
+            >
+              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* Main content: Sitemap | Contact | About */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-10 py-10 border-t border-[hsl(var(--nav-foreground))]/10">
+      {/* Main content grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 py-8 sm:py-10 border-t border-[hsl(var(--nav-foreground))]/10">
         {/* Sitemap col 1 */}
         <div>
-          <h4 className="font-body font-semibold text-sm mb-5">Khám phá</h4>
-          <ul className="space-y-2.5">
+          <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5">Khám phá</h4>
+          <ul className="space-y-2 sm:space-y-2.5">
             {sitemapLinks.slice(0, 5).map((link) => (
               <li key={link.href}>
                 <a href={link.href} className="text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
@@ -80,8 +86,8 @@ const Footer = () => (
 
         {/* Sitemap col 2 */}
         <div>
-          <h4 className="font-body font-semibold text-sm mb-5 invisible">‎</h4>
-          <ul className="space-y-2.5">
+          <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5 md:invisible">‎</h4>
+          <ul className="space-y-2 sm:space-y-2.5">
             {sitemapLinks.slice(5).map((link) => (
               <li key={link.href}>
                 <a href={link.href} className="text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
@@ -94,8 +100,8 @@ const Footer = () => (
 
         {/* Contact */}
         <div>
-          <h4 className="font-body font-semibold text-sm mb-5">Liên hệ</h4>
-          <ul className="space-y-4">
+          <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5">Liên hệ</h4>
+          <ul className="space-y-3 sm:space-y-4">
             <li>
               <a href="tel:+84708803573" className="flex items-center gap-3 text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
                 <Phone className="w-4 h-4 shrink-0" />
@@ -113,8 +119,8 @@ const Footer = () => (
 
         {/* Đặt mua */}
         <div>
-          <h4 className="font-body font-semibold text-sm mb-5">Đặt mua tại</h4>
-          <ul className="space-y-2.5">
+          <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5">Đặt mua tại</h4>
+          <ul className="space-y-2 sm:space-y-2.5">
             <li className="text-sm text-[hsl(var(--nav-foreground))]/60">
               › Hệ thống phân phối Bye Béo
             </li>
@@ -123,7 +129,6 @@ const Footer = () => (
             </li>
           </ul>
         </div>
-
       </div>
 
       {/* Bottom bar */}
