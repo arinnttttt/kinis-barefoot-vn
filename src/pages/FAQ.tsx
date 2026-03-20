@@ -108,7 +108,8 @@ const FAQ = () => {
         data-wp-taxonomy="faq_category"
       >
         <div className="max-w-5xl mx-auto flex gap-10">
-           <nav className="hidden lg:block w-56 shrink-0 sticky top-28 self-start">
+           {/* Desktop sidebar — visible at lg+ via CSS class */}
+           <nav className="faq-desktop-sidebar w-56 shrink-0 sticky top-28 self-start">
             <ul className="space-y-1">
               {faqCategories.map((cat, catIdx) => {
                 const slug = toSlug(cat.category);
