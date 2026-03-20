@@ -81,7 +81,7 @@ const Index = () => {
               </Link>
               <Link
                 to="/khoa-hoc"
-                className="inline-flex items-center gap-2 px-7 py-3.5 glass-card rounded-xl text-[hsl(var(--nav-foreground))] font-display font-bold text-sm hover:text-secondary transition-colors"
+                className="inline-flex items-center gap-2 px-7 py-3.5 glass-card rounded-xl text-[hsl(var(--nav-foreground))] font-body font-semibold text-sm hover:text-secondary transition-colors"
               >
                 Thông tin khoa học
               </Link>
