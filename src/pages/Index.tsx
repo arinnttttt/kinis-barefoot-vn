@@ -40,11 +40,22 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
     data-tab-content={tabKey}
   >
     <div className="order-2 md:order-1">
-      <div className="flex items-center gap-3 mb-3 md:mb-4">
-        {tabKey === 'lucy' && (
-          <img src={apmaBadge} alt="Chứng nhận APMA" className="h-10 md:h-14 lg:h-16" />
-        )}
-        <div>
+      {/* Mobile: badge + text inline | Tablet+Desktop: badge on top, text below */}
+      {tabKey === 'lucy' && (
+        <div className="flex flex-row-reverse md:flex-col items-center md:items-start gap-3 mb-3 md:mb-5">
+          <img src={apmaBadge} alt="Chứng nhận APMA" className="h-10 md:h-12 lg:h-16 shrink-0" />
+          <div>
+            <p className="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider">
+              {product.subtitle}
+            </p>
+            <h3 className="font-display text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground">
+              {product.label}
+            </h3>
+          </div>
+        </div>
+      )}
+      {tabKey !== 'lucy' && (
+        <div className="mb-3 md:mb-5">
           <p className="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider">
             {product.subtitle}
           </p>
@@ -52,7 +63,7 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
             {product.label}
           </h3>
         </div>
-      </div>
+      )}
 
       <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-4 md:mb-6">
         {product.description}
