@@ -33,7 +33,7 @@ type Product = (typeof products)[ProductKey];
 
 const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKey }) => (
   <div
-    className="product-tab-panel grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 lg:gap-8 items-center"
+    className="product-tab-panel grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 lg:gap-8 items-center"
     role="tabpanel"
     id={`tabpanel-${tabKey}`}
     aria-labelledby={`product-tab-label-${tabKey}`}
@@ -42,38 +42,38 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
     <div className="order-2 md:order-1">
       {/* Mobile: badge + text inline | Tablet+Desktop: badge on top, text below */}
       {tabKey === 'lucy' && (
-        <div className="flex flex-row md:flex-col justify-between md:justify-start items-center md:items-start gap-3 mb-3 md:mb-5 lg:mb-2">
+        <div className="flex flex-row md:flex-col justify-between md:justify-start items-center md:items-start gap-3 mb-3 md:mb-4 lg:mb-3">
           <img src={apmaBadge} alt="Chứng nhận APMA" className="h-10 md:h-12 lg:h-12 shrink-0" />
           <div>
             <p className="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider">
               {product.subtitle}
             </p>
-            <h3 className="font-display text-2xl md:text-3xl lg:text-[1.75rem] font-semibold text-foreground">
+            <h3 className="font-display text-2xl md:text-3xl lg:text-3xl font-semibold text-foreground">
               {product.label}
             </h3>
           </div>
         </div>
       )}
       {tabKey !== 'lucy' && (
-        <div className="mb-3 md:mb-5 lg:mb-2">
+        <div className="mb-3 md:mb-4 lg:mb-3">
           <p className="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider">
             {product.subtitle}
           </p>
-          <h3 className="font-display text-2xl md:text-3xl lg:text-[1.75rem] font-semibold text-foreground">
+          <h3 className="font-display text-2xl md:text-3xl lg:text-3xl font-semibold text-foreground">
             {product.label}
           </h3>
         </div>
       )}
 
-      <p className="text-muted-foreground leading-relaxed text-sm md:text-base lg:text-[13px] mb-4 md:mb-6 lg:mb-3">
+      <p className="text-muted-foreground leading-relaxed text-sm md:text-base lg:text-base mb-4 md:mb-4 lg:mb-3">
         {product.description}
       </p>
 
-      <div className="flex flex-wrap gap-1.5 md:gap-2 lg:gap-1 mb-5 md:mb-8 lg:mb-4">
+      <div className="flex flex-wrap gap-1.5 md:gap-2 lg:gap-1.5 mb-5 md:mb-5 lg:mb-4">
         {product.tags.map((tag) => (
           <span
             key={tag}
-            className="px-3 py-1.5 md:px-4 md:py-2 lg:px-2.5 lg:py-1 rounded-full bg-white shadow-[inset_-1px_-2px_6px_0_rgba(255,118,12,0.20)] text-xs md:text-sm lg:text-[11px] font-medium text-foreground"
+            className="px-3 py-1.5 md:px-4 md:py-2 lg:px-3 lg:py-1.5 rounded-full bg-white shadow-[inset_-1px_-2px_6px_0_rgba(255,118,12,0.20)] text-xs md:text-sm lg:text-sm font-medium text-foreground"
           >
             {tag}
           </span>
@@ -82,7 +82,7 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
 
       <a
         href={product.href}
-        className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 lg:px-5 lg:py-2.5 bg-primary text-primary-foreground font-body font-semibold text-sm md:text-base lg:text-xs rounded-xl hover:opacity-90 transition-opacity"
+        className="inline-flex items-center gap-2 px-6 py-3 md:px-7 md:py-3.5 lg:px-7 lg:py-3 bg-primary text-primary-foreground font-body font-semibold text-sm md:text-base lg:text-sm rounded-xl hover:opacity-90 transition-opacity"
       >
         Xem Chi Tiết
         <ArrowRight className="w-4 h-4" />
