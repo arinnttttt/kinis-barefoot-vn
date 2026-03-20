@@ -78,7 +78,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link to="/" className="flex items-center">
-            <img src={logoBlack} alt="Kinis" className="h-6 lg:h-7 brightness-0 invert" />
+            <img src={logoBlack} alt="Kinis" className={`h-6 lg:h-7 transition-all duration-500 ${isDark ? "brightness-0 invert" : ""}`} />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
