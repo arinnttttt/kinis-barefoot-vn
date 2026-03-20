@@ -134,8 +134,8 @@ const FAQ = () => {
 
       {/* Mobile horizontal nav */}
       <div className="lg:hidden sticky top-16 z-20 bg-muted/80 backdrop-blur-lg border-b border-border/50">
-        <nav className="overflow-x-auto scrollbar-hide">
-          <div className="flex gap-2 px-4 py-3 min-w-max">
+        <nav className="overflow-x-auto scrollbar-hide -mx-0">
+          <div className="flex gap-1.5 px-3 sm:px-4 py-2.5 sm:py-3 min-w-max">
             {faqCategories.map((cat, catIdx) => {
               const slug = toSlug(cat.category);
               const isActive = activeSection === slug;
@@ -144,7 +144,7 @@ const FAQ = () => {
                   key={catIdx}
                   href={`#${slug}`}
                   data-mobile-nav={slug}
-                  className={`shrink-0 px-4 py-2 text-sm font-body font-medium rounded-full transition-colors whitespace-nowrap ${
+                  className={`shrink-0 px-3 sm:px-4 py-2 text-xs sm:text-sm font-body font-medium rounded-full transition-colors whitespace-nowrap ${
                     isActive
                       ? "bg-foreground text-background"
                       : "bg-background text-muted-foreground hover:text-foreground"
