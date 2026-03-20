@@ -55,7 +55,7 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
         </div>
       )}
       {tabKey !== 'lucy' && (
-        <div className="mb-3 md:mb-5">
+        <div className="mb-3 md:mb-5 lg:mb-3">
           <p className="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider">
             {product.subtitle}
           </p>
