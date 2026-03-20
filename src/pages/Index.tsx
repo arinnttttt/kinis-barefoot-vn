@@ -105,28 +105,21 @@ const Index = () => {
             </h2>
           </motion.div>
 
-          {/* Folder-style Tab Switcher */}
+          {/* Browser-style Tab Switcher */}
           <div className="flex justify-center mb-0">
             <div className="relative inline-flex items-end gap-0">
-              {(["lucy", "nomad"] as ProductKey[]).map((key) => {
+              {(["lucy", "nomad"] as ProductKey[]).map((key, idx) => {
                 const isActive = activeTab === key;
                 return (
                   <button
                     key={key}
                     onClick={() => setActiveTab(key)}
-                    className={`relative px-10 md:px-14 py-3.5 font-body font-semibold text-sm md:text-base transition-all duration-200 rounded-t-2xl border border-b-0 ${
+                    className={`tab-folder relative px-10 md:px-14 py-3.5 font-body font-semibold text-sm md:text-base transition-all duration-200 ${
                       isActive
-                        ? "bg-[hsl(0_0%_100%/0.7)] backdrop-blur-xl border-[hsl(0_0%_0%/0.08)] text-foreground z-10 shadow-[0_-4px_20px_-4px_hsl(0_0%_0%/0.08)]"
-                        : "bg-[hsl(0_0%_100%/0.25)] backdrop-blur-md border-[hsl(0_0%_0%/0.04)] text-muted-foreground hover:bg-[hsl(0_0%_100%/0.4)] hover:text-foreground"
+                        ? "tab-folder-active bg-primary text-primary-foreground z-10"
+                        : "bg-[hsl(0_0%_100%/0.25)] backdrop-blur-md text-muted-foreground hover:bg-[hsl(0_0%_100%/0.4)] hover:text-foreground rounded-t-2xl"
                     }`}
                   >
-                    {isActive && (
-                      <motion.div
-                        layoutId="active-tab-indicator"
-                        className="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-0.5 rounded-full bg-secondary"
-                        transition={{ type: "spring", stiffness: 400, damping: 35 }}
-                      />
-                    )}
                     {products[key].label}
                   </button>
                 );
