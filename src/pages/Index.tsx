@@ -90,7 +90,7 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
     </div>
 
     <div className="order-1 md:order-2">
-      <div className="relative rounded-2xl overflow-hidden aspect-[16/10] md:aspect-[4/5]">
+      <div className="relative rounded-2xl overflow-hidden aspect-[16/10] md:aspect-[4/5] lg:aspect-[4/4]">
         <img src={product.image} alt={product.label} className="w-full h-full object-cover" />
         <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 bg-gradient-to-t from-[hsl(0_0%_0%/0.5)] to-transparent">
           <span className="font-display text-lg md:text-xl font-bold text-[hsl(var(--nav-foreground))]">
