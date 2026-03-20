@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import logoBlack from "@/assets/logo-kinis-black.png";
 
 const navigation = [
@@ -30,7 +28,6 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [headerTheme, setHeaderTheme] = useState<"dark" | "light">("dark");
-  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,11 +58,8 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [location.pathname]);
-
-  const isActive = (href: string) => location.pathname === href;
+  const currentPath = typeof window !== "undefined" ? window.location.pathname : "/";
+  const isActive = (href: string) => currentPath === href;
   const isParentActive = (children?: { href: string }[]) =>
     Boolean(children?.some((child) => isActive(child.href)));
 
@@ -80,16 +74,19 @@ const Header = () => {
             : "glass-header-light"
           : "bg-transparent"
       }`}
+      data-component="header"
+      data-header-theme={headerTheme}
+      data-header-scrolled={scrolled ? "true" : "false"}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <Link to="/" className="flex items-center">
+          <a href="/" className="flex items-center">
             <img
               src={logoBlack}
               alt="Kinis"
               className={`h-6 lg:h-7 transition-all duration-500 ${isDark ? "brightness-0 invert" : ""}`}
             />
-          </Link>
+          </a>
 
           <nav className="hidden lg:flex items-center gap-1" data-component="navigation">
             {navigation.map((item) =>
@@ -122,9 +119,9 @@ const Header = () => {
                     role="menu"
                   >
                     {item.children.map((child) => (
-                      <Link
+                      <a
                         key={child.href}
-                        to={child.href}
+                        href={child.href}
                         className={`block px-4 py-3 text-sm transition-colors ${
                           isActive(child.href)
                             ? "bg-[hsl(0_0%_100%/0.06)] text-secondary"
@@ -133,14 +130,14 @@ const Header = () => {
                         role="menuitem"
                       >
                         {child.name}
-                      </Link>
+                      </a>
                     ))}
                   </div>
                 </div>
               ) : (
-                <Link
+                <a
                   key={item.name}
-                  to={item.href}
+                  href={item.href}
                   className={`px-4 py-2 text-sm font-medium transition-colors ${
                     isActive(item.href)
                       ? "text-secondary"
@@ -150,7 +147,7 @@ const Header = () => {
                   }`}
                 >
                   {item.name}
-                </Link>
+                </a>
               )
             )}
           </nav>
@@ -165,63 +162,58 @@ const Header = () => {
         </div>
       </div>
 
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="lg:hidden glass-card overflow-hidden"
-          >
-            <div className="px-6 py-4 space-y-1">
-              {navigation.map((item) =>
-                item.children ? (
-                  <details key={item.name} className="group rounded-lg">
-                    <summary
-                      className={`flex cursor-pointer list-none items-center justify-between px-3 py-2.5 text-sm font-medium transition-colors [&::-webkit-details-marker]:hidden ${
-                        isParentActive(item.children)
+      <div
+        className={`lg:hidden glass-card overflow-hidden transition-all duration-300 ${
+          mobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="px-6 py-4 space-y-1">
+          {navigation.map((item) =>
+            item.children ? (
+              <details key={item.name} className="group rounded-lg">
+                <summary
+                  className={`flex cursor-pointer list-none items-center justify-between px-3 py-2.5 text-sm font-medium transition-colors [&::-webkit-details-marker]:hidden ${
+                    isParentActive(item.children)
+                      ? "text-secondary"
+                      : "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
+                  }`}
+                >
+                  {item.name}
+                  <ChevronDown className="w-4 h-4 transition-transform group-open:rotate-180" />
+                </summary>
+
+                <div className="pl-4 pb-2">
+                  {item.children.map((child) => (
+                    <a
+                      key={child.href}
+                      href={child.href}
+                      className={`block px-3 py-2 text-sm transition-colors ${
+                        isActive(child.href)
                           ? "text-secondary"
-                          : "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
+                          : "text-[hsl(var(--nav-foreground))]/50 hover:text-secondary"
                       }`}
                     >
-                      {item.name}
-                      <ChevronDown className="w-4 h-4 transition-transform group-open:rotate-180" />
-                    </summary>
-
-                    <div className="pl-4 pb-2">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          to={child.href}
-                          className={`block px-3 py-2 text-sm transition-colors ${
-                            isActive(child.href)
-                              ? "text-secondary"
-                              : "text-[hsl(var(--nav-foreground))]/50 hover:text-secondary"
-                          }`}
-                        >
-                          {child.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </details>
-                ) : (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    className={`block px-3 py-2.5 text-sm font-medium ${
-                      isActive(item.href)
-                        ? "text-secondary"
-                        : "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                )
-              )}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                      {child.name}
+                    </a>
+                  ))}
+                </div>
+              </details>
+            ) : (
+              <a
+                key={item.name}
+                href={item.href}
+                className={`block px-3 py-2.5 text-sm font-medium ${
+                  isActive(item.href)
+                    ? "text-secondary"
+                    : "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
+                }`}
+              >
+                {item.name}
+              </a>
+            )
+          )}
+        </div>
+      </div>
     </header>
   );
 };

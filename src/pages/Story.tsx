@@ -1,6 +1,5 @@
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
-import { motion } from "framer-motion";
 import storyImage from "@/assets/story.jpg";
 
 const milestones = [
@@ -16,24 +15,16 @@ const Story = () => (
 
     <section className="section-padding bg-background">
       <div className="max-w-4xl mx-auto">
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-lg text-muted-foreground leading-relaxed mb-16"
-        >
+        <p className="text-lg text-muted-foreground leading-relaxed mb-16 animate-fade-in">
           Kinis ra đời từ một câu hỏi đơn giản: "Tại sao chúng ta đầu tư vào giày nhưng lại quên đi phần quan trọng nhất — lót giày?" Chúng tôi tin rằng một đôi lót giày tốt có thể thay đổi cách bạn vận động, tập luyện và sinh hoạt hàng ngày.
-        </motion.p>
+        </p>
 
         <div className="space-y-12">
           {milestones.map((m, i) => (
-            <motion.div
+            <div
               key={m.year}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="flex gap-6"
+              className="flex gap-6 animate-fade-up"
+              style={{ animationDelay: `${i * 100}ms` }}
             >
               <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-secondary/10 flex items-center justify-center">
                 <span className="font-display text-xl font-bold text-secondary">{m.year}</span>
@@ -42,7 +33,7 @@ const Story = () => (
                 <h3 className="font-display text-xl font-semibold text-foreground">{m.title}</h3>
                 <p className="mt-2 text-muted-foreground leading-relaxed">{m.desc}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

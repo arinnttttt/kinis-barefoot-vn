@@ -1,6 +1,5 @@
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
-import { motion } from "framer-motion";
 import scienceImage from "@/assets/science-foot.jpg";
 
 const principles = [
@@ -30,20 +29,17 @@ const Science = () => (
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {principles.map((p, i) => (
-            <motion.div
+            <div
               key={p.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="p-8 rounded-2xl glass-light"
+              className="p-8 rounded-2xl glass-light animate-fade-up"
+              style={{ animationDelay: `${i * 100}ms` }}
             >
               <div className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center mb-4">
                 <span className="font-display text-lg font-bold text-secondary">{String(i + 1).padStart(2, "0")}</span>
               </div>
               <h3 className="font-display text-xl font-semibold text-card-foreground">{p.title}</h3>
               <p className="mt-3 text-muted-foreground leading-relaxed">{p.desc}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
