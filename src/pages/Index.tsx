@@ -33,7 +33,7 @@ type Product = (typeof products)[ProductKey];
 
 const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKey }) => (
   <div
-    className="product-tab-panel grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+    className="product-tab-panel grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center"
     role="tabpanel"
     id={`tabpanel-${tabKey}`}
     aria-labelledby={`product-tab-label-${tabKey}`}
@@ -41,28 +41,28 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
   >
     <div className="order-2 lg:order-1">
       {tabKey === 'lucy' && (
-        <div className="inline-flex items-center gap-3 mb-6">
-          <img src={apmaBadge} alt="Chứng nhận APMA" className="h-14 md:h-16" />
+        <div className="inline-flex items-center gap-3 mb-4 sm:mb-6">
+          <img src={apmaBadge} alt="Chứng nhận APMA" className="h-12 sm:h-14 md:h-16" />
         </div>
       )}
 
-      <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">
+      <p className="text-xs sm:text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">
         {product.subtitle}
       </p>
 
-      <h3 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-5">
+      <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground mb-4 sm:mb-5">
         {product.label}
       </h3>
 
-      <p className="text-muted-foreground leading-relaxed text-base mb-8">
+      <p className="text-muted-foreground leading-relaxed text-sm sm:text-base mb-6 sm:mb-8">
         {product.description}
       </p>
 
-      <div className="flex flex-wrap gap-2 mb-10">
+      <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-8 sm:mb-10">
         {product.tags.map((tag) => (
           <span
             key={tag}
-            className="px-4 py-2 rounded-full bg-white shadow-[inset_-1px_-2px_6px_0_rgba(255,118,12,0.20)] text-sm font-medium text-foreground"
+            className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white shadow-[inset_-1px_-2px_6px_0_rgba(255,118,12,0.20)] text-xs sm:text-sm font-medium text-foreground"
           >
             {tag}
           </span>
@@ -71,7 +71,7 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
 
       <a
         href={product.href}
-        className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-body font-semibold text-base rounded-xl hover:opacity-90 transition-opacity"
+        className="inline-flex items-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 bg-primary text-primary-foreground font-body font-semibold text-sm sm:text-base rounded-xl hover:opacity-90 transition-opacity"
       >
         Xem Chi Tiết
         <ArrowRight className="w-4 h-4" />
@@ -79,10 +79,10 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
     </div>
 
     <div className="order-1 lg:order-2">
-      <div className="relative rounded-2xl overflow-hidden aspect-[4/4]">
+      <div className="relative rounded-2xl overflow-hidden aspect-square sm:aspect-[4/4]">
         <img src={product.image} alt={product.label} className="w-full h-full object-cover" />
-        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[hsl(0_0%_0%/0.5)] to-transparent">
-          <span className="font-display text-xl font-bold text-[hsl(var(--nav-foreground))]">
+        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-[hsl(0_0%_0%/0.5)] to-transparent">
+          <span className="font-display text-lg sm:text-xl font-bold text-[hsl(var(--nav-foreground))]">
             {product.label}
           </span>
         </div>
@@ -97,7 +97,7 @@ const Index = () => {
 
   return (
     <Layout>
-      <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-[hsl(var(--nav))]">
+      <section className="relative min-h-[100svh] sm:min-h-[92vh] flex items-center overflow-hidden bg-[hsl(var(--nav))]">
         <div className="absolute inset-0">
           <img
             src={heroImage}
@@ -108,9 +108,9 @@ const Index = () => {
           <div className="absolute bottom-0 left-1/4 w-[600px] h-[400px] bg-secondary/10 rounded-full blur-[120px]" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 w-full">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-20 w-full">
           <div className="max-w-2xl animate-fade-up">
-            <h1 className="font-display text-5xl md:text-6xl lg:text-[5.5rem] font-semibold text-[hsl(var(--nav-foreground))] tracking-tight leading-[1.05] uppercase">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-semibold text-[hsl(var(--nav-foreground))] tracking-tight leading-[1.05] uppercase">
               Đánh thức
               <br />
               <span className="text-gradient">sức mạnh</span>
@@ -118,21 +118,21 @@ const Index = () => {
               bàn chân Việt
             </h1>
 
-            <p className="mt-6 text-lg md:text-xl text-[hsl(var(--nav-foreground))]/65 leading-relaxed max-w-lg">
+            <p className="mt-5 sm:mt-6 text-base sm:text-lg md:text-xl text-[hsl(var(--nav-foreground))]/65 leading-relaxed max-w-lg">
               Khôi phục cơ chế sinh học và vận động tự nhiên của bàn chân
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
                 href="/san-pham/lucy"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-secondary-foreground font-body font-semibold text-base rounded-xl hover:brightness-110 transition-all"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 bg-secondary text-secondary-foreground font-body font-semibold text-sm sm:text-base rounded-xl hover:brightness-110 transition-all"
               >
                 Tìm hiểu giày Kinis
                 <ArrowRight className="w-4 h-4" />
               </a>
               <a
                 href="/khoa-hoc"
-                className="inline-flex items-center gap-2 px-8 py-4 glass-card rounded-xl text-[hsl(var(--nav-foreground))] font-body font-semibold text-base hover:text-secondary transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 glass-card rounded-xl text-[hsl(var(--nav-foreground))] font-body font-semibold text-sm sm:text-base hover:text-secondary transition-colors"
               >
                 Thông tin khoa học
               </a>
@@ -141,7 +141,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-16 px-4 md:px-6 bg-background overflow-hidden">
+      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-background overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="product-tabs relative" data-component="tabs">
             <input
@@ -169,7 +169,7 @@ const Index = () => {
               <label
                 id="product-tab-label-lucy"
                 htmlFor="product-tab-lucy"
-                className="product-tab-trigger px-10 py-3.5 font-body text-sm font-semibold md:px-14 md:text-base"
+                className="product-tab-trigger px-8 py-3 sm:px-10 sm:py-3.5 font-body text-sm font-semibold md:px-14 md:text-base"
                 data-tab-trigger="lucy"
                 aria-controls="tabpanel-lucy"
               >
@@ -178,7 +178,7 @@ const Index = () => {
               <label
                 id="product-tab-label-nomad"
                 htmlFor="product-tab-nomad"
-                className="product-tab-trigger px-10 py-3.5 font-body text-sm font-semibold md:px-14 md:text-base"
+                className="product-tab-trigger px-8 py-3 sm:px-10 sm:py-3.5 font-body text-sm font-semibold md:px-14 md:text-base"
                 data-tab-trigger="nomad"
                 aria-controls="tabpanel-nomad"
               >
@@ -187,7 +187,7 @@ const Index = () => {
             </div>
 
             <div
-              className="product-tabs-panel-container relative z-10 -mt-px overflow-hidden rounded-2xl border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] p-6 shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] backdrop-blur-xl md:p-8"
+              className="product-tabs-panel-container relative z-10 -mt-px overflow-hidden rounded-2xl border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] p-4 sm:p-6 shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] backdrop-blur-xl md:p-8"
               data-tabs-panels
             >
               <ProductPanel product={lucy} tabKey="lucy" />
