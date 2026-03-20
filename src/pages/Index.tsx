@@ -69,7 +69,7 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
         {product.description}
       </p>
 
-      <div className="flex flex-wrap gap-1.5 md:gap-2 mb-5 md:mb-8">
+      <div className="flex flex-wrap gap-1.5 md:gap-2 lg:gap-1.5 mb-5 md:mb-8 lg:mb-5">
         {product.tags.map((tag) => (
           <span
             key={tag}
