@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import logoBlack from "@/assets/logo-kinis-black.png";
 
@@ -29,6 +29,16 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [headerTheme, setHeaderTheme] = useState<"dark" | "light">("dark");
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
   useEffect(() => {
     const handleScroll = () => {
       const y = window.scrollY;
@@ -58,6 +68,8 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const closeMobile = useCallback(() => setMobileOpen(false), []);
+
   const currentPath = typeof window !== "undefined" ? window.location.pathname : "/";
   const isActive = (href: string) => currentPath === href;
   const isParentActive = (children?: { href: string }[]) =>
@@ -78,7 +90,7 @@ const Header = () => {
       data-header-theme={headerTheme}
       data-header-scrolled={scrolled ? "true" : "false"}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <a href="/" className="flex items-center">
             <img
@@ -154,7 +166,7 @@ const Header = () => {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={`lg:hidden p-2 transition-colors duration-500 ${isDark ? "text-[hsl(var(--nav-foreground))]" : "text-foreground"}`}
+            className={`lg:hidden p-2.5 -mr-2 transition-colors duration-500 ${isDark ? "text-[hsl(var(--nav-foreground))]" : "text-foreground"}`}
             aria-label={mobileOpen ? "Đóng menu" : "Mở menu"}
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -162,32 +174,34 @@ const Header = () => {
         </div>
       </div>
 
+      {/* Mobile menu - full screen overlay */}
       <div
-        className={`lg:hidden glass-card overflow-hidden transition-all duration-300 ${
-          mobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+        className={`lg:hidden fixed inset-0 top-16 bg-[hsl(var(--nav))] transition-all duration-300 ${
+          mobileOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         }`}
       >
-        <div className="px-6 py-4 space-y-1">
+        <div className="h-full overflow-y-auto px-4 sm:px-6 py-6 space-y-1">
           {navigation.map((item) =>
             item.children ? (
-              <details key={item.name} className="group rounded-lg">
+              <details key={item.name} className="group">
                 <summary
-                  className={`flex cursor-pointer list-none items-center justify-between px-3 py-2.5 text-sm font-medium transition-colors [&::-webkit-details-marker]:hidden ${
+                  className={`flex cursor-pointer list-none items-center justify-between px-4 py-3.5 text-base font-medium transition-colors rounded-xl active:bg-[hsl(0_0%_100%/0.05)] [&::-webkit-details-marker]:hidden ${
                     isParentActive(item.children)
                       ? "text-secondary"
                       : "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
                   }`}
                 >
                   {item.name}
-                  <ChevronDown className="w-4 h-4 transition-transform group-open:rotate-180" />
+                  <ChevronDown className="w-5 h-5 transition-transform group-open:rotate-180" />
                 </summary>
 
-                <div className="pl-4 pb-2">
+                <div className="pl-4 pb-2 space-y-0.5">
                   {item.children.map((child) => (
                     <a
                       key={child.href}
                       href={child.href}
-                      className={`block px-3 py-2 text-sm transition-colors ${
+                      onClick={closeMobile}
+                      className={`block px-4 py-3 text-base transition-colors rounded-xl active:bg-[hsl(0_0%_100%/0.05)] ${
                         isActive(child.href)
                           ? "text-secondary"
                           : "text-[hsl(var(--nav-foreground))]/50 hover:text-secondary"
@@ -202,7 +216,8 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className={`block px-3 py-2.5 text-sm font-medium ${
+                onClick={closeMobile}
+                className={`block px-4 py-3.5 text-base font-medium rounded-xl active:bg-[hsl(0_0%_100%/0.05)] ${
                   isActive(item.href)
                     ? "text-secondary"
                     : "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
@@ -212,6 +227,22 @@ const Header = () => {
               </a>
             )
           )}
+
+          {/* Mobile social / contact */}
+          <div className="pt-6 mt-6 border-t border-[hsl(var(--nav-foreground))]/10">
+            <a
+              href="tel:+84708803573"
+              className="block px-4 py-3 text-base text-[hsl(var(--nav-foreground))]/50 hover:text-secondary transition-colors"
+            >
+              (+84) 708 803 573
+            </a>
+            <a
+              href="mailto:hello@kinis.com"
+              className="block px-4 py-3 text-base text-[hsl(var(--nav-foreground))]/50 hover:text-secondary transition-colors"
+            >
+              hello@kinis.com
+            </a>
+          </div>
         </div>
       </div>
     </header>
