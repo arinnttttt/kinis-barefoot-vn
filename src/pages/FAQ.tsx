@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
