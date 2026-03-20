@@ -128,10 +128,16 @@ const FAQ = () => {
         </nav>
       </div>
 
+      {/* FAQ Section — WordPress: Custom Post Type "faq" + Taxonomy "faq_category"
+           - Each category = a term in faq_category taxonomy
+           - Each FAQ = a post (title = question, content = answer)
+           - WPConvert.ai mapping: data-wp-query, data-wp-taxonomy, data-wp-post, data-wp-field
+      */}
       <section
         className="py-10 sm:py-12 md:py-16 px-3 sm:px-6 lg:px-8 bg-muted/60"
         data-component="faq-section"
-        data-acf-group="faq_page"
+        data-wp-query="faq"
+        data-wp-taxonomy="faq_category"
       >
         <div className="max-w-5xl mx-auto flex gap-10">
           {/* Desktop sidebar navigation */}
@@ -158,48 +164,35 @@ const FAQ = () => {
             </ul>
           </nav>
 
-          {/* FAQ content — native <details>/<summary> for WP compatibility
-               ACF Structure:
-               - Repeater: faq_categories
-                 - Text: category_name
-                 - Repeater: faqs
-                   - Text: question
-                   - Textarea: answer
-          */}
-          <div
-            className="flex-1 min-w-0 space-y-8 sm:space-y-12"
-            data-acf-repeater="faq_categories"
-          >
+          {/* FAQ content — native <details>/<summary> for WP compatibility */}
+          <div className="flex-1 min-w-0 space-y-8 sm:space-y-12">
             {faqCategories.map((cat, catIdx) => (
               <div
                 key={catIdx}
                 id={toSlug(cat.category)}
                 className="scroll-mt-28"
-                data-acf-repeater-item
+                data-wp-term="faq_category"
               >
                 <h2
                   className="font-display text-xl sm:text-2xl font-semibold text-foreground mb-1 pb-3 sm:pb-4 border-b border-border"
-                  data-acf-field="category_name"
+                  data-wp-term-name
                 >
                   {cat.category}
                 </h2>
-                <div
-                  className="space-y-2 sm:space-y-3 mt-3 sm:mt-4"
-                  data-acf-repeater="faqs"
-                >
+                <div className="space-y-2 sm:space-y-3 mt-3 sm:mt-4">
                   {cat.faqs.map((faq, i) => (
                     <details
                       key={i}
                       className="group glass-light rounded-xl px-4 sm:px-6 transition-shadow open:shadow-md border-0"
-                      data-acf-repeater-item
+                      data-wp-post="faq"
                     >
                       <summary className="flex items-center justify-between cursor-pointer font-body text-left text-sm sm:text-base font-medium text-card-foreground hover:text-secondary py-4 sm:py-5 list-none [&::-webkit-details-marker]:hidden">
-                        <span data-acf-field="question">{faq.q}</span>
+                        <span data-wp-field="post_title">{faq.q}</span>
                         <ChevronDown className="w-4 h-4 shrink-0 ml-2 text-muted-foreground transition-transform duration-200 group-open:rotate-180" />
                       </summary>
                       <div
                         className="text-foreground/80 text-[13px] sm:text-[15px] leading-relaxed pb-4 sm:pb-5 whitespace-pre-line"
-                        data-acf-field="answer"
+                        data-wp-field="post_content"
                       >
                         {faq.a}
                       </div>
