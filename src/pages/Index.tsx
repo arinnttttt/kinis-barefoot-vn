@@ -154,7 +154,7 @@ const Index = () => {
 
       <section className="py-12 sm:py-16 lg:py-8 px-4 sm:px-6 bg-background overflow-hidden" aria-labelledby="products-heading">
         <div className="max-w-7xl mx-auto">
-          <h2 id="products-heading" className="sr-only">Sản phẩm giày Kinis</h2>
+          <h2 id="products-heading" className="text-center font-display text-xl sm:text-2xl lg:text-2xl font-semibold text-foreground mb-6 sm:mb-8 lg:mb-4">Hệ sinh thái chăm sóc sức khỏe vận động</h2>
           <div className="product-tabs relative" data-component="tabs">
             <input
               id="product-tab-lucy"
