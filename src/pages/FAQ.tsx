@@ -79,6 +79,17 @@ const faqCategories = [
       { q: "Làm sao hạn chế mùi khi mang giày barefoot Kinis?", a: "Giày barefoot Kinis được làm từ chất liệu vải chuyên biệt, có khả năng kháng khuẩn, hạn chế mùi. Tuy nhiên, để giày luôn thơm tho và sạch sẽ, bạn nên:\n- Phơi giày nơi thoáng khí sau khi sử dụng\n- Có thể dùng tất mỏng hoặc xịt khử mùi tự nhiên\n- Tránh mang liên tục nhiều giờ trong môi trường ẩm kín" },
     ],
   },
+  {
+    category: "Giày cho bàn chân bẹt",
+    faqs: [
+      { q: "Bàn chân bẹt là gì?", a: "Bàn chân bẹt là tình trạng vòm bàn chân thấp hoặc xẹp xuống, khiến toàn bộ lòng bàn chân gần như tiếp xúc với mặt đất khi đứng. Điều này có thể ảnh hưởng đến: khả năng thăng bằng, dáng đi, áp lực lên gối, hông và cột sống." },
+      { q: "Người bàn chân bẹt nên chọn giày như thế nào?", a: "Một đôi giày phù hợp cho bàn chân bẹt nên chọn giày có thiết kế phù hợp:\n- Có mũi giày rộng\n- Đế phẳng, không ép dáng đi\n- Không bó ngón, không gò vòm\n- Cho phép bàn chân tự điều chỉnh khi tiếp đất\n👉 Đây cũng chính là triết lý thiết kế của giày barefoot Kinis để phù hợp cho người bàn chân bẹt muốn bàn chân được hoạt động về đúng cấu trúc tự nhiên, từ đó cải thiện sức mạnh của bàn chân và dáng đi tổng thể." },
+      { q: "Vì sao Kinis là giày cho bàn chân bẹt theo hướng tự nhiên?", a: "Kinis là giày cho bàn chân bẹt được thiết kế để không nâng vòm cứng, không làm bàn chân phụ thuộc, mà giúp cơ bàn chân hoạt động và thích nghi tốt hơn theo thời gian. Giày hỗ trợ thăng bằng, dáng đi và cảm nhận mặt đất cho người bàn chân bẹt trong sinh hoạt hằng ngày." },
+      { q: "Vì sao người bàn chân bẹt nên cân nhắc giày Kinis?", a: "Vì Kinis không \"sửa\" bàn chân bằng đệm nhân tạo mà tôn trọng cấu trúc tự nhiên, giúp bàn chân hoạt động đúng chức năng. Bên cạnh đó, giày Kinis còn hỗ trợ cải thiện cảm giác thăng bằng và giảm nguy cơ lệch trục vận động do giày không phù hợp." },
+      { q: "Kinis Nomad hay Kinis Lucy phù hợp hơn cho người bàn chân bẹt?", a: "Tùy mục đích sử dụng & mức độ thích nghi để bạn lựa chọn mẫu giày Kinis phù hợp:\n- Kinis Lucy phù hợp người mới bắt đầu, sử dụng đi bộ, sinh hoạt hằng ngày và không cần thời gian làm quen\n- Kinis Nomad phù hợp người đã quen barefoot (chân trần), tập gym, yoga, vận động nhẹ. Mẫu giày này cần lộ trình thích nghi." },
+      { q: "Mang giày Kinis có giúp cải thiện thăng bằng cho người bàn chân bẹt không?", a: "Có thể. Với người bàn chân bẹt, giày Kinis sẽ giúp đôi chân hoạt động về đúng cấu trúc tự nhiên và cơ chế sinh học của bàn chân. Đặc biệt thiết kế zero-drop + mũi rộng sẽ giúp tăng cảm nhận mặt đất, kích hoạt cơ bàn chân & cổ chân và cải thiện khả năng kiểm soát trọng tâm khi vận động." },
+    ],
+  },
 ];
 
 const FAQ = () => (
