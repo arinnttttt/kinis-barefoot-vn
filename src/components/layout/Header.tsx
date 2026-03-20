@@ -123,7 +123,9 @@ const Header = () => {
                   className={`px-4 py-2 text-sm font-medium transition-colors ${
                     isActive(item.href)
                       ? "text-secondary"
-                      : "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
+                      : isDark
+                        ? "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
+                        : "text-foreground/70 hover:text-secondary"
                   }`}
                 >
                   {item.name}
