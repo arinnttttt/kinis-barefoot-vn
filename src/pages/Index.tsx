@@ -94,15 +94,19 @@ const Index = () => {
       <section className="section-padding bg-background overflow-hidden">
         <div className="max-w-7xl mx-auto">
           {/* Browser-style Tab Switcher + Content as one unit */}
-          <div className="relative">
+          <div className="relative" data-component="tabs" data-tabs-active="lucy">
             {/* Tabs row - centered */}
-            <div className="flex justify-center relative z-20">
+            <div className="flex justify-center relative z-20" role="tablist">
               {(["lucy", "nomad"] as ProductKey[]).map((key) => {
                 const isActive = activeTab === key;
                 return (
                   <button
                     key={key}
                     onClick={() => setActiveTab(key)}
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-controls={`tabpanel-${key}`}
+                    data-tab-trigger={key}
                     className={`tab-folder relative px-10 md:px-14 py-3.5 font-body font-semibold text-sm md:text-base transition-all duration-200 cursor-pointer select-none ${
                       isActive
                         ? "tab-folder-active bg-primary text-primary-foreground"
@@ -133,6 +137,9 @@ const Index = () => {
               exit={{ opacity: 0, y: -24 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+              role="tabpanel"
+              id={`tabpanel-${activeTab}`}
+              data-tab-content={activeTab}
             >
               {/* Text side */}
               <div className="order-2 lg:order-1">
