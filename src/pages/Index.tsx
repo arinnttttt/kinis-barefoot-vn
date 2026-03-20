@@ -105,10 +105,11 @@ const Index = () => {
             </h2>
           </motion.div>
 
-          {/* Browser-style Tab Switcher */}
-          <div className="flex justify-center mb-0">
-            <div className="relative inline-flex items-end gap-0">
-              {(["lucy", "nomad"] as ProductKey[]).map((key, idx) => {
+          {/* Browser-style Tab Switcher + Content as one unit */}
+          <div className="relative">
+            {/* Tabs row */}
+            <div className="flex ml-8 relative z-20">
+              {(["lucy", "nomad"] as ProductKey[]).map((key) => {
                 const isActive = activeTab === key;
                 return (
                   <button
@@ -116,8 +117,8 @@ const Index = () => {
                     onClick={() => setActiveTab(key)}
                     className={`tab-folder relative px-10 md:px-14 py-3.5 font-body font-semibold text-sm md:text-base transition-all duration-200 ${
                       isActive
-                        ? "tab-folder-active bg-primary text-primary-foreground z-10"
-                        : "bg-[hsl(0_0%_100%/0.25)] backdrop-blur-md text-muted-foreground hover:bg-[hsl(0_0%_100%/0.4)] hover:text-foreground rounded-t-2xl"
+                        ? "tab-folder-active bg-primary text-primary-foreground"
+                        : "bg-[hsl(0_0%_0%/0.06)] text-muted-foreground hover:bg-[hsl(0_0%_0%/0.1)] hover:text-foreground rounded-t-xl"
                     }`}
                   >
                     {products[key].label}
@@ -125,10 +126,9 @@ const Index = () => {
                 );
               })}
             </div>
-          </div>
 
-          {/* Glass content panel */}
-          <div className="rounded-2xl rounded-tl-none border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] backdrop-blur-xl shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] p-8 md:p-12">
+            {/* Glass content panel */}
+            <div className="relative z-10 rounded-3xl rounded-tl-none border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] backdrop-blur-xl shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] p-8 md:p-12 -mt-px">
 
           {/* Product Content */}
           <AnimatePresence mode="wait">
@@ -207,6 +207,7 @@ const Index = () => {
               </div>
             </motion.div>
           </AnimatePresence>
+            </div>
           </div>
         </div>
       </section>
