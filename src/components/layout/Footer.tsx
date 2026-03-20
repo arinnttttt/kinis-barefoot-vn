@@ -124,13 +124,6 @@ const Footer = () => (
           </ul>
         </div>
 
-        {/* Tagline */}
-        <div>
-          <h4 className="font-body font-semibold text-sm mb-5">Về Kinis</h4>
-          <p className="text-sm text-[hsl(var(--nav-foreground))]/50 leading-relaxed">
-            Hơn cả một đôi giày, đó là sức khỏe vận động, giúp bàn chân tự chữa lành thông qua vận động tự nhiên.
-          </p>
-        </div>
       </div>
 
       {/* Bottom bar */}
