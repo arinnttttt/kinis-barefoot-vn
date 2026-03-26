@@ -14,8 +14,8 @@ const hotspots = [
     id: "joints",
     label: "33 khớp",
     description: "33 khớp nối cho phép bàn chân uốn cong, xoay và thích nghi với mọi bề mặt địa hình.",
-    top: "48%",
-    left: "50%",
+    top: "42%",
+    left: "42%",
     delay: "0.7s",
   },
   {
