@@ -22,8 +22,8 @@ const hotspots = [
     id: "nerves",
     label: "200K+ đầu dây thần kinh",
     description: "Hơn 200.000 đầu dây thần kinh giúp bàn chân cảm nhận mặt đất và gửi tín hiệu về não để điều chỉnh thăng bằng.",
-    top: "68%",
-    left: "62%",
+    top: "62%",
+    left: "55%",
     delay: "1.4s",
   },
 ];
