@@ -29,7 +29,7 @@ const hotspots = [
 
 const FootAnatomyInteractive = () => {
   return (
-    <div className="foot-anatomy-interactive relative w-full">
+    <div className="foot-anatomy-interactive relative w-full h-full">
       <div className="rounded-2xl overflow-hidden shadow-[0_8px_32px_-8px_hsl(0,0%,0%,0.12)]">
         <img
           src={footAnatomy}
