@@ -218,19 +218,8 @@ const Index = () => {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
-            {/* Image side */}
-            <div className="relative">
-              <div className="rounded-2xl overflow-hidden shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.12)]">
-                <img
-                  src={footAnatomy}
-                  alt="Giải phẫu bàn chân - 26 xương, 33 khớp và hơn 200.000 đầu dây thần kinh"
-                  className="w-full h-auto"
-                  loading="lazy"
-                  width={1024}
-                  height={1024}
-                />
-              </div>
-            </div>
+            {/* Interactive image side */}
+            <FootAnatomyInteractive />
 
             {/* Text side */}
             <div className="space-y-5 text-muted-foreground text-sm sm:text-base leading-relaxed">
