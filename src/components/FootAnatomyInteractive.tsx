@@ -3,28 +3,28 @@ import footAnatomy from "@/assets/foot-anatomy.jpg";
 
 const hotspots = [
   {
-    id: "bones",
-    label: "26 xương",
-    description: "Bàn chân chứa 26 xương — chiếm 1/4 tổng số xương trong cơ thể, tạo nên cấu trúc vững chắc và linh hoạt.",
-    top: "28%",
-    left: "48%",
-    delay: "0s",
+    id: "nerves",
+    label: "200K+ đầu dây thần kinh",
+    description: "Hơn 200.000 đầu dây thần kinh giúp bàn chân cảm nhận mặt đất và gửi tín hiệu về não để điều chỉnh thăng bằng.",
+    top: "18%",
+    left: "55%",
+    delay: "1.4s",
   },
   {
     id: "joints",
     label: "33 khớp",
     description: "33 khớp nối cho phép bàn chân uốn cong, xoay và thích nghi với mọi bề mặt địa hình.",
-    top: "55%",
-    left: "55%",
+    top: "52%",
+    left: "42%",
     delay: "0.7s",
   },
   {
-    id: "nerves",
-    label: "200K+ đầu dây thần kinh",
-    description: "Hơn 200.000 đầu dây thần kinh giúp bàn chân cảm nhận mặt đất và gửi tín hiệu về não để điều chỉnh thăng bằng.",
-    top: "72%",
-    left: "42%",
-    delay: "1.4s",
+    id: "bones",
+    label: "26 xương",
+    description: "Bàn chân chứa 26 xương — chiếm 1/4 tổng số xương trong cơ thể, tạo nên cấu trúc vững chắc và linh hoạt.",
+    top: "78%",
+    left: "48%",
+    delay: "0s",
   },
 ];
 
