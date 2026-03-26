@@ -483,3 +483,35 @@ html {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Foot Anatomy Interactive - WordPress-safe pure CSS hover */
+.foot-hotspot-ping {
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.foot-hotspot-dot {
+  transition: transform 0.2s ease;
+}
+
+.foot-hotspot:hover .foot-hotspot-dot {
+  transform: scale(1.5);
+}
+
+.foot-hotspot-tooltip {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-50%) scale(0.95);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+  background-color: hsla(0, 0%, 100%, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-color: hsl(0, 0%, 90%);
+}
+
+.foot-hotspot:hover .foot-hotspot-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) scale(1);
+  pointer-events: auto;
+}
