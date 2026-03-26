@@ -217,7 +217,7 @@ const Index = () => {
             <span className="text-gradient">bản năng</span> của bàn chân
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-stretch">
             {/* Interactive image side */}
             <FootAnatomyInteractive />
 
