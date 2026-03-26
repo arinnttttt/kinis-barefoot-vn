@@ -1,4 +1,3 @@
-import { useState } from "react";
 import footAnatomy from "@/assets/foot-anatomy.jpg";
 
 const hotspots = [
@@ -29,15 +28,13 @@ const hotspots = [
 ];
 
 const FootAnatomyInteractive = () => {
-  const [activeSpot, setActiveSpot] = useState<string | null>(null);
-
   return (
-    <div className="relative w-full max-w-md mx-auto md:mx-0">
-      <div className="rounded-2xl overflow-hidden shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.12)]">
+    <div className="foot-anatomy-interactive relative w-full">
+      <div className="rounded-2xl overflow-hidden shadow-[0_8px_32px_-8px_hsl(0,0%,0%,0.12)]">
         <img
           src={footAnatomy}
           alt="Giải phẫu bàn chân - 26 xương, 33 khớp và hơn 200.000 đầu dây thần kinh"
-          className="w-full h-auto"
+          className="w-full h-auto block"
           loading="lazy"
           width={800}
           height={1024}
@@ -46,31 +43,36 @@ const FootAnatomyInteractive = () => {
         {hotspots.map((spot) => (
           <div
             key={spot.id}
-            className="absolute group"
+            className="foot-hotspot absolute"
             style={{ top: spot.top, left: spot.left }}
-            onMouseEnter={() => setActiveSpot(spot.id)}
-            onMouseLeave={() => setActiveSpot(null)}
-            onClick={() => setActiveSpot(activeSpot === spot.id ? null : spot.id)}
           >
             {/* Pulse ring */}
             <span
-              className="absolute -inset-2 rounded-full bg-secondary/30 animate-ping"
-              style={{ animationDelay: spot.delay, animationDuration: "2s" }}
+              className="foot-hotspot-ping absolute -inset-2 rounded-full"
+              style={{
+                animationDelay: spot.delay,
+                animationDuration: "2s",
+                backgroundColor: "hsla(25, 95%, 53%, 0.3)",
+              }}
             />
             {/* Dot */}
-            <span className="relative block w-3.5 h-3.5 rounded-full bg-secondary border-2 border-white shadow-lg cursor-pointer transition-transform duration-200 hover:scale-150" />
+            <span
+              className="foot-hotspot-dot relative block w-3.5 h-3.5 rounded-full border-2 border-white shadow-lg cursor-pointer"
+              style={{ backgroundColor: "hsl(25, 95%, 53%)" }}
+            />
 
-            {/* Tooltip */}
-            {activeSpot === spot.id && (
-              <div className="absolute z-30 left-6 top-1/2 -translate-y-1/2 w-56 sm:w-64 p-3.5 rounded-xl bg-card/90 backdrop-blur-xl border border-border shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.15)] animate-fade-in">
-                <p className="font-display text-sm font-bold text-secondary mb-1">
-                  {spot.label}
-                </p>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  {spot.description}
-                </p>
-              </div>
-            )}
+            {/* Tooltip - pure CSS hover */}
+            <div className="foot-hotspot-tooltip absolute z-30 left-6 top-1/2 w-56 sm:w-64 p-3.5 rounded-xl border shadow-[0_8px_32px_-8px_hsl(0,0%,0%,0.15)]">
+              <p
+                className="font-display text-sm font-bold mb-1"
+                style={{ color: "hsl(25, 95%, 53%)" }}
+              >
+                {spot.label}
+              </p>
+              <p className="text-xs leading-relaxed" style={{ color: "hsl(0, 0%, 45%)" }}>
+                {spot.description}
+              </p>
+            </div>
           </div>
         ))}
       </div>
