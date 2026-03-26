@@ -208,6 +208,41 @@ const Index = () => {
           </div>
         </div>
       </section>
+      <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 bg-background">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] font-bold text-foreground leading-tight uppercase tracking-tight">
+            Đánh thức sức mạnh
+            <br />
+            <span className="text-gradient">bản năng</span> của bàn chân
+          </h2>
+
+          <div className="mt-8 sm:mt-10 space-y-5 text-muted-foreground text-sm sm:text-base leading-relaxed text-left sm:text-center">
+            <p>
+              Mọi chuyển động của cơ thể đều bắt đầu từ bàn chân.
+              Bàn chân được cấu tạo từ <strong className="text-foreground">26 xương</strong>, <strong className="text-foreground">33 khớp</strong> và hơn <strong className="text-foreground">200.000 đầu dây thần kinh</strong>.
+              Với cấu trúc như vậy, bàn chân có đủ khả năng nâng đỡ toàn bộ cơ thể — nếu được hoạt động tự nhiên.
+              Nhưng trong nhiều năm, chúng ta đã quen với những đôi giày đệm dày khiến bàn chân dần mất đi khả năng vận động tự nhiên ấy.
+            </p>
+            <p>
+              Kinis ra đời từ ý tưởng đơn giản: <em>hãy để bàn chân trở về với cấu trúc nguyên bản và vận động tự nhiên của mình.</em>
+            </p>
+            <p>
+              Kinis phát triển những đôi giày tối giản (minimalist) giúp bạn cảm nhận mặt đất chân thật,
+              kích hoạt nhóm cơ bàn chân và xây dựng một nền tảng chuyển động khỏe mạnh theo thời gian.
+              Bởi vì khi bàn chân khỏe, mọi chuyển động của cơ thể cũng trở nên tự nhiên và mạnh mẽ hơn.
+            </p>
+          </div>
+
+          <blockquote className="mt-10 sm:mt-14 border-l-4 border-secondary pl-5 sm:pl-6 py-3 text-left max-w-xl mx-auto">
+            <p className="font-display text-base sm:text-lg md:text-xl text-foreground italic leading-relaxed">
+              "Bàn chân con người là một kiệt tác — vừa hoàn hảo về cấu trúc, vừa mang vẻ đẹp của nghệ thuật."
+            </p>
+            <footer className="mt-3 text-sm font-body font-semibold text-muted-foreground">
+              — Leonardo Da Vinci
+            </footer>
+          </blockquote>
+        </div>
+      </section>
     </Layout>
   );
 };
