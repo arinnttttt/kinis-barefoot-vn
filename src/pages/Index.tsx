@@ -210,68 +210,57 @@ const Index = () => {
         </div>
       </section>
       <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 bg-background">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] font-bold text-foreground leading-tight uppercase tracking-tight">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] font-bold text-foreground leading-tight uppercase tracking-tight text-center mb-10 sm:mb-14">
             Đánh thức sức mạnh
             <br />
             <span className="text-gradient">bản năng</span> của bàn chân
           </h2>
 
-          <div className="mt-8 sm:mt-10 space-y-5 text-muted-foreground text-sm sm:text-base leading-relaxed text-left sm:text-center">
-            <p>
-              Mọi chuyển động của cơ thể đều bắt đầu từ bàn chân.
-            </p>
-
-            {/* Foot anatomy image with stat badges */}
-            <div className="relative max-w-md mx-auto my-8 sm:my-10">
-              <img
-                src={footAnatomy}
-                alt="Giải phẫu bàn chân - xương, khớp và dây thần kinh"
-                className="w-full h-auto rounded-2xl"
-                loading="lazy"
-                width={1024}
-                height={768}
-              />
-              {/* Stat badges */}
-              <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mt-5">
-                <span className="inline-flex flex-col items-center px-4 py-3 rounded-xl bg-card shadow-[var(--card-shadow)]">
-                  <strong className="font-display text-xl sm:text-2xl font-bold text-secondary">26</strong>
-                  <span className="text-xs sm:text-sm text-muted-foreground font-medium">xương</span>
-                </span>
-                <span className="inline-flex flex-col items-center px-4 py-3 rounded-xl bg-card shadow-[var(--card-shadow)]">
-                  <strong className="font-display text-xl sm:text-2xl font-bold text-secondary">33</strong>
-                  <span className="text-xs sm:text-sm text-muted-foreground font-medium">khớp</span>
-                </span>
-                <span className="inline-flex flex-col items-center px-4 py-3 rounded-xl bg-card shadow-[var(--card-shadow)]">
-                  <strong className="font-display text-xl sm:text-2xl font-bold text-secondary">200K+</strong>
-                  <span className="text-xs sm:text-sm text-muted-foreground font-medium">đầu dây thần kinh</span>
-                </span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+            {/* Image side */}
+            <div className="relative">
+              <div className="rounded-2xl overflow-hidden shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.12)]">
+                <img
+                  src={footAnatomy}
+                  alt="Giải phẫu bàn chân - 26 xương, 33 khớp và hơn 200.000 đầu dây thần kinh"
+                  className="w-full h-auto"
+                  loading="lazy"
+                  width={1024}
+                  height={1024}
+                />
               </div>
             </div>
 
-            <p>
-              Bàn chân được cấu tạo từ <strong className="text-foreground">26 xương</strong>, <strong className="text-foreground">33 khớp</strong> và hơn <strong className="text-foreground">200.000 đầu dây thần kinh</strong>.
-              Với cấu trúc như vậy, bàn chân có đủ khả năng nâng đỡ toàn bộ cơ thể — nếu được hoạt động tự nhiên.
-              Nhưng trong nhiều năm, chúng ta đã quen với những đôi giày đệm dày khiến bàn chân dần mất đi khả năng vận động tự nhiên ấy.
-            </p>
-            <p>
-              Kinis ra đời từ ý tưởng đơn giản: <em>hãy để bàn chân trở về với cấu trúc nguyên bản và vận động tự nhiên của mình.</em>
-            </p>
-            <p>
-              Kinis phát triển những đôi giày tối giản (minimalist) giúp bạn cảm nhận mặt đất chân thật,
-              kích hoạt nhóm cơ bàn chân và xây dựng một nền tảng chuyển động khỏe mạnh theo thời gian.
-              Bởi vì khi bàn chân khỏe, mọi chuyển động của cơ thể cũng trở nên tự nhiên và mạnh mẽ hơn.
-            </p>
-          </div>
+            {/* Text side */}
+            <div className="space-y-5 text-muted-foreground text-sm sm:text-base leading-relaxed">
+              <p>
+                Mọi chuyển động của cơ thể đều bắt đầu từ bàn chân.
+              </p>
+              <p>
+                Bàn chân được cấu tạo từ <strong className="text-foreground">26 xương</strong>, <strong className="text-foreground">33 khớp</strong> và hơn <strong className="text-foreground">200.000 đầu dây thần kinh</strong>.
+                Với cấu trúc như vậy, bàn chân có đủ khả năng nâng đỡ toàn bộ cơ thể — nếu được hoạt động tự nhiên.
+                Nhưng trong nhiều năm, chúng ta đã quen với những đôi giày đệm dày khiến bàn chân dần mất đi khả năng vận động tự nhiên ấy.
+              </p>
+              <p>
+                Kinis ra đời từ ý tưởng đơn giản: <em>hãy để bàn chân trở về với cấu trúc nguyên bản và vận động tự nhiên của mình.</em>
+              </p>
+              <p>
+                Kinis phát triển những đôi giày tối giản (minimalist) giúp bạn cảm nhận mặt đất chân thật,
+                kích hoạt nhóm cơ bàn chân và xây dựng một nền tảng chuyển động khỏe mạnh theo thời gian.
+                Bởi vì khi bàn chân khỏe, mọi chuyển động của cơ thể cũng trở nên tự nhiên và mạnh mẽ hơn.
+              </p>
 
-          <blockquote className="mt-10 sm:mt-14 border-l-4 border-secondary pl-5 sm:pl-6 py-3 text-left max-w-xl mx-auto">
-            <p className="font-display text-base sm:text-lg md:text-xl text-foreground italic leading-relaxed">
-              "Bàn chân con người là một kiệt tác — vừa hoàn hảo về cấu trúc, vừa mang vẻ đẹp của nghệ thuật."
-            </p>
-            <footer className="mt-3 text-sm font-body font-semibold text-muted-foreground">
-              — Leonardo Da Vinci
-            </footer>
-          </blockquote>
+              <blockquote className="border-l-4 border-secondary pl-5 sm:pl-6 py-3 mt-6">
+                <p className="font-display text-base sm:text-lg md:text-xl text-foreground italic leading-relaxed">
+                  "Bàn chân con người là một kiệt tác — vừa hoàn hảo về cấu trúc, vừa mang vẻ đẹp của nghệ thuật."
+                </p>
+                <footer className="mt-3 text-sm font-body font-semibold text-muted-foreground">
+                  — Leonardo Da Vinci
+                </footer>
+              </blockquote>
+            </div>
+          </div>
         </div>
       </section>
     </Layout>
