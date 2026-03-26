@@ -4,7 +4,7 @@ import Layout from "@/components/layout/Layout";
 import heroImage from "@/assets/hero-person.jpg";
 import lucyShowcase from "@/assets/lucy-showcase.jpg";
 import nomadShowcase from "@/assets/nomad-showcase.jpg";
-import footAnatomy from "@/assets/foot-anatomy.jpg";
+import FootAnatomyInteractive from "@/components/FootAnatomyInteractive";
 
 const products = {
   lucy: {
