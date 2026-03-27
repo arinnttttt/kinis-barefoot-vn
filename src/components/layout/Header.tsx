@@ -82,7 +82,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isDark ? "header-theme-dark" : "header-theme-light"} ${
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 ${isDark ? "header-theme-dark" : "header-theme-light"} ${
         scrolled
           ? isDark
             ? "glass"
@@ -169,7 +169,7 @@ const Header = () => {
 
       {/* Mobile menu - full screen overlay */}
       <div
-        className={`lg:hidden fixed inset-0 top-16 transition-all duration-300 ${
+        className={`lg:hidden fixed inset-0 top-16 z-[9999] transition-all duration-300 ${
           mobileOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         }`}
         style={{ backgroundColor: "#000000" }}
