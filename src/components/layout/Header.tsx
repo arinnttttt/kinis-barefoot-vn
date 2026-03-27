@@ -155,7 +155,8 @@ const Header = () => {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={`lg:hidden p-2.5 -mr-2 transition-colors duration-500 ${isDark ? "text-[hsl(var(--nav-foreground))]" : "text-foreground"}`}
+            className="lg:hidden p-2.5 -mr-2 transition-colors duration-500"
+            style={{ color: isDark ? "#ffffff" : "#1a1a1a" }}
             aria-label={mobileOpen ? "Đóng menu" : "Mở menu"}
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -165,20 +166,18 @@ const Header = () => {
 
       {/* Mobile menu - full screen overlay */}
       <div
-        className={`lg:hidden fixed inset-0 top-16 bg-[hsl(var(--nav))] transition-all duration-300 ${
+        className={`lg:hidden fixed inset-0 top-16 transition-all duration-300 ${
           mobileOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         }`}
+        style={{ backgroundColor: "#000000" }}
       >
         <div className="h-full overflow-y-auto px-4 sm:px-6 py-6 space-y-1">
           {navigation.map((item) =>
             item.children ? (
               <details key={item.name} className="group">
                 <summary
-                  className={`flex cursor-pointer list-none items-center justify-between px-4 py-3.5 text-base font-medium transition-colors rounded-xl active:bg-[hsl(0_0%_100%/0.05)] [&::-webkit-details-marker]:hidden ${
-                    isParentActive(item.children)
-                      ? "text-secondary"
-                      : "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
-                  }`}
+                  className="flex cursor-pointer list-none items-center justify-between px-4 py-3.5 text-base font-medium transition-colors rounded-xl [&::-webkit-details-marker]:hidden"
+                  style={{ color: isParentActive(item.children) ? "hsl(27,100%,52%)" : "rgba(255,255,255,0.7)" }}
                 >
                   {item.name}
                   <ChevronDown className="w-5 h-5 transition-transform group-open:rotate-180" />
@@ -190,11 +189,8 @@ const Header = () => {
                       key={child.href}
                       href={child.href}
                       onClick={closeMobile}
-                      className={`block px-4 py-3 text-base transition-colors rounded-xl active:bg-[hsl(0_0%_100%/0.05)] ${
-                        isActive(child.href)
-                          ? "text-secondary"
-                          : "text-[hsl(var(--nav-foreground))]/50 hover:text-secondary"
-                      }`}
+                      className="block px-4 py-3 text-base transition-colors rounded-xl"
+                      style={{ color: isActive(child.href) ? "hsl(27,100%,52%)" : "rgba(255,255,255,0.5)" }}
                     >
                       {child.name}
                     </a>
@@ -206,11 +202,8 @@ const Header = () => {
                 key={item.name}
                 href={item.href}
                 onClick={closeMobile}
-                className={`block px-4 py-3.5 text-base font-medium rounded-xl active:bg-[hsl(0_0%_100%/0.05)] ${
-                  isActive(item.href)
-                    ? "text-secondary"
-                    : "text-[hsl(var(--nav-foreground))]/70 hover:text-secondary"
-                }`}
+                className="block px-4 py-3.5 text-base font-medium rounded-xl transition-colors"
+                style={{ color: isActive(item.href) ? "hsl(27,100%,52%)" : "rgba(255,255,255,0.7)" }}
               >
                 {item.name}
               </a>
@@ -218,16 +211,18 @@ const Header = () => {
           )}
 
           {/* Mobile social / contact */}
-          <div className="pt-6 mt-6 border-t border-[hsl(var(--nav-foreground))]/10">
+          <div className="pt-6 mt-6" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
             <a
               href="tel:+84708803573"
-              className="block px-4 py-3 text-base text-[hsl(var(--nav-foreground))]/50 hover:text-secondary transition-colors"
+              className="block px-4 py-3 text-base transition-colors"
+              style={{ color: "rgba(255,255,255,0.5)" }}
             >
               (+84) 708 803 573
             </a>
             <a
               href="mailto:hello@kinis.com"
-              className="block px-4 py-3 text-base text-[hsl(var(--nav-foreground))]/50 hover:text-secondary transition-colors"
+              className="block px-4 py-3 text-base transition-colors"
+              style={{ color: "rgba(255,255,255,0.5)" }}
             >
               hello@kinis.com
             </a>

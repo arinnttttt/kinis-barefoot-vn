@@ -47,10 +47,10 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
         <div className="flex flex-row-reverse md:flex-col justify-between md:justify-start items-center md:items-start gap-3 mb-3 md:mb-4 lg:mb-3">
           <img src={apmaBadge} alt="Chứng nhận APMA" className="h-10 md:h-12 lg:h-12 shrink-0" />
           <div>
-            <p className="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider">
+            <p className="text-xs md:text-sm font-medium uppercase tracking-wider" style={{ color: "hsl(0,0%,40%)" }}>
               {product.subtitle}
             </p>
-            <h3 className="font-display text-2xl md:text-3xl lg:text-3xl font-semibold text-foreground">
+            <h3 className="font-display text-2xl md:text-3xl lg:text-3xl font-semibold" style={{ color: "hsl(0,0%,10%)" }}>
               {product.label}
             </h3>
           </div>
@@ -58,16 +58,16 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
       )}
       {tabKey !== 'lucy' && (
         <div className="mb-3 md:mb-4 lg:mb-3">
-          <p className="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider">
+          <p className="text-xs md:text-sm font-medium uppercase tracking-wider" style={{ color: "hsl(0,0%,40%)" }}>
             {product.subtitle}
           </p>
-          <h3 className="font-display text-2xl md:text-3xl lg:text-3xl font-semibold text-foreground">
+          <h3 className="font-display text-2xl md:text-3xl lg:text-3xl font-semibold" style={{ color: "hsl(0,0%,10%)" }}>
             {product.label}
           </h3>
         </div>
       )}
 
-      <p className="text-muted-foreground leading-relaxed text-sm md:text-base lg:text-base mb-4 md:mb-4 lg:mb-3">
+      <p className="leading-relaxed text-sm md:text-base lg:text-base mb-4 md:mb-4 lg:mb-3" style={{ color: "hsl(0,0%,40%)" }}>
         {product.description}
       </p>
 
@@ -75,7 +75,12 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
         {product.tags.map((tag) => (
           <span
             key={tag}
-            className="px-3 py-1.5 md:px-4 md:py-2 lg:px-3 lg:py-1.5 rounded-full bg-white shadow-[inset_-1px_-2px_6px_0_rgba(255,118,12,0.20)] text-xs md:text-sm lg:text-sm font-medium text-foreground"
+            className="px-3 py-1.5 md:px-4 md:py-2 lg:px-3 lg:py-1.5 rounded-full text-xs md:text-sm lg:text-sm font-medium"
+            style={{
+              backgroundColor: "#ffffff",
+              boxShadow: "inset -1px -2px 6px 0 rgba(255,118,12,0.20)",
+              color: "hsl(0,0%,10%)",
+            }}
           >
             {tag}
           </span>
@@ -84,7 +89,11 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
 
       <a
         href={product.href}
-        className="inline-flex items-center gap-2 px-6 py-3 md:px-7 md:py-3.5 lg:px-7 lg:py-3 bg-primary text-primary-foreground font-body font-semibold text-sm md:text-base lg:text-sm rounded-xl hover:opacity-90 transition-opacity"
+        className="inline-flex items-center gap-2 px-6 py-3 md:px-7 md:py-3.5 lg:px-7 lg:py-3 font-body font-semibold text-sm md:text-base lg:text-sm rounded-xl transition-opacity"
+        style={{
+          backgroundColor: "hsl(0,0%,10%)",
+          color: "#ffffff",
+        }}
       >
         Xem Chi Tiết
         <ArrowRight className="w-4 h-4" />
@@ -94,8 +103,8 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
     <div className="order-1 md:order-2">
       <div className="relative rounded-2xl overflow-hidden aspect-[16/10] md:aspect-[4/5] lg:aspect-[5/4]">
         <img src={product.image} alt={product.label} className="w-full h-full object-cover" />
-        <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 bg-gradient-to-t from-[hsl(0_0%_0%/0.5)] to-transparent">
-          <span className="font-display text-lg md:text-xl font-bold text-[hsl(var(--nav-foreground))]">
+        <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5), transparent)" }}>
+          <span className="font-display text-lg md:text-xl font-bold" style={{ color: "#ffffff" }}>
             {product.label}
           </span>
         </div>
@@ -110,20 +119,20 @@ const Index = () => {
 
   return (
     <Layout>
-      <section className="relative min-h-[100svh] sm:min-h-[92vh] flex items-center overflow-hidden bg-[hsl(var(--nav))]">
+      <section className="relative min-h-[100svh] sm:min-h-[92vh] flex items-center overflow-hidden" style={{ backgroundColor: "#000000" }}>
         <div className="absolute inset-0">
           <img
             src={heroImage}
             alt="Kinis shoes"
             className="w-full h-full object-cover opacity-50"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[hsl(0_0%_0%/0.88)] via-[hsl(0_0%_0%/0.55)] to-[hsl(0_0%_0%/0.3)]" />
-          <div className="absolute bottom-0 left-1/4 w-[600px] h-[400px] bg-secondary/10 rounded-full blur-[120px]" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(0,0,0,0.88), rgba(0,0,0,0.55), rgba(0,0,0,0.3))" }} />
+          <div className="absolute bottom-0 left-1/4 w-[600px] h-[400px] rounded-full blur-[120px]" style={{ backgroundColor: "rgba(249,115,22,0.1)" }} />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-20 w-full">
           <div className="max-w-2xl animate-fade-up">
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-semibold text-[hsl(var(--nav-foreground))] tracking-tight leading-[1.05] uppercase">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-semibold tracking-tight leading-[1.05] uppercase" style={{ color: "#ffffff" }}>
               Đánh thức
               <br />
               <span className="text-gradient">sức mạnh</span>
@@ -131,21 +140,23 @@ const Index = () => {
               bàn chân Việt
             </h1>
 
-            <p className="mt-5 sm:mt-6 text-base sm:text-lg md:text-xl text-[hsl(var(--nav-foreground))]/65 leading-relaxed max-w-lg">
+            <p className="mt-5 sm:mt-6 text-base sm:text-lg md:text-xl leading-relaxed max-w-lg" style={{ color: "rgba(255,255,255,0.65)" }}>
               Khôi phục cơ chế sinh học và vận động tự nhiên của bàn chân
             </p>
 
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
                 href="/san-pham/lucy"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 bg-secondary text-secondary-foreground font-body font-semibold text-sm sm:text-base rounded-xl hover:brightness-110 transition-all"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 font-body font-semibold text-sm sm:text-base rounded-xl transition-all"
+                style={{ backgroundColor: "hsl(27,100%,52%)", color: "#ffffff" }}
               >
                 Tìm hiểu giày Kinis
                 <ArrowRight className="w-4 h-4" />
               </a>
               <a
                 href="/khoa-hoc"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 glass-card rounded-xl text-[hsl(var(--nav-foreground))] font-body font-semibold text-sm sm:text-base hover:text-secondary transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 glass-card rounded-xl font-body font-semibold text-sm sm:text-base transition-colors"
+                style={{ color: "#ffffff" }}
               >
                 Thông tin khoa học
               </a>
@@ -154,7 +165,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 lg:py-8 px-4 sm:px-6 bg-background overflow-hidden" aria-labelledby="products-heading">
+      <section className="py-12 sm:py-16 lg:py-8 px-4 sm:px-6 overflow-hidden" style={{ backgroundColor: "hsl(0,0%,98%)" }} aria-labelledby="products-heading">
         <div className="max-w-7xl mx-auto">
           <h2 id="products-heading" className="sr-only">Sản phẩm giày Kinis</h2>
           <div className="product-tabs relative" data-component="tabs">
@@ -201,7 +212,14 @@ const Index = () => {
             </div>
 
             <div
-              className="product-tabs-panel-container relative z-10 -mt-px overflow-hidden rounded-2xl border border-[hsl(0_0%_0%/0.06)] bg-[hsl(0_0%_100%/0.5)] p-4 sm:p-6 shadow-[0_8px_32px_-8px_hsl(0_0%_0%/0.08)] backdrop-blur-xl md:p-8 lg:p-5"
+              className="product-tabs-panel-container relative z-10 -mt-px overflow-hidden rounded-2xl p-4 sm:p-6 md:p-8 lg:p-5"
+              style={{
+                border: "1px solid rgba(0,0,0,0.06)",
+                backgroundColor: "rgba(255,255,255,0.5)",
+                boxShadow: "0 8px 32px -8px rgba(0,0,0,0.08)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
+              }}
               data-tabs-panels
             >
               <ProductPanel product={lucy} tabKey="lucy" />
@@ -210,10 +228,10 @@ const Index = () => {
           </div>
         </div>
       </section>
-      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-background">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6" style={{ backgroundColor: "hsl(0,0%,98%)" }}>
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] font-bold leading-tight uppercase tracking-tight text-center mb-8 sm:mb-10 text-foreground">
-            Đánh thức <span className="text-secondary">sức mạnh bản năng</span> của bàn chân
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] font-bold leading-tight uppercase tracking-tight text-center mb-8 sm:mb-10" style={{ color: "hsl(0,0%,10%)" }}>
+            Đánh thức <span style={{ color: "hsl(27,100%,52%)" }}>sức mạnh bản năng</span> của bàn chân
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-14 items-stretch">
@@ -221,20 +239,20 @@ const Index = () => {
             <FootAnatomyInteractive />
 
             {/* Text side */}
-            <div className="flex flex-col justify-center space-y-4 text-muted-foreground text-base sm:text-lg leading-relaxed">
+            <div className="flex flex-col justify-center space-y-4 text-base sm:text-lg leading-relaxed" style={{ color: "hsl(0,0%,40%)" }}>
               <p>
                 Mọi chuyển động của cơ thể đều bắt đầu từ bàn chân.
               </p>
               <p>
-                Bàn chân được cấu tạo từ <strong className="text-foreground">26 xương</strong>, <strong className="text-foreground">33 khớp</strong> và hơn <strong className="text-foreground">200.000 đầu dây thần kinh</strong>.
+                Bàn chân được cấu tạo từ <strong style={{ color: "hsl(0,0%,10%)" }}>26 xương</strong>, <strong style={{ color: "hsl(0,0%,10%)" }}>33 khớp</strong> và hơn <strong style={{ color: "hsl(0,0%,10%)" }}>200.000 đầu dây thần kinh</strong>.
                 Với cấu trúc như vậy, bàn chân có đủ khả năng nâng đỡ toàn bộ cơ thể — nếu được hoạt động tự nhiên.
                 Nhưng trong nhiều năm, chúng ta đã quen với những đôi giày đệm dày khiến bàn chân dần mất đi khả năng vận động tự nhiên ấy.
               </p>
-              <div className="my-4 py-4 px-5 sm:px-6 rounded-2xl bg-gradient-to-br from-secondary/15 to-secondary/5 shadow-[0_4px_24px_-4px_hsl(var(--secondary)/0.15)]">
-                <p className="font-body text-base sm:text-lg md:text-xl text-foreground font-medium leading-snug">
+              <div className="my-4 py-4 px-5 sm:px-6 rounded-2xl" style={{ background: "linear-gradient(to bottom right, rgba(249,115,22,0.15), rgba(249,115,22,0.05))", boxShadow: "0 4px 24px -4px rgba(249,115,22,0.15)" }}>
+                <p className="font-body text-base sm:text-lg md:text-xl font-medium leading-snug" style={{ color: "hsl(0,0%,10%)" }}>
                   Kinis ra đời từ ý tưởng đơn giản:
                 </p>
-                <p className="font-display text-lg sm:text-xl md:text-2xl text-secondary font-semibold leading-relaxed mt-1.5">
+                <p className="font-display text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed mt-1.5" style={{ color: "hsl(27,100%,52%)" }}>
                   Hãy để bàn chân trở về với cấu trúc nguyên bản và vận động tự nhiên của mình.
                 </p>
               </div>
@@ -247,10 +265,10 @@ const Index = () => {
           </div>
 
           <blockquote className="mt-8 sm:mt-10 text-center">
-            <p className="font-display text-base sm:text-lg md:text-xl text-muted-foreground italic leading-relaxed whitespace-nowrap">
+            <p className="font-display text-base sm:text-lg md:text-xl italic leading-relaxed whitespace-nowrap" style={{ color: "hsl(0,0%,40%)" }}>
               "Bàn chân con người là một kiệt tác — vừa hoàn hảo về cấu trúc, vừa mang vẻ đẹp của nghệ thuật."
             </p>
-            <footer className="mt-2 text-sm font-body font-semibold text-muted-foreground/70">
+            <footer className="mt-2 text-sm font-body font-semibold" style={{ color: "rgba(102,102,102,0.7)" }}>
               — Leonardo Da Vinci
             </footer>
           </blockquote>
