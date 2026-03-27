@@ -239,7 +239,7 @@ const Index = () => {
             <FootAnatomyInteractive />
 
             {/* Text side */}
-            <div className="flex flex-col justify-center space-y-4 text-base sm:text-base lg:text-lg leading-relaxed" style={{ color: "hsl(0,0%,40%)" }}>
+            <div className="flex flex-col justify-center space-y-4 text-base sm:text-lg lg:text-lg leading-relaxed" style={{ color: "hsl(0,0%,40%)" }}>
               <p>
                 Mọi chuyển động của cơ thể đều bắt đầu từ bàn chân.
               </p>
