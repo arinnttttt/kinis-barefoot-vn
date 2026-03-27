@@ -135,7 +135,7 @@ const WhyKinisDifferent = () => {
         {/* Bottom two cards - diagonal with rounded corners */}
         <div className="flex flex-col md:flex-row md:items-stretch gap-4 md:gap-2">
           {/* APMA Card - black bg, skew approach preserves border-radius */}
-          <div className="diagonal-skew-card rounded-2xl overflow-visible md:w-1/2 relative" style={{ backgroundColor: "#1a1a1a" }}>
+          <div className="diagonal-skew-card rounded-2xl overflow-visible md:w-[42%] relative" style={{ backgroundColor: "#1a1a1a" }}>
             {/* APMA Seal stamp */}
             <img
               src={apmaSeal}
@@ -158,8 +158,8 @@ const WhyKinisDifferent = () => {
           </div>
 
           {/* Ecosystem Card - orange bg with app mockup */}
-          <div className="diagonal-skew-card rounded-2xl overflow-visible md:w-1/2 relative" style={{ backgroundColor: "#f97316", minHeight: "220px" }}>
-            <div className="diagonal-skew-content p-6 sm:p-8 md:pl-14 relative z-10 max-w-[55%] sm:max-w-[50%]">
+          <div className="diagonal-skew-card rounded-2xl overflow-visible md:w-[58%] relative" style={{ backgroundColor: "#f97316", minHeight: "220px" }}>
+            <div className="diagonal-skew-content p-6 sm:p-8 md:pl-14 relative z-10 max-w-[60%] sm:max-w-[55%]">
               <div className="flex items-center gap-2 mb-1">
                 <img src={kinisAiLogo} alt="Kinis AI" className="w-8 h-8 rounded-full bg-white p-0.5 object-contain" loading="lazy" />
                 <p className="font-display text-lg sm:text-xl font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
@@ -177,7 +177,7 @@ const WhyKinisDifferent = () => {
             <img
               src={appMockup}
               alt="Kinis BalancePro App"
-              className="absolute -right-8 sm:-right-12 -bottom-6 h-[117%] max-h-[288px] sm:max-h-[324px] object-contain object-right-bottom pointer-events-none"
+              className="absolute -right-14 sm:-right-16 -bottom-6 h-[117%] max-h-[288px] sm:max-h-[324px] object-contain object-right-bottom pointer-events-none"
               style={{ transform: "skewX(5deg)" }}
               loading="lazy"
             />
