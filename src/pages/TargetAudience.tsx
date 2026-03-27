@@ -82,7 +82,8 @@ const TargetAudience = ({ variant }: TargetPageProps) => {
             <p className="text-sm sm:text-base text-muted-foreground mb-4">Sản phẩm phù hợp cho bạn:</p>
             <a
               href={d.product.href}
-              className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-secondary-foreground font-body font-semibold text-sm sm:text-base rounded-xl hover:opacity-90 transition-opacity"
+              className="btn-primary-dark inline-flex items-center gap-2 px-6 py-3.5 font-body font-semibold text-sm sm:text-base rounded-xl"
+              style={{ backgroundColor: "hsl(0,0%,10%)", color: "#ffffff" }}
             >
               {d.product.name} <ArrowRight className="w-4 h-4" />
             </a>
