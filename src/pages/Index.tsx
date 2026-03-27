@@ -230,10 +230,10 @@ const Index = () => {
                 Nhưng trong nhiều năm, chúng ta đã quen với những đôi giày đệm dày khiến bàn chân dần mất đi khả năng vận động tự nhiên ấy.
               </p>
               <div className="my-4 py-4 px-5 sm:px-6 rounded-2xl bg-gradient-to-br from-secondary/15 to-secondary/5 shadow-[0_4px_24px_-4px_hsl(var(--secondary)/0.15)]">
-                <p className="font-display text-base sm:text-lg md:text-xl text-foreground font-bold leading-snug">
+                <p className="font-body text-base sm:text-lg md:text-xl text-foreground font-medium leading-snug">
                   Kinis ra đời từ ý tưởng đơn giản:
                 </p>
-                <p className="font-display text-sm sm:text-base md:text-lg text-secondary font-semibold leading-relaxed mt-1.5">
+                <p className="font-display text-lg sm:text-xl md:text-2xl text-secondary font-semibold leading-relaxed mt-1.5">
                   Hãy để bàn chân trở về với cấu trúc nguyên bản và vận động tự nhiên của mình.
                 </p>
               </div>
