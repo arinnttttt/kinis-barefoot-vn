@@ -996,10 +996,11 @@ ${wpMobileMenuPanel}
     content = content.replace(/href="\/san-pham\/lucy"/g, 'href="<?php echo home_url(\'/san-pham-lucy/\'); ?>"');
     content = content.replace(/href="\/san-pham\/nomad"/g, 'href="<?php echo home_url(\'/san-pham-nomad/\'); ?>"');
 
-    // Add inline styles if present
+    // Add inline styles if present (filter out sonner/toast CSS)
     let inlineStyleBlock = "";
-    if (page.inlineStyles.length > 0) {
-      inlineStyleBlock = `<style>\n${page.inlineStyles.join("\n")}\n</style>`;
+    const filteredStyles = page.inlineStyles.filter(s => !s.includes("data-sonner") && !s.includes("sonner-") && !s.includes("toast-icon"));
+    if (filteredStyles.length > 0) {
+      inlineStyleBlock = `<style>\n${filteredStyles.join("\n")}\n</style>`;
     }
 
     const templateComment = page.template === "front-page"
