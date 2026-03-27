@@ -65,55 +65,7 @@ const WhyKinisDifferent = () => {
 
         {/* Interactive shoe with hotspots */}
         <div className="relative max-w-4xl mx-auto mb-12 sm:mb-16">
-          {/* Feature cards - left side (desktop) */}
-          <div className="hidden lg:flex flex-col gap-4 absolute left-0 top-1/2 -translate-y-1/2 -translate-x-[105%] w-72">
-            {features.filter(f => f.cardSide === "left").map((feature) => {
-              const Icon = feature.icon;
-              const isActive = activeFeature === feature.id;
-              return (
-                <div
-                  key={feature.id}
-                  className={`p-4 rounded-xl border transition-all duration-300 ${
-                    isActive
-                      ? "bg-card border-secondary/30 shadow-[0_8px_32px_-8px_hsl(var(--secondary)/0.2)]"
-                      : "bg-card/50 border-border/50 opacity-60"
-                  }`}
-                >
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <Icon className="w-4 h-4 text-secondary shrink-0" />
-                    <span className="font-display text-sm font-bold text-foreground">{feature.label}</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{feature.description}</p>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Feature cards - right side (desktop) */}
-          <div className="hidden lg:flex flex-col gap-4 absolute right-0 top-1/2 -translate-y-1/2 translate-x-[105%] w-72">
-            {features.filter(f => f.cardSide === "right").map((feature) => {
-              const Icon = feature.icon;
-              const isActive = activeFeature === feature.id;
-              return (
-                <div
-                  key={feature.id}
-                  className={`p-4 rounded-xl border transition-all duration-300 ${
-                    isActive
-                      ? "bg-card border-secondary/30 shadow-[0_8px_32px_-8px_hsl(var(--secondary)/0.2)]"
-                      : "bg-card/50 border-border/50 opacity-60"
-                  }`}
-                >
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <Icon className="w-4 h-4 text-secondary shrink-0" />
-                    <span className="font-display text-sm font-bold text-foreground">{feature.label}</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{feature.description}</p>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Shoe image with hotspots */}
+          {/* Shoe image with hotspots - desktop only dots */}
           <div className="relative mx-auto max-w-md lg:max-w-lg">
             <img
               src={shoeImage}
@@ -124,33 +76,27 @@ const WhyKinisDifferent = () => {
               height={800}
             />
 
-            {/* Hotspot dots */}
+            {/* Hotspot dots - desktop only */}
             {features.map((feature) => (
               <div
                 key={feature.id}
-                className="absolute group cursor-pointer"
+                className="hidden lg:block absolute cursor-pointer"
                 style={{ top: feature.top, left: feature.left }}
                 onMouseEnter={() => setActiveFeature(feature.id)}
                 onMouseLeave={() => setActiveFeature(null)}
               >
                 {/* Pulse */}
-                <span
-                  className={`absolute -inset-2.5 rounded-full bg-secondary/30 transition-opacity duration-300 ${
-                    activeFeature === feature.id ? "animate-ping opacity-75" : "animate-pulse opacity-40"
-                  }`}
-                />
+                <span className="absolute -inset-2.5 rounded-full bg-secondary/30 animate-pulse opacity-40" />
                 {/* Dot */}
                 <span className="relative block w-4 h-4 rounded-full bg-secondary border-2 border-white shadow-lg" />
 
-                {/* Callout line (desktop) - hidden, the cards are always visible */}
-
-                {/* Mobile tooltip */}
+                {/* Desktop hover card */}
                 <div
-                  className={`lg:hidden absolute z-30 w-56 sm:w-64 p-3.5 rounded-xl border border-secondary/20 bg-card shadow-[0_8px_32px_-8px_hsl(0,0%,0%,0.15)] transition-all duration-200 ${
-                    feature.cardSide === "left" ? "right-6 top-1/2 -translate-y-1/2" : "left-6 top-1/2 -translate-y-1/2"
+                  className={`absolute z-30 w-72 p-4 rounded-xl border border-secondary/20 bg-card shadow-[0_8px_32px_-8px_hsl(0,0%,0%,0.15)] transition-all duration-200 ${
+                    feature.cardSide === "left" ? "right-8 top-1/2 -translate-y-1/2" : "left-8 top-1/2 -translate-y-1/2"
                   } ${activeFeature === feature.id ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"}`}
                 >
-                  <div className="flex items-center gap-2 mb-1">
+                  <div className="flex items-center gap-2 mb-1.5">
                     <feature.icon className="w-4 h-4 text-secondary shrink-0" />
                     <span className="font-display text-sm font-bold text-foreground">{feature.label}</span>
                   </div>
@@ -160,7 +106,7 @@ const WhyKinisDifferent = () => {
             ))}
           </div>
 
-          {/* Mobile cards (visible below shoe on smaller screens) */}
+          {/* Mobile/tablet: static cards below shoe */}
           <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-3 mt-8">
             {features.map((feature) => {
               const Icon = feature.icon;
@@ -168,8 +114,6 @@ const WhyKinisDifferent = () => {
                 <div
                   key={feature.id}
                   className="p-4 rounded-xl border bg-card border-border/50"
-                  onMouseEnter={() => setActiveFeature(feature.id)}
-                  onMouseLeave={() => setActiveFeature(null)}
                 >
                   <div className="flex items-center gap-2 mb-1.5">
                     <Icon className="w-4 h-4 text-secondary shrink-0" />
