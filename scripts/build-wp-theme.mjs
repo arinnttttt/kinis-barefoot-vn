@@ -11,7 +11,7 @@
  * Usage: node scripts/build-wp-theme.mjs
  */
 
-import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync, readdirSync } from "fs";
+import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync, readdirSync, rmSync } from "fs";
 import { join, dirname, basename, extname } from "path";
 import { fileURLToPath } from "url";
 import { createServer } from "http";
