@@ -3,25 +3,25 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import logoBlack from "@/assets/logo-kinis-black.png";
 
 const navigation = [
-  { name: "Trang chủ", href: "/" },
-  { name: "Câu chuyện", href: "/cau-chuyen" },
+  { name: "Trang chủ", href: "/#/" },
+  { name: "Câu chuyện", href: "/#/cau-chuyen" },
   {
     name: "Sản phẩm",
     children: [
-      { name: "Kinis Lucy", href: "/san-pham/lucy" },
-      { name: "Kinis Nomad", href: "/san-pham/nomad" },
+      { name: "Kinis Lucy", href: "/#/san-pham/lucy" },
+      { name: "Kinis Nomad", href: "/#/san-pham/nomad" },
     ],
   },
-  { name: "Khoa học", href: "/khoa-hoc" },
+  { name: "Khoa học", href: "/#/khoa-hoc" },
   {
     name: "Đối tượng phù hợp",
     children: [
-      { name: "Người luyện tập (Gym/Fitness)", href: "/doi-tuong/gym-fitness" },
-      { name: "Người chạy bộ", href: "/doi-tuong/chay-bo" },
-      { name: "Người bàn chân bẹt", href: "/doi-tuong/ban-chan-bet" },
+      { name: "Người luyện tập (Gym/Fitness)", href: "/#/doi-tuong/gym-fitness" },
+      { name: "Người chạy bộ", href: "/#/doi-tuong/chay-bo" },
+      { name: "Người bàn chân bẹt", href: "/#/doi-tuong/ban-chan-bet" },
     ],
   },
-  { name: "FAQ", href: "/faq" },
+  { name: "FAQ", href: "/#/faq" },
 ];
 
 const Header = () => {
