@@ -89,7 +89,7 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
 
       <a
         href={product.href}
-        className="inline-flex items-center gap-2 px-6 py-3 md:px-7 md:py-3.5 lg:px-7 lg:py-3 font-body font-semibold text-sm md:text-base lg:text-sm rounded-xl transition-opacity"
+        className="btn-primary-dark inline-flex items-center gap-2 px-6 py-3 md:px-7 md:py-3.5 lg:px-7 lg:py-3 font-body font-semibold text-sm md:text-base lg:text-sm rounded-xl"
         style={{
           backgroundColor: "hsl(0,0%,10%)",
           color: "#ffffff",

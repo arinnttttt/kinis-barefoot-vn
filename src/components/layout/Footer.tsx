@@ -60,16 +60,17 @@ const Footer = () => (
                 href="https://zalo.me/kinis"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity"
+                className="footer-social transition-all"
+                style={{ color: "rgba(255,255,255,0.5)" }}
                 aria-label="Zalo"
               >
-                <img src={zaloIcon} alt="Zalo" className="w-6 h-6" />
+                <img src={zaloIcon} alt="Zalo" className="w-6 h-6 transition-all" />
               </a>
               <a
                 href="https://www.facebook.com/KinisAi.VN"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors"
+                className="footer-social transition-all"
                 style={{ color: "rgba(255,255,255,0.5)" }}
                 aria-label="Facebook"
               >
