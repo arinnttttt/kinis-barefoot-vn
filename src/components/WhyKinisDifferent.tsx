@@ -133,9 +133,9 @@ const WhyKinisDifferent = () => {
         </div>
 
         {/* Bottom two cards - diagonal with rounded corners */}
-        <div className="flex flex-col md:flex-row md:items-stretch gap-4 md:gap-2">
+        <div className="flex flex-col lg:flex-row lg:items-stretch gap-4 lg:gap-2">
           {/* APMA Card - black bg, skew approach preserves border-radius */}
-          <div className="diagonal-skew-card rounded-2xl overflow-visible md:w-[34%] relative" style={{ backgroundColor: "#1a1a1a" }}>
+          <div className="diagonal-skew-card rounded-2xl overflow-visible lg:w-[34%] relative" style={{ backgroundColor: "#1a1a1a" }}>
             {/* APMA Seal stamp */}
             <img
               src={apmaSeal}
@@ -144,7 +144,7 @@ const WhyKinisDifferent = () => {
               style={{ transform: "skewX(5deg) rotate(-8deg)" }}
               loading="lazy"
             />
-            <div className="diagonal-skew-content p-6 sm:p-8 md:pr-14 pl-20 sm:pl-24 pt-4 sm:pt-6">
+            <div className="diagonal-skew-content p-6 sm:p-8 lg:pr-14 pl-20 sm:pl-24 pt-4 sm:pt-6">
               <p className="font-display text-lg sm:text-xl font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
                 Đạt chứng nhận APMA
               </p>
@@ -158,24 +158,36 @@ const WhyKinisDifferent = () => {
           </div>
 
           {/* Ecosystem Card - orange bg with app mockup */}
-          <div className="diagonal-skew-card rounded-2xl overflow-visible md:w-[66%] relative" style={{ backgroundColor: "#f97316", minHeight: "220px" }}>
-            <div className="diagonal-skew-content p-6 sm:p-8 md:pl-14 relative z-10 max-w-[65%] sm:max-w-[60%]">
-              <p className="font-display text-lg sm:text-xl font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
-                Nằm trong hệ sinh thái Kinis
-              </p>
-              <p className="text-xs font-semibold mb-2" style={{ color: "rgba(255,255,255,0.75)" }}>
-                Chăm sóc sức khỏe vận động toàn diện
-              </p>
-              <img src={kSystemLogo} alt="Kinis Ecosystem" className="h-6 sm:h-7 w-auto object-contain mb-2" loading="lazy" />
-              <p className="text-sm sm:text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
-                Hơn 1 đôi giày, Kinis mang đến cho bạn giải pháp toàn diện — Công cụ kiểm tra thăng bằng Kinis BalancePro tích hợp AI, được APTA khuyến nghị sử dụng trong khám lâm sàng và hệ thống bài tập cá nhân hóa cải thiện cùng giày Kinis.
-              </p>
+          <div className="diagonal-skew-card rounded-2xl overflow-hidden lg:w-[66%] relative" style={{ backgroundColor: "#f97316", minHeight: "220px" }}>
+            {/* Tablet (md): side-by-side layout | Mobile: stacked */}
+            <div className="diagonal-skew-content p-6 sm:p-8 lg:pl-14 relative z-10 flex flex-col sm:flex-row sm:items-center sm:gap-6 lg:block">
+              <div className="sm:flex-1 lg:max-w-[60%]">
+                <p className="font-display text-lg sm:text-xl font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
+                  Nằm trong hệ sinh thái Kinis
+                </p>
+                <p className="text-xs font-semibold mb-2" style={{ color: "rgba(255,255,255,0.75)" }}>
+                  Chăm sóc sức khỏe vận động toàn diện
+                </p>
+                <img src={kSystemLogo} alt="Kinis Ecosystem" className="h-6 sm:h-7 w-auto object-contain mb-2" loading="lazy" />
+                <p className="text-sm sm:text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
+                  Hơn 1 đôi giày, Kinis mang đến cho bạn giải pháp toàn diện — Công cụ kiểm tra thăng bằng Kinis BalancePro tích hợp AI, được APTA khuyến nghị sử dụng trong khám lâm sàng và hệ thống bài tập cá nhân hóa cải thiện cùng giày Kinis.
+                </p>
+              </div>
+              {/* Mobile: app mockup below text | Tablet: beside text | Desktop: absolute positioned */}
+              <div className="mt-4 sm:mt-0 sm:flex-shrink-0 sm:w-40 md:w-48 lg:hidden flex justify-center">
+                <img
+                  src={appMockup}
+                  alt="Kinis BalancePro App"
+                  className="h-auto max-h-[280px] sm:max-h-[320px] object-contain"
+                  loading="lazy"
+                />
+              </div>
             </div>
-            {/* App mockup positioned on the right */}
+            {/* Desktop: absolute positioned mockup */}
             <img
               src={appMockup}
               alt="Kinis BalancePro App"
-              className="absolute -right-14 sm:-right-16 top-1/2 h-[148%] max-h-[374px] sm:max-h-[418px] object-contain pointer-events-none"
+              className="hidden lg:block absolute -right-14 top-1/2 h-[148%] max-h-[374px] object-contain pointer-events-none"
               style={{ transform: "translateY(-50%) skewX(5deg)" }}
               loading="lazy"
             />
