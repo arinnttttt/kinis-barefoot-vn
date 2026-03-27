@@ -48,7 +48,7 @@ const FootAnatomyInteractive = () => {
           >
             {/* Pulse ring */}
             <span
-              className="foot-hotspot-ping absolute -inset-2 rounded-full"
+              className="foot-hotspot-ping absolute -inset-3 rounded-full"
               style={{
                 animationDelay: spot.delay,
                 animationDuration: "2s",
