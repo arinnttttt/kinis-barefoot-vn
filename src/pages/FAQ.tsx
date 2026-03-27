@@ -182,13 +182,17 @@ const FAQ = () => {
               const slug = toSlug(cat.category);
 
               return (
-                <a
+                <button
                   key={slug}
-                  href={`#${slug}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const el = document.getElementById(slug);
+                    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }}
                   className="shrink-0 rounded-full border border-border bg-background px-4 py-2 text-xs font-medium text-muted-foreground transition-colors hover:border-secondary hover:text-foreground"
                 >
                   {cat.category}
-                </a>
+                </button>
               );
             })}
           </div>
