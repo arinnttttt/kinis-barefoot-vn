@@ -50,5 +50,14 @@
         document.body.style.overflow='hidden';
       }
     });
+    // Close mobile menu when clicking any link inside it
+    var mobileLinks = menu.querySelectorAll('a.kinis-mobile-link, a.header-dropdown-link');
+    for (var j=0;j<mobileLinks.length;j++) {
+      mobileLinks[j].addEventListener('click', function(){
+        menu.classList.remove('opacity-100','visible');
+        menu.classList.add('opacity-0','invisible','pointer-events-none');
+        document.body.style.overflow='';
+      });
+    }
   }
 })();
