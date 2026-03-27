@@ -138,8 +138,8 @@ const WhyKinisDifferent = () => {
             <img
               src={apmaSeal}
               alt="APMA Accepted Seal"
-              className="apma-seal-stamp absolute -top-5 -left-5 w-[4.5rem] h-[4.5rem] sm:w-20 sm:h-20 object-contain shadow-lg z-10"
-              style={{ transform: "skewX(5deg) rotate(-8deg)", filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.3))" }}
+              className="apma-seal-stamp absolute -top-5 -left-5 w-[4.5rem] h-[4.5rem] sm:w-20 sm:h-20 object-contain z-10"
+              style={{ transform: "skewX(5deg) rotate(-8deg)" }}
               loading="lazy"
             />
             <div className="diagonal-skew-content p-6 sm:p-8 md:pr-14 pl-20 sm:pl-24 pt-4 sm:pt-6">
