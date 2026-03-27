@@ -96,11 +96,11 @@ const WhyKinisDifferent = () => {
                     feature.cardSide === "left" ? "right-8 top-1/2 -translate-y-1/2" : "left-8 top-1/2 -translate-y-1/2"
                   } ${activeFeature === feature.id ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"}`}
                 >
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <feature.icon className="w-4 h-4 text-secondary shrink-0" />
-                    <span className="font-display text-sm font-bold text-foreground">{feature.label}</span>
+                  <div className="flex items-center gap-2 mb-2">
+                    <feature.icon className="w-5 h-5 text-secondary shrink-0" />
+                    <span className="font-display text-base font-medium text-foreground">{feature.label}</span>
                   </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{feature.description}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
                 </div>
               </div>
             ))}
