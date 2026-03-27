@@ -140,10 +140,10 @@ const WhyKinisDifferent = () => {
             <img
               src={apmaSeal}
               alt="APMA Accepted Seal"
-              className="apma-seal-stamp absolute -top-3 sm:-top-5 -left-1 sm:-left-5 w-[4.5rem] h-[4.5rem] sm:w-24 sm:h-24 object-contain z-10 sm:[transform:skewX(5deg)_rotate(-8deg)] rotate-[-8deg]"
+              className="apma-seal-stamp absolute -top-3 sm:-top-5 -left-3 sm:-left-5 w-[4.5rem] h-[4.5rem] sm:w-24 sm:h-24 object-contain z-10 sm:[transform:skewX(5deg)_rotate(-8deg)] rotate-[-8deg]"
               loading="lazy"
             />
-            <div className="diagonal-skew-content p-6 sm:p-8 lg:pr-14 pl-16 sm:pl-24 pt-4 sm:pt-6">
+            <div className="diagonal-skew-content p-6 sm:p-8 lg:pr-14 pl-14 sm:pl-24 pt-4 sm:pt-6">
               <p className="font-display text-lg sm:text-xl font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
                 Đạt chứng nhận APMA
               </p>
