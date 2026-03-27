@@ -193,7 +193,7 @@ const WhyKinisDifferent = () => {
                 loading="lazy"
               />
             </div>
-          </div>
+        </div>
       </div>
     </section>
   );
