@@ -580,22 +580,16 @@ html {
 
 /* Diagonal bottom cards - skew preserves border-radius */
 .diagonal-skew-card {
+  transform: skewX(-5deg);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .diagonal-skew-card:hover {
-  transform: translateY(-4px);
+  transform: skewX(-5deg) translateY(-4px);
   box-shadow: 0 16px 40px rgba(0,0,0,0.2);
 }
-@media (min-width: 768px) {
-  .diagonal-skew-card {
-    transform: skewX(-5deg);
-  }
-  .diagonal-skew-card:hover {
-    transform: skewX(-5deg) translateY(-4px);
-  }
-  .diagonal-skew-content {
-    transform: skewX(5deg);
-  }
+.diagonal-skew-content {
+  transform: skewX(5deg);
+}
 }
 
 /* Footer links hover — WP safe */

@@ -158,38 +158,41 @@ const WhyKinisDifferent = () => {
           </div>
 
           {/* Ecosystem Card - orange bg with app mockup */}
-          <div className="diagonal-skew-card rounded-2xl overflow-visible lg:w-[66%] relative" style={{ backgroundColor: "#f97316", minHeight: "220px" }}>
-            <div className="diagonal-skew-content p-6 sm:p-8 lg:pl-14 relative z-10">
-              <div className="sm:max-w-[55%] lg:max-w-[60%]">
-                <p className="font-display text-lg sm:text-xl font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
-                  Nằm trong hệ sinh thái Kinis
-                </p>
-                <p className="text-xs font-semibold mb-2" style={{ color: "rgba(255,255,255,0.75)" }}>
-                  Chăm sóc sức khỏe vận động toàn diện
-                </p>
-                <img src={kSystemLogo} alt="Kinis Ecosystem" className="h-6 sm:h-7 w-auto object-contain mb-2" loading="lazy" />
-                <p className="text-sm sm:text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
-                  Hơn 1 đôi giày, Kinis mang đến cho bạn giải pháp toàn diện — Công cụ kiểm tra thăng bằng Kinis BalancePro tích hợp AI, được APTA khuyến nghị sử dụng trong khám lâm sàng và hệ thống bài tập cá nhân hóa cải thiện cùng giày Kinis.
-                </p>
+          <div className="relative lg:w-[66%]" style={{ minHeight: "220px" }}>
+            <div className="diagonal-skew-card rounded-2xl overflow-visible relative" style={{ backgroundColor: "#f97316" }}>
+              <div className="diagonal-skew-content p-6 sm:p-8 lg:pl-14 relative z-10">
+                <div className="sm:max-w-[55%] lg:max-w-[60%]">
+                  <p className="font-display text-lg sm:text-xl font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
+                    Nằm trong hệ sinh thái Kinis
+                  </p>
+                  <p className="text-xs font-semibold mb-2" style={{ color: "rgba(255,255,255,0.75)" }}>
+                    Chăm sóc sức khỏe vận động toàn diện
+                  </p>
+                  <img src={kSystemLogo} alt="Kinis Ecosystem" className="h-6 sm:h-7 w-auto object-contain mb-2" loading="lazy" />
+                  <p className="text-sm sm:text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
+                    Hơn 1 đôi giày, Kinis mang đến cho bạn giải pháp toàn diện — Công cụ kiểm tra thăng bằng Kinis BalancePro tích hợp AI, được APTA khuyến nghị sử dụng trong khám lâm sàng và hệ thống bài tập cá nhân hóa cải thiện cùng giày Kinis.
+                  </p>
+                </div>
               </div>
-              {/* Mobile only: mockup below text */}
-              <div className="mt-4 sm:hidden flex justify-center">
-                <img
-                  src={appMockup}
-                  alt="Kinis BalancePro App"
-                  className="h-auto max-h-[280px] object-contain"
-                  loading="lazy"
-                />
-              </div>
+              {/* Tablet + Desktop: absolute positioned mockup */}
+              <img
+                src={appMockup}
+                alt="Kinis BalancePro App"
+                className="hidden sm:block absolute -right-4 sm:-right-6 lg:-right-14 top-1/2 h-[125%] sm:h-[130%] lg:h-[148%] max-h-[300px] sm:max-h-[320px] lg:max-h-[374px] object-contain pointer-events-none"
+                style={{ transform: "translateY(-50%) skewX(5deg)" }}
+                loading="lazy"
+              />
             </div>
-            {/* Tablet + Desktop: absolute positioned mockup, slightly overflowing */}
-            <img
-              src={appMockup}
-              alt="Kinis BalancePro App"
-              className="hidden sm:block absolute -right-4 sm:-right-6 lg:-right-14 top-1/2 h-[125%] sm:h-[130%] lg:h-[148%] max-h-[300px] sm:max-h-[320px] lg:max-h-[374px] object-contain pointer-events-none"
-              style={{ transform: "translateY(-50%) skewX(5deg)" }}
-              loading="lazy"
-            />
+            {/* Mobile only: mockup overflows below card (card bg covers ~half) */}
+            <div className="sm:hidden flex justify-center -mt-8 relative z-20">
+              <img
+                src={appMockup}
+                alt="Kinis BalancePro App"
+                className="h-auto max-h-[280px] object-contain"
+                style={{ transform: "skewX(5deg)" }}
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </div>
