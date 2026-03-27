@@ -129,45 +129,38 @@ const WhyKinisDifferent = () => {
           </div>
         </div>
 
-        {/* Bottom two cards - skewed diagonal */}
-        <div className="flex flex-col md:flex-row md:items-stretch gap-4 md:gap-6">
+        {/* Bottom two cards - diagonal */}
+        <div className="diagonal-wrap flex flex-col md:flex-row md:items-stretch gap-4 md:gap-5">
           {/* APMA Card - black bg */}
-          <div
-            className="diagonal-card-skew md:skew-x-[-4deg] rounded-2xl overflow-hidden md:w-1/2 transition-shadow duration-300"
-            style={{ backgroundColor: "hsl(0, 0%, 8%)" }}
-          >
-            <div className="md:skew-x-[4deg] p-6 sm:p-8">
-              <p className="font-display text-base sm:text-lg font-medium uppercase tracking-wide" style={{ color: "hsl(0, 0%, 100%)" }}>
+          <div className="diagonal-card-left rounded-2xl p-6 sm:p-8 md:w-1/2" style={{ backgroundColor: "#1a1a1a" }}>
+            <div className="md:pr-10">
+              <p className="font-display text-base sm:text-lg font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
                 Đạt chứng nhận APMA
               </p>
-              <p className="text-xs font-medium mb-3" style={{ color: "hsl(0, 0%, 60%)" }}>
+              <p className="text-xs font-medium mb-3" style={{ color: "#999999" }}>
                 American Podiatric Medical Association
               </p>
-              <p className="text-sm leading-relaxed" style={{ color: "hsl(0, 0%, 70%)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "#b3b3b3" }}>
                 Giày Kinis Lucy đã đạt chứng nhận từ APMA (Hiệp Hội Y Học Bàn Chân Hoa Kỳ). Đây là "tiêu chuẩn vàng" toàn cầu xác nhận sản phẩm thúc đẩy sức khỏe bàn chân tự nhiên và bảo vệ cấu trúc xương.
               </p>
             </div>
           </div>
 
           {/* Ecosystem Card - orange bg */}
-          <div
-            className="diagonal-card-skew md:skew-x-[-4deg] rounded-2xl overflow-hidden md:w-1/2 transition-shadow duration-300"
-            style={{ backgroundColor: "hsl(27, 100%, 52%)" }}
-          >
-            <div className="md:skew-x-[4deg] p-6 sm:p-8">
-              <p className="font-display text-base sm:text-lg font-medium uppercase tracking-wide" style={{ color: "hsl(0, 0%, 100%)" }}>
+          <div className="diagonal-card-right rounded-2xl p-6 sm:p-8 md:w-1/2" style={{ backgroundColor: "#f97316" }}>
+            <div className="md:pl-10">
+              <p className="font-display text-base sm:text-lg font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
                 Nằm trong hệ sinh thái Kinis
               </p>
-              <p className="text-xs font-semibold mb-3" style={{ color: "hsl(0, 0%, 100%, 0.75)" }}>
+              <p className="text-xs font-semibold mb-3" style={{ color: "rgba(255,255,255,0.75)" }}>
                 Chăm sóc sức khỏe vận động toàn diện
               </p>
-              <p className="text-sm leading-relaxed" style={{ color: "hsl(0, 0%, 100%, 0.85)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
                 Hơn 1 đôi giày, Kinis mang đến cho bạn giải pháp toàn diện — Công cụ kiểm tra thăng bằng Kinis BalancePro tích hợp AI, được APTA khuyến nghị sử dụng trong khám lâm sàng và hệ thống bài tập cá nhân hóa cải thiện cùng giày Kinis.
               </p>
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 };
