@@ -1,5 +1,6 @@
 import { Footprints, Layers, Brain, Bone } from "lucide-react";
 import shoeImage from "@/assets/shoe-features.png";
+import apmaSeal from "@/assets/apma-seal.png";
 
 const features = [
   {
@@ -132,8 +133,16 @@ const WhyKinisDifferent = () => {
         {/* Bottom two cards - diagonal with rounded corners */}
         <div className="flex flex-col md:flex-row md:items-stretch gap-4 md:gap-2">
           {/* APMA Card - black bg, skew approach preserves border-radius */}
-          <div className="diagonal-skew-card rounded-2xl overflow-hidden md:w-1/2" style={{ backgroundColor: "#1a1a1a" }}>
-            <div className="diagonal-skew-content p-6 sm:p-8 md:pr-14">
+          <div className="diagonal-skew-card rounded-2xl overflow-visible md:w-1/2 relative" style={{ backgroundColor: "#1a1a1a" }}>
+            {/* APMA Seal stamp */}
+            <img
+              src={apmaSeal}
+              alt="APMA Accepted Seal"
+              className="absolute -top-6 -left-6 w-20 h-20 sm:w-24 sm:h-24 rounded-full shadow-lg z-10"
+              style={{ backgroundColor: "#ffffff" }}
+              loading="lazy"
+            />
+            <div className="diagonal-skew-content p-6 sm:p-8 md:pr-14 pt-8 sm:pt-8">
               <p className="font-display text-lg sm:text-xl font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
                 Đạt chứng nhận APMA
               </p>
