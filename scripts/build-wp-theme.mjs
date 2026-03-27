@@ -279,6 +279,56 @@ add_action('after_switch_theme', 'kinis_create_pages');
 // Disable admin bar on frontend
 add_filter('show_admin_bar', '__return_false');
 
+// ============================================
+// FAQ Custom Post Type & Taxonomy
+// ============================================
+function kinis_register_faq_cpt() {
+    register_taxonomy('faq_category', 'faq', array(
+        'labels' => array(
+            'name'              => 'Danh mục FAQ',
+            'singular_name'     => 'Danh mục FAQ',
+            'search_items'      => 'Tìm danh mục',
+            'all_items'         => 'Tất cả danh mục',
+            'edit_item'         => 'Sửa danh mục',
+            'update_item'       => 'Cập nhật danh mục',
+            'add_new_item'      => 'Thêm danh mục mới',
+            'new_item_name'     => 'Tên danh mục mới',
+            'menu_name'         => 'Danh mục FAQ',
+        ),
+        'hierarchical' => true,
+        'show_ui'      => true,
+        'show_in_rest' => true,
+        'rewrite'      => array('slug' => 'faq-category'),
+    ));
+
+    register_post_type('faq', array(
+        'labels' => array(
+            'name'               => 'FAQ',
+            'singular_name'      => 'Câu hỏi',
+            'add_new'            => 'Thêm câu hỏi',
+            'add_new_item'       => 'Thêm câu hỏi mới',
+            'edit_item'          => 'Sửa câu hỏi',
+            'new_item'           => 'Câu hỏi mới',
+            'view_item'          => 'Xem câu hỏi',
+            'search_items'       => 'Tìm câu hỏi',
+            'not_found'          => 'Không tìm thấy câu hỏi nào',
+            'not_found_in_trash' => 'Không có câu hỏi nào trong thùng rác',
+            'menu_name'          => 'FAQ',
+        ),
+        'public'       => false,
+        'show_ui'      => true,
+        'show_in_menu' => true,
+        'show_in_rest' => true,
+        'menu_icon'    => 'dashicons-editor-help',
+        'menu_position'=> 25,
+        'supports'     => array('title', 'editor', 'page-attributes'),
+        'has_archive'  => false,
+        'rewrite'      => false,
+        'taxonomies'   => array('faq_category'),
+    ));
+}
+add_action('init', 'kinis_register_faq_cpt');
+
 // ACF Notice
 function kinis_acf_notice() {
     if (!function_exists('acf_add_local_field_group') && current_user_can('manage_options')) {
@@ -650,14 +700,46 @@ echo kinis_replace_content($kinis_content, $kinis_replacements);
       phpContent = `${templateComment}<?php get_header(); ?>
 ${inlineStyleBlock}
 <?php
-// Check if ACF is active and has FAQ categories data
-$faq_categories = function_exists('get_field') ? get_field('faq_categories') : null;
+// Hero text from ACF or defaults
 $hero_title = function_exists('get_field') ? get_field('hero_title') : '';
 $hero_subtitle = function_exists('get_field') ? get_field('hero_subtitle') : '';
 if (!$hero_title) $hero_title = 'Câu hỏi thường gặp';
 if (!$hero_subtitle) $hero_subtitle = 'Những thắc mắc phổ biến về giày barefoot và sản phẩm Kinis.';
 
-if ($faq_categories && is_array($faq_categories) && count($faq_categories) > 0) :
+// Build FAQ data from Custom Post Type
+$faq_categories = array();
+$terms = get_terms(array('taxonomy' => 'faq_category', 'hide_empty' => true, 'orderby' => 'name'));
+if (!is_wp_error($terms) && !empty($terms)) {
+    foreach ($terms as $term) {
+        $faqs = get_posts(array(
+            'post_type'      => 'faq',
+            'posts_per_page' => -1,
+            'orderby'        => 'menu_order',
+            'order'          => 'ASC',
+            'tax_query'      => array(array('taxonomy' => 'faq_category', 'field' => 'term_id', 'terms' => $term->term_id)),
+        ));
+        if (!empty($faqs)) {
+            $questions = array();
+            foreach ($faqs as $faq_post) {
+                $questions[] = array(
+                    'question' => $faq_post->post_title,
+                    'answer'   => apply_filters('the_content', $faq_post->post_content),
+                );
+            }
+            $faq_categories[] = array('category_name' => $term->name, 'questions' => $questions);
+        }
+    }
+}
+
+// Also check ACF repeater as fallback
+if (empty($faq_categories) && function_exists('get_field')) {
+    $acf_cats = get_field('faq_categories');
+    if ($acf_cats && is_array($acf_cats) && count($acf_cats) > 0) {
+        $faq_categories = $acf_cats;
+    }
+}
+
+if (!empty($faq_categories)) :
   // Helper to create slug from Vietnamese text
   function kinis_to_slug($text) {
     $text = mb_strtolower($text, 'UTF-8');
