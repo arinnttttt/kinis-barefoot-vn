@@ -376,8 +376,9 @@ Template Name: ${page.title}
     if (acfReplacements.length > 0) {
       // Replace PHP tags with placeholders for heredoc compatibility
       const heredocContent = content
-        .replace(/<?php echo get_template_directory_uri\(\); ?>/g, '%%THEME_URI%%')
-        .replace(/<?php echo home_url\(\\'([^']*)\\'\); ?>/g, '%%HOME_URL:$1%%');
+        .replace(/<\?php echo get_template_directory_uri\(\); \?>/g, '%%THEME_URI%%')
+        .replace(/<\?php echo home_url\('([^']*)'\); \?>/g, '%%HOME_URL:$1%%')
+        .replace(/<\?php echo home_url\(\\'([^']*)\\'\); \?>/g, '%%HOME_URL:$1%%');
       
       const pairs = acfReplacements.map(([defaultText, fieldName]) => 
         `        '${defaultText.replace(/'/g, "\\'")}' => '${fieldName}',`
