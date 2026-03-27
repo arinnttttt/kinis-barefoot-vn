@@ -62,6 +62,40 @@ function startServer(port) {
   });
 }
 
+// ACF field → default text mapping per template
+function getAcfReplacements(template) {
+  const maps = {
+    "front-page": [
+      ["bàn chân Việt", "hero_title"],
+      ["Khôi phục cơ chế sinh học và vận động tự nhiên của bàn chân", "hero_subtitle"],
+      ["Tìm hiểu giày Kinis", "hero_cta1"],
+      ["Thông tin khoa học", "hero_cta2"],
+      ["Sản phẩm giày Kinis", "section_product_title"],
+      ["Đánh thức", "section_awaken_1"],
+      ["sức mạnh bản năng", "section_awaken_2"],
+      ["của bàn chân", "section_awaken_3"],
+    ],
+    "page-cau-chuyen": [
+      ["Câu chuyện của chúng tôi", "hero_title"],
+      ["Từ ý tưởng đến sản phẩm — hành trình nâng niu bàn chân Việt", "hero_subtitle"],
+      ["Ý tưởng ra đời", "timeline_1_title"],
+      ["Xuất phát từ nỗi đau chân khi luyện tập, nhóm sáng lập quyết định tạo ra giải pháp lót giày khoa học.", "timeline_1_desc"],
+      ["Nghiên cứu &amp; Phát triển", "timeline_2_title"],
+      ["Hợp tác với các chuyên gia sinh cơ học để thiết kế cấu trúc lót giày tối ưu.", "timeline_2_desc"],
+      ["Ra mắt Kinis Lucy", "timeline_3_title"],
+      ["Sản phẩm đầu tiên được giới thiệu, nhận phản hồi tích cực từ cộng đồng thể thao.", "timeline_3_desc"],
+    ],
+    "page-san-pham-lucy": [],
+    "page-san-pham-nomad": [],
+    "page-khoa-hoc": [],
+    "page-doi-tuong-gym": [],
+    "page-doi-tuong-chay-bo": [],
+    "page-doi-tuong-ban-chan-bet": [],
+    "page-faq": [],
+  };
+  return maps[template] || [];
+}
+
 async function build() {
   const PORT = 4174;
   const server = await startServer(PORT);
