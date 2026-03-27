@@ -25,7 +25,7 @@
     header.classList.add(isDark ? 'header-theme-dark' : 'header-theme-light');
     header.classList.add(scrolled ? (isDark ? 'glass' : 'glass-header-light') : 'bg-transparent');
     var logo = header.querySelector('img[alt="Kinis"]');
-    if (logo) logo.style.filter = isDark ? 'brightness(0) invert(1)' : '';
+    if (logo) logo.style.filter = isDark ? 'brightness(0) invert(1)' : 'none';
     var btn = header.querySelector('button[aria-label]');
     if (btn) btn.style.color = isDark ? '#ffffff' : '#1a1a1a';
   }
