@@ -25,7 +25,7 @@
     header.classList.add(isDark ? 'header-theme-dark' : 'header-theme-light');
     header.classList.add(scrolled ? (isDark ? 'glass' : 'glass-header-light') : 'bg-transparent');
     var logo = header.querySelector('img[alt="Kinis"]');
-    if (logo) logo.style.filter = isDark ? 'brightness(0) invert(1)' : '';
+    if (logo) logo.style.filter = isDark ? 'brightness(0) invert(1)' : 'none';
     var btn = header.querySelector('button[aria-label]');
     if (btn) btn.style.color = isDark ? '#ffffff' : '#1a1a1a';
   }
@@ -50,5 +50,14 @@
         document.body.style.overflow='hidden';
       }
     });
+    // Close mobile menu when clicking any link inside it
+    var mobileLinks = menu.querySelectorAll('a.kinis-mobile-link, a.header-dropdown-link');
+    for (var j=0;j<mobileLinks.length;j++) {
+      mobileLinks[j].addEventListener('click', function(){
+        menu.classList.remove('opacity-100','visible');
+        menu.classList.add('opacity-0','invisible','pointer-events-none');
+        document.body.style.overflow='';
+      });
+    }
   }
 })();
