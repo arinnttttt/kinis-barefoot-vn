@@ -3,25 +3,25 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import logoBlack from "@/assets/logo-kinis-black.png";
 
 const navigation = [
-  { name: "Trang chủ", href: "/" },
-  { name: "Câu chuyện", href: "/cau-chuyen" },
+  { name: "Trang chủ", href: "/#/" },
+  { name: "Câu chuyện", href: "/#/cau-chuyen" },
   {
     name: "Sản phẩm",
     children: [
-      { name: "Kinis Lucy", href: "/san-pham/lucy" },
-      { name: "Kinis Nomad", href: "/san-pham/nomad" },
+      { name: "Kinis Lucy", href: "/#/san-pham/lucy" },
+      { name: "Kinis Nomad", href: "/#/san-pham/nomad" },
     ],
   },
-  { name: "Khoa học", href: "/khoa-hoc" },
+  { name: "Khoa học", href: "/#/khoa-hoc" },
   {
     name: "Đối tượng phù hợp",
     children: [
-      { name: "Người luyện tập (Gym/Fitness)", href: "/doi-tuong/gym-fitness" },
-      { name: "Người chạy bộ", href: "/doi-tuong/chay-bo" },
-      { name: "Người bàn chân bẹt", href: "/doi-tuong/ban-chan-bet" },
+      { name: "Người luyện tập (Gym/Fitness)", href: "/#/doi-tuong/gym-fitness" },
+      { name: "Người chạy bộ", href: "/#/doi-tuong/chay-bo" },
+      { name: "Người bàn chân bẹt", href: "/#/doi-tuong/ban-chan-bet" },
     ],
   },
-  { name: "FAQ", href: "/faq" },
+  { name: "FAQ", href: "/#/faq" },
 ];
 
 const Header = () => {
@@ -70,8 +70,11 @@ const Header = () => {
 
   const closeMobile = useCallback(() => setMobileOpen(false), []);
 
-  const currentPath = typeof window !== "undefined" ? window.location.pathname : "/";
-  const isActive = (href: string) => currentPath === href;
+  const currentHash = typeof window !== "undefined" ? window.location.hash : "#/";
+  const isActive = (href: string) => {
+    const hashPart = href.startsWith("/#") ? href.slice(1) : href;
+    return currentHash === hashPart || (hashPart === "#/" && (currentHash === "" || currentHash === "#"));
+  };
   const isParentActive = (children?: { href: string }[]) =>
     Boolean(children?.some((child) => isActive(child.href)));
 
@@ -92,7 +95,7 @@ const Header = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <a href="/" className="flex items-center">
+          <a href="/#/" className="flex items-center">
             <img
               src={logoBlack}
               alt="Kinis"

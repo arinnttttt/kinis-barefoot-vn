@@ -3,15 +3,15 @@ import zaloIcon from "@/assets/zalo-icon.svg";
 import { Phone, Mail } from "lucide-react";
 
 const sitemapLinks = [
-  { label: "Trang chủ", href: "/" },
-  { label: "Câu chuyện", href: "/cau-chuyen" },
-  { label: "Kinis Lucy", href: "/san-pham/lucy" },
-  { label: "Kinis Nomad", href: "/san-pham/nomad" },
-  { label: "Khoa học", href: "/khoa-hoc" },
-  { label: "Người luyện tập", href: "/doi-tuong/gym-fitness" },
-  { label: "Người chạy bộ", href: "/doi-tuong/chay-bo" },
-  { label: "Người bàn chân bẹt", href: "/doi-tuong/ban-chan-bet" },
-  { label: "FAQ", href: "/faq" },
+  { label: "Trang chủ", href: "/#/" },
+  { label: "Câu chuyện", href: "/#/cau-chuyen" },
+  { label: "Kinis Lucy", href: "/#/san-pham/lucy" },
+  { label: "Kinis Nomad", href: "/#/san-pham/nomad" },
+  { label: "Khoa học", href: "/#/khoa-hoc" },
+  { label: "Người luyện tập", href: "/#/doi-tuong/gym-fitness" },
+  { label: "Người chạy bộ", href: "/#/doi-tuong/chay-bo" },
+  { label: "Người bàn chân bẹt", href: "/#/doi-tuong/ban-chan-bet" },
+  { label: "FAQ", href: "/#/faq" },
 ];
 
 const Footer = () => (
@@ -37,7 +37,7 @@ const Footer = () => (
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5">
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3 sm:gap-4">
-                <a href="/">
+                <a href="/#/">
                   <img src={logoBlack} alt="Kinis" className="h-9 sm:h-12 brightness-0 invert" />
                 </a>
                 <span className="hidden sm:block text-xl" style={{ color: "rgba(255,255,255,0.3)" }}>/</span>
