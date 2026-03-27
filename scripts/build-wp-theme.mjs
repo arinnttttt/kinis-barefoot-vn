@@ -374,25 +374,15 @@ Template Name: ${page.title}
     
     let acfPhpBlock = "";
     if (acfReplacements.length > 0) {
-      // Replace PHP tags with placeholders for heredoc compatibility
-      const heredocContent = content
-        .replace(/<\?php echo get_template_directory_uri\(\); \?>/g, '%%THEME_URI%%')
-        .replace(/<\?php echo home_url\('([^']*)'\); \?>/g, '%%HOME_URL:$1%%')
-        .replace(/<\?php echo home_url\(\\'([^']*)\\'\); \?>/g, '%%HOME_URL:$1%%');
-      
+      // Instead of heredoc (which breaks PHP tags), output HTML directly
+      // and use PHP output buffering + str_replace for ACF fields
       const pairs = acfReplacements.map(([defaultText, fieldName]) => 
         `        '${defaultText.replace(/'/g, "\\'")}' => '${fieldName}',`
       ).join("\n");
-      acfPhpBlock = `
+      acfPhpBlock = `<?php ob_start(); ?>
+${content}
 <?php
-$kinis_content = <<<'KINIS_HTML'
-${heredocContent}
-KINIS_HTML;
-
-// Restore PHP dynamic values
-$kinis_content = str_replace('%%THEME_URI%%', get_template_directory_uri(), $kinis_content);
-$kinis_content = preg_replace_callback('/%%HOME_URL:([^%]*)%%/', function($m) { return home_url($m[1]); }, $kinis_content);
-
+$kinis_content = ob_get_clean();
 $kinis_replacements = array(
 ${pairs}
 );
