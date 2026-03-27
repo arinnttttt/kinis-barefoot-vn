@@ -135,7 +135,7 @@ const WhyKinisDifferent = () => {
         {/* Bottom two cards - diagonal with rounded corners */}
         <div className="flex flex-col md:flex-row md:items-stretch gap-4 md:gap-2">
           {/* APMA Card - black bg, skew approach preserves border-radius */}
-          <div className="diagonal-skew-card rounded-2xl overflow-visible md:w-[42%] relative" style={{ backgroundColor: "#1a1a1a" }}>
+          <div className="diagonal-skew-card rounded-2xl overflow-visible md:w-[34%] relative" style={{ backgroundColor: "#1a1a1a" }}>
             {/* APMA Seal stamp */}
             <img
               src={apmaSeal}
@@ -158,7 +158,7 @@ const WhyKinisDifferent = () => {
           </div>
 
           {/* Ecosystem Card - orange bg with app mockup */}
-          <div className="diagonal-skew-card rounded-2xl overflow-visible md:w-[58%] relative" style={{ backgroundColor: "#f97316", minHeight: "220px" }}>
+          <div className="diagonal-skew-card rounded-2xl overflow-visible md:w-[66%] relative" style={{ backgroundColor: "#f97316", minHeight: "220px" }}>
             <div className="diagonal-skew-content p-6 sm:p-8 md:pl-14 relative z-10 max-w-[65%] sm:max-w-[60%]">
               <p className="font-display text-lg sm:text-xl font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
                 Nằm trong hệ sinh thái Kinis
