@@ -146,7 +146,7 @@ const Index = () => {
 
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
-                href="/san-pham/lucy"
+                href="/#/san-pham/lucy"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 font-body font-semibold text-sm sm:text-base rounded-xl transition-all"
                 style={{ backgroundColor: "hsl(27,100%,52%)", color: "#ffffff" }}
               >
