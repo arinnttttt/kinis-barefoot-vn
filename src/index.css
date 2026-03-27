@@ -553,3 +553,8 @@ html {
     transform: skewX(5deg);
   }
 }
+
+/* Footer links hover — WP safe */
+.footer-link:hover {
+  color: hsl(27, 100%, 52%);
+}
