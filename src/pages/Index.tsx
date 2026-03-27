@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 import apmaBadge from "@/assets/apma-badge.png";
 import Layout from "@/components/layout/Layout";
 import heroImage from "@/assets/hero-person.jpg";
-import lucyShowcase from "@/assets/lucy-showcase.jpg";
+import lucyShowcase from "@/assets/lucy-showcase-v2.jpg";
 import nomadShowcase from "@/assets/nomad-showcase.jpg";
 import FootAnatomyInteractive from "@/components/FootAnatomyInteractive";
 import WhyKinisDifferent from "@/components/WhyKinisDifferent";
