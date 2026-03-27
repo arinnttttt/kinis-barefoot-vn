@@ -161,6 +161,7 @@ const WhyKinisDifferent = () => {
             </div>
           </div>
         </div>
+      </div>
     </section>
   );
 };
