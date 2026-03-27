@@ -374,14 +374,23 @@ Template Name: ${page.title}
     
     let acfPhpBlock = "";
     if (acfReplacements.length > 0) {
+      // Replace PHP tags with placeholders for heredoc compatibility
+      const heredocContent = content
+        .replace(/<?php echo get_template_directory_uri\(\); ?>/g, '%%THEME_URI%%')
+        .replace(/<?php echo home_url\(\\'([^']*)\\'\); ?>/g, '%%HOME_URL:$1%%');
+      
       const pairs = acfReplacements.map(([defaultText, fieldName]) => 
         `        '${defaultText.replace(/'/g, "\\'")}' => '${fieldName}',`
       ).join("\n");
       acfPhpBlock = `
 <?php
 $kinis_content = <<<'KINIS_HTML'
-${content}
+${heredocContent}
 KINIS_HTML;
+
+// Restore PHP dynamic values
+$kinis_content = str_replace('%%THEME_URI%%', get_template_directory_uri(), $kinis_content);
+$kinis_content = preg_replace_callback('/%%HOME_URL:([^%]*)%%/', function($m) { return home_url($m[1]); }, $kinis_content);
 
 $kinis_replacements = array(
 ${pairs}
