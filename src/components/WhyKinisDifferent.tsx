@@ -135,7 +135,7 @@ const WhyKinisDifferent = () => {
         {/* Bottom two cards - diagonal with rounded corners */}
         <div className="flex flex-col lg:flex-row lg:items-stretch gap-4 lg:gap-2">
           {/* APMA Card - black bg, skew approach preserves border-radius */}
-          <div className="diagonal-skew-card rounded-2xl overflow-visible lg:w-[34%] relative" style={{ backgroundColor: "#1a1a1a" }}>
+          <div className="diagonal-skew-card rounded-2xl overflow-visible lg:w-[38%] relative flex flex-col" style={{ backgroundColor: "#1a1a1a" }}>
             {/* APMA Seal stamp */}
             <img
               src={apmaSeal}
@@ -157,7 +157,7 @@ const WhyKinisDifferent = () => {
           </div>
 
           {/* Ecosystem Card - orange bg with app mockup */}
-          <div className="relative lg:w-[66%]" style={{ minHeight: "220px" }}>
+          <div className="relative lg:w-[62%]" style={{ minHeight: "220px" }}>
             <div className="diagonal-skew-card rounded-2xl sm:rounded-2xl overflow-visible relative pb-36 sm:pb-0" style={{ backgroundColor: "#f97316" }}>
               <div className="diagonal-skew-content p-6 sm:p-8 lg:pl-14 relative z-10">
                 <div className="sm:max-w-[55%] lg:max-w-[60%]">
