@@ -13,6 +13,9 @@ function kinis_enqueue_assets() {
     
     // Theme stylesheet
     wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '1.0.0');
+    
+    // Header scroll behavior (vanilla JS - replaces React scroll handler)
+    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '1.0.0', true);
 }
 add_action('wp_enqueue_scripts', 'kinis_enqueue_assets');
 
