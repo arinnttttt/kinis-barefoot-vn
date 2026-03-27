@@ -177,7 +177,7 @@ const WhyKinisDifferent = () => {
             <img
               src={appMockup}
               alt="Kinis BalancePro App"
-              className="absolute -right-8 sm:-right-12 -bottom-6 h-[130%] max-h-[320px] sm:max-h-[360px] object-contain object-right-bottom pointer-events-none"
+              className="absolute -right-8 sm:-right-12 -bottom-6 h-[117%] max-h-[288px] sm:max-h-[324px] object-contain object-right-bottom pointer-events-none"
               style={{ transform: "skewX(5deg)" }}
               loading="lazy"
             />
