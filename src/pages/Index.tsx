@@ -268,9 +268,9 @@ const Index = () => {
             <p className="font-display text-base sm:text-lg md:text-xl italic leading-relaxed whitespace-nowrap" style={{ color: "hsl(0,0%,40%)" }}>
               "Bàn chân con người là một kiệt tác — vừa hoàn hảo về cấu trúc, vừa mang vẻ đẹp của nghệ thuật."
             </p>
-            <footer className="mt-2 text-sm font-body font-semibold" style={{ color: "rgba(102,102,102,0.7)" }}>
+            <p className="mt-2 text-sm font-body font-semibold" style={{ color: "rgba(102,102,102,0.7)" }}>
               — Leonardo Da Vinci
-            </footer>
+            </p>
           </blockquote>
         </div>
       </section>
