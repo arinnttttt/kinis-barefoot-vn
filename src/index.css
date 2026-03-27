@@ -600,5 +600,41 @@ html {
 
 /* Footer links hover — WP safe */
 .footer-link:hover {
-  color: hsl(27, 100%, 52%);
+  color: hsl(27, 100%, 52%) !important;
+}
+
+/* Footer social icons hover */
+.footer-social:hover {
+  color: hsl(27, 100%, 52%) !important;
+  opacity: 1 !important;
+}
+.footer-social:hover img {
+  filter: brightness(1.3);
+}
+
+/* Button hover effects — WP safe */
+.btn-primary-dark {
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary-dark:hover {
+  background-color: hsl(0, 0%, 20%) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.btn-primary-orange {
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary-orange:hover {
+  background-color: hsl(27, 100%, 45%) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+}
+
+.btn-ghost {
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.btn-ghost:hover {
+  background: hsl(0 0% 100% / 0.12) !important;
+  transform: translateY(-1px);
 }

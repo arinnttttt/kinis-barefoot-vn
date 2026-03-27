@@ -40,7 +40,7 @@ const ProductNomad = () => (
               ))}
             </ul>
 
-            <button className="mt-8 sm:mt-10 w-full sm:w-auto px-8 py-3.5 bg-primary text-primary-foreground font-body font-semibold text-sm sm:text-base rounded-xl hover:opacity-90 transition-opacity">
+            <button className="btn-primary-dark mt-8 sm:mt-10 w-full sm:w-auto px-8 py-3.5 font-body font-semibold text-sm sm:text-base rounded-xl" style={{ backgroundColor: "hsl(0,0%,10%)", color: "#ffffff" }}>
               Liên hệ mua hàng
             </button>
           </div>

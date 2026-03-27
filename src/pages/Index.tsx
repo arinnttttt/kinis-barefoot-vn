@@ -89,7 +89,7 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
 
       <a
         href={product.href}
-        className="inline-flex items-center gap-2 px-6 py-3 md:px-7 md:py-3.5 lg:px-7 lg:py-3 font-body font-semibold text-sm md:text-base lg:text-sm rounded-xl transition-opacity"
+        className="btn-primary-dark inline-flex items-center gap-2 px-6 py-3 md:px-7 md:py-3.5 lg:px-7 lg:py-3 font-body font-semibold text-sm md:text-base lg:text-sm rounded-xl"
         style={{
           backgroundColor: "hsl(0,0%,10%)",
           color: "#ffffff",
@@ -147,7 +147,7 @@ const Index = () => {
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
                 href="/#/san-pham/lucy"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 font-body font-semibold text-sm sm:text-base rounded-xl transition-all"
+                className="btn-primary-orange inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 font-body font-semibold text-sm sm:text-base rounded-xl"
                 style={{ backgroundColor: "hsl(27,100%,52%)", color: "#ffffff" }}
               >
                 Tìm hiểu giày Kinis
@@ -155,7 +155,7 @@ const Index = () => {
               </a>
               <a
                 href="/#/khoa-hoc"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 glass-card rounded-xl font-body font-semibold text-sm sm:text-base transition-colors"
+                className="btn-ghost inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 glass-card rounded-xl font-body font-semibold text-sm sm:text-base"
                 style={{ color: "#ffffff" }}
               >
                 Thông tin khoa học
