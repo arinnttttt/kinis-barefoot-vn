@@ -31,9 +31,9 @@ const features = [
     label: "Đế mỏng & linh hoạt",
     description:
       "Tăng cường hệ cảm giác (proprioception) từ mặt đất lên não bộ, giúp hệ thần kinh tự động điều chỉnh và ổn định cơ thể khi đi trên nhiều loại địa hình khác nhau.",
-    top: "68%",
-    left: "72%",
-    cardSide: "right" as const,
+    top: "85%",
+    left: "42%",
+    cardSide: "left" as const,
   },
   {
     id: "no-arch",
