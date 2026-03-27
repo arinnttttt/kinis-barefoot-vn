@@ -489,12 +489,9 @@ add_action('after_switch_theme', 'kinis_create_default_menu', 20);
   const headerMatch = firstPageContent.match(/<header[\s\S]*?<\/header>/i);
   let staticHeaderHtml = headerMatch ? headerMatch[0] : "";
   
-  // Fix asset paths in header
-  const wpAssetUrl2 = "<?php echo get_template_directory_uri(); ?>";
-  staticHeaderHtml = staticHeaderHtml
-    .replace(/\/assets\//g, `${wpAssetUrl2}/assets/images/`)
-    .replace(/src="\/favicon\.ico"/g, `src="${wpAssetUrl2}/favicon.ico"`);
-  
+  // Asset paths already fixed in bodyContent (line 159-161), no need to replace again here.
+  // Only fix favicon if not already handled.
+
   // Fix internal links in header
   staticHeaderHtml = staticHeaderHtml
     .replace(/href="\/#\/san-pham\/lucy"/g, 'href="<?php echo home_url(\'/san-pham-lucy/\'); ?>"')
