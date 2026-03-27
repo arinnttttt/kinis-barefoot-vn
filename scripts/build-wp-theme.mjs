@@ -374,15 +374,15 @@ Template Name: ${page.title}
     
     let acfPhpBlock = "";
     if (acfReplacements.length > 0) {
+      // Instead of heredoc (which breaks PHP tags), output HTML directly
+      // and use PHP output buffering + str_replace for ACF fields
       const pairs = acfReplacements.map(([defaultText, fieldName]) => 
         `        '${defaultText.replace(/'/g, "\\'")}' => '${fieldName}',`
       ).join("\n");
-      acfPhpBlock = `
-<?php
-$kinis_content = <<<'KINIS_HTML'
+      acfPhpBlock = `<?php ob_start(); ?>
 ${content}
-KINIS_HTML;
-
+<?php
+$kinis_content = ob_get_clean();
 $kinis_replacements = array(
 ${pairs}
 );
@@ -519,20 +519,17 @@ ${content}
       const pairs = acfReplacements.map(([defaultText, fieldName]) => 
         `        '${defaultText.replace(/'/g, "\\'")}' => '${fieldName}',`
       ).join("\n");
-      const acfPhpBlock = `
-<?php
-$kinis_content = <<<'KINIS_HTML'
+      phpContent = `${templateComment}<?php get_header(); ?>
+${inlineStyleBlock}
+<?php ob_start(); ?>
 ${content}
-KINIS_HTML;
-
+<?php
+$kinis_content = ob_get_clean();
 $kinis_replacements = array(
 ${pairs}
 );
 echo kinis_replace_content($kinis_content, $kinis_replacements);
-?>`;
-      phpContent = `${templateComment}<?php get_header(); ?>
-${inlineStyleBlock}
-${acfPhpBlock}
+?>
 <?php get_footer(); ?>
 `;
     } else {
