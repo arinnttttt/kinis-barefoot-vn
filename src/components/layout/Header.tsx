@@ -127,9 +127,8 @@ const Header = () => {
                   >
                     <button
                       type="button"
-                      className={`header-nav-link header-submenu-trigger flex items-center gap-1 px-4 py-2 text-sm lg:text-base font-medium ${
-                        isParentActive(item.children) ? "text-secondary" : ""
-                      }`}
+                      className={`header-nav-link header-submenu-trigger flex items-center gap-1 px-4 py-2 text-sm lg:text-base font-medium`}
+                      style={{ color: isParentActive(item.children) ? "hsl(27,100%,52%)" : barIsDark ? "#ffffff" : "#1a1a1a", transition: "color 0.5s" }}
                       aria-haspopup="true"
                       data-dropdown-button
                     >
