@@ -122,14 +122,35 @@ foreach ($audience_pages as $ap) {
 // ============================================
 acf_add_local_field_group(array(
     'key' => 'group_kinis_faq',
-    'title' => 'FAQ - Nội dung',
+    'title' => 'FAQ - Danh mục & Câu hỏi',
     'fields' => array(
-        array('key' => 'field_faq_hero_title', 'label' => 'Tiêu đề', 'name' => 'hero_title', 'type' => 'text', 'default_value' => ''),
-        array('key' => 'field_faq_hero_subtitle', 'label' => 'Mô tả', 'name' => 'hero_subtitle', 'type' => 'textarea', 'default_value' => '', 'rows' => 2),
-        array('key' => 'field_faq_items', 'label' => 'Câu hỏi thường gặp', 'name' => 'faq_items', 'type' => 'repeater', 'sub_fields' => array(
-            array('key' => 'field_faq_question', 'label' => 'Câu hỏi', 'name' => 'question', 'type' => 'text'),
-            array('key' => 'field_faq_answer', 'label' => 'Trả lời', 'name' => 'answer', 'type' => 'wysiwyg', 'media_upload' => 0, 'toolbar' => 'basic'),
-        ), 'min' => 0, 'layout' => 'block', 'button_label' => 'Thêm câu hỏi'),
+        array('key' => 'field_faq_hero_title', 'label' => 'Tiêu đề trang', 'name' => 'hero_title', 'type' => 'text', 'default_value' => 'Câu hỏi thường gặp'),
+        array('key' => 'field_faq_hero_subtitle', 'label' => 'Mô tả trang', 'name' => 'hero_subtitle', 'type' => 'textarea', 'default_value' => 'Những thắc mắc phổ biến về giày barefoot và sản phẩm Kinis.', 'rows' => 2),
+        array(
+            'key' => 'field_faq_categories',
+            'label' => 'Danh mục FAQ',
+            'name' => 'faq_categories',
+            'type' => 'repeater',
+            'min' => 0,
+            'layout' => 'block',
+            'button_label' => 'Thêm danh mục',
+            'sub_fields' => array(
+                array('key' => 'field_faq_cat_name', 'label' => 'Tên danh mục', 'name' => 'category_name', 'type' => 'text'),
+                array(
+                    'key' => 'field_faq_cat_items',
+                    'label' => 'Câu hỏi trong danh mục',
+                    'name' => 'questions',
+                    'type' => 'repeater',
+                    'min' => 0,
+                    'layout' => 'row',
+                    'button_label' => 'Thêm câu hỏi',
+                    'sub_fields' => array(
+                        array('key' => 'field_faq_q', 'label' => 'Câu hỏi', 'name' => 'question', 'type' => 'text'),
+                        array('key' => 'field_faq_a', 'label' => 'Trả lời', 'name' => 'answer', 'type' => 'wysiwyg', 'media_upload' => 0, 'toolbar' => 'basic'),
+                    ),
+                ),
+            ),
+        ),
     ),
     'location' => array(array(array('param' => 'page_template', 'operator' => '==', 'value' => 'page-faq.php'))),
 ));
