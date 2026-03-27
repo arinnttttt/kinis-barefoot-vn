@@ -11,9 +11,9 @@ const features = [
     label: "Mũi giày rộng",
     description:
       "Giúp các ngón chân hoàn toàn được tự do, xòe tự nhiên, tăng diện tích tiếp xúc và cải thiện đáng kể sự ổn định và thăng bằng.",
-    top: "30%",
-    left: "18%",
-    cardSide: "left" as const,
+    top: "60%",
+    left: "88%",
+    cardSide: "right" as const,
   },
   {
     id: "zero-drop",
