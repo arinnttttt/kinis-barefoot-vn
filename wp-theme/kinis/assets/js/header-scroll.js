@@ -2,19 +2,11 @@
   var header = document.querySelector('[data-component="header"]');
   if (!header) return;
 
-  // Scroll → glass effect + theme detection
   function onScroll() {
     var y = window.scrollY || window.pageYOffset;
     var scrolled = y > 20;
+    header.setAttribute('data-header-scrolled', scrolled ? 'true' : 'false');
 
-    // Toggle scrolled classes
-    if (scrolled) {
-      header.setAttribute('data-header-scrolled', 'true');
-    } else {
-      header.setAttribute('data-header-scrolled', 'false');
-    }
-
-    // Detect background luminance at header position
     var headerHeight = 80;
     var elems = document.elementsFromPoint(window.innerWidth / 2, headerHeight);
     var section = null;
@@ -34,7 +26,6 @@
       }
     }
 
-    // Update theme classes
     header.classList.remove('header-theme-dark', 'header-theme-light', 'glass', 'glass-header-light', 'bg-transparent');
     header.setAttribute('data-header-theme', isDark ? 'dark' : 'light');
 
@@ -46,17 +37,11 @@
       header.classList.add(scrolled ? 'glass-header-light' : 'bg-transparent');
     }
 
-    // Update logo brightness
     var logo = header.querySelector('img[alt="Kinis"]');
     if (logo) {
-      if (isDark) {
-        logo.style.filter = 'brightness(0) invert(1)';
-      } else {
-        logo.style.filter = '';
-      }
+      logo.style.filter = isDark ? 'brightness(0) invert(1)' : '';
     }
 
-    // Update mobile menu button color
     var mobileBtn = header.querySelector('button[aria-label]');
     if (mobileBtn) {
       mobileBtn.style.color = isDark ? '#ffffff' : '#1a1a1a';
@@ -69,6 +54,14 @@
   // Mobile menu toggle
   var mobileBtn = header.querySelector('button[aria-label]');
   var mobileMenu = header.querySelector('.lg\\:hidden.fixed');
+  if (!mobileMenu) {
+    var allDivs = header.querySelectorAll('div');
+    for (var i = 0; i < allDivs.length; i++) {
+      if (allDivs[i].classList.contains('fixed') && allDivs[i].classList.contains('inset-0')) {
+        mobileMenu = allDivs[i]; break;
+      }
+    }
+  }
   if (mobileBtn && mobileMenu) {
     mobileBtn.addEventListener('click', function() {
       var isOpen = mobileMenu.classList.contains('opacity-100');
