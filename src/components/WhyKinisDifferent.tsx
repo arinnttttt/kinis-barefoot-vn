@@ -134,7 +134,7 @@ const WhyKinisDifferent = () => {
           {/* APMA Card - black bg, skew approach preserves border-radius */}
           <div className="diagonal-skew-card rounded-2xl overflow-hidden md:w-1/2" style={{ backgroundColor: "#1a1a1a" }}>
             <div className="diagonal-skew-content p-6 sm:p-8 md:pr-14">
-              <p className="font-display text-base sm:text-lg font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
+              <p className="font-display text-lg sm:text-xl font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
                 Đạt chứng nhận APMA
               </p>
               <p className="text-xs font-medium mb-3" style={{ color: "#999999" }}>
@@ -149,7 +149,7 @@ const WhyKinisDifferent = () => {
           {/* Ecosystem Card - orange bg */}
           <div className="diagonal-skew-card rounded-2xl overflow-hidden md:w-1/2" style={{ backgroundColor: "#f97316" }}>
             <div className="diagonal-skew-content p-6 sm:p-8 md:pl-14">
-              <p className="font-display text-base sm:text-lg font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
+              <p className="font-display text-lg sm:text-xl font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
                 Nằm trong hệ sinh thái Kinis
               </p>
               <p className="text-xs font-semibold mb-3" style={{ color: "rgba(255,255,255,0.75)" }}>
