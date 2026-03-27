@@ -900,6 +900,9 @@ add_action('after_switch_theme', 'kinis_seed_faq_data', 30);
     // Remove the header (now in header.php)
     content = content.replace(/<header[\s\S]*?<\/header>/i, "");
 
+    // Remove the mobile menu panel (now in header.php)
+    content = content.replace(/<div[^>]*class="lg:hidden fixed inset-0[^"]*z-\[9998\][^"]*"[\s\S]*?<\/div>\s*<\/div>/i, "");
+
     // Remove the lovable-badge if present
     content = content.replace(/<lovable-badge[^>]*>[\s\S]*?<\/lovable-badge>/gi, "");
     content = content.replace(/<div[^>]*id="lovable-badge"[^>]*>[\s\S]*?<\/div>/gi, "");
