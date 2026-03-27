@@ -209,18 +209,18 @@ const Index = () => {
           </div>
         </div>
       </section>
-      <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 bg-background">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-background">
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] font-bold leading-tight uppercase tracking-tight text-center mb-10 sm:mb-14 text-foreground">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] font-bold leading-tight uppercase tracking-tight text-center mb-8 sm:mb-10 text-foreground">
             Đánh thức <span className="text-secondary">sức mạnh bản năng</span> của bàn chân
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-14 items-stretch">
             {/* Interactive image side */}
             <FootAnatomyInteractive />
 
             {/* Text side */}
-            <div className="flex flex-col justify-center space-y-5 text-muted-foreground text-base sm:text-lg leading-relaxed">
+            <div className="flex flex-col justify-center space-y-4 text-muted-foreground text-base sm:text-lg leading-relaxed">
               <p>
                 Mọi chuyển động của cơ thể đều bắt đầu từ bàn chân.
               </p>
@@ -229,11 +229,11 @@ const Index = () => {
                 Với cấu trúc như vậy, bàn chân có đủ khả năng nâng đỡ toàn bộ cơ thể — nếu được hoạt động tự nhiên.
                 Nhưng trong nhiều năm, chúng ta đã quen với những đôi giày đệm dày khiến bàn chân dần mất đi khả năng vận động tự nhiên ấy.
               </p>
-              <div className="my-6 py-5 px-6 sm:px-8 rounded-2xl bg-gradient-to-br from-secondary/15 to-secondary/5 shadow-[0_4px_24px_-4px_hsl(var(--secondary)/0.15)]">
-                <p className="font-display text-lg sm:text-xl md:text-2xl text-foreground font-bold leading-snug">
+              <div className="my-4 py-4 px-5 sm:px-6 rounded-2xl bg-gradient-to-br from-secondary/15 to-secondary/5 shadow-[0_4px_24px_-4px_hsl(var(--secondary)/0.15)]">
+                <p className="font-display text-base sm:text-lg md:text-xl text-foreground font-bold leading-snug">
                   Kinis ra đời từ ý tưởng đơn giản:
                 </p>
-                <p className="font-display text-base sm:text-lg md:text-xl text-secondary font-semibold leading-relaxed mt-2">
+                <p className="font-display text-sm sm:text-base md:text-lg text-secondary font-semibold leading-relaxed mt-1.5">
                   Hãy để bàn chân trở về với cấu trúc nguyên bản và vận động tự nhiên của mình.
                 </p>
               </div>
@@ -242,15 +242,14 @@ const Index = () => {
                 kích hoạt nhóm cơ bàn chân và xây dựng một nền tảng chuyển động khỏe mạnh theo thời gian.
                 Bởi vì khi bàn chân khỏe, mọi chuyển động của cơ thể cũng trở nên tự nhiên và mạnh mẽ hơn.
               </p>
-
             </div>
           </div>
 
-          <blockquote className="mt-10 sm:mt-14 text-center max-w-2xl mx-auto">
-            <p className="font-display text-lg sm:text-xl md:text-2xl text-muted-foreground italic leading-relaxed">
+          <blockquote className="mt-8 sm:mt-10 text-center">
+            <p className="font-display text-base sm:text-lg md:text-xl text-muted-foreground italic leading-relaxed whitespace-nowrap">
               "Bàn chân con người là một kiệt tác — vừa hoàn hảo về cấu trúc, vừa mang vẻ đẹp của nghệ thuật."
             </p>
-            <footer className="mt-3 text-sm font-body font-semibold text-muted-foreground/70">
+            <footer className="mt-2 text-sm font-body font-semibold text-muted-foreground/70">
               — Leonardo Da Vinci
             </footer>
           </blockquote>
