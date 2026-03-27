@@ -183,13 +183,12 @@ const WhyKinisDifferent = () => {
                 loading="lazy"
               />
             </div>
-            {/* Mobile only: mockup overflows below card (card bg covers ~half) */}
-            <div className="sm:hidden flex justify-center -mt-8 relative z-20">
+            {/* Mobile only: mockup overlapping below card — orange bg covers ~half */}
+            <div className="sm:hidden flex justify-center -mt-24 relative z-20">
               <img
                 src={appMockup}
                 alt="Kinis BalancePro App"
                 className="h-auto max-h-[280px] object-contain"
-                style={{ transform: "skewX(5deg)" }}
                 loading="lazy"
               />
             </div>
