@@ -234,7 +234,7 @@ const Index = () => {
             Đánh thức <span style={{ color: "hsl(27,100%,52%)" }}>sức mạnh bản năng</span> của bàn chân
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-14 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-stretch">
             {/* Interactive image side */}
             <FootAnatomyInteractive />
 
