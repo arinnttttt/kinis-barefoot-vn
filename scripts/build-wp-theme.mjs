@@ -62,6 +62,40 @@ function startServer(port) {
   });
 }
 
+// ACF field → default text mapping per template
+function getAcfReplacements(template) {
+  const maps = {
+    "front-page": [
+      ["bàn chân Việt", "hero_title"],
+      ["Khôi phục cơ chế sinh học và vận động tự nhiên của bàn chân", "hero_subtitle"],
+      ["Tìm hiểu giày Kinis", "hero_cta1"],
+      ["Thông tin khoa học", "hero_cta2"],
+      ["Sản phẩm giày Kinis", "section_product_title"],
+      ["Đánh thức", "section_awaken_1"],
+      ["sức mạnh bản năng", "section_awaken_2"],
+      ["của bàn chân", "section_awaken_3"],
+    ],
+    "page-cau-chuyen": [
+      ["Câu chuyện của chúng tôi", "hero_title"],
+      ["Từ ý tưởng đến sản phẩm — hành trình nâng niu bàn chân Việt", "hero_subtitle"],
+      ["Ý tưởng ra đời", "timeline_1_title"],
+      ["Xuất phát từ nỗi đau chân khi luyện tập, nhóm sáng lập quyết định tạo ra giải pháp lót giày khoa học.", "timeline_1_desc"],
+      ["Nghiên cứu &amp; Phát triển", "timeline_2_title"],
+      ["Hợp tác với các chuyên gia sinh cơ học để thiết kế cấu trúc lót giày tối ưu.", "timeline_2_desc"],
+      ["Ra mắt Kinis Lucy", "timeline_3_title"],
+      ["Sản phẩm đầu tiên được giới thiệu, nhận phản hồi tích cực từ cộng đồng thể thao.", "timeline_3_desc"],
+    ],
+    "page-san-pham-lucy": [],
+    "page-san-pham-nomad": [],
+    "page-khoa-hoc": [],
+    "page-doi-tuong-gym": [],
+    "page-doi-tuong-chay-bo": [],
+    "page-doi-tuong-ban-chan-bet": [],
+    "page-faq": [],
+  };
+  return maps[template] || [];
+}
+
 async function build() {
   const PORT = 4174;
   const server = await startServer(PORT);
@@ -174,6 +208,8 @@ Text Domain: kinis
 
   // 2. functions.php
   const cssFiles = pages[0]?.cssLinks || [];
+  mkdirSync(join(THEME_DIR, "inc"), { recursive: true });
+  
   writeFileSync(join(THEME_DIR, "functions.php"), `<?php
 /**
  * Kinis Theme Functions
@@ -239,6 +275,35 @@ add_action('after_switch_theme', 'kinis_create_pages');
 
 // Disable admin bar on frontend
 add_filter('show_admin_bar', '__return_false');
+
+// ACF Notice
+function kinis_acf_notice() {
+    if (!function_exists('acf_add_local_field_group') && current_user_can('manage_options')) {
+        echo '<div class="notice notice-warning"><p><strong>Kinis Theme:</strong> Cài plugin <a href="' . admin_url('plugin-install.php?s=Advanced+Custom+Fields&tab=search') . '">Advanced Custom Fields</a> (miễn phí) để chỉnh sửa nội dung trang trực tiếp từ WordPress admin.</p></div>';
+    }
+}
+add_action('admin_notices', 'kinis_acf_notice');
+
+// Load ACF field definitions
+require_once get_template_directory() . '/inc/acf-fields.php';
+
+// Helper: get ACF field with fallback
+function kinis_field($field_name, $default = '', $post_id = false) {
+    if (!function_exists('get_field')) return $default;
+    $value = get_field($field_name, $post_id);
+    return ($value !== null && $value !== '' && $value !== false) ? $value : $default;
+}
+
+// Helper: replace text in content with ACF value
+function kinis_replace_content($content, $replacements) {
+    foreach ($replacements as $default => $field_name) {
+        $new_value = kinis_field($field_name, $default);
+        if ($new_value !== $default) {
+            $content = str_replace($default, esc_html($new_value), $content);
+        }
+    }
+    return $content;
+}
 `);
 
   // 3. header.php (minimal - pages include their own full markup)
@@ -301,7 +366,34 @@ Template Name: ${page.title}
 ?>
 `;
 
-    const phpContent = `${templateComment}<?php get_header(); ?>
+    // ACF replacement maps per page
+    const acfReplacements = getAcfReplacements(page.template);
+    
+    let acfPhpBlock = "";
+    if (acfReplacements.length > 0) {
+      const pairs = acfReplacements.map(([defaultText, fieldName]) => 
+        `        '${defaultText.replace(/'/g, "\\'")}' => '${fieldName}',`
+      ).join("\n");
+      acfPhpBlock = `
+<?php
+$kinis_content = <<<'KINIS_HTML'
+${content}
+KINIS_HTML;
+
+$kinis_replacements = array(
+${pairs}
+);
+echo kinis_replace_content($kinis_content, $kinis_replacements);
+?>`;
+    }
+
+    const phpContent = acfReplacements.length > 0
+      ? `${templateComment}<?php get_header(); ?>
+${inlineStyleBlock}
+${acfPhpBlock}
+<?php get_footer(); ?>
+`
+      : `${templateComment}<?php get_header(); ?>
 ${inlineStyleBlock}
 ${content}
 <?php get_footer(); ?>
