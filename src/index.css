@@ -634,5 +634,4 @@ html {
 }
 .btn-ghost:hover {
   background: hsl(0 0% 100% / 0.12) !important;
-  transform: translateY(-1px);
 }

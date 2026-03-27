@@ -57,7 +57,7 @@ const FootAnatomyInteractive = () => {
             />
             {/* Dot */}
             <span
-              className="foot-hotspot-dot relative block w-3.5 h-3.5 rounded-full border-2 border-white shadow-lg cursor-pointer"
+              className="foot-hotspot-dot relative block w-5 h-5 rounded-full border-2 border-white shadow-lg cursor-pointer"
               style={{ backgroundColor: "hsl(25, 95%, 53%)" }}
             />
 
