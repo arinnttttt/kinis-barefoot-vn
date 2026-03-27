@@ -5,6 +5,7 @@ import heroImage from "@/assets/hero-person.jpg";
 import lucyShowcase from "@/assets/lucy-showcase.jpg";
 import nomadShowcase from "@/assets/nomad-showcase.jpg";
 import FootAnatomyInteractive from "@/components/FootAnatomyInteractive";
+import WhyKinisDifferent from "@/components/WhyKinisDifferent";
 
 const products = {
   lucy: {
