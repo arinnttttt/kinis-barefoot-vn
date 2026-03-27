@@ -3,15 +3,15 @@ import zaloIcon from "@/assets/zalo-icon.svg";
 import { Phone, Mail } from "lucide-react";
 
 const sitemapLinks = [
-  { label: "Trang chủ", href: "/" },
-  { label: "Câu chuyện", href: "/cau-chuyen" },
-  { label: "Kinis Lucy", href: "/san-pham/lucy" },
-  { label: "Kinis Nomad", href: "/san-pham/nomad" },
-  { label: "Khoa học", href: "/khoa-hoc" },
-  { label: "Người luyện tập", href: "/doi-tuong/gym-fitness" },
-  { label: "Người chạy bộ", href: "/doi-tuong/chay-bo" },
-  { label: "Người bàn chân bẹt", href: "/doi-tuong/ban-chan-bet" },
-  { label: "FAQ", href: "/faq" },
+  { label: "Trang chủ", href: "/#/" },
+  { label: "Câu chuyện", href: "/#/cau-chuyen" },
+  { label: "Kinis Lucy", href: "/#/san-pham/lucy" },
+  { label: "Kinis Nomad", href: "/#/san-pham/nomad" },
+  { label: "Khoa học", href: "/#/khoa-hoc" },
+  { label: "Người luyện tập", href: "/#/doi-tuong/gym-fitness" },
+  { label: "Người chạy bộ", href: "/#/doi-tuong/chay-bo" },
+  { label: "Người bàn chân bẹt", href: "/#/doi-tuong/ban-chan-bet" },
+  { label: "FAQ", href: "/#/faq" },
 ];
 
 const Footer = () => (
