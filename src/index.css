@@ -622,7 +622,7 @@ html {
 }
 
 .btn-primary-orange {
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 .btn-primary-orange:hover {
   background-color: hsl(27, 100%, 45%) !important;
