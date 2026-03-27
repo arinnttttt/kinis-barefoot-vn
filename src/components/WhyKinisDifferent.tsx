@@ -130,7 +130,7 @@ const WhyKinisDifferent = () => {
         </div>
 
         {/* Bottom two cards - diagonal */}
-        <div className="diagonal-wrap flex flex-col md:flex-row md:items-stretch gap-4 md:gap-5">
+        <div className="diagonal-wrap flex flex-col md:flex-row md:items-stretch gap-4 md:gap-2">
           {/* APMA Card - black bg */}
           <div className="diagonal-card-left rounded-2xl p-6 sm:p-8 md:w-1/2" style={{ backgroundColor: "#1a1a1a" }}>
             <div className="md:pr-10">
