@@ -129,7 +129,7 @@ const WhyKinisDifferent = () => {
         {/* Bottom two cards - diagonal overlap */}
         <div className="relative flex flex-col md:flex-row md:items-stretch gap-4 md:gap-6">
           {/* APMA Card - left */}
-          <div className="diagonal-card-left relative md:w-[54%] bg-card border border-border/40 rounded-2xl p-6 sm:p-8 z-20 shadow-[4px_0_16px_-4px_hsl(0,0%,0%,0.06)]">
+          <div className="diagonal-card-left relative md:w-1/2 bg-card border border-border/40 rounded-2xl p-6 sm:p-8 z-20 shadow-[4px_0_16px_-4px_hsl(0,0%,0%,0.06)]">
             <div className="md:pr-12">
               <p className="font-display text-base sm:text-lg font-medium text-foreground uppercase tracking-wide">
                 Đạt chứng nhận APMA
