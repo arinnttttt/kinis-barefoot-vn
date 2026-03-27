@@ -140,7 +140,7 @@ const WhyKinisDifferent = () => {
             <img
               src={apmaSeal}
               alt="APMA Accepted Seal"
-              className="apma-seal-stamp absolute -top-5 -left-5 w-[5.4rem] h-[5.4rem] sm:w-24 sm:h-24 object-contain z-10 sm:[transform:skewX(5deg)_rotate(-8deg)] rotate-[-8deg]"
+              className="apma-seal-stamp absolute -top-5 left-0 sm:-left-5 w-[5.4rem] h-[5.4rem] sm:w-24 sm:h-24 object-contain z-10 sm:[transform:skewX(5deg)_rotate(-8deg)] rotate-[-8deg]"
               loading="lazy"
             />
             <div className="diagonal-skew-content p-6 sm:p-8 lg:pr-14 pl-20 sm:pl-24 pt-4 sm:pt-6">
@@ -168,7 +168,7 @@ const WhyKinisDifferent = () => {
                     Chăm sóc sức khỏe vận động toàn diện
                   </p>
                   <img src={kSystemLogo} alt="Kinis Ecosystem" className="h-6 sm:h-7 w-auto object-contain mb-2" loading="lazy" />
-                  <p className="text-sm sm:text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
+                  <p className="text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
                     Hơn 1 đôi giày, Kinis mang đến cho bạn giải pháp toàn diện — Công cụ kiểm tra thăng bằng Kinis BalancePro tích hợp AI, được APTA khuyến nghị sử dụng trong khám lâm sàng và hệ thống bài tập cá nhân hóa cải thiện cùng giày Kinis.
                   </p>
                 </div>
