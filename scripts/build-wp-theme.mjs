@@ -971,6 +971,16 @@ ${wpMobileMenuPanel}
     content = content.replace(/<lovable-badge[^>]*>[\s\S]*?<\/lovable-badge>/gi, "");
     content = content.replace(/<div[^>]*id="lovable-badge"[^>]*>[\s\S]*?<\/div>/gi, "");
 
+    // Remove React root wrapper <div id="root"> and its closing
+    content = content.replace(/<div id="root">/gi, "");
+    // Remove the Toaster/Sonner elements
+    content = content.replace(/<div[^>]*data-sonner-toaster[^>]*>[\s\S]*?<\/div>\s*<\/section>/gi, "</section>");
+    content = content.replace(/<div[^>]*class="[^"]*sonner[^"]*"[^>]*>[\s\S]*?<\/div>/gi, "");
+    // Remove empty wrapper divs from React root
+    content = content.replace(/^(\s*<div class="min-h-screen flex flex-col">)/, "");
+    // Clean trailing closing divs from root wrapper (last 2 </div>)
+    content = content.replace(/<\/div>\s*<\/div>\s*$/, "");
+
     // Fix all internal links: /#/path → WordPress permalinks
     content = content.replace(/href="\/#\/san-pham\/lucy"/g, 'href="<?php echo home_url(\'/san-pham-lucy/\'); ?>"');
     content = content.replace(/href="\/#\/san-pham\/nomad"/g, 'href="<?php echo home_url(\'/san-pham-nomad/\'); ?>"');
