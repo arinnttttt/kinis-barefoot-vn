@@ -243,16 +243,17 @@ const Index = () => {
                 Bởi vì khi bàn chân khỏe, mọi chuyển động của cơ thể cũng trở nên tự nhiên và mạnh mẽ hơn.
               </p>
 
-              <blockquote className="border-l-4 border-secondary pl-5 sm:pl-6 py-3 mt-6">
-                <p className="font-display text-base sm:text-lg md:text-xl text-foreground italic leading-relaxed">
-                  "Bàn chân con người là một kiệt tác — vừa hoàn hảo về cấu trúc, vừa mang vẻ đẹp của nghệ thuật."
-                </p>
-                <footer className="mt-3 text-sm font-body font-semibold text-muted-foreground">
-                  — Leonardo Da Vinci
-                </footer>
-              </blockquote>
             </div>
           </div>
+
+          <blockquote className="mt-10 sm:mt-14 text-center max-w-2xl mx-auto">
+            <p className="font-display text-lg sm:text-xl md:text-2xl text-muted-foreground italic leading-relaxed">
+              "Bàn chân con người là một kiệt tác — vừa hoàn hảo về cấu trúc, vừa mang vẻ đẹp của nghệ thuật."
+            </p>
+            <footer className="mt-3 text-sm font-body font-semibold text-muted-foreground/70">
+              — Leonardo Da Vinci
+            </footer>
+          </blockquote>
         </div>
       </section>
     </Layout>
