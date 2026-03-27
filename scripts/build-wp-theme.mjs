@@ -390,17 +390,158 @@ echo kinis_replace_content($kinis_content, $kinis_replacements);
 ?>`;
     }
 
-    const phpContent = acfReplacements.length > 0
-      ? `${templateComment}<?php get_header(); ?>
+    let phpContent;
+    
+    if (page.template === "page-faq") {
+      // FAQ page: dynamic ACF template with static fallback
+      phpContent = `${templateComment}<?php get_header(); ?>
+${inlineStyleBlock}
+<?php
+// Check if ACF is active and has FAQ categories data
+$faq_categories = function_exists('get_field') ? get_field('faq_categories') : null;
+$hero_title = function_exists('get_field') ? get_field('hero_title') : '';
+$hero_subtitle = function_exists('get_field') ? get_field('hero_subtitle') : '';
+if (!$hero_title) $hero_title = 'Câu hỏi thường gặp';
+if (!$hero_subtitle) $hero_subtitle = 'Những thắc mắc phổ biến về giày barefoot và sản phẩm Kinis.';
+
+if ($faq_categories && is_array($faq_categories) && count($faq_categories) > 0) :
+  // Helper to create slug from Vietnamese text
+  function kinis_to_slug($text) {
+    $text = mb_strtolower($text, 'UTF-8');
+    $text = preg_replace('/[^a-z0-9\\s-]/u', '', $text);
+    $text = preg_replace('/[\\s-]+/', '-', $text);
+    return trim($text, '-');
+  }
+?>
+<!-- Dynamic FAQ from ACF -->
+${(() => {
+  // Extract the header/hero section and nav from the static content
+  // We'll create a generic hero that uses ACF fields
+  return '';
+})()}
+<div id="root"><div class="min-h-screen flex flex-col">
+<!-- Header will be from static content -->
+${(() => {
+  // Extract just the header from the static content  
+  const headerMatch = content.match(/<header[\s\S]*?<\/header>/i);
+  return headerMatch ? headerMatch[0] : '';
+})()}
+
+<!-- Hero section -->
+<section class="relative overflow-hidden" style="background-color: hsl(0, 0%, 7%);">
+  <div class="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-6 py-20 sm:py-24 md:py-28 lg:py-32">
+    <h1 class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight uppercase tracking-tight" style="color: white;">
+      <?php echo esc_html($hero_title); ?>
+    </h1>
+    <p class="mt-4 sm:mt-5 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed" style="color: rgba(255,255,255,0.7);">
+      <?php echo esc_html($hero_subtitle); ?>
+    </p>
+  </div>
+</section>
+
+<!-- Category nav (mobile) -->
+<div class="faq-mobile-nav sticky top-16 z-20 border-b" style="background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-color: hsl(0,0%,90%);">
+  <div class="mx-auto max-w-6xl overflow-x-auto">
+    <div class="flex min-w-max gap-2 px-3 py-3 sm:px-4">
+      <?php foreach ($faq_categories as $cat) : $slug = kinis_to_slug($cat['category_name']); ?>
+        <a href="#<?php echo esc_attr($slug); ?>" class="shrink-0 rounded-full border px-4 py-2 text-xs font-medium transition-colors" style="border-color: hsl(0,0%,85%); color: hsl(0,0%,45%); background: white;">
+          <?php echo esc_html($cat['category_name']); ?>
+        </a>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ Content -->
+<section style="background-color: hsl(0,0%,96%);" class="px-3 py-10 sm:px-6 sm:py-12 md:py-16">
+  <div class="mx-auto max-w-6xl lg:grid lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-10">
+    
+    <!-- Desktop Sidebar -->
+    <aside class="faq-desktop-sidebar">
+      <div class="sticky top-28 rounded-2xl p-4" style="background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+        <p class="px-3 pb-3 text-xs font-semibold uppercase tracking-widest" style="color: hsl(0,0%,45%);">Danh mục FAQ</p>
+        <div class="space-y-1">
+          <?php foreach ($faq_categories as $cat) : $slug = kinis_to_slug($cat['category_name']); ?>
+            <a href="#<?php echo esc_attr($slug); ?>" class="block rounded-xl px-3 py-3 text-sm leading-6 transition-colors" style="color: hsl(0,0%,45%);">
+              <?php echo esc_html($cat['category_name']); ?>
+            </a>
+          <?php endforeach; ?>
+        </div>
+      </div>
+    </aside>
+
+    <!-- FAQ Items -->
+    <div class="space-y-10 sm:space-y-12">
+      <?php foreach ($faq_categories as $cat_index => $cat) : $slug = kinis_to_slug($cat['category_name']); ?>
+        <section id="<?php echo esc_attr($slug); ?>" class="scroll-mt-28">
+          <div class="border-b pb-3 sm:pb-4" style="border-color: hsl(0,0%,85%);">
+            <h2 class="text-balance break-words font-display text-xl font-semibold uppercase leading-tight sm:text-2xl" style="color: hsl(0,0%,10%);">
+              <?php echo esc_html($cat['category_name']); ?>
+            </h2>
+          </div>
+          <div class="mt-4 space-y-3 sm:mt-5">
+            <?php if (!empty($cat['questions'])) : foreach ($cat['questions'] as $q_index => $faq) : $faq_id = $slug . '-faq-' . $q_index; ?>
+              <div class="faq-item overflow-hidden rounded-2xl" style="background: white;">
+                <input id="<?php echo esc_attr($faq_id); ?>" type="checkbox" class="faq-toggle-input" />
+                <label for="<?php echo esc_attr($faq_id); ?>" class="faq-question">
+                  <span class="faq-summary-text"><?php echo esc_html($faq['question']); ?></span>
+                  <span class="faq-toggle-glyph" aria-hidden="true"></span>
+                </label>
+                <div class="faq-answer">
+                  <?php echo wp_kses_post($faq['answer']); ?>
+                </div>
+              </div>
+            <?php endforeach; endif; ?>
+          </div>
+        </section>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+
+<!-- Footer from static -->
+${(() => {
+  const footerMatch = content.match(/<div[^>]*data-component="footer"[\s\S]*$/i);
+  if (footerMatch) return footerMatch[0];
+  // Try matching the footer section
+  const footerSection = content.match(/<section[^>]*class="[^"]*py-12[^"]*"[^>]*style="[^"]*background-color:\s*hsl\(0,\s*0%,\s*7%\)[\s\S]*$/i);
+  return footerSection ? footerSection[0] : '';
+})()}
+</div></div>
+
+<?php else : ?>
+<!-- Fallback: static pre-rendered FAQ -->
+${content}
+<?php endif; ?>
+<?php get_footer(); ?>
+`;
+    } else if (acfReplacements.length > 0) {
+      const pairs = acfReplacements.map(([defaultText, fieldName]) => 
+        `        '${defaultText.replace(/'/g, "\\'")}' => '${fieldName}',`
+      ).join("\n");
+      const acfPhpBlock = `
+<?php
+$kinis_content = <<<'KINIS_HTML'
+${content}
+KINIS_HTML;
+
+$kinis_replacements = array(
+${pairs}
+);
+echo kinis_replace_content($kinis_content, $kinis_replacements);
+?>`;
+      phpContent = `${templateComment}<?php get_header(); ?>
 ${inlineStyleBlock}
 ${acfPhpBlock}
 <?php get_footer(); ?>
-`
-      : `${templateComment}<?php get_header(); ?>
+`;
+    } else {
+      phpContent = `${templateComment}<?php get_header(); ?>
 ${inlineStyleBlock}
 ${content}
 <?php get_footer(); ?>
 `;
+    }
 
     writeFileSync(join(THEME_DIR, `${page.template}.php`), phpContent);
   }
