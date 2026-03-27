@@ -413,6 +413,9 @@ ${staticHeaderHtml}
     // Remove script tags (React JS bundles)
     content = content.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "");
 
+    // Remove the header (now in header.php)
+    content = content.replace(/<header[\s\S]*?<\/header>/i, "");
+
     // Remove the lovable-badge if present
     content = content.replace(/<lovable-badge[^>]*>[\s\S]*?<\/lovable-badge>/gi, "");
     content = content.replace(/<div[^>]*id="lovable-badge"[^>]*>[\s\S]*?<\/div>/gi, "");
