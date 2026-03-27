@@ -212,9 +212,7 @@ const Index = () => {
       <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 bg-background">
         <div className="max-w-7xl mx-auto">
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] font-bold leading-tight uppercase tracking-tight text-center mb-10 sm:mb-14 text-foreground">
-            Đánh thức <span className="text-secondary">sức mạnh</span>
-            <br />
-            <span className="text-secondary">bản năng</span> của bàn chân
+            Đánh thức <span className="text-secondary">sức mạnh bản năng</span> của bàn chân
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-stretch">
