@@ -159,9 +159,8 @@ const WhyKinisDifferent = () => {
 
           {/* Ecosystem Card - orange bg with app mockup */}
           <div className="diagonal-skew-card rounded-2xl overflow-visible lg:w-[66%] relative" style={{ backgroundColor: "#f97316", minHeight: "220px" }}>
-            {/* Tablet (md): side-by-side layout | Mobile: stacked */}
-            <div className="diagonal-skew-content p-6 sm:p-8 lg:pl-14 relative z-10 flex flex-col sm:flex-row sm:items-center sm:gap-6 lg:block">
-              <div className="sm:flex-1 lg:max-w-[60%]">
+            <div className="diagonal-skew-content p-6 sm:p-8 lg:pl-14 relative z-10">
+              <div className="sm:max-w-[55%] lg:max-w-[60%]">
                 <p className="font-display text-lg sm:text-xl font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
                   Nằm trong hệ sinh thái Kinis
                 </p>
@@ -173,21 +172,21 @@ const WhyKinisDifferent = () => {
                   Hơn 1 đôi giày, Kinis mang đến cho bạn giải pháp toàn diện — Công cụ kiểm tra thăng bằng Kinis BalancePro tích hợp AI, được APTA khuyến nghị sử dụng trong khám lâm sàng và hệ thống bài tập cá nhân hóa cải thiện cùng giày Kinis.
                 </p>
               </div>
-              {/* Mobile: app mockup below text | Tablet: beside text | Desktop: absolute positioned */}
-              <div className="mt-4 sm:mt-0 sm:flex-shrink-0 sm:w-40 md:w-48 lg:hidden flex justify-center">
+              {/* Mobile only: mockup below text */}
+              <div className="mt-4 sm:hidden flex justify-center">
                 <img
                   src={appMockup}
                   alt="Kinis BalancePro App"
-                  className="h-auto max-h-[280px] sm:max-h-[320px] object-contain"
+                  className="h-auto max-h-[280px] object-contain"
                   loading="lazy"
                 />
               </div>
             </div>
-            {/* Desktop: absolute positioned mockup */}
+            {/* Tablet + Desktop: absolute positioned mockup, slightly overflowing */}
             <img
               src={appMockup}
               alt="Kinis BalancePro App"
-              className="hidden lg:block absolute -right-14 top-1/2 h-[148%] max-h-[374px] object-contain pointer-events-none"
+              className="hidden sm:block absolute -right-10 sm:-right-12 lg:-right-14 top-1/2 h-[140%] sm:h-[145%] lg:h-[148%] max-h-[340px] sm:max-h-[360px] lg:max-h-[374px] object-contain pointer-events-none"
               style={{ transform: "translateY(-50%) skewX(5deg)" }}
               loading="lazy"
             />
