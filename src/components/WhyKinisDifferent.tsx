@@ -140,7 +140,7 @@ const WhyKinisDifferent = () => {
               <p className="text-xs font-medium mb-3" style={{ color: "#999999" }}>
                 American Podiatric Medical Association
               </p>
-              <p className="text-sm leading-relaxed" style={{ color: "#b3b3b3" }}>
+              <p className="text-base leading-relaxed" style={{ color: "#b3b3b3" }}>
                 Giày Kinis Lucy đã đạt chứng nhận từ APMA (Hiệp Hội Y Học Bàn Chân Hoa Kỳ). Đây là "tiêu chuẩn vàng" toàn cầu xác nhận sản phẩm thúc đẩy sức khỏe bàn chân tự nhiên và bảo vệ cấu trúc xương.
               </p>
             </div>
@@ -155,7 +155,7 @@ const WhyKinisDifferent = () => {
               <p className="text-xs font-semibold mb-3" style={{ color: "rgba(255,255,255,0.75)" }}>
                 Chăm sóc sức khỏe vận động toàn diện
               </p>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
+              <p className="text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
                 Hơn 1 đôi giày, Kinis mang đến cho bạn giải pháp toàn diện — Công cụ kiểm tra thăng bằng Kinis BalancePro tích hợp AI, được APTA khuyến nghị sử dụng trong khám lâm sàng và hệ thống bài tập cá nhân hóa cải thiện cùng giày Kinis.
               </p>
             </div>
