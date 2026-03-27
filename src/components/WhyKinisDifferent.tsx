@@ -129,11 +129,11 @@ const WhyKinisDifferent = () => {
           </div>
         </div>
 
-        {/* Bottom two cards - diagonal */}
-        <div className="diagonal-wrap flex flex-col md:flex-row md:items-stretch gap-4 md:gap-5">
-          {/* APMA Card - black bg */}
-          <div className="diagonal-card-left rounded-2xl p-6 sm:p-8 md:w-1/2" style={{ backgroundColor: "#1a1a1a" }}>
-            <div className="md:pr-10">
+        {/* Bottom two cards - diagonal with rounded corners */}
+        <div className="flex flex-col md:flex-row md:items-stretch gap-4 md:gap-2">
+          {/* APMA Card - black bg, skew approach preserves border-radius */}
+          <div className="diagonal-skew-card rounded-2xl overflow-hidden md:w-1/2" style={{ backgroundColor: "#1a1a1a" }}>
+            <div className="diagonal-skew-content p-6 sm:p-8 md:pr-14">
               <p className="font-display text-base sm:text-lg font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
                 Đạt chứng nhận APMA
               </p>
@@ -147,8 +147,8 @@ const WhyKinisDifferent = () => {
           </div>
 
           {/* Ecosystem Card - orange bg */}
-          <div className="diagonal-card-right rounded-2xl p-6 sm:p-8 md:w-1/2" style={{ backgroundColor: "#f97316" }}>
-            <div className="md:pl-10">
+          <div className="diagonal-skew-card rounded-2xl overflow-hidden md:w-1/2" style={{ backgroundColor: "#f97316" }}>
+            <div className="diagonal-skew-content p-6 sm:p-8 md:pl-14">
               <p className="font-display text-base sm:text-lg font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
                 Nằm trong hệ sinh thái Kinis
               </p>
