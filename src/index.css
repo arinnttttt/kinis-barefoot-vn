@@ -516,8 +516,21 @@ html {
 }
 
 /* Foot Anatomy Interactive - WordPress-safe pure CSS hover */
+/* Ping keyframe (Tailwind built-in, explicitly defined for WP compatibility) */
+@keyframes kinis-ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+@keyframes kinis-pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
 .foot-hotspot-ping {
-  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  animation: kinis-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
 .foot-hotspot-dot {
