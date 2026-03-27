@@ -165,20 +165,26 @@ html {
   .header-theme-dark .header-submenu-trigger { color: hsla(0, 0%, 100%, 0.7); transition: color 200ms ease; }
   .header-theme-dark .header-nav-link:hover,
   .header-theme-dark .header-submenu-trigger:hover { color: hsl(27, 100%, 52%); }
-  .header-theme-dark .header-dropdown-panel { background: hsl(0, 0%, 10%); border: 1px solid hsla(0, 0%, 100%, 0.08); }
-  .header-theme-dark .header-dropdown-link { color: hsla(0, 0%, 100%, 0.8); }
+  .header-theme-dark .header-dropdown-panel { background: #1a1a1a !important; border: 1px solid rgba(255,255,255,0.08) !important; }
+  .header-theme-dark .header-dropdown-link { color: rgba(255,255,255,0.8) !important; }
   .header-theme-dark .header-dropdown-link:hover,
-  .header-theme-dark .header-dropdown-link[data-active="true"] { background: hsla(0, 0%, 100%, 0.1); color: hsl(27, 100%, 52%); }
+  .header-theme-dark .header-dropdown-link[data-active="true"] { background: rgba(255,255,255,0.1) !important; color: #e65100 !important; }
+  .header-theme-dark [role="menu"] { background: #1a1a1a !important; }
+  .header-theme-dark [role="menu"] [role="menuitem"] { color: rgba(255,255,255,0.8) !important; }
+  .header-theme-dark [role="menu"] [role="menuitem"]:hover { background: rgba(255,255,255,0.1) !important; color: #e65100 !important; }
 
   /* Header nav — light theme */
   .header-theme-light .header-nav-link,
   .header-theme-light .header-submenu-trigger { color: hsla(0, 0%, 10%, 0.72); transition: color 200ms ease; }
   .header-theme-light .header-nav-link:hover,
-  .header-theme-light .header-submenu-trigger:hover { color: hsl(27, 100%, 52%); }
-  .header-theme-light .header-dropdown-panel { background: hsl(0, 0%, 100%); border: 1px solid hsla(0, 0%, 0%, 0.08); }
-  .header-theme-light .header-dropdown-link { color: hsl(0, 0%, 10%); }
+  .header-theme-light .header-submenu-trigger:hover { color: #e65100; }
+  .header-theme-light .header-dropdown-panel { background: #ffffff !important; border: 1px solid rgba(0,0,0,0.08) !important; }
+  .header-theme-light .header-dropdown-link { color: #1a1a1a !important; }
   .header-theme-light .header-dropdown-link:hover,
-  .header-theme-light .header-dropdown-link[data-active="true"] { background: hsl(0, 0%, 95%); color: hsl(27, 100%, 52%); }
+  .header-theme-light .header-dropdown-link[data-active="true"] { background: #f2f2f2 !important; color: #e65100 !important; }
+  .header-theme-light [role="menu"] { background: #ffffff !important; }
+  .header-theme-light [role="menu"] [role="menuitem"] { color: #1a1a1a !important; }
+  .header-theme-light [role="menu"] [role="menuitem"]:hover { background: #f2f2f2 !important; color: #e65100 !important; }
 
   /* ====== Product Tabs (CSS-only, WP-compatible) ====== */
   .product-tabs {
