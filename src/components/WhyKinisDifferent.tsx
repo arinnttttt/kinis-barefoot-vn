@@ -142,7 +142,7 @@ const WhyKinisDifferent = () => {
               style={{ transform: "skewX(5deg) rotate(-8deg)", filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.3))" }}
               loading="lazy"
             />
-            <div className="diagonal-skew-content p-6 sm:p-8 md:pr-14 pt-8 sm:pt-8">
+            <div className="diagonal-skew-content p-6 sm:p-8 md:pr-14 pl-20 sm:pl-24 pt-4 sm:pt-6">
               <p className="font-display text-lg sm:text-xl font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
                 Đạt chứng nhận APMA
               </p>
