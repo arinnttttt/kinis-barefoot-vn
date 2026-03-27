@@ -220,7 +220,7 @@ const Index = () => {
             <FootAnatomyInteractive />
 
             {/* Text side */}
-            <div className="space-y-5 text-muted-foreground text-base sm:text-lg leading-relaxed">
+            <div className="flex flex-col justify-center space-y-5 text-muted-foreground text-base sm:text-lg leading-relaxed">
               <p>
                 Mọi chuyển động của cơ thể đều bắt đầu từ bàn chân.
               </p>
