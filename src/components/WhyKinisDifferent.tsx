@@ -140,7 +140,7 @@ const WhyKinisDifferent = () => {
               <p className="text-xs font-medium mb-3" style={{ color: "#999999" }}>
                 American Podiatric Medical Association
               </p>
-              <p className="text-sm leading-relaxed" style={{ color: "#b3b3b3" }}>
+              <p className="text-base leading-relaxed" style={{ color: "#b3b3b3" }}>
                 Giày Kinis Lucy đã đạt chứng nhận từ APMA (Hiệp Hội Y Học Bàn Chân Hoa Kỳ). Đây là "tiêu chuẩn vàng" toàn cầu xác nhận sản phẩm thúc đẩy sức khỏe bàn chân tự nhiên và bảo vệ cấu trúc xương.
               </p>
             </div>
