@@ -148,7 +148,7 @@ const WhyKinisDifferent = () => {
 
           {/* Ecosystem Card - orange bg */}
           <div className="diagonal-card-right rounded-2xl p-6 sm:p-8 md:w-1/2" style={{ backgroundColor: "#f97316" }}>
-            <div className="md:pl-10">
+            <div className="md:pl-16">
               <p className="font-display text-base sm:text-lg font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
                 Nằm trong hệ sinh thái Kinis
               </p>
