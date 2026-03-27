@@ -158,9 +158,8 @@ const Header = () => {
                   <a
                     key={item.name}
                     href={item.href}
-                    className={`header-nav-link px-4 py-2 text-sm lg:text-base font-medium ${
-                      isActive(item.href) ? "text-secondary" : ""
-                    }`}
+                    className="header-nav-link px-4 py-2 text-sm lg:text-base font-medium"
+                    style={{ color: isActive(item.href) ? "hsl(27,100%,52%)" : barIsDark ? "#ffffff" : "#1a1a1a", transition: "color 0.5s" }}
                   >
                     {item.name}
                   </a>
