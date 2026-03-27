@@ -128,46 +128,30 @@ const WhyKinisDifferent = () => {
 
         {/* Bottom two cards - diagonal overlap */}
         <div className="relative flex flex-col md:flex-row md:items-stretch">
-          {/* APMA Card - left, overlaps right */}
-          <div className="diagonal-card-left relative md:w-[58%] bg-card border border-border/40 rounded-2xl p-6 sm:p-8 pr-16 md:pr-20 flex flex-col sm:flex-row gap-5 items-start z-20 shadow-[4px_0_16px_-4px_hsl(0,0%,0%,0.06)]">
-            <img
-              src={apmaBadge}
-              alt="APMA Seal of Acceptance"
-              className="h-16 sm:h-20 shrink-0"
-              loading="lazy"
-            />
-            <div>
-              <p className="font-display text-base sm:text-lg font-medium text-foreground uppercase tracking-wide">
-                Đạt chứng nhận APMA
-              </p>
-              <p className="text-xs text-muted-foreground font-medium mb-2">
-                American Podiatric Medical Association
-              </p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Giày Kinis Lucy đã đạt chứng nhận từ APMA (Hiệp Hội Y Học Bàn Chân Hoa Kỳ). Đây là "tiêu chuẩn vàng" toàn cầu xác nhận sản phẩm thúc đẩy sức khỏe bàn chân tự nhiên và bảo vệ cấu trúc xương.
-              </p>
-            </div>
+          {/* APMA Card - left */}
+          <div className="diagonal-card-left relative md:w-[58%] bg-card border border-border/40 rounded-2xl p-6 sm:p-8 md:pr-24 z-20 shadow-[4px_0_16px_-4px_hsl(0,0%,0%,0.06)]">
+            <p className="font-display text-base sm:text-lg font-medium text-foreground uppercase tracking-wide">
+              Đạt chứng nhận APMA
+            </p>
+            <p className="text-xs text-muted-foreground font-medium mb-2">
+              American Podiatric Medical Association
+            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Giày Kinis Lucy đã đạt chứng nhận từ APMA (Hiệp Hội Y Học Bàn Chân Hoa Kỳ). Đây là "tiêu chuẩn vàng" toàn cầu xác nhận sản phẩm thúc đẩy sức khỏe bàn chân tự nhiên và bảo vệ cấu trúc xương.
+            </p>
           </div>
 
-          {/* Ecosystem Card - right, tucked behind left */}
-          <div className="diagonal-card-right relative md:w-[58%] md:-ml-[16%] bg-card border border-secondary/20 rounded-2xl p-6 sm:p-8 pl-16 md:pl-20 flex flex-col sm:flex-row gap-5 items-start mt-4 md:mt-0 z-10">
-            <img
-              src={appMockup}
-              alt="Kinis BalancePro App"
-              className="h-28 sm:h-32 shrink-0 object-contain"
-              loading="lazy"
-            />
-            <div>
-              <p className="font-display text-base sm:text-lg font-medium text-foreground uppercase tracking-wide">
-                Nằm trong hệ sinh thái Kinis
-              </p>
-              <p className="text-xs text-secondary font-semibold mb-2">
-                Chăm sóc sức khỏe vận động toàn diện
-              </p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Hơn 1 đôi giày, Kinis mang đến cho bạn giải pháp toàn diện — Công cụ kiểm tra thăng bằng Kinis BalancePro tích hợp AI, được APTA khuyến nghị sử dụng trong khám lâm sàng và hệ thống bài tập cá nhân hóa cải thiện cùng giày Kinis.
-              </p>
-            </div>
+          {/* Ecosystem Card - right */}
+          <div className="diagonal-card-right relative md:w-[58%] md:-ml-[16%] bg-card border border-secondary/20 rounded-2xl p-6 sm:p-8 md:pl-24 mt-4 md:mt-0 z-10">
+            <p className="font-display text-base sm:text-lg font-medium text-foreground uppercase tracking-wide">
+              Nằm trong hệ sinh thái Kinis
+            </p>
+            <p className="text-xs text-secondary font-semibold mb-2">
+              Chăm sóc sức khỏe vận động toàn diện
+            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Hơn 1 đôi giày, Kinis mang đến cho bạn giải pháp toàn diện — Công cụ kiểm tra thăng bằng Kinis BalancePro tích hợp AI, được APTA khuyến nghị sử dụng trong khám lâm sàng và hệ thống bài tập cá nhân hóa cải thiện cùng giày Kinis.
+            </p>
           </div>
         </div>
       </div>
