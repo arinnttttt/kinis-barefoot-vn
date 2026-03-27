@@ -211,13 +211,17 @@ const FAQ = () => {
                   const slug = toSlug(cat.category);
 
                   return (
-                    <a
+                    <button
                       key={slug}
-                      href={`#${slug}`}
-                      className="block rounded-xl px-3 py-3 text-sm leading-6 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const el = document.getElementById(slug);
+                        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                      }}
+                      className="block w-full text-left rounded-xl px-3 py-3 text-sm leading-6 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                     >
                       {cat.category}
-                    </a>
+                    </button>
                   );
                 })}
               </div>
