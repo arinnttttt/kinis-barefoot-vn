@@ -21,8 +21,8 @@ const features = [
     label: "Đế phẳng Zero-Drop",
     description:
       "Gót chân và mũi chân ở cùng một mức, ngăn lệch tư thế và phân bổ trọng lượng cơ thể đều đặn.",
-    top: "72%",
-    left: "25%",
+    top: "78%",
+    left: "13%",
     cardSide: "left" as const,
   },
   {
