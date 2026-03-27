@@ -154,7 +154,7 @@ const Index = () => {
                 <ArrowRight className="w-4 h-4" />
               </a>
               <a
-                href="/khoa-hoc"
+                href="/#/khoa-hoc"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 glass-card rounded-xl font-body font-semibold text-sm sm:text-base transition-colors"
                 style={{ color: "#ffffff" }}
               >
