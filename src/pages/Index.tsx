@@ -229,9 +229,12 @@ const Index = () => {
                 Với cấu trúc như vậy, bàn chân có đủ khả năng nâng đỡ toàn bộ cơ thể — nếu được hoạt động tự nhiên.
                 Nhưng trong nhiều năm, chúng ta đã quen với những đôi giày đệm dày khiến bàn chân dần mất đi khả năng vận động tự nhiên ấy.
               </p>
-              <div className="my-6 py-4 px-5 sm:px-6 rounded-xl bg-secondary/10 border-l-4 border-secondary">
-                <p className="font-display text-base sm:text-lg md:text-xl text-foreground font-semibold leading-relaxed">
-                  Kinis ra đời từ ý tưởng đơn giản: <span className="text-secondary">hãy để bàn chân trở về với cấu trúc nguyên bản và vận động tự nhiên của mình.</span>
+              <div className="my-6 py-5 px-6 sm:px-8 rounded-2xl bg-gradient-to-br from-secondary/15 to-secondary/5 shadow-[0_4px_24px_-4px_hsl(var(--secondary)/0.15)]">
+                <p className="font-display text-lg sm:text-xl md:text-2xl text-foreground font-bold leading-snug">
+                  Kinis ra đời từ ý tưởng đơn giản:
+                </p>
+                <p className="font-display text-base sm:text-lg md:text-xl text-secondary font-semibold leading-relaxed mt-2">
+                  Hãy để bàn chân trở về với cấu trúc nguyên bản và vận động tự nhiên của mình.
                 </p>
               </div>
               <p>
@@ -240,16 +243,17 @@ const Index = () => {
                 Bởi vì khi bàn chân khỏe, mọi chuyển động của cơ thể cũng trở nên tự nhiên và mạnh mẽ hơn.
               </p>
 
-              <blockquote className="border-l-4 border-secondary pl-5 sm:pl-6 py-3 mt-6">
-                <p className="font-display text-base sm:text-lg md:text-xl text-foreground italic leading-relaxed">
-                  "Bàn chân con người là một kiệt tác — vừa hoàn hảo về cấu trúc, vừa mang vẻ đẹp của nghệ thuật."
-                </p>
-                <footer className="mt-3 text-sm font-body font-semibold text-muted-foreground">
-                  — Leonardo Da Vinci
-                </footer>
-              </blockquote>
             </div>
           </div>
+
+          <blockquote className="mt-10 sm:mt-14 text-center max-w-2xl mx-auto">
+            <p className="font-display text-lg sm:text-xl md:text-2xl text-muted-foreground italic leading-relaxed">
+              "Bàn chân con người là một kiệt tác — vừa hoàn hảo về cấu trúc, vừa mang vẻ đẹp của nghệ thuật."
+            </p>
+            <footer className="mt-3 text-sm font-body font-semibold text-muted-foreground/70">
+              — Leonardo Da Vinci
+            </footer>
+          </blockquote>
         </div>
       </section>
     </Layout>
