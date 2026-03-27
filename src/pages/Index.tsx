@@ -211,7 +211,7 @@ const Index = () => {
       </section>
       <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 bg-background">
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] font-bold text-foreground leading-tight uppercase tracking-tight text-center mb-10 sm:mb-14">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] font-bold leading-tight uppercase tracking-tight text-center mb-10 sm:mb-14 text-secondary">
             Đánh thức sức mạnh
             <br />
             <span className="text-gradient">bản năng</span> của bàn chân
