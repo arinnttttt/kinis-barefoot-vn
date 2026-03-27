@@ -309,7 +309,84 @@ function kinis_replace_content($content, $replacements) {
 }
 `);
 
-  // 3. header.php (minimal - pages include their own full markup)
+  // 3. header.php - extract static header from first page, replace nav with wp_nav_menu
+  const firstPageContent = pages[0]?.bodyContent || "";
+  const headerMatch = firstPageContent.match(/<header[\s\S]*?<\/header>/i);
+  let staticHeaderHtml = headerMatch ? headerMatch[0] : "";
+  
+  // Fix asset paths in header
+  const wpAssetUrl2 = "<?php echo get_template_directory_uri(); ?>";
+  staticHeaderHtml = staticHeaderHtml
+    .replace(/\/assets\//g, `${wpAssetUrl2}/assets/images/`)
+    .replace(/src="\/favicon\.ico"/g, `src="${wpAssetUrl2}/favicon.ico"`);
+  
+  // Fix internal links in header
+  staticHeaderHtml = staticHeaderHtml
+    .replace(/href="\/#\/san-pham\/lucy"/g, 'href="<?php echo home_url(\'/san-pham-lucy/\'); ?>"')
+    .replace(/href="\/#\/san-pham\/nomad"/g, 'href="<?php echo home_url(\'/san-pham-nomad/\'); ?>"')
+    .replace(/href="\/#\/khoa-hoc"/g, 'href="<?php echo home_url(\'/khoa-hoc/\'); ?>"')
+    .replace(/href="\/#\/cau-chuyen"/g, 'href="<?php echo home_url(\'/cau-chuyen/\'); ?>"')
+    .replace(/href="\/#\/doi-tuong\/gym-fitness"/g, 'href="<?php echo home_url(\'/doi-tuong-gym/\'); ?>"')
+    .replace(/href="\/#\/doi-tuong\/chay-bo"/g, 'href="<?php echo home_url(\'/doi-tuong-chay-bo/\'); ?>"')
+    .replace(/href="\/#\/doi-tuong\/ban-chan-bet"/g, 'href="<?php echo home_url(\'/doi-tuong-ban-chan-bet/\'); ?>"')
+    .replace(/href="\/#\/faq"/g, 'href="<?php echo home_url(\'/faq/\'); ?>"')
+    .replace(/href="\/#\/"/g, 'href="<?php echo home_url(\'/\'); ?>"');
+
+  // Extract the <nav> block from the static header to use as fallback
+  const navMatch = staticHeaderHtml.match(/<nav[^>]*data-component="navigation"[\s\S]*?<\/nav>/i);
+  const staticNav = navMatch ? navMatch[0] : "";
+  
+  // Replace the static nav with wp_nav_menu (with static fallback)
+  const wpNavReplacement = `<?php if (has_nav_menu('primary')) : ?>
+            <nav class="hidden lg:flex items-center gap-1" data-component="navigation">
+              <?php wp_nav_menu(array(
+                'theme_location' => 'primary',
+                'container'      => false,
+                'items_wrap'     => '%3$s',
+                'walker'         => new Kinis_Nav_Walker(),
+                'depth'          => 2,
+              )); ?>
+            </nav>
+          <?php else : ?>
+            ${staticNav}
+          <?php endif; ?>`;
+  
+  if (staticNav) {
+    staticHeaderHtml = staticHeaderHtml.replace(staticNav, wpNavReplacement);
+  }
+
+  // Also replace the mobile menu nav items with wp_nav_menu
+  // Find the mobile menu div (fixed overlay)
+  const mobileMenuMatch = staticHeaderHtml.match(/<div[^>]*class="[^"]*lg:hidden fixed inset-0[^"]*"[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/i);
+  if (mobileMenuMatch) {
+    const staticMobileMenu = mobileMenuMatch[0];
+    const wpMobileMenu = `<div class="lg:hidden fixed inset-0 top-16 z-[9999] transition-all duration-300 opacity-0 invisible pointer-events-none" style="background-color: #000000;">
+        <div class="h-full overflow-y-auto px-4 sm:px-6 py-6 space-y-1">
+          <?php if (has_nav_menu('primary')) : ?>
+            <?php wp_nav_menu(array(
+              'theme_location' => 'primary',
+              'container'      => false,
+              'items_wrap'     => '%3$s',
+              'walker'         => new Kinis_Mobile_Nav_Walker(),
+              'depth'          => 2,
+            )); ?>
+          <?php else : ?>
+            ${(() => {
+              // Extract mobile nav items from static content
+              const innerMatch = staticMobileMenu.match(/<div[^>]*class="h-full[^"]*"[^>]*>([\s\S]*?)<\/div>\s*<\/div>\s*<\/div>$/i);
+              return innerMatch ? innerMatch[1] : '';
+            })()}
+          <?php endif; ?>
+          <!-- Mobile social / contact -->
+          <div class="pt-6 mt-6" style="border-top: 1px solid rgba(255,255,255,0.1);">
+            <a href="tel:+84708803573" class="block px-4 py-3 text-base transition-colors" style="color: rgba(255,255,255,0.5);">(+84) 708 803 573</a>
+            <a href="mailto:hello@kinis.com" class="block px-4 py-3 text-base transition-colors" style="color: rgba(255,255,255,0.5);">hello@kinis.com</a>
+          </div>
+        </div>
+      </div>`;
+    staticHeaderHtml = staticHeaderHtml.replace(staticMobileMenu, wpMobileMenu);
+  }
+
   writeFileSync(join(THEME_DIR, "header.php"), `<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -319,6 +396,7 @@ function kinis_replace_content($content, $replacements) {
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+${staticHeaderHtml}
 `);
 
   // 4. footer.php
