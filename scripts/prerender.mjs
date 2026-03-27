@@ -65,7 +65,10 @@ async function prerender() {
 
   const PORT = 4173;
   const server = await serve(PORT);
-  const browser = await chromium.launch({ args: ["--no-sandbox"] });
+  const browser = await chromium.launch({ 
+    executablePath: "/chromium-1208/chrome-linux64/chrome",
+    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"] 
+  });
 
   for (const route of routes) {
     const page = await browser.newPage();
