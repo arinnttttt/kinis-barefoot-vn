@@ -614,7 +614,7 @@ html {
 
 /* Button hover effects — WP safe */
 .btn-primary-dark {
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 .btn-primary-dark:hover {
   background-color: hsl(0, 0%, 20%) !important;
