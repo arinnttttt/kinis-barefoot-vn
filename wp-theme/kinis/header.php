@@ -7,7 +7,7 @@
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<header class="fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 header-theme-dark bg-transparent" data-component="header" data-header-theme="dark" data-header-scrolled="false"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex items-center justify-between h-16 lg:h-20"><a href="<?php echo home_url('/'); ?>" class="flex items-center"><img src="<?php echo get_template_directory_uri(); ?><?php echo get_template_directory_uri(); ?>/assets/images/images/logo-kinis-black-CX7vQDHn.png" alt="Kinis" class="h-6 lg:h-7 transition-all duration-500 brightness-0 invert"></a><?php if (has_nav_menu('primary')) : ?>
+<header class="fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 header-theme-dark bg-transparent" data-component="header" data-header-theme="dark" data-header-scrolled="false"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex items-center justify-between h-16 lg:h-20"><a href="<?php echo home_url('/'); ?>" class="flex items-center"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-kinis-black-CX7vQDHn.png" alt="Kinis" class="h-6 lg:h-7 transition-all duration-500 brightness-0 invert"></a><?php if (has_nav_menu('primary')) : ?>
             <nav class="hidden lg:flex items-center gap-1" data-component="navigation">
               <?php wp_nav_menu(array(
                 'theme_location' => 'primary',
