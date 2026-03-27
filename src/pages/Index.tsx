@@ -229,9 +229,11 @@ const Index = () => {
                 Với cấu trúc như vậy, bàn chân có đủ khả năng nâng đỡ toàn bộ cơ thể — nếu được hoạt động tự nhiên.
                 Nhưng trong nhiều năm, chúng ta đã quen với những đôi giày đệm dày khiến bàn chân dần mất đi khả năng vận động tự nhiên ấy.
               </p>
-              <p>
-                Kinis ra đời từ ý tưởng đơn giản: <em>hãy để bàn chân trở về với cấu trúc nguyên bản và vận động tự nhiên của mình.</em>
-              </p>
+              <div className="my-6 py-4 px-5 sm:px-6 rounded-xl bg-secondary/10 border-l-4 border-secondary">
+                <p className="font-display text-base sm:text-lg md:text-xl text-foreground font-semibold leading-relaxed">
+                  Kinis ra đời từ ý tưởng đơn giản: <span className="text-secondary">hãy để bàn chân trở về với cấu trúc nguyên bản và vận động tự nhiên của mình.</span>
+                </p>
+              </div>
               <p>
                 Kinis phát triển những đôi giày tối giản (minimalist) giúp bạn cảm nhận mặt đất chân thật,
                 kích hoạt nhóm cơ bàn chân và xây dựng một nền tảng chuyển động khỏe mạnh theo thời gian.
