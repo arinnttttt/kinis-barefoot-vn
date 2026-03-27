@@ -70,8 +70,11 @@ const Header = () => {
 
   const closeMobile = useCallback(() => setMobileOpen(false), []);
 
-  const currentPath = typeof window !== "undefined" ? window.location.pathname : "/";
-  const isActive = (href: string) => currentPath === href;
+  const currentHash = typeof window !== "undefined" ? window.location.hash : "#/";
+  const isActive = (href: string) => {
+    const hashPart = href.startsWith("/#") ? href.slice(1) : href;
+    return currentHash === hashPart || (hashPart === "#/" && (currentHash === "" || currentHash === "#"));
+  };
   const isParentActive = (children?: { href: string }[]) =>
     Boolean(children?.some((child) => isActive(child.href)));
 
