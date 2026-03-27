@@ -252,7 +252,7 @@ const Index = () => {
                 <p className="font-body text-base sm:text-lg lg:text-xl font-medium leading-snug" style={{ color: "hsl(0,0%,10%)" }}>
                   Kinis ra đời từ ý tưởng đơn giản:
                 </p>
-                <p className="font-display text-lg sm:text-lg lg:text-2xl font-semibold leading-relaxed mt-1.5" style={{ color: "hsl(27,100%,52%)" }}>
+                <p className="font-display text-lg sm:text-xl lg:text-2xl font-semibold leading-relaxed mt-1.5" style={{ color: "hsl(27,100%,52%)" }}>
                   Hãy để bàn chân trở về với cấu trúc nguyên bản và vận động tự nhiên của mình.
                 </p>
               </div>
