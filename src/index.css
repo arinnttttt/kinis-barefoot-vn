@@ -630,7 +630,7 @@ html {
 }
 
 .btn-ghost {
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 .btn-ghost:hover {
   background: hsl(0 0% 100% / 0.12) !important;
