@@ -41,8 +41,8 @@ const features = [
     label: "Không hỗ trợ vòm nhân tạo",
     description:
       'Điều này cho phép các nhóm cơ nội tại và xương bàn chân "thức tỉnh", từ đó hỗ trợ cải thiện cấu trúc vòm chân theo thời gian, đặc biệt là người có bàn chân bẹt.',
-    top: "38%",
-    left: "78%",
+    top: "78%",
+    left: "70%",
     cardSide: "right" as const,
   },
 ];
