@@ -140,8 +140,7 @@ const WhyKinisDifferent = () => {
             <img
               src={apmaSeal}
               alt="APMA Accepted Seal"
-              className="apma-seal-stamp absolute -top-5 -left-5 w-[5.4rem] h-[5.4rem] sm:w-24 sm:h-24 object-contain z-10"
-              style={{ transform: "skewX(5deg) rotate(-8deg)" }}
+              className="apma-seal-stamp absolute -top-5 -left-5 w-[5.4rem] h-[5.4rem] sm:w-24 sm:h-24 object-contain z-10 sm:[transform:skewX(5deg)_rotate(-8deg)] rotate-[-8deg]"
               loading="lazy"
             />
             <div className="diagonal-skew-content p-6 sm:p-8 lg:pr-14 pl-20 sm:pl-24 pt-4 sm:pt-6">
@@ -159,7 +158,7 @@ const WhyKinisDifferent = () => {
 
           {/* Ecosystem Card - orange bg with app mockup */}
           <div className="relative lg:w-[66%]" style={{ minHeight: "220px" }}>
-            <div className="diagonal-skew-card rounded-2xl overflow-visible relative" style={{ backgroundColor: "#f97316" }}>
+            <div className="diagonal-skew-card rounded-2xl sm:rounded-2xl overflow-visible relative pb-36 sm:pb-0" style={{ backgroundColor: "#f97316" }}>
               <div className="diagonal-skew-content p-6 sm:p-8 lg:pl-14 relative z-10">
                 <div className="sm:max-w-[55%] lg:max-w-[60%]">
                   <p className="font-display text-lg sm:text-xl font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
@@ -182,16 +181,18 @@ const WhyKinisDifferent = () => {
                 style={{ transform: "translateY(-50%) skewX(5deg)" }}
                 loading="lazy"
               />
+              {/* Mobile only: mockup sits inside card's extra padding, half in orange half out */}
+              <div className="sm:hidden absolute bottom-0 left-0 right-0 flex justify-center translate-y-1/2">
+                <img
+                  src={appMockup}
+                  alt="Kinis BalancePro App"
+                  className="h-auto max-h-[280px] object-contain"
+                  loading="lazy"
+                />
+              </div>
             </div>
-            {/* Mobile only: mockup overlapping below card — orange bg covers ~half */}
-            <div className="sm:hidden flex justify-center -mt-24 relative z-20">
-              <img
-                src={appMockup}
-                alt="Kinis BalancePro App"
-                className="h-auto max-h-[280px] object-contain"
-                loading="lazy"
-              />
-            </div>
+            {/* Spacer for mobile mockup overflow */}
+            <div className="sm:hidden h-36" />
           </div>
         </div>
       </div>
