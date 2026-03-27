@@ -30,7 +30,7 @@ const Footer = () => (
       </svg>
     </div>
 
-    <footer className="bg-[#000000] text-[hsl(var(--nav-foreground))]">
+    <footer style={{ backgroundColor: "#000000", color: "#ffffff" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-8 sm:pb-10">
         {/* Top row: Logo + tagline | Social icons */}
         <div className="flex flex-col gap-5 pb-8 sm:pb-10">
@@ -40,16 +40,16 @@ const Footer = () => (
                 <a href="/">
                   <img src={logoBlack} alt="Kinis" className="h-9 sm:h-12 brightness-0 invert" />
                 </a>
-                <span className="hidden sm:block text-xl text-[hsl(var(--nav-foreground))]/30">/</span>
-                <p className="hidden sm:block text-lg md:text-xl font-display text-[hsl(var(--nav-foreground))]/50">
+                <span className="hidden sm:block text-xl" style={{ color: "rgba(255,255,255,0.3)" }}>/</span>
+                <p className="hidden sm:block text-lg md:text-xl font-display" style={{ color: "rgba(255,255,255,0.5)" }}>
                   Hệ sinh thái chăm sóc sức khỏe vận động
                 </p>
               </div>
               {/* Mobile tagline */}
-              <p className="sm:hidden text-sm font-display text-[hsl(var(--nav-foreground))]/50">
+              <p className="sm:hidden text-sm font-display" style={{ color: "rgba(255,255,255,0.5)" }}>
                 Hệ sinh thái chăm sóc sức khỏe vận động
               </p>
-              <p className="text-xs sm:text-sm text-[hsl(var(--nav-foreground))]/50 leading-relaxed">
+              <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
                 Hơn cả một đôi giày, đó là sức khỏe vận động, giúp bàn chân tự chữa lành thông qua vận động tự nhiên.
               </p>
             </div>
@@ -69,7 +69,8 @@ const Footer = () => (
                 href="https://www.facebook.com/KinisAi.VN"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[hsl(var(--nav-foreground))]/50 hover:text-secondary transition-colors"
+                className="transition-colors"
+                style={{ color: "rgba(255,255,255,0.5)" }}
                 aria-label="Facebook"
               >
                 <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
@@ -81,14 +82,14 @@ const Footer = () => (
         </div>
 
         {/* Main content grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 py-8 sm:py-10 border-t border-[hsl(var(--nav-foreground))]/10">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 py-8 sm:py-10" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
           {/* Sitemap col 1 */}
           <div>
-            <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5">Khám phá</h4>
+            <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5" style={{ color: "#ffffff" }}>Khám phá</h4>
             <ul className="space-y-2 sm:space-y-2.5">
               {sitemapLinks.slice(0, 5).map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
+                  <a href={link.href} className="text-sm footer-link transition-colors" style={{ color: "rgba(255,255,255,0.6)" }}>
                     › {link.label}
                   </a>
                 </li>
@@ -98,11 +99,11 @@ const Footer = () => (
 
           {/* Sitemap col 2 */}
           <div>
-            <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5 md:invisible">‎</h4>
+            <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5 md:invisible" style={{ color: "#ffffff" }}>‎</h4>
             <ul className="space-y-2 sm:space-y-2.5">
               {sitemapLinks.slice(5).map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
+                  <a href={link.href} className="text-sm footer-link transition-colors" style={{ color: "rgba(255,255,255,0.6)" }}>
                     › {link.label}
                   </a>
                 </li>
@@ -112,16 +113,16 @@ const Footer = () => (
 
           {/* Contact */}
           <div>
-            <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5">Liên hệ</h4>
+            <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5" style={{ color: "#ffffff" }}>Liên hệ</h4>
             <ul className="space-y-3 sm:space-y-4">
               <li>
-                <a href="tel:+84708803573" className="flex items-center gap-3 text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
+                <a href="tel:+84708803573" className="flex items-center gap-3 text-sm footer-link transition-colors" style={{ color: "rgba(255,255,255,0.6)" }}>
                   <Phone className="w-4 h-4 shrink-0" />
                   (+84) 708 803 573
                 </a>
               </li>
               <li>
-                <a href="mailto:hello@kinis.com" className="flex items-center gap-3 text-sm text-[hsl(var(--nav-foreground))]/60 hover:text-secondary transition-colors">
+                <a href="mailto:hello@kinis.com" className="flex items-center gap-3 text-sm footer-link transition-colors" style={{ color: "rgba(255,255,255,0.6)" }}>
                   <Mail className="w-4 h-4 shrink-0" />
                   hello@kinis.com
                 </a>
@@ -131,12 +132,12 @@ const Footer = () => (
 
           {/* Đặt mua */}
           <div>
-            <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5">Đặt mua tại</h4>
+            <h4 className="font-body font-semibold text-sm mb-4 sm:mb-5" style={{ color: "#ffffff" }}>Đặt mua tại</h4>
             <ul className="space-y-2 sm:space-y-2.5">
-              <li className="text-sm text-[hsl(var(--nav-foreground))]/60">
+              <li className="text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
                 › Hệ thống phân phối Bye Béo
               </li>
-              <li className="text-sm text-[hsl(var(--nav-foreground))]/60">
+              <li className="text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
                 › Kinis Balance Hub Buôn Mê Thuột
               </li>
             </ul>
@@ -144,8 +145,8 @@ const Footer = () => (
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-6 border-t border-[hsl(var(--nav-foreground))]/10 text-center">
-          <p className="text-xs text-[hsl(var(--nav-foreground))]/30">
+        <div className="pt-6 text-center" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+          <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
             © {new Date().getFullYear()} Kinis. All rights reserved.
           </p>
         </div>
