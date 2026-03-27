@@ -2,7 +2,7 @@ import { Footprints, Layers, Brain, Bone } from "lucide-react";
 import shoeImage from "@/assets/shoe-features.png";
 import apmaSeal from "@/assets/apma-seal.png";
 import appMockup from "@/assets/kinis-app-mockup.png";
-import kinisAiLogo from "@/assets/kinis-ai-logo.png";
+import kSystemLogo from "@/assets/k-system.png";
 
 const features = [
   {
@@ -159,16 +159,14 @@ const WhyKinisDifferent = () => {
 
           {/* Ecosystem Card - orange bg with app mockup */}
           <div className="diagonal-skew-card rounded-2xl overflow-visible md:w-[58%] relative" style={{ backgroundColor: "#f97316", minHeight: "220px" }}>
-            <div className="diagonal-skew-content p-6 sm:p-8 md:pl-14 relative z-10 max-w-[60%] sm:max-w-[55%]">
-              <div className="flex items-center gap-2 mb-1">
-                <img src={kinisAiLogo} alt="Kinis AI" className="w-8 h-8 rounded-full bg-white p-0.5 object-contain" loading="lazy" />
-                <p className="font-display text-lg sm:text-xl font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
-                  Nằm trong hệ sinh thái Kinis
-                </p>
-              </div>
-              <p className="text-xs font-semibold mb-3" style={{ color: "rgba(255,255,255,0.75)" }}>
+            <div className="diagonal-skew-content p-6 sm:p-8 md:pl-14 relative z-10 max-w-[65%] sm:max-w-[60%]">
+              <p className="font-display text-lg sm:text-xl font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
+                Nằm trong hệ sinh thái Kinis
+              </p>
+              <p className="text-xs font-semibold mb-2" style={{ color: "rgba(255,255,255,0.75)" }}>
                 Chăm sóc sức khỏe vận động toàn diện
               </p>
+              <img src={kSystemLogo} alt="Kinis Ecosystem" className="h-6 sm:h-7 w-auto object-contain mb-2" loading="lazy" />
               <p className="text-sm sm:text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
                 Hơn 1 đôi giày, Kinis mang đến cho bạn giải pháp toàn diện — Công cụ kiểm tra thăng bằng Kinis BalancePro tích hợp AI, được APTA khuyến nghị sử dụng trong khám lâm sàng và hệ thống bài tập cá nhân hóa cải thiện cùng giày Kinis.
               </p>
