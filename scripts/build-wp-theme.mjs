@@ -332,7 +332,34 @@ Template Name: ${page.title}
 ?>
 `;
 
-    const phpContent = `${templateComment}<?php get_header(); ?>
+    // ACF replacement maps per page
+    const acfReplacements = getAcfReplacements(page.template);
+    
+    let acfPhpBlock = "";
+    if (acfReplacements.length > 0) {
+      const pairs = acfReplacements.map(([defaultText, fieldName]) => 
+        `        '${defaultText.replace(/'/g, "\\'")}' => '${fieldName}',`
+      ).join("\n");
+      acfPhpBlock = `
+<?php
+$kinis_content = <<<'KINIS_HTML'
+${content}
+KINIS_HTML;
+
+$kinis_replacements = array(
+${pairs}
+);
+echo kinis_replace_content($kinis_content, $kinis_replacements);
+?>`;
+    }
+
+    const phpContent = acfReplacements.length > 0
+      ? `${templateComment}<?php get_header(); ?>
+${inlineStyleBlock}
+${acfPhpBlock}
+<?php get_footer(); ?>
+`
+      : `${templateComment}<?php get_header(); ?>
 ${inlineStyleBlock}
 ${content}
 <?php get_footer(); ?>
