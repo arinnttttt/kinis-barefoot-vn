@@ -256,6 +256,7 @@ const Index = () => {
           </blockquote>
         </div>
       </section>
+      <WhyKinisDifferent />
     </Layout>
   );
 };
