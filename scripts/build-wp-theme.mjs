@@ -971,6 +971,20 @@ ${wpMobileMenuPanel}
     content = content.replace(/<lovable-badge[^>]*>[\s\S]*?<\/lovable-badge>/gi, "");
     content = content.replace(/<div[^>]*id="lovable-badge"[^>]*>[\s\S]*?<\/div>/gi, "");
 
+    // Remove React root wrapper and Layout wrapper
+    content = content.replace(/<div id="root">/gi, "");
+    // Remove Toaster/notification elements
+    content = content.replace(/<div[^>]*role="region"[^>]*aria-label="Notifications[^"]*"[^>]*>[\s\S]*?<\/ol><\/div>/gi, "");
+    content = content.replace(/<section[^>]*aria-label="Notifications[^"]*"[^>]*>[\s\S]*?<\/section>/gi, "");
+    // Remove the min-h-screen flex wrapper and its empty closing div
+    content = content.replace(/<div class="min-h-screen flex flex-col"><\/div>/gi, "");
+    content = content.replace(/<div class="min-h-screen flex flex-col">/gi, "");
+    // Remove <main class="flex-1"> wrapper but keep content
+    content = content.replace(/<main class="flex-1">/gi, "");
+    content = content.replace(/<\/main>/gi, "");
+    // Clean trailing closing divs from root wrapper
+    content = content.replace(/<\/div>\s*<\/div>\s*$/, "");
+
     // Fix all internal links: /#/path → WordPress permalinks
     content = content.replace(/href="\/#\/san-pham\/lucy"/g, 'href="<?php echo home_url(\'/san-pham-lucy/\'); ?>"');
     content = content.replace(/href="\/#\/san-pham\/nomad"/g, 'href="<?php echo home_url(\'/san-pham-nomad/\'); ?>"');
@@ -986,10 +1000,11 @@ ${wpMobileMenuPanel}
     content = content.replace(/href="\/san-pham\/lucy"/g, 'href="<?php echo home_url(\'/san-pham-lucy/\'); ?>"');
     content = content.replace(/href="\/san-pham\/nomad"/g, 'href="<?php echo home_url(\'/san-pham-nomad/\'); ?>"');
 
-    // Add inline styles if present
+    // Add inline styles if present (filter out sonner/toast CSS)
     let inlineStyleBlock = "";
-    if (page.inlineStyles.length > 0) {
-      inlineStyleBlock = `<style>\n${page.inlineStyles.join("\n")}\n</style>`;
+    const filteredStyles = page.inlineStyles.filter(s => !s.includes("data-sonner") && !s.includes("sonner-") && !s.includes("toast-icon"));
+    if (filteredStyles.length > 0) {
+      inlineStyleBlock = `<style>\n${filteredStyles.join("\n")}\n</style>`;
     }
 
     const templateComment = page.template === "front-page"
