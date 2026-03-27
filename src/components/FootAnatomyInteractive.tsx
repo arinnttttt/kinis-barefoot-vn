@@ -34,7 +34,7 @@ const FootAnatomyInteractive = () => {
         <img
           src={footAnatomy}
           alt="Giải phẫu bàn chân - 26 xương, 33 khớp và hơn 200.000 đầu dây thần kinh"
-          className="w-full h-auto object-cover block"
+          className="w-full h-full object-cover block"
           loading="lazy"
           width={800}
           height={1024}
