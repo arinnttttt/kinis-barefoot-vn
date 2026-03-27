@@ -106,10 +106,12 @@ async function build() {
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
 
-  // Clean and create theme dir
-  mkdirSync(join(THEME_DIR, "assets", "css"), { recursive: true });
-  mkdirSync(join(THEME_DIR, "assets", "images"), { recursive: true });
-  mkdirSync(join(THEME_DIR, "assets", "js"), { recursive: true });
+  // Clean old assets and recreate directories
+  for (const sub of ["css", "images", "js"]) {
+    const dir = join(THEME_DIR, "assets", sub);
+    if (existsSync(dir)) rmSync(dir, { recursive: true, force: true });
+    mkdirSync(dir, { recursive: true });
+  }
 
   // Copy all assets from dist/assets/
   const assetsDir = join(DIST, "assets");
