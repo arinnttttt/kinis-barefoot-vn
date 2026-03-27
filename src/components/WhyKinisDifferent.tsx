@@ -126,10 +126,10 @@ const WhyKinisDifferent = () => {
           </div>
         </div>
 
-        {/* Bottom two cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-          {/* APMA Card */}
-          <div className="rounded-2xl border border-border/60 bg-card p-6 sm:p-8 flex flex-col sm:flex-row gap-5 items-start">
+        {/* Bottom two cards - diagonal split */}
+        <div className="relative flex flex-col md:flex-row md:h-56 overflow-hidden rounded-2xl">
+          {/* APMA Card - left */}
+          <div className="relative md:w-[55%] bg-card border border-border/40 rounded-2xl md:rounded-r-none p-6 sm:p-8 flex flex-col sm:flex-row gap-5 items-start z-10 md:clip-diagonal-left">
             <img
               src={apmaBadge}
               alt="APMA Seal of Acceptance"
@@ -137,7 +137,7 @@ const WhyKinisDifferent = () => {
               loading="lazy"
             />
             <div>
-              <p className="font-display text-base sm:text-lg font-bold text-foreground uppercase tracking-wide">
+              <p className="font-display text-base sm:text-lg font-medium text-foreground uppercase tracking-wide">
                 Đạt chứng nhận APMA
               </p>
               <p className="text-xs text-muted-foreground font-medium mb-2">
@@ -149,8 +149,8 @@ const WhyKinisDifferent = () => {
             </div>
           </div>
 
-          {/* Ecosystem Card */}
-          <div className="rounded-2xl border border-border/60 bg-card p-6 sm:p-8 flex flex-col sm:flex-row gap-5 items-start">
+          {/* Ecosystem Card - right */}
+          <div className="relative md:w-[55%] md:-ml-[10%] bg-card border border-secondary/20 rounded-2xl md:rounded-l-none p-6 sm:p-8 flex flex-col sm:flex-row gap-5 items-start mt-4 md:mt-0 md:clip-diagonal-right">
             <img
               src={appMockup}
               alt="Kinis BalancePro App"
@@ -158,7 +158,7 @@ const WhyKinisDifferent = () => {
               loading="lazy"
             />
             <div>
-              <p className="font-display text-base sm:text-lg font-bold text-foreground uppercase tracking-wide">
+              <p className="font-display text-base sm:text-lg font-medium text-foreground uppercase tracking-wide">
                 Nằm trong hệ sinh thái Kinis
               </p>
               <p className="text-xs text-secondary font-semibold mb-2">

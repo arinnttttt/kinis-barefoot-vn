@@ -515,3 +515,13 @@ html {
   transform: translateY(-50%) scale(1);
   pointer-events: auto;
 }
+
+/* Diagonal split cards */
+@media (min-width: 768px) {
+  .md\:clip-diagonal-left {
+    clip-path: polygon(0 0, calc(100% - 60px) 0, 100% 100%, 0 100%);
+  }
+  .md\:clip-diagonal-right {
+    clip-path: polygon(60px 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
