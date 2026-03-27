@@ -63,3 +63,32 @@ add_action('after_switch_theme', 'kinis_create_pages');
 
 // Disable admin bar on frontend
 add_filter('show_admin_bar', '__return_false');
+
+// ACF Notice
+function kinis_acf_notice() {
+    if (!function_exists('acf_add_local_field_group') && current_user_can('manage_options')) {
+        echo '<div class="notice notice-warning"><p><strong>Kinis Theme:</strong> Cài plugin <a href="' . admin_url('plugin-install.php?s=Advanced+Custom+Fields&tab=search') . '">Advanced Custom Fields</a> (miễn phí) để chỉnh sửa nội dung trang trực tiếp từ WordPress admin.</p></div>';
+    }
+}
+add_action('admin_notices', 'kinis_acf_notice');
+
+// Load ACF field definitions
+require_once get_template_directory() . '/inc/acf-fields.php';
+
+// Helper: get ACF field with fallback
+function kinis_field($field_name, $default = '', $post_id = false) {
+    if (!function_exists('get_field')) return $default;
+    $value = get_field($field_name, $post_id);
+    return ($value !== null && $value !== '' && $value !== false) ? $value : $default;
+}
+
+// Helper: replace text in content with ACF value
+function kinis_replace_content($content, $replacements) {
+    foreach ($replacements as $default => $field_name) {
+        $new_value = kinis_field($field_name, $default);
+        if ($new_value !== $default) {
+            $content = str_replace($default, esc_html($new_value), $content);
+        }
+    }
+    return $content;
+}
