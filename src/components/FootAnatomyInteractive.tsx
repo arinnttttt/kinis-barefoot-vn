@@ -29,12 +29,12 @@ const hotspots = [
 
 const FootAnatomyInteractive = () => {
   return (
-    <div className="foot-anatomy-interactive relative w-full h-full">
-      <div className="rounded-2xl overflow-hidden shadow-[0_8px_32px_-8px_hsl(0,0%,0%,0.12)] h-full">
+    <div className="foot-anatomy-interactive relative w-full">
+      <div className="rounded-2xl overflow-hidden shadow-[0_8px_32px_-8px_hsl(0,0%,0%,0.12)]">
         <img
           src={footAnatomy}
           alt="Giải phẫu bàn chân - 26 xương, 33 khớp và hơn 200.000 đầu dây thần kinh"
-          className="w-full h-full object-cover block"
+          className="w-full h-auto object-cover block"
           loading="lazy"
           width={800}
           height={1024}
