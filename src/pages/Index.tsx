@@ -229,9 +229,12 @@ const Index = () => {
                 Với cấu trúc như vậy, bàn chân có đủ khả năng nâng đỡ toàn bộ cơ thể — nếu được hoạt động tự nhiên.
                 Nhưng trong nhiều năm, chúng ta đã quen với những đôi giày đệm dày khiến bàn chân dần mất đi khả năng vận động tự nhiên ấy.
               </p>
-              <div className="my-6 py-4 px-5 sm:px-6 rounded-xl bg-secondary/10 border-l-4 border-secondary">
-                <p className="font-display text-base sm:text-lg md:text-xl text-foreground font-semibold leading-relaxed">
-                  Kinis ra đời từ ý tưởng đơn giản: <span className="text-secondary">hãy để bàn chân trở về với cấu trúc nguyên bản và vận động tự nhiên của mình.</span>
+              <div className="my-6 py-5 px-6 sm:px-8 rounded-2xl bg-gradient-to-br from-secondary/15 to-secondary/5 shadow-[0_4px_24px_-4px_hsl(var(--secondary)/0.15)]">
+                <p className="font-display text-lg sm:text-xl md:text-2xl text-foreground font-bold leading-snug">
+                  Kinis ra đời từ ý tưởng đơn giản:
+                </p>
+                <p className="font-display text-base sm:text-lg md:text-xl text-secondary font-semibold leading-relaxed mt-2">
+                  Hãy để bàn chân trở về với cấu trúc nguyên bản và vận động tự nhiên của mình.
                 </p>
               </div>
               <p>
