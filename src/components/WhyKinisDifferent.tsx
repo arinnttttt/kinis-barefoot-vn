@@ -11,9 +11,9 @@ const features = [
     label: "Mũi giày rộng",
     description:
       "Giúp các ngón chân hoàn toàn được tự do, xòe tự nhiên, tăng diện tích tiếp xúc và cải thiện đáng kể sự ổn định và thăng bằng.",
-    top: "30%",
-    left: "18%",
-    cardSide: "left" as const,
+    top: "60%",
+    left: "88%",
+    cardSide: "right" as const,
   },
   {
     id: "zero-drop",
@@ -21,8 +21,8 @@ const features = [
     label: "Đế phẳng Zero-Drop",
     description:
       "Gót chân và mũi chân ở cùng một mức, ngăn lệch tư thế và phân bổ trọng lượng cơ thể đều đặn.",
-    top: "72%",
-    left: "25%",
+    top: "78%",
+    left: "13%",
     cardSide: "left" as const,
   },
   {
@@ -31,9 +31,9 @@ const features = [
     label: "Đế mỏng & linh hoạt",
     description:
       "Tăng cường hệ cảm giác (proprioception) từ mặt đất lên não bộ, giúp hệ thần kinh tự động điều chỉnh và ổn định cơ thể khi đi trên nhiều loại địa hình khác nhau.",
-    top: "68%",
-    left: "72%",
-    cardSide: "right" as const,
+    top: "85%",
+    left: "42%",
+    cardSide: "left" as const,
   },
   {
     id: "no-arch",
@@ -41,8 +41,8 @@ const features = [
     label: "Không hỗ trợ vòm nhân tạo",
     description:
       'Điều này cho phép các nhóm cơ nội tại và xương bàn chân "thức tỉnh", từ đó hỗ trợ cải thiện cấu trúc vòm chân theo thời gian, đặc biệt là người có bàn chân bẹt.',
-    top: "38%",
-    left: "78%",
+    top: "78%",
+    left: "70%",
     cardSide: "right" as const,
   },
 ];
