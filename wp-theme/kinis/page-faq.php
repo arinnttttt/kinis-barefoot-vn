@@ -9,58 +9,23 @@ Template Name: FAQ
 
 </style>
 <?php
-// Hero text from ACF or defaults
+// Check if ACF is active and has FAQ categories data
+$faq_categories = function_exists('get_field') ? get_field('faq_categories') : null;
 $hero_title = function_exists('get_field') ? get_field('hero_title') : '';
 $hero_subtitle = function_exists('get_field') ? get_field('hero_subtitle') : '';
 if (!$hero_title) $hero_title = 'Câu hỏi thường gặp';
 if (!$hero_subtitle) $hero_subtitle = 'Những thắc mắc phổ biến về giày barefoot và sản phẩm Kinis.';
 
-// Build FAQ data from Custom Post Type
-$faq_categories = array();
-$terms = get_terms(array('taxonomy' => 'faq_category', 'hide_empty' => true, 'orderby' => 'term_order'));
-if (!is_wp_error($terms) && !empty($terms)) {
-    foreach ($terms as $term) {
-        $faqs = get_posts(array(
-            'post_type'      => 'faq',
-            'posts_per_page' => -1,
-            'orderby'        => 'menu_order',
-            'order'          => 'ASC',
-            'tax_query'      => array(array('taxonomy' => 'faq_category', 'field' => 'term_id', 'terms' => $term->term_id)),
-        ));
-        if (!empty($faqs)) {
-            $questions = array();
-            foreach ($faqs as $faq_post) {
-                $questions[] = array(
-                    'question' => $faq_post->post_title,
-                    'answer'   => apply_filters('the_content', $faq_post->post_content),
-                );
-            }
-            $faq_categories[] = array('category_name' => $term->name, 'questions' => $questions);
-        }
-    }
-}
-
-// Also check ACF repeater as fallback
-if (empty($faq_categories) && function_exists('get_field')) {
-    $acf_cats = get_field('faq_categories');
-    if ($acf_cats && is_array($acf_cats) && count($acf_cats) > 0) {
-        $faq_categories = $acf_cats;
-    }
-}
-
-// Helper to create slug from Vietnamese text
-if (!function_exists('kinis_to_slug')) {
-    function kinis_to_slug($text) {
-        $text = mb_strtolower($text, 'UTF-8');
-        $text = preg_replace('/[^a-z0-9\s-]/u', '', $text);
-        $text = preg_replace('/[\s-]+/', '-', $text);
-        return trim($text, '-');
-    }
-}
-
-if (!empty($faq_categories)) :
+if ($faq_categories && is_array($faq_categories) && count($faq_categories) > 0) :
+  // Helper to create slug from Vietnamese text
+  function kinis_to_slug($text) {
+    $text = mb_strtolower($text, 'UTF-8');
+    $text = preg_replace('/[^a-z0-9\s-]/u', '', $text);
+    $text = preg_replace('/[\s-]+/', '-', $text);
+    return trim($text, '-');
+  }
 ?>
-<!-- Dynamic FAQ from CPT -->
+<!-- Dynamic FAQ from ACF -->
 
 <div id="root"><div class="min-h-screen flex flex-col">
 <!-- Header will be from static content -->
