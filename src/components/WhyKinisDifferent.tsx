@@ -155,7 +155,7 @@ const WhyKinisDifferent = () => {
               <p className="text-xs font-semibold mb-3" style={{ color: "rgba(255,255,255,0.75)" }}>
                 Chăm sóc sức khỏe vận động toàn diện
               </p>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
+              <p className="text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
                 Hơn 1 đôi giày, Kinis mang đến cho bạn giải pháp toàn diện — Công cụ kiểm tra thăng bằng Kinis BalancePro tích hợp AI, được APTA khuyến nghị sử dụng trong khám lâm sàng và hệ thống bài tập cá nhân hóa cải thiện cùng giày Kinis.
               </p>
             </div>
