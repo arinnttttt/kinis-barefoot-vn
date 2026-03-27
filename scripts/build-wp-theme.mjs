@@ -971,14 +971,18 @@ ${wpMobileMenuPanel}
     content = content.replace(/<lovable-badge[^>]*>[\s\S]*?<\/lovable-badge>/gi, "");
     content = content.replace(/<div[^>]*id="lovable-badge"[^>]*>[\s\S]*?<\/div>/gi, "");
 
-    // Remove React root wrapper <div id="root"> and its closing
+    // Remove React root wrapper and Layout wrapper
     content = content.replace(/<div id="root">/gi, "");
-    // Remove the Toaster/Sonner elements
-    content = content.replace(/<div[^>]*data-sonner-toaster[^>]*>[\s\S]*?<\/div>\s*<\/section>/gi, "</section>");
-    content = content.replace(/<div[^>]*class="[^"]*sonner[^"]*"[^>]*>[\s\S]*?<\/div>/gi, "");
-    // Remove empty wrapper divs from React root
-    content = content.replace(/^(\s*<div class="min-h-screen flex flex-col">)/, "");
-    // Clean trailing closing divs from root wrapper (last 2 </div>)
+    // Remove Toaster/notification elements
+    content = content.replace(/<div[^>]*role="region"[^>]*aria-label="Notifications[^"]*"[^>]*>[\s\S]*?<\/ol><\/div>/gi, "");
+    content = content.replace(/<section[^>]*aria-label="Notifications[^"]*"[^>]*>[\s\S]*?<\/section>/gi, "");
+    // Remove the min-h-screen flex wrapper and its empty closing div
+    content = content.replace(/<div class="min-h-screen flex flex-col"><\/div>/gi, "");
+    content = content.replace(/<div class="min-h-screen flex flex-col">/gi, "");
+    // Remove <main class="flex-1"> wrapper but keep content
+    content = content.replace(/<main class="flex-1">/gi, "");
+    content = content.replace(/<\/main>/gi, "");
+    // Clean trailing closing divs from root wrapper
     content = content.replace(/<\/div>\s*<\/div>\s*$/, "");
 
     // Fix all internal links: /#/path → WordPress permalinks
