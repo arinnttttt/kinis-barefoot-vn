@@ -117,6 +117,15 @@ function kinis_register_faq_cpt() {
 }
 add_action('init', 'kinis_register_faq_cpt');
 
+// Show author credit on FAQ admin pages
+function kinis_faq_author_credit() {
+    $screen = get_current_screen();
+    if ($screen && ($screen->post_type === 'faq' || ($screen->taxonomy === 'faq_category'))) {
+        echo '<div class="notice notice-info" style="border-left-color:#f97316;"><p style="font-size:14px;"><strong>Tác giả: Arin Nhu Truong</strong></p></div>';
+    }
+}
+add_action('admin_notices', 'kinis_faq_author_credit');
+
 // ACF Notice
 function kinis_acf_notice() {
     if (!function_exists('acf_add_local_field_group') && current_user_can('manage_options')) {
