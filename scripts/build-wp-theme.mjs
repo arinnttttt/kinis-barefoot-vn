@@ -197,7 +197,7 @@ async function build() {
   writeFileSync(join(THEME_DIR, "style.css"), `/*
 Theme Name: Kinis Barefoot
 Theme URI: https://kinis.com
-Author: Arin Truong
+Author: Arin Như Trương
 Author URI: https://kinis.com
 Description: Hệ sinh thái chăm sóc sức khỏe vận động - Giày barefoot Kinis
 Version: 1.0.0
