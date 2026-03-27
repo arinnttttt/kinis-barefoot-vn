@@ -62,7 +62,7 @@ const FootAnatomyInteractive = () => {
             />
 
             {/* Tooltip - pure CSS hover */}
-            <div className="foot-hotspot-tooltip absolute z-30 left-6 top-1/2 w-56 sm:w-64 p-3.5 rounded-xl border shadow-[0_8px_32px_-8px_hsl(0,0%,0%,0.15)]">
+            <div className="foot-hotspot-tooltip absolute z-30 lg:left-6 lg:top-1/2 left-1/2 top-full mt-3 lg:mt-0 w-56 sm:w-64 p-3.5 rounded-xl border shadow-[0_8px_32px_-8px_hsl(0,0%,0%,0.15)] -translate-x-1/2 lg:translate-x-0">
               <p
                 className="font-display text-sm font-bold mb-1"
                 style={{ color: "hsl(25, 95%, 53%)" }}

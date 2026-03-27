@@ -544,20 +544,29 @@ html {
 .foot-hotspot-tooltip {
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-50%) scale(0.95);
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
   background-color: hsla(0, 0%, 100%, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-color: hsl(0, 0%, 90%);
+  transform: translateX(-50%) scale(0.95);
 }
 
 .foot-hotspot:hover .foot-hotspot-tooltip {
   opacity: 1;
   visibility: visible;
-  transform: translateY(-50%) scale(1);
+  transform: translateX(-50%) scale(1);
   pointer-events: auto;
+}
+
+@media (min-width: 1024px) {
+  .foot-hotspot-tooltip {
+    transform: translateY(-50%) scale(0.95);
+  }
+  .foot-hotspot:hover .foot-hotspot-tooltip {
+    transform: translateY(-50%) scale(1);
+  }
 }
 
 /* Why Kinis section - WP safe */
