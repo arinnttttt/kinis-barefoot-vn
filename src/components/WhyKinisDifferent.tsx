@@ -115,11 +115,11 @@ const WhyKinisDifferent = () => {
                   key={feature.id}
                   className="p-4 rounded-xl border bg-card border-border/50"
                 >
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <Icon className="w-4 h-4 text-secondary shrink-0" />
-                    <span className="font-display text-sm font-bold text-foreground">{feature.label}</span>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Icon className="w-5 h-5 text-secondary shrink-0" />
+                    <span className="font-display text-base font-medium text-foreground">{feature.label}</span>
                   </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{feature.description}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
                 </div>
               );
             })}
