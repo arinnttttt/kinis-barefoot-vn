@@ -52,7 +52,7 @@ const featureIcons = [Footprints, Layers, Brain, Bone];
 
 const WhyKinisDifferent = () => {
   return (
-    <section className="why-kinis-section py-16 sm:py-20 lg:py-24 px-4 sm:px-6" style={{ backgroundColor: "hsl(0, 0%, 96%)" }}>
+    <section className="why-kinis-section py-16 sm:py-20 lg:py-24 px-4 sm:px-6" style={{ backgroundColor: "hsl(0, 0%, 96%)", isolation: "isolate" }}>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">

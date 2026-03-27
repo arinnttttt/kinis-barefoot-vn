@@ -165,7 +165,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 lg:py-8 px-4 sm:px-6 overflow-hidden" style={{ backgroundColor: "hsl(0,0%,98%)" }} aria-labelledby="products-heading">
+      <section className="py-12 sm:py-16 lg:py-8 px-4 sm:px-6 overflow-hidden" style={{ backgroundColor: "hsl(0,0%,98%)", isolation: "isolate" }} aria-labelledby="products-heading">
         <div className="max-w-7xl mx-auto">
           <h2 id="products-heading" className="sr-only">Sản phẩm giày Kinis</h2>
           <div className="product-tabs relative" data-component="tabs">
@@ -228,7 +228,7 @@ const Index = () => {
           </div>
         </div>
       </section>
-      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6" style={{ backgroundColor: "hsl(0,0%,98%)" }}>
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6" style={{ backgroundColor: "hsl(0,0%,98%)", isolation: "isolate" }}>
         <div className="max-w-7xl mx-auto">
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] font-bold leading-tight uppercase tracking-tight text-center mb-8 sm:mb-10" style={{ color: "hsl(0,0%,10%)" }}>
             Đánh thức <span style={{ color: "hsl(27,100%,52%)" }}>sức mạnh bản năng</span> của bàn chân
