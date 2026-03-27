@@ -149,13 +149,19 @@ html {
     box-shadow: 0 1px 12px -2px hsl(0 0% 0% / 0.06);
   }
 
+  /* Header dropdown — base fallback (WP-safe: ensures dark text on white bg if theme class is missing) */
+  .header-dropdown-panel { background: hsl(0, 0%, 100%); border: 1px solid hsla(0, 0%, 0%, 0.08); }
+  .header-dropdown-link { color: hsl(0, 0%, 10%); transition: background-color 200ms ease, color 200ms ease; }
+  .header-dropdown-link:hover,
+  .header-dropdown-link[data-active="true"] { background: hsl(0, 0%, 95%); color: hsl(27, 100%, 52%); }
+
   /* Header nav — dark theme */
   .header-theme-dark .header-nav-link,
   .header-theme-dark .header-submenu-trigger { color: hsla(0, 0%, 100%, 0.7); transition: color 200ms ease; }
   .header-theme-dark .header-nav-link:hover,
   .header-theme-dark .header-submenu-trigger:hover { color: hsl(27, 100%, 52%); }
   .header-theme-dark .header-dropdown-panel { background: hsl(0, 0%, 10%); border: 1px solid hsla(0, 0%, 100%, 0.08); }
-  .header-theme-dark .header-dropdown-link { color: hsla(0, 0%, 100%, 0.8); transition: background-color 200ms ease, color 200ms ease; }
+  .header-theme-dark .header-dropdown-link { color: hsla(0, 0%, 100%, 0.8); }
   .header-theme-dark .header-dropdown-link:hover,
   .header-theme-dark .header-dropdown-link[data-active="true"] { background: hsla(0, 0%, 100%, 0.1); color: hsl(27, 100%, 52%); }
 
@@ -165,7 +171,7 @@ html {
   .header-theme-light .header-nav-link:hover,
   .header-theme-light .header-submenu-trigger:hover { color: hsl(27, 100%, 52%); }
   .header-theme-light .header-dropdown-panel { background: hsl(0, 0%, 100%); border: 1px solid hsla(0, 0%, 0%, 0.08); }
-  .header-theme-light .header-dropdown-link { color: hsl(0, 0%, 10%); transition: background-color 200ms ease, color 200ms ease; }
+  .header-theme-light .header-dropdown-link { color: hsl(0, 0%, 10%); }
   .header-theme-light .header-dropdown-link:hover,
   .header-theme-light .header-dropdown-link[data-active="true"] { background: hsl(0, 0%, 95%); color: hsl(27, 100%, 52%); }
 
