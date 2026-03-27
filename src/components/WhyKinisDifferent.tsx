@@ -126,10 +126,10 @@ const WhyKinisDifferent = () => {
           </div>
         </div>
 
-        {/* Bottom two cards - diagonal split */}
-        <div className="relative flex flex-col md:flex-row md:h-56 overflow-hidden rounded-2xl">
-          {/* APMA Card - left */}
-          <div className="relative md:w-[55%] bg-card border border-border/40 rounded-2xl md:rounded-r-none p-6 sm:p-8 flex flex-col sm:flex-row gap-5 items-start z-10 md:clip-diagonal-left">
+        {/* Bottom two cards - diagonal overlap */}
+        <div className="relative flex flex-col md:flex-row md:items-stretch">
+          {/* APMA Card - left, overlaps right */}
+          <div className="diagonal-card-left relative md:w-[58%] bg-card border border-border/40 rounded-2xl p-6 sm:p-8 pr-16 md:pr-20 flex flex-col sm:flex-row gap-5 items-start z-20 shadow-[4px_0_16px_-4px_hsl(0,0%,0%,0.06)]">
             <img
               src={apmaBadge}
               alt="APMA Seal of Acceptance"
@@ -149,8 +149,8 @@ const WhyKinisDifferent = () => {
             </div>
           </div>
 
-          {/* Ecosystem Card - right */}
-          <div className="relative md:w-[55%] md:-ml-[10%] bg-card border border-secondary/20 rounded-2xl md:rounded-l-none p-6 sm:p-8 flex flex-col sm:flex-row gap-5 items-start mt-4 md:mt-0 md:clip-diagonal-right">
+          {/* Ecosystem Card - right, tucked behind left */}
+          <div className="diagonal-card-right relative md:w-[58%] md:-ml-[16%] bg-card border border-secondary/20 rounded-2xl p-6 sm:p-8 pl-16 md:pl-20 flex flex-col sm:flex-row gap-5 items-start mt-4 md:mt-0 z-10">
             <img
               src={appMockup}
               alt="Kinis BalancePro App"
