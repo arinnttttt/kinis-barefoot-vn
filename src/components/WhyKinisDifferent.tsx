@@ -158,7 +158,7 @@ const WhyKinisDifferent = () => {
           </div>
 
           {/* Ecosystem Card - orange bg with app mockup */}
-          <div className="diagonal-skew-card rounded-2xl overflow-hidden lg:w-[66%] relative" style={{ backgroundColor: "#f97316", minHeight: "220px" }}>
+          <div className="diagonal-skew-card rounded-2xl overflow-visible lg:w-[66%] relative" style={{ backgroundColor: "#f97316", minHeight: "220px" }}>
             {/* Tablet (md): side-by-side layout | Mobile: stacked */}
             <div className="diagonal-skew-content p-6 sm:p-8 lg:pl-14 relative z-10 flex flex-col sm:flex-row sm:items-center sm:gap-6 lg:block">
               <div className="sm:flex-1 lg:max-w-[60%]">
