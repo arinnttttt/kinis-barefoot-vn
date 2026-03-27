@@ -1,5 +1,6 @@
 import { Footprints, Layers, Brain, Bone } from "lucide-react";
 import shoeImage from "@/assets/shoe-features.png";
+import apmaSeal from "@/assets/apma-seal.png";
 
 const features = [
   {
