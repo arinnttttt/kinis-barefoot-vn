@@ -128,6 +128,67 @@ async function build() {
     }
   }
 
+  // Generate header-scroll.js (vanilla JS for WP - replaces React state)
+  writeFileSync(join(THEME_DIR, "assets", "js", "header-scroll.js"), `(function(){
+'use strict';
+var header=document.querySelector('header[data-component="header"]');
+var mobileMenu=document.getElementById('kinis-mobile-menu');
+var menuBtn=document.querySelector('[data-menu-toggle]');
+var logo=header?header.querySelector('img[alt="Kinis"]'):null;
+var isOpen=false;
+if(!header)return;
+var menuIcon='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>';
+var closeIcon='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>';
+if(menuBtn&&mobileMenu){
+  menuBtn.addEventListener('click',function(){
+    isOpen=!isOpen;
+    if(isOpen){
+      mobileMenu.style.opacity='1';mobileMenu.style.visibility='visible';mobileMenu.style.pointerEvents='auto';
+      document.body.style.overflow='hidden';menuBtn.innerHTML=closeIcon;
+      menuBtn.setAttribute('aria-label','Đóng menu');
+      header.style.backgroundColor='#000000';header.style.backdropFilter='none';header.style.webkitBackdropFilter='none';
+      if(logo)logo.style.filter='brightness(0) invert(1)';menuBtn.style.color='#ffffff';
+    }else{
+      mobileMenu.style.opacity='0';mobileMenu.style.visibility='hidden';mobileMenu.style.pointerEvents='none';
+      document.body.style.overflow='';menuBtn.innerHTML=menuIcon;
+      menuBtn.setAttribute('aria-label','Mở menu');handleScroll();
+    }
+  });
+  var links=mobileMenu.querySelectorAll('a');
+  for(var i=0;i<links.length;i++){
+    links[i].addEventListener('click',function(){
+      if(isOpen){isOpen=false;mobileMenu.style.opacity='0';mobileMenu.style.visibility='hidden';mobileMenu.style.pointerEvents='none';
+      document.body.style.overflow='';menuBtn.innerHTML=menuIcon;menuBtn.setAttribute('aria-label','Mở menu');handleScroll();}
+    });
+  }
+}
+var navLinks=header.querySelectorAll('.header-nav-link');
+var navBtns=header.querySelectorAll('.header-submenu-trigger');
+function getTheme(){
+  var h=80;var els=document.elementsFromPoint(window.innerWidth/2,h);var sec=null;
+  for(var i=0;i<els.length;i++){var t=els[i].tagName;if(t==='SECTION'||t==='FOOTER'){sec=els[i];break;}}
+  if(!sec)return'dark';var bg=window.getComputedStyle(sec).backgroundColor;var m=bg.match(/\\d+/g);
+  if(!m)return'dark';var r=parseInt(m[0]),g=parseInt(m[1]),b=parseInt(m[2]);
+  return(0.299*r+0.587*g+0.114*b)/255<0.5?'dark':'light';
+}
+function handleScroll(){
+  if(isOpen)return;var scrolled=window.scrollY>20;var theme=getTheme();var isDark=theme==='dark';
+  header.setAttribute('data-header-scrolled',scrolled?'true':'false');header.setAttribute('data-header-theme',theme);
+  if(scrolled){header.style.backgroundColor=isDark?'rgba(0,0,0,0.75)':'rgba(255,255,255,0.85)';
+    header.style.backdropFilter='blur(16px)';header.style.webkitBackdropFilter='blur(16px)';
+  }else{header.style.backgroundColor='transparent';header.style.backdropFilter='none';header.style.webkitBackdropFilter='none';}
+  if(logo)logo.style.filter=isDark?'brightness(0) invert(1)':'none';
+  var tc=isDark?'#ffffff':'#1a1a1a';var ac='hsl(27,100%,52%)';
+  for(var i=0;i<navLinks.length;i++){var l=navLinks[i];
+    var isA=l.classList.contains('text-secondary')||(l.href&&window.location.href===l.href);
+    l.style.color=isA?ac:tc;}
+  for(var j=0;j<navBtns.length;j++){navBtns[j].style.color=navBtns[j].classList.contains('text-secondary')?ac:tc;}
+  if(menuBtn)menuBtn.style.color=isDark?'#ffffff':'#1a1a1a';
+}
+handleScroll();window.addEventListener('scroll',handleScroll,{passive:true});
+})();`);
+
+
   // Copy favicon
   if (existsSync(join(DIST, "favicon.ico"))) {
     cpSync(join(DIST, "favicon.ico"), join(THEME_DIR, "favicon.ico"));
@@ -777,16 +838,18 @@ Lưu ý quan trọng:
 add_action('after_switch_theme', 'kinis_seed_faq_data', 30);
 `);
 
-  // 3. header.php - extract static header from first page, replace nav with wp_nav_menu
+  // 3. header.php - extract header + mobile menu from first page
   const firstPageContent = pages[0]?.bodyContent || "";
   const headerMatch = firstPageContent.match(/<header[\s\S]*?<\/header>/i);
   let staticHeaderHtml = headerMatch ? headerMatch[0] : "";
   
-  // Asset paths already fixed in bodyContent (line 159-161), no need to replace again here.
-  // Only fix favicon if not already handled.
+  // Also extract the mobile menu div (now OUTSIDE <header> in React)
+  // It's a div with lg:hidden fixed inset-0 z-[9998]
+  const mobileMenuOutsideMatch = firstPageContent.match(/<div[^>]*class="lg:hidden fixed inset-0[^"]*z-\[9998\][^"]*"[\s\S]*?<\/div>\s*<\/div>/i);
+  let staticMobileMenu = mobileMenuOutsideMatch ? mobileMenuOutsideMatch[0] : "";
 
   // Fix internal links in header
-  staticHeaderHtml = staticHeaderHtml
+  const fixLinks = (html) => html
     .replace(/href="\/#\/san-pham\/lucy"/g, 'href="<?php echo home_url(\'/san-pham-lucy/\'); ?>"')
     .replace(/href="\/#\/san-pham\/nomad"/g, 'href="<?php echo home_url(\'/san-pham-nomad/\'); ?>"')
     .replace(/href="\/#\/khoa-hoc"/g, 'href="<?php echo home_url(\'/khoa-hoc/\'); ?>"')
@@ -796,6 +859,8 @@ add_action('after_switch_theme', 'kinis_seed_faq_data', 30);
     .replace(/href="\/#\/doi-tuong\/ban-chan-bet"/g, 'href="<?php echo home_url(\'/doi-tuong-ban-chan-bet/\'); ?>"')
     .replace(/href="\/#\/faq"/g, 'href="<?php echo home_url(\'/faq/\'); ?>"')
     .replace(/href="\/#\/"/g, 'href="<?php echo home_url(\'/\'); ?>"');
+
+  staticHeaderHtml = fixLinks(staticHeaderHtml);
 
   // Extract the <nav> block from the static header to use as fallback
   const navMatch = staticHeaderHtml.match(/<nav[^>]*data-component="navigation"[\s\S]*?<\/nav>/i);
@@ -820,39 +885,55 @@ add_action('after_switch_theme', 'kinis_seed_faq_data', 30);
     staticHeaderHtml = staticHeaderHtml.replace(staticNav, wpNavReplacement);
   }
 
-  // Also replace the mobile menu nav items with wp_nav_menu
-  // Find the mobile menu div (fixed overlay)
-  const mobileMenuMatch = staticHeaderHtml.match(/<div[^>]*class="[^"]*lg:hidden fixed inset-0[^"]*"[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/i);
-  if (mobileMenuMatch) {
-    const staticMobileMenu = mobileMenuMatch[0];
-    const wpMobileMenu = `<div class="lg:hidden fixed inset-0 top-16 z-[9999] transition-all duration-300 opacity-0 invisible pointer-events-none" style="background-color: #000000;">
-        <div class="h-full overflow-y-auto px-4 sm:px-6 py-6 space-y-1">
-          <?php if (has_nav_menu('primary')) : ?>
-            <?php wp_nav_menu(array(
-              'theme_location' => 'primary',
-              'container'      => false,
-              'items_wrap'     => '%3$s',
-              'walker'         => new Kinis_Mobile_Nav_Walker(),
-              'depth'          => 2,
-            )); ?>
-          <?php else : ?>
-            ${(() => {
-              // Extract mobile nav items from static content
-              const innerMatch = staticMobileMenu.match(/<div[^>]*class="h-full[^"]*"[^>]*>([\s\S]*?)<\/div>\s*<\/div>\s*<\/div>$/i);
-              return innerMatch ? innerMatch[1] : '';
-            })()}
-          <?php endif; ?>
-          <!-- Mobile social / contact -->
-          <div class="pt-6 mt-6" style="border-top: 1px solid rgba(255,255,255,0.1);">
-            <a href="tel:+84708803573" class="block px-4 py-3 text-base transition-colors" style="color: rgba(255,255,255,0.5);">(+84) 708 803 573</a>
-            <a href="mailto:hello@kinis.com" class="block px-4 py-3 text-base transition-colors" style="color: rgba(255,255,255,0.5);">hello@kinis.com</a>
-          </div>
-        </div>
-      </div>`;
-    staticHeaderHtml = staticHeaderHtml.replace(staticMobileMenu, wpMobileMenu);
-  }
+  // Add data-menu-toggle to the hamburger button
+  staticHeaderHtml = staticHeaderHtml.replace(
+    /(<button[^>]*class="lg:hidden[^"]*")/,
+    '$1 data-menu-toggle'
+  );
 
-  writeFileSync(join(THEME_DIR, "header.php"), `<!DOCTYPE html>
+  // Build mobile menu panel for WP - use string concat to avoid template literal issues
+  const wpMobileMenuPanel = [
+    '<!-- Mobile menu panel -->',
+    '<div id="kinis-mobile-menu" class="lg:hidden fixed inset-0 z-[9998]" style="top:64px;background-color:#000000;opacity:0;visibility:hidden;pointer-events:none;transition:opacity 0.3s ease,visibility 0.3s ease;">',
+    '  <div class="h-full overflow-y-auto px-4 sm:px-6 py-6 space-y-1">',
+    "    <?php if (has_nav_menu('primary')) : ?>",
+    '      <?php wp_nav_menu(array(',
+    "        'theme_location' => 'primary',",
+    "        'container'      => false,",
+    "        'items_wrap'     => '%3$s',",
+    "        'walker'         => new Kinis_Mobile_Nav_Walker(),",
+    "        'depth'          => 2,",
+    '      )); ?>',
+    '    <?php else : ?>',
+    '      <a href="<?php echo home_url(\'/\'); ?>" class="kinis-mobile-link block px-4 py-3.5 text-base font-medium rounded-xl" style="color:hsl(27,100%,52%);">Trang chủ</a>',
+    '      <a href="<?php echo home_url(\'/cau-chuyen/\'); ?>" class="kinis-mobile-link block px-4 py-3.5 text-base font-medium rounded-xl" style="color:rgba(255,255,255,0.7);">Câu chuyện</a>',
+    '      <details class="group">',
+    '        <summary class="flex cursor-pointer list-none items-center justify-between px-4 py-3.5 text-base font-medium rounded-xl [&::-webkit-details-marker]:hidden" style="color:rgba(255,255,255,0.7);">Sản phẩm<svg class="w-5 h-5 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>',
+    '        <div class="pl-4 pb-2 space-y-0.5">',
+    '          <a href="<?php echo home_url(\'/san-pham-lucy/\'); ?>" class="kinis-mobile-link block px-4 py-3 text-base rounded-xl" style="color:rgba(255,255,255,0.5);">Kinis Lucy</a>',
+    '          <a href="<?php echo home_url(\'/san-pham-nomad/\'); ?>" class="kinis-mobile-link block px-4 py-3 text-base rounded-xl" style="color:rgba(255,255,255,0.5);">Kinis Nomad</a>',
+    '        </div>',
+    '      </details>',
+    '      <a href="<?php echo home_url(\'/khoa-hoc/\'); ?>" class="kinis-mobile-link block px-4 py-3.5 text-base font-medium rounded-xl" style="color:rgba(255,255,255,0.7);">Khoa học</a>',
+    '      <details class="group">',
+    '        <summary class="flex cursor-pointer list-none items-center justify-between px-4 py-3.5 text-base font-medium rounded-xl [&::-webkit-details-marker]:hidden" style="color:rgba(255,255,255,0.7);">Đối tượng phù hợp<svg class="w-5 h-5 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>',
+    '        <div class="pl-4 pb-2 space-y-0.5">',
+    '          <a href="<?php echo home_url(\'/doi-tuong-gym/\'); ?>" class="kinis-mobile-link block px-4 py-3 text-base rounded-xl" style="color:rgba(255,255,255,0.5);">Gym & Fitness</a>',
+    '          <a href="<?php echo home_url(\'/doi-tuong-chay-bo/\'); ?>" class="kinis-mobile-link block px-4 py-3 text-base rounded-xl" style="color:rgba(255,255,255,0.5);">Chạy bộ</a>',
+    '          <a href="<?php echo home_url(\'/doi-tuong-ban-chan-bet/\'); ?>" class="kinis-mobile-link block px-4 py-3 text-base rounded-xl" style="color:rgba(255,255,255,0.5);">Bàn chân bẹt</a>',
+    '        </div>',
+    '      </details>',
+    '      <a href="<?php echo home_url(\'/faq/\'); ?>" class="kinis-mobile-link block px-4 py-3.5 text-base font-medium rounded-xl" style="color:rgba(255,255,255,0.7);">FAQ</a>',
+    '    <?php endif; ?>',
+    '    <div class="pt-6 mt-6" style="border-top:1px solid rgba(255,255,255,0.1);">',
+    '      <a href="tel:+84708803573" class="block px-4 py-3 text-base" style="color:rgba(255,255,255,0.5);">(+84) 708 803 573</a>',
+    '      <a href="mailto:hello@kinis.com" class="block px-4 py-3 text-base" style="color:rgba(255,255,255,0.5);">hello@kinis.com</a>',
+    '    </div>',
+    '  </div>',
+    '</div>',
+  ].join('\n');
+
+  const headerPhpContent = `<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
@@ -862,7 +943,9 @@ add_action('after_switch_theme', 'kinis_seed_faq_data', 30);
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 ${staticHeaderHtml}
-`);
+${wpMobileMenuPanel}
+`;
+  writeFileSync(join(THEME_DIR, "header.php"), headerPhpContent);
 
   // 4. footer.php
   writeFileSync(join(THEME_DIR, "footer.php"), `<?php wp_footer(); ?>
@@ -880,6 +963,9 @@ ${staticHeaderHtml}
 
     // Remove the header (now in header.php)
     content = content.replace(/<header[\s\S]*?<\/header>/i, "");
+
+    // Remove the mobile menu panel (now in header.php)
+    content = content.replace(/<div[^>]*class="lg:hidden fixed inset-0[^"]*z-\[9998\][^"]*"[\s\S]*?<\/div>\s*<\/div>/i, "");
 
     // Remove the lovable-badge if present
     content = content.replace(/<lovable-badge[^>]*>[\s\S]*?<\/lovable-badge>/gi, "");
