@@ -188,23 +188,6 @@ function handleScroll(){
 handleScroll();window.addEventListener('scroll',handleScroll,{passive:true});
 })();`);
 
-    // Also fix audience links without hash
-    content = content.replace(/href="\/doi-tuong\/gym"/g, 'href="<?php echo home_url(\'/doi-tuong-gym/\'); ?>"');
-    content = content.replace(/href="\/doi-tuong\/ban-chan-bet"/g, 'href="<?php echo home_url(\'/doi-tuong-ban-chan-bet/\'); ?>"');
-    content = content.replace(/href="\/doi-tuong\/chay-bo"/g, 'href="<?php echo home_url(\'/doi-tuong-chay-bo/\'); ?>"');
-
-    // Fix hero padding for subpages (not front-page which has full-height hero)
-    // The fixed header is ~80px, so subpage heroes need pt-28+ minimum
-    if (page.template !== "front-page") {
-      // Replace pt-20/pt-24 with proper offset for fixed header
-      content = content.replace(/class="([^"]*)\bpt-20\b/g, 'class="$1pt-28');
-      content = content.replace(/\bsm:pt-24\b/g, 'sm:pt-32');
-      // Also ensure first section has enough top padding
-      content = content.replace(/\bsm:py-24\b/g, 'sm:pt-32 sm:pb-16');
-      content = content.replace(/\bmd:py-28\b/g, 'md:pt-36 md:pb-20');
-      content = content.replace(/\blg:py-32\b/g, 'lg:pt-40 lg:pb-24');
-    }
-
 
   // Copy favicon
   if (existsSync(join(DIST, "favicon.ico"))) {
