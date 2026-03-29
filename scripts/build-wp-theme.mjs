@@ -1011,9 +1011,9 @@ ${wpMobileMenuPanel}
     content = content.replace(/href="\/san-pham\/lucy"/g, 'href="<?php echo home_url(\'/san-pham-lucy/\'); ?>"');
     content = content.replace(/href="\/san-pham\/nomad"/g, 'href="<?php echo home_url(\'/san-pham-nomad/\'); ?>"');
     // Also fix audience links without hash (from TargetAudienceSection)
-    content = content.replace(/href="\/doi-tuong\/gym"/g, 'href="<?php echo home_url(\\/doi-tuong-gym/\\); ?>"');
-    content = content.replace(/href="\/doi-tuong\/ban-chan-bet"/g, 'href="<?php echo home_url(\\/doi-tuong-ban-chan-bet/\\); ?>"');
-    content = content.replace(/href="\/doi-tuong\/chay-bo"/g, 'href="<?php echo home_url(\\/doi-tuong-chay-bo/\\); ?>"');
+    content = content.replace(/href="\/doi-tuong\/gym"/g, 'href="<?php echo home_url(\'/doi-tuong-gym/\'); ?>"');
+    content = content.replace(/href="\/doi-tuong\/ban-chan-bet"/g, 'href="<?php echo home_url(\'/doi-tuong-ban-chan-bet/\'); ?>"');
+    content = content.replace(/href="\/doi-tuong\/chay-bo"/g, 'href="<?php echo home_url(\'/doi-tuong-chay-bo/\'); ?>"');
 
     // Fix hero padding for subpages (not front-page which has full-height hero)
     if (page.template !== "front-page") {
