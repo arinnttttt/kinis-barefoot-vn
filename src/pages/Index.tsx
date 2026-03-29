@@ -275,6 +275,7 @@ const Index = () => {
           </blockquote>
         </div>
       </section>
+      <TrustedPress />
       <WhyKinisDifferent />
     </Layout>
   );
