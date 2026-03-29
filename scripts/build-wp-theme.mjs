@@ -190,9 +190,11 @@ handleScroll();window.addEventListener('scroll',handleScroll,{passive:true});
 
 
 
-  // Copy favicon
+  // Copy favicon to assets/images
   if (existsSync(join(DIST, "favicon.ico"))) {
-    cpSync(join(DIST, "favicon.ico"), join(THEME_DIR, "favicon.ico"));
+    cpSync(join(DIST, "favicon.ico"), join(THEME_DIR, "assets", "images", "favicon.ico"));
+  } else if (existsSync(join(ROOT, "public", "favicon.ico"))) {
+    cpSync(join(ROOT, "public", "favicon.ico"), join(THEME_DIR, "assets", "images", "favicon.ico"));
   }
 
   console.log(`\n🎨 Pre-rendering ${routes.length} routes into WP templates...\n`);
