@@ -58,7 +58,7 @@ const TargetAudienceSection = () => (
         <span style={{ color: "hsl(27,100%,52%)" }}>Kinis Barefoot?</span>
       </h2>
       <p
-        className="text-center text-sm sm:text-base lg:text-lg mb-8 sm:mb-10 lg:mb-14 max-w-2xl mx-auto leading-relaxed"
+        className="text-center text-sm sm:text-base lg:text-lg mb-5 sm:mb-6 lg:mb-14 max-w-2xl mx-auto leading-relaxed"
         style={{ color: "hsl(0,0%,50%)" }}
       >
         Kinis Barefoot dành cho tất cả những người yêu thích vận động, đang phục hồi hoặc mong muốn phòng ngừa chấn thương
