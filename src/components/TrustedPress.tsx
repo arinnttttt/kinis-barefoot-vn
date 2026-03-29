@@ -51,7 +51,8 @@ const LogoCell = ({ item }: { item: typeof pressLogos[number] }) => (
       src={item.logo}
       alt={item.name}
       loading="lazy"
-      className="w-[80%] h-[80%] object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300 invert brightness-200"
+      className="w-[80%] h-[80%] object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+      style={{ filter: "brightness(0) invert(1)" }}
     />
   </a>
 );
