@@ -17,4 +17,77 @@ $kinis_replacements = array(
 );
 echo kinis_replace_content($kinis_content, $kinis_replacements);
 ?>
+
+<!-- Section: Được tin tưởng tại Mỹ -->
+<section class="overflow-hidden" style="background-color: #1a1a1a; isolation: isolate;" aria-labelledby="trusted-heading">
+  <div class="max-w-6xl mx-auto">
+    <!-- Desktop: 4 cols -->
+    <div class="hidden lg:grid" style="grid-template-columns: 1fr 1fr 1fr 1fr;">
+      <a href="https://richmondmagazine.com/news/features/from-the-ground-up/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center aspect-square p-3 transition-all duration-300 ease-out" style="border: 1px solid rgba(255,255,255,0.08);" title="Richmond Magazine"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/richmond-magazine-B0H_3E4B.png" alt="Richmond Magazine" loading="lazy" class="w-[80%] h-[80%] object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300" style="filter: brightness(0) invert(1);"></a>
+      <div class="col-span-2 flex flex-col items-center justify-center p-6 sm:p-8 text-center h-full" style="border: 1px solid rgba(255,255,255,0.08);">
+        <h2 id="trusted-heading" class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight uppercase tracking-tight mb-2" style="color: #ffffff;">Được tin tưởng <span style="color: hsl(27,100%,52%);">tại Mỹ</span></h2>
+        <p class="text-sm sm:text-base lg:text-lg" style="color: rgba(255,255,255,0.5);">Kinis đã được nhiều tờ báo uy tín tại Hoa Kỳ đưa tin</p>
+      </div>
+      <a href="https://richmondbizsense.com/2018/06/18/richmond-startup-launches-fresh-take-workout-socks/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center aspect-square p-3 transition-all duration-300 ease-out" style="border: 1px solid rgba(255,255,255,0.08);" title="Richmond BizSense"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/richmond-bizsense-D0pjS6m4.png" alt="Richmond BizSense" loading="lazy" class="w-[80%] h-[80%] object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300" style="filter: brightness(0) invert(1);"></a>
+      <a href="https://mason.wm.edu/news/2019/treading-a-path-to-success-back-to-basics.php" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center aspect-square p-3 transition-all duration-300 ease-out" style="border: 1px solid rgba(255,255,255,0.08);" title="William & Mary Mason School"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/william-mary-2b0t7oBN.png" alt="William & Mary Mason School" loading="lazy" class="w-[80%] h-[80%] object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300" style="filter: brightness(0) invert(1);"></a>
+      <a href="https://www.elevationoutdoors.com/go-outside/the-ultimate-2020-outdoor-gift-guide/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center aspect-square p-3 transition-all duration-300 ease-out" style="border: 1px solid rgba(255,255,255,0.08);" title="Elevation Outdoors"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/elevation-outdoors-C_Zl9G28.png" alt="Elevation Outdoors" loading="lazy" class="w-[80%] h-[80%] object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300" style="filter: brightness(0) invert(1);"></a>
+      <a href="https://foodtravelist.com/ultimate-holiday-gifts-for-food-travel-lovers/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center aspect-square p-3 transition-all duration-300 ease-out" style="border: 1px solid rgba(255,255,255,0.08);" title="Food Travelist"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/food-travelist-CzdzNeYY.png" alt="Food Travelist" loading="lazy" class="w-[80%] h-[80%] object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300" style="filter: brightness(0) invert(1);"></a>
+      <a href="https://vuenj.com/luxury-gift-guide-the-best-gifts-of-2020/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center aspect-square p-3 transition-all duration-300 ease-out" style="border: 1px solid rgba(255,255,255,0.08);" title="VUE NJ"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/vue-nj-DF0E8HWG.png" alt="VUE NJ" loading="lazy" class="w-[80%] h-[80%] object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300" style="filter: brightness(0) invert(1);"></a>
+    </div>
+    <!-- Mobile & Tablet -->
+    <div class="lg:hidden grid grid-cols-3">
+      <a href="https://richmondmagazine.com/news/features/from-the-ground-up/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center aspect-square p-3 transition-all duration-300 ease-out" style="border: 1px solid rgba(255,255,255,0.08);" title="Richmond Magazine"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/richmond-magazine-B0H_3E4B.png" alt="Richmond Magazine" loading="lazy" class="w-[80%] h-[80%] object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300" style="filter: brightness(0) invert(1);"></a>
+      <a href="https://richmondbizsense.com/2018/06/18/richmond-startup-launches-fresh-take-workout-socks/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center aspect-square p-3 transition-all duration-300 ease-out" style="border: 1px solid rgba(255,255,255,0.08);" title="Richmond BizSense"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/richmond-bizsense-D0pjS6m4.png" alt="Richmond BizSense" loading="lazy" class="w-[80%] h-[80%] object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300" style="filter: brightness(0) invert(1);"></a>
+      <a href="https://mason.wm.edu/news/2019/treading-a-path-to-success-back-to-basics.php" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center aspect-square p-3 transition-all duration-300 ease-out" style="border: 1px solid rgba(255,255,255,0.08);" title="William & Mary Mason School"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/william-mary-2b0t7oBN.png" alt="William & Mary" loading="lazy" class="w-[80%] h-[80%] object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300" style="filter: brightness(0) invert(1);"></a>
+      <div class="col-span-3 flex flex-col items-center justify-center p-6 sm:p-8 text-center" style="border: 1px solid rgba(255,255,255,0.08);">
+        <h2 class="font-display text-2xl sm:text-3xl font-bold leading-tight uppercase tracking-tight mb-2" style="color: #ffffff;" aria-hidden="true">Được tin tưởng <span style="color: hsl(27,100%,52%);">tại Mỹ</span></h2>
+        <p class="text-sm sm:text-base" style="color: rgba(255,255,255,0.5);">Kinis đã được nhiều tờ báo uy tín tại Hoa Kỳ đưa tin</p>
+      </div>
+      <a href="https://www.elevationoutdoors.com/go-outside/the-ultimate-2020-outdoor-gift-guide/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center aspect-square p-3 transition-all duration-300 ease-out" style="border: 1px solid rgba(255,255,255,0.08);" title="Elevation Outdoors"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/elevation-outdoors-C_Zl9G28.png" alt="Elevation Outdoors" loading="lazy" class="w-[80%] h-[80%] object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300" style="filter: brightness(0) invert(1);"></a>
+      <a href="https://foodtravelist.com/ultimate-holiday-gifts-for-food-travel-lovers/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center aspect-square p-3 transition-all duration-300 ease-out" style="border: 1px solid rgba(255,255,255,0.08);" title="Food Travelist"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/food-travelist-CzdzNeYY.png" alt="Food Travelist" loading="lazy" class="w-[80%] h-[80%] object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300" style="filter: brightness(0) invert(1);"></a>
+      <a href="https://vuenj.com/luxury-gift-guide-the-best-gifts-of-2020/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center aspect-square p-3 transition-all duration-300 ease-out" style="border: 1px solid rgba(255,255,255,0.08);" title="VUE NJ"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/vue-nj-DF0E8HWG.png" alt="VUE NJ" loading="lazy" class="w-[80%] h-[80%] object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300" style="filter: brightness(0) invert(1);"></a>
+    </div>
+  </div>
+</section>
+
+<!-- Section: Ai thực sự phù hợp với Kinis Barefoot -->
+<section class="py-8 sm:py-10 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden" style="background-color: hsl(0,0%,96%); isolation: isolate;" aria-labelledby="audience-heading">
+  <div class="max-w-7xl mx-auto">
+    <h2 id="audience-heading" class="font-display text-2xl sm:text-3xl lg:text-[2.5rem] font-bold leading-tight uppercase tracking-tight text-center mb-3 sm:mb-4" style="color: hsl(0,0%,10%);">Ai thực sự phù hợp với <span style="color: hsl(27,100%,52%);">Kinis Barefoot?</span></h2>
+    <p class="text-center text-sm sm:text-base lg:text-lg mb-5 sm:mb-6 lg:mb-14 max-w-2xl mx-auto leading-relaxed" style="color: hsl(0,0%,50%);">Kinis Barefoot dành cho tất cả những người yêu thích vận động, đang phục hồi hoặc mong muốn phòng ngừa chấn thương</p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-7">
+      <!-- Card 1: Gym - Black -->
+      <div class="group relative flex flex-col rounded-2xl overflow-hidden min-h-[220px] sm:min-h-[380px] lg:min-h-[440px]">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/audience-gym-I87EMP9w.jpg" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105">
+        <div class="absolute inset-0" style="background-color: rgba(0,0,0,0.75);"></div>
+        <div class="relative flex flex-col flex-1 p-4 sm:p-5 lg:p-8 justify-end">
+          <h3 class="font-display text-base sm:text-xl lg:text-xl font-bold leading-snug mb-2 sm:mb-2 lg:mb-3" style="color: #ffffff;">Người tập luyện trong Phòng Gym/Fitness</h3>
+          <p class="text-xs sm:text-sm lg:text-base leading-relaxed mb-4 sm:mb-3 lg:mb-6" style="color: rgba(255,255,255,0.75);">Dòng Kinis Nomad được thiết kế cho sàn gym. Loại bỏ foam mềm của giày chạy, cung cấp nền phẳng, ổn định cao cho Squat, Deadlift, Yoga và Pilates. Tăng kích hoạt cơ và điều chỉnh cơ chế vận động phần dưới cơ thể.</p>
+          <a href="<?php echo home_url('/doi-tuong-gym/'); ?>" class="inline-flex items-center gap-2 self-start px-5 py-2.5 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-xl font-body font-semibold text-sm sm:text-xs lg:text-sm transition-all duration-300 ease-out hover:shadow-lg" style="background-color: #ffffff; color: hsl(0,0%,10%);">Xem chi tiết<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+        </div>
+      </div>
+      <!-- Card 2: Flat Feet - Orange -->
+      <div class="group relative flex flex-col rounded-2xl overflow-hidden min-h-[220px] sm:min-h-[380px] lg:min-h-[440px]">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/audience-flatfeet-BPnoXtDP.jpg" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105">
+        <div class="absolute inset-0" style="background-color: rgba(249,115,22,0.82);"></div>
+        <div class="relative flex flex-col flex-1 p-4 sm:p-5 lg:p-8 justify-end">
+          <h3 class="font-display text-base sm:text-xl lg:text-xl font-bold leading-snug mb-2 sm:mb-2 lg:mb-3" style="color: #ffffff;">Người có bàn chân bẹt (Flat Feet)</h3>
+          <p class="text-xs sm:text-sm lg:text-base leading-relaxed mb-4 sm:mb-3 lg:mb-6" style="color: rgba(255,255,255,0.85);">Kinis hoạt động như công cụ tập luyện, cung cấp không gian và cảm nhận mặt đất để người bàn chân bẹt chủ động kích hoạt và tăng cường cơ vòm chân theo thời gian, đặc biệt là người bàn chân bẹt thể mềm (linh hoạt).</p>
+          <a href="<?php echo home_url('/doi-tuong-ban-chan-bet/'); ?>" class="inline-flex items-center gap-2 self-start px-5 py-2.5 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-xl font-body font-semibold text-sm sm:text-xs lg:text-sm transition-all duration-300 ease-out hover:shadow-lg" style="background-color: #ffffff; color: hsl(27,100%,45%);">Xem chi tiết<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+        </div>
+      </div>
+      <!-- Card 3: Runner - White -->
+      <div class="group relative flex flex-col rounded-2xl overflow-hidden min-h-[220px] sm:min-h-[380px] lg:min-h-[440px]" style="box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08), 0 0 0 1px rgba(249,115,22,0.2);">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/audience-runner-BEqv4-W1.jpg" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105">
+        <div class="absolute inset-0" style="background-color: rgba(255,255,255,0.88);"></div>
+        <div class="relative flex flex-col flex-1 p-4 sm:p-5 lg:p-8 justify-end">
+          <h3 class="font-display text-base sm:text-xl lg:text-xl font-bold leading-snug mb-2 sm:mb-2 lg:mb-3" style="color: hsl(0,0%,10%);">Người chạy bộ / Vận động viên (Runner)</h3>
+          <p class="text-xs sm:text-sm lg:text-base leading-relaxed mb-4 sm:mb-3 lg:mb-6" style="color: hsl(0,0%,35%);">Kinis Barefoot là lựa chọn tối ưu cho runner trong quá trình luyện tập hoặc phục hồi sau khi chạy — nhờ thiết kế tối giản, mang cảm giác đi chân trần, giúp cải thiện cảm nhận mặt đất và sức mạnh bàn chân.</p>
+          <a href="<?php echo home_url('/doi-tuong-chay-bo/'); ?>" class="inline-flex items-center gap-2 self-start px-5 py-2.5 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-xl font-body font-semibold text-sm sm:text-xs lg:text-sm transition-all duration-300 ease-out hover:shadow-lg" style="background-color: hsl(0,0%,10%); color: #ffffff;">Xem chi tiết<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <?php get_footer(); ?>
