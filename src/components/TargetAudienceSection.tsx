@@ -91,13 +91,13 @@ const TargetAudienceSection = () => (
             {/* Content */}
             <div className="relative flex flex-col flex-1 p-4 sm:p-5 lg:p-8 justify-end">
               <h3
-                className="font-display text-base sm:text-base lg:text-xl font-bold leading-snug mb-2 sm:mb-2 lg:mb-3"
+                className="font-display text-base sm:text-xl lg:text-xl font-bold leading-snug mb-2 sm:mb-2 lg:mb-3"
                 style={{ color: item.titleColor }}
               >
                 {item.title}
               </h3>
               <p
-                className="text-sm sm:text-xs lg:text-base leading-relaxed mb-4 sm:mb-3 lg:mb-6 line-clamp-3 sm:line-clamp-4 lg:line-clamp-none"
+                className="text-sm sm:text-sm lg:text-base leading-relaxed mb-4 sm:mb-3 lg:mb-6"
                 style={{ color: item.textColor }}
               >
                 {item.description}
