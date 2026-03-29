@@ -865,6 +865,7 @@ add_action('after_switch_theme', 'kinis_seed_faq_data', 30);
     .replace(/href="\/#\/khoa-hoc"/g, 'href="<?php echo home_url(\'/khoa-hoc/\'); ?>"')
     .replace(/href="\/#\/cau-chuyen"/g, 'href="<?php echo home_url(\'/cau-chuyen/\'); ?>"')
     .replace(/href="\/#\/doi-tuong\/gym-fitness"/g, 'href="<?php echo home_url(\'/doi-tuong-gym/\'); ?>"')
+    .replace(/href="\/#\/doi-tuong\/gym"/g, 'href="<?php echo home_url(\'/doi-tuong-gym/\'); ?>"')
     .replace(/href="\/#\/doi-tuong\/chay-bo"/g, 'href="<?php echo home_url(\'/doi-tuong-chay-bo/\'); ?>"')
     .replace(/href="\/#\/doi-tuong\/ban-chan-bet"/g, 'href="<?php echo home_url(\'/doi-tuong-ban-chan-bet/\'); ?>"')
     .replace(/href="\/#\/faq"/g, 'href="<?php echo home_url(\'/faq/\'); ?>"')
