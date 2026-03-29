@@ -189,9 +189,12 @@ handleScroll();window.addEventListener('scroll',handleScroll,{passive:true});
 })();`);
 
 
-  // Copy favicon
+
+  // Copy favicon to assets/images
   if (existsSync(join(DIST, "favicon.ico"))) {
-    cpSync(join(DIST, "favicon.ico"), join(THEME_DIR, "favicon.ico"));
+    cpSync(join(DIST, "favicon.ico"), join(THEME_DIR, "assets", "images", "favicon.ico"));
+  } else if (existsSync(join(ROOT, "public", "favicon.ico"))) {
+    cpSync(join(ROOT, "public", "favicon.ico"), join(THEME_DIR, "assets", "images", "favicon.ico"));
   }
 
   console.log(`\n🎨 Pre-rendering ${routes.length} routes into WP templates...\n`);
@@ -864,6 +867,7 @@ add_action('after_switch_theme', 'kinis_seed_faq_data', 30);
     .replace(/href="\/#\/khoa-hoc"/g, 'href="<?php echo home_url(\'/khoa-hoc/\'); ?>"')
     .replace(/href="\/#\/cau-chuyen"/g, 'href="<?php echo home_url(\'/cau-chuyen/\'); ?>"')
     .replace(/href="\/#\/doi-tuong\/gym-fitness"/g, 'href="<?php echo home_url(\'/doi-tuong-gym/\'); ?>"')
+    .replace(/href="\/#\/doi-tuong\/gym"/g, 'href="<?php echo home_url(\'/doi-tuong-gym/\'); ?>"')
     .replace(/href="\/#\/doi-tuong\/chay-bo"/g, 'href="<?php echo home_url(\'/doi-tuong-chay-bo/\'); ?>"')
     .replace(/href="\/#\/doi-tuong\/ban-chan-bet"/g, 'href="<?php echo home_url(\'/doi-tuong-ban-chan-bet/\'); ?>"')
     .replace(/href="\/#\/faq"/g, 'href="<?php echo home_url(\'/faq/\'); ?>"')
@@ -947,6 +951,7 @@ add_action('after_switch_theme', 'kinis_seed_faq_data', 30);
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.ico" type="image/x-icon">
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -1000,6 +1005,7 @@ ${wpMobileMenuPanel}
     content = content.replace(/href="\/#\/khoa-hoc"/g, 'href="<?php echo home_url(\'/khoa-hoc/\'); ?>"');
     content = content.replace(/href="\/#\/cau-chuyen"/g, 'href="<?php echo home_url(\'/cau-chuyen/\'); ?>"');
     content = content.replace(/href="\/#\/doi-tuong\/gym-fitness"/g, 'href="<?php echo home_url(\'/doi-tuong-gym/\'); ?>"');
+    content = content.replace(/href="\/#\/doi-tuong\/gym"/g, 'href="<?php echo home_url(\'/doi-tuong-gym/\'); ?>"');
     content = content.replace(/href="\/#\/doi-tuong\/chay-bo"/g, 'href="<?php echo home_url(\'/doi-tuong-chay-bo/\'); ?>"');
     content = content.replace(/href="\/#\/doi-tuong\/ban-chan-bet"/g, 'href="<?php echo home_url(\'/doi-tuong-ban-chan-bet/\'); ?>"');
     content = content.replace(/href="\/#\/faq"/g, 'href="<?php echo home_url(\'/faq/\'); ?>"');
@@ -1008,6 +1014,19 @@ ${wpMobileMenuPanel}
     // Also fix product links without hash (from Index page CTA)
     content = content.replace(/href="\/san-pham\/lucy"/g, 'href="<?php echo home_url(\'/san-pham-lucy/\'); ?>"');
     content = content.replace(/href="\/san-pham\/nomad"/g, 'href="<?php echo home_url(\'/san-pham-nomad/\'); ?>"');
+    // Also fix audience links without hash (from TargetAudienceSection)
+    content = content.replace(/href="\/doi-tuong\/gym"/g, 'href="<?php echo home_url(\'/doi-tuong-gym/\'); ?>"');
+    content = content.replace(/href="\/doi-tuong\/ban-chan-bet"/g, 'href="<?php echo home_url(\'/doi-tuong-ban-chan-bet/\'); ?>"');
+    content = content.replace(/href="\/doi-tuong\/chay-bo"/g, 'href="<?php echo home_url(\'/doi-tuong-chay-bo/\'); ?>"');
+
+    // Fix hero padding for subpages (not front-page which has full-height hero)
+    if (page.template !== "front-page") {
+      content = content.replace(/\bpt-20\b/g, 'pt-28');
+      content = content.replace(/\bsm:pt-24\b/g, 'sm:pt-32');
+      content = content.replace(/\bsm:py-24\b/g, 'sm:pt-32 sm:pb-16');
+      content = content.replace(/\bmd:py-28\b/g, 'md:pt-36 md:pb-20');
+      content = content.replace(/\blg:py-32\b/g, 'lg:pt-40 lg:pb-24');
+    }
 
     // Add inline styles if present (filter out sonner/toast CSS)
     let inlineStyleBlock = "";
@@ -1117,7 +1136,7 @@ ${(() => {
 
 <!-- Hero section -->
 <section class="relative overflow-hidden" style="background-color: hsl(0, 0%, 7%);">
-  <div class="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-6 py-20 sm:py-24 md:py-28 lg:py-32">
+  <div class="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-28 sm:pt-32 md:pt-36 lg:pt-40 pb-12 sm:pb-16 md:pb-20 lg:pb-24">
     <h1 class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight uppercase tracking-tight" style="color: white;">
       <?php echo esc_html($hero_title); ?>
     </h1>
