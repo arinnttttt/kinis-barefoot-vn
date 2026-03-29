@@ -7,6 +7,7 @@ import nomadShowcase from "@/assets/nomad-showcase-v2.jpg";
 import FootAnatomyInteractive from "@/components/FootAnatomyInteractive";
 import WhyKinisDifferent from "@/components/WhyKinisDifferent";
 import TrustedPress from "@/components/TrustedPress";
+import TargetAudienceSection from "@/components/TargetAudienceSection";
 
 const products = {
   lucy: {
