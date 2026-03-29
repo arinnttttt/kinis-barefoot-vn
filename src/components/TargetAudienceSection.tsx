@@ -64,11 +64,11 @@ const TargetAudienceSection = () => (
         Kinis Barefoot dành cho tất cả những người yêu thích vận động, đang phục hồi hoặc mong muốn phòng ngừa chấn thương
       </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-7">
+      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-7">
         {audiences.map((item, i) => (
           <div
             key={item.title}
-            className="group relative flex flex-col rounded-2xl overflow-hidden min-h-[360px] sm:min-h-[400px] lg:min-h-[440px] animate-fade-up"
+            className="group relative flex flex-col rounded-2xl overflow-hidden min-h-[220px] sm:min-h-[280px] lg:min-h-[440px] animate-fade-up"
             style={{ animationDelay: `${i * 120}ms` }}
           >
             {/* Background image */}
