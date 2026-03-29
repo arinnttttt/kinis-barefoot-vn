@@ -278,6 +278,7 @@ const Index = () => {
       </section>
       <WhyKinisDifferent />
       <TrustedPress />
+      <TargetAudienceSection />
     </Layout>
   );
 };
