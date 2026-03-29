@@ -1019,15 +1019,30 @@ ${wpMobileMenuPanel}
     content = content.replace(/href="\/doi-tuong\/ban-chan-bet"/g, 'href="<?php echo home_url(\'/doi-tuong-ban-chan-bet/\'); ?>"');
     content = content.replace(/href="\/doi-tuong\/chay-bo"/g, 'href="<?php echo home_url(\'/doi-tuong-chay-bo/\'); ?>"');
 
-    // Fix hero padding for subpages (not front-page which has full-height hero)
+    // Fix hero padding for subpages - use inline style because Tailwind CSS bundle
+    // doesn't include pt-28/pt-32/pt-36/pt-40 (not used in React source)
     if (page.template !== "front-page") {
-      content = content.replace(/\bpt-20\b/g, 'pt-28');
-      content = content.replace(/\bpt-24\b/g, 'pt-28');
-      content = content.replace(/\bsm:pt-24\b/g, 'sm:pt-32');
-      content = content.replace(/\bsm:py-24\b/g, 'sm:pt-32 sm:pb-16');
-      content = content.replace(/\bmd:py-28\b/g, 'md:pt-36 md:pb-20');
-      content = content.replace(/\bmd:py-32\b/g, 'md:pt-36 md:pb-20');
-      content = content.replace(/\blg:py-32\b/g, 'lg:pt-40 lg:pb-24');
+      // Find hero container divs with pt-20 or pt-24 and add inline padding-top
+      // Header is h-16 (64px) mobile, h-20 (80px) lg → need ~120px padding-top
+      content = content.replace(
+        /(class="[^"]*\b(?:pt-20|pt-24)\b[^"]*")(\s*style="([^"]*)")?/g,
+        (match, classAttr, styleAttr, styleContent) => {
+          if (styleContent && styleContent.includes('padding-top')) return match;
+          if (styleAttr) {
+            return classAttr + ' style="padding-top:120px; ' + styleContent + '"';
+          }
+          return classAttr + ' style="padding-top:120px"';
+        }
+      );
+      // Remove responsive pt classes that don't exist in CSS
+      content = content.replace(/\s*sm:pt-24\b/g, '');
+      content = content.replace(/\s*sm:pt-32\b/g, '');
+      content = content.replace(/\s*md:pt-36\b/g, '');
+      content = content.replace(/\s*lg:pt-40\b/g, '');
+      content = content.replace(/\bsm:py-24\b/g, 'sm:pb-16');
+      content = content.replace(/\bmd:py-28\b/g, 'md:pb-20');
+      content = content.replace(/\bmd:py-32\b/g, 'md:pb-20');
+      content = content.replace(/\blg:py-32\b/g, 'lg:pb-24');
     }
 
     // Add inline styles if present (filter out sonner/toast CSS)
