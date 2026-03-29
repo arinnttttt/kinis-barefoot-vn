@@ -44,7 +44,7 @@ const audiences = [
 
 const TargetAudienceSection = () => (
   <section
-    className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
+    className="py-8 sm:py-10 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
     style={{ backgroundColor: "hsl(0,0%,96%)", isolation: "isolate" }}
     aria-labelledby="audience-heading"
   >
@@ -58,17 +58,17 @@ const TargetAudienceSection = () => (
         <span style={{ color: "hsl(27,100%,52%)" }}>Kinis Barefoot?</span>
       </h2>
       <p
-        className="text-center text-sm sm:text-base lg:text-lg mb-8 sm:mb-10 lg:mb-14 max-w-2xl mx-auto leading-relaxed"
+        className="text-center text-sm sm:text-base lg:text-lg mb-5 sm:mb-6 lg:mb-14 max-w-2xl mx-auto leading-relaxed"
         style={{ color: "hsl(0,0%,50%)" }}
       >
         Kinis Barefoot dành cho tất cả những người yêu thích vận động, đang phục hồi hoặc mong muốn phòng ngừa chấn thương
       </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-7">
+      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-7">
         {audiences.map((item, i) => (
           <div
             key={item.title}
-            className="group relative flex flex-col rounded-2xl overflow-hidden min-h-[360px] sm:min-h-[400px] lg:min-h-[440px] animate-fade-up"
+            className="group relative flex flex-col rounded-2xl overflow-hidden min-h-[220px] sm:min-h-[280px] lg:min-h-[440px] animate-fade-up"
             style={{ animationDelay: `${i * 120}ms` }}
           >
             {/* Background image */}
@@ -82,22 +82,22 @@ const TargetAudienceSection = () => (
             <div className="absolute inset-0" style={{ backgroundColor: item.overlay }} />
 
             {/* Content */}
-            <div className="relative flex flex-col flex-1 p-6 sm:p-7 lg:p-8 justify-end">
+            <div className="relative flex flex-col flex-1 p-4 sm:p-5 lg:p-8 justify-end">
               <h3
-                className="font-display text-lg sm:text-xl font-bold leading-snug mb-3"
+                className="font-display text-base sm:text-sm lg:text-xl font-bold leading-snug mb-2 sm:mb-2 lg:mb-3"
                 style={{ color: item.titleColor }}
               >
                 {item.title}
               </h3>
               <p
-                className="text-sm sm:text-[0.938rem] leading-relaxed mb-6"
+                className="text-xs sm:text-xs lg:text-[0.938rem] leading-relaxed mb-4 sm:mb-3 lg:mb-6 line-clamp-3 sm:line-clamp-4 lg:line-clamp-none"
                 style={{ color: item.textColor }}
               >
                 {item.description}
               </p>
               <a
                 href={`/#${item.href}`}
-                className="inline-flex items-center gap-2 self-start px-6 py-3 rounded-xl font-body font-semibold text-sm transition-all duration-300 ease-out hover:shadow-lg"
+                className="inline-flex items-center gap-2 self-start px-4 py-2 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-xl font-body font-semibold text-xs sm:text-xs lg:text-sm transition-all duration-300 ease-out hover:shadow-lg"
                 style={{
                   backgroundColor: item.btnBg,
                   color: item.btnText,
