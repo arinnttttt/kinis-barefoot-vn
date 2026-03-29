@@ -70,7 +70,7 @@ const TextCell = ({ className = "" }: { className?: string }) => (
       Được tin tưởng{" "}
       <span style={{ color: "hsl(27,100%,52%)" }}>tại Mỹ</span>
     </h2>
-    <p className="text-xs sm:text-sm lg:text-base" style={{ color: "rgba(255,255,255,0.5)" }}>
+    <p className="text-sm sm:text-base lg:text-lg" style={{ color: "rgba(255,255,255,0.5)" }}>
       Kinis đã được nhiều tờ báo uy tín tại Hoa Kỳ đưa tin
     </p>
   </div>
