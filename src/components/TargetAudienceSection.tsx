@@ -97,7 +97,7 @@ const TargetAudienceSection = () => (
               </p>
               <a
                 href={`/#${item.href}`}
-                className="inline-flex items-center gap-2 self-start px-4 py-2 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-xl font-body font-semibold text-xs sm:text-xs lg:text-sm transition-all duration-300 ease-out hover:shadow-lg"
+                className="inline-flex items-center gap-2 self-start px-5 py-2.5 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-xl font-body font-semibold text-sm sm:text-xs lg:text-sm transition-all duration-300 ease-out hover:shadow-lg"
                 style={{
                   backgroundColor: item.btnBg,
                   color: item.btnText,
