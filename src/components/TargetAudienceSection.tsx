@@ -82,7 +82,7 @@ const TargetAudienceSection = () => (
             <div className="absolute inset-0" style={{ backgroundColor: item.overlay }} />
 
             {/* Content */}
-            <div className="relative flex flex-col flex-1 p-6 sm:p-7 lg:p-8 justify-end">
+            <div className="relative flex flex-col flex-1 p-4 sm:p-5 lg:p-8 justify-end">
               <h3
                 className="font-display text-lg sm:text-xl font-bold leading-snug mb-3"
                 style={{ color: item.titleColor }}
