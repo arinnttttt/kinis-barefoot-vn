@@ -1010,6 +1010,19 @@ ${wpMobileMenuPanel}
     // Also fix product links without hash (from Index page CTA)
     content = content.replace(/href="\/san-pham\/lucy"/g, 'href="<?php echo home_url(\'/san-pham-lucy/\'); ?>"');
     content = content.replace(/href="\/san-pham\/nomad"/g, 'href="<?php echo home_url(\'/san-pham-nomad/\'); ?>"');
+    // Also fix audience links without hash (from TargetAudienceSection)
+    content = content.replace(/href="\/doi-tuong\/gym"/g, 'href="<?php echo home_url(\\/doi-tuong-gym/\\); ?>"');
+    content = content.replace(/href="\/doi-tuong\/ban-chan-bet"/g, 'href="<?php echo home_url(\\/doi-tuong-ban-chan-bet/\\); ?>"');
+    content = content.replace(/href="\/doi-tuong\/chay-bo"/g, 'href="<?php echo home_url(\\/doi-tuong-chay-bo/\\); ?>"');
+
+    // Fix hero padding for subpages (not front-page which has full-height hero)
+    if (page.template !== "front-page") {
+      content = content.replace(/\bpt-20\b/g, 'pt-28');
+      content = content.replace(/\bsm:pt-24\b/g, 'sm:pt-32');
+      content = content.replace(/\bsm:py-24\b/g, 'sm:pt-32 sm:pb-16');
+      content = content.replace(/\bmd:py-28\b/g, 'md:pt-36 md:pb-20');
+      content = content.replace(/\blg:py-32\b/g, 'lg:pt-40 lg:pb-24');
+    }
 
     // Add inline styles if present (filter out sonner/toast CSS)
     let inlineStyleBlock = "";
