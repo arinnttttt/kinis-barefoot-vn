@@ -44,7 +44,7 @@ const audiences = [
 
 const TargetAudienceSection = () => (
   <section
-    className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
+    className="py-8 sm:py-10 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
     style={{ backgroundColor: "hsl(0,0%,96%)", isolation: "isolate" }}
     aria-labelledby="audience-heading"
   >
