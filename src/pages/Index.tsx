@@ -6,6 +6,7 @@ import lucyShowcase from "@/assets/lucy-showcase-v2.jpg";
 import nomadShowcase from "@/assets/nomad-showcase-v2.jpg";
 import FootAnatomyInteractive from "@/components/FootAnatomyInteractive";
 import WhyKinisDifferent from "@/components/WhyKinisDifferent";
+import TrustedPress from "@/components/TrustedPress";
 
 const products = {
   lucy: {
@@ -274,6 +275,7 @@ const Index = () => {
           </blockquote>
         </div>
       </section>
+      <TrustedPress />
       <WhyKinisDifferent />
     </Layout>
   );
