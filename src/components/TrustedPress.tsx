@@ -64,7 +64,7 @@ const TextCell = ({ className = "" }: { className?: string }) => (
   >
     <h2
       id="trusted-heading"
-      className="font-display text-xl sm:text-2xl lg:text-3xl font-bold leading-tight uppercase tracking-tight mb-2"
+      className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight uppercase tracking-tight mb-2"
       style={{ color: "#ffffff" }}
     >
       Được tin tưởng{" "}
