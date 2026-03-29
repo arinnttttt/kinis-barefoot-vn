@@ -83,16 +83,16 @@ const TrustedPress = () => (
     aria-labelledby="trusted-heading"
   >
     <div className="max-w-6xl mx-auto">
-      {/* Desktop: 4 cols — row1: 4 logos, row2: logo - text(2col) - logo */}
+      {/* Desktop: 4 cols — row1: logo - text(2col) - logo, row2: 4 logos */}
       <div className="hidden lg:grid" style={{ gridTemplateColumns: "1fr 1fr 1fr 1fr" }}>
         <LogoCell item={pressLogos[0]} />
+        <div className="col-span-2">
+          <TextCell className="h-full" />
+        </div>
         <LogoCell item={pressLogos[1]} />
         <LogoCell item={pressLogos[2]} />
         <LogoCell item={pressLogos[3]} />
         <LogoCell item={pressLogos[4]} />
-        <div className="col-span-2">
-          <TextCell className="h-full" />
-        </div>
         <LogoCell item={pressLogos[5]} />
       </div>
 
