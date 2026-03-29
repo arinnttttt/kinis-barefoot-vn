@@ -78,20 +78,20 @@ const TextCell = ({ className = "" }: { className?: string }) => (
 const TrustedPress = () => (
   <section
     className="overflow-hidden"
-    style={{ backgroundColor: "hsl(0,0%,5%)", isolation: "isolate" }}
+    style={{ backgroundColor: "#1a1a1a", isolation: "isolate" }}
     aria-labelledby="trusted-heading"
   >
     <div className="max-w-6xl mx-auto">
-      {/* Desktop: 4 cols — row1: 4 logos, row2: text(2col) + 2 logos */}
+      {/* Desktop: 4 cols — row1: 4 logos, row2: logo - text(2col) - logo */}
       <div className="hidden lg:grid" style={{ gridTemplateColumns: "1fr 1fr 1fr 1fr" }}>
         <LogoCell item={pressLogos[0]} />
         <LogoCell item={pressLogos[1]} />
         <LogoCell item={pressLogos[2]} />
         <LogoCell item={pressLogos[3]} />
+        <LogoCell item={pressLogos[4]} />
         <div className="col-span-2">
           <TextCell className="h-full" />
         </div>
-        <LogoCell item={pressLogos[4]} />
         <LogoCell item={pressLogos[5]} />
       </div>
 
