@@ -1022,9 +1022,11 @@ ${wpMobileMenuPanel}
     // Fix hero padding for subpages (not front-page which has full-height hero)
     if (page.template !== "front-page") {
       content = content.replace(/\bpt-20\b/g, 'pt-28');
+      content = content.replace(/\bpt-24\b/g, 'pt-28');
       content = content.replace(/\bsm:pt-24\b/g, 'sm:pt-32');
       content = content.replace(/\bsm:py-24\b/g, 'sm:pt-32 sm:pb-16');
       content = content.replace(/\bmd:py-28\b/g, 'md:pt-36 md:pb-20');
+      content = content.replace(/\bmd:py-32\b/g, 'md:pt-36 md:pb-20');
       content = content.replace(/\blg:py-32\b/g, 'lg:pt-40 lg:pb-24');
     }
 
