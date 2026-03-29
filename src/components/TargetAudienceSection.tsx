@@ -97,7 +97,7 @@ const TargetAudienceSection = () => (
                 {item.title}
               </h3>
               <p
-                className="text-sm sm:text-xs lg:text-base leading-relaxed mb-4 sm:mb-3 lg:mb-6 line-clamp-3 sm:line-clamp-4 lg:line-clamp-none"
+                className="text-sm sm:text-sm lg:text-base leading-relaxed mb-4 sm:mb-3 lg:mb-6"
                 style={{ color: item.textColor }}
               >
                 {item.description}
