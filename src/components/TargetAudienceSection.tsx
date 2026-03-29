@@ -69,7 +69,14 @@ const TargetAudienceSection = () => (
           <div
             key={item.title}
             className="group relative flex flex-col rounded-2xl overflow-hidden min-h-[220px] sm:min-h-[280px] lg:min-h-[440px] animate-fade-up"
-            style={{ animationDelay: `${i * 120}ms` }}
+            style={{
+              animationDelay: `${i * 120}ms`,
+              ...(i === 2 ? {
+                border: "1px solid transparent",
+                backgroundClip: "padding-box",
+                boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.08), 0 0 0 1px rgba(249,115,22,0.2)",
+              } : {}),
+            }}
           >
             {/* Background image */}
             <img
