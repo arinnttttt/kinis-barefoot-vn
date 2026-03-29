@@ -69,7 +69,14 @@ const TargetAudienceSection = () => (
           <div
             key={item.title}
             className="group relative flex flex-col rounded-2xl overflow-hidden min-h-[220px] sm:min-h-[280px] lg:min-h-[440px] animate-fade-up"
-            style={{ animationDelay: `${i * 120}ms` }}
+            style={{
+              animationDelay: `${i * 120}ms`,
+              ...(i === 2 ? {
+                border: "1px solid transparent",
+                backgroundClip: "padding-box",
+                boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.08), 0 0 0 1px rgba(249,115,22,0.2)",
+              } : {}),
+            }}
           >
             {/* Background image */}
             <img
@@ -84,20 +91,20 @@ const TargetAudienceSection = () => (
             {/* Content */}
             <div className="relative flex flex-col flex-1 p-4 sm:p-5 lg:p-8 justify-end">
               <h3
-                className="font-display text-base sm:text-sm lg:text-xl font-bold leading-snug mb-2 sm:mb-2 lg:mb-3"
+                className="font-display text-base sm:text-base lg:text-xl font-bold leading-snug mb-2 sm:mb-2 lg:mb-3"
                 style={{ color: item.titleColor }}
               >
                 {item.title}
               </h3>
               <p
-                className="text-xs sm:text-xs lg:text-[0.938rem] leading-relaxed mb-4 sm:mb-3 lg:mb-6 line-clamp-3 sm:line-clamp-4 lg:line-clamp-none"
+                className="text-sm sm:text-xs lg:text-base leading-relaxed mb-4 sm:mb-3 lg:mb-6 line-clamp-3 sm:line-clamp-4 lg:line-clamp-none"
                 style={{ color: item.textColor }}
               >
                 {item.description}
               </p>
               <a
                 href={`/#${item.href}`}
-                className="inline-flex items-center gap-2 self-start px-4 py-2 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-xl font-body font-semibold text-xs sm:text-xs lg:text-sm transition-all duration-300 ease-out hover:shadow-lg"
+                className="inline-flex items-center gap-2 self-start px-5 py-2.5 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-xl font-body font-semibold text-sm sm:text-xs lg:text-sm transition-all duration-300 ease-out hover:shadow-lg"
                 style={{
                   backgroundColor: item.btnBg,
                   color: item.btnText,
