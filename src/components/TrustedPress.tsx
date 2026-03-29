@@ -1,8 +1,8 @@
 import richmondMag from "@/assets/press/richmond-magazine.png";
 import richmondBiz from "@/assets/press/richmond-bizsense.png";
 import williamMary from "@/assets/press/william-mary.png";
-import elevationOutdoors from "@/assets/press/elevation-outdoors.jpg";
-import foodTravelist from "@/assets/press/food-travelist.jpg";
+import elevationOutdoors from "@/assets/press/elevation-outdoors.png";
+import foodTravelist from "@/assets/press/food-travelist.png";
 import vueNj from "@/assets/press/vue-nj.png";
 
 const pressLogos = [
