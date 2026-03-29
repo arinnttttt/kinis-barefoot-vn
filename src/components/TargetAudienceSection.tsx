@@ -68,7 +68,7 @@ const TargetAudienceSection = () => (
         {audiences.map((item, i) => (
           <div
             key={item.title}
-            className="group relative flex flex-col rounded-2xl overflow-hidden min-h-[220px] sm:min-h-[280px] lg:min-h-[440px] animate-fade-up"
+            className="group relative flex flex-col rounded-2xl overflow-hidden min-h-[220px] sm:min-h-[380px] lg:min-h-[440px] animate-fade-up"
             style={{
               animationDelay: `${i * 120}ms`,
               ...(i === 2 ? {
