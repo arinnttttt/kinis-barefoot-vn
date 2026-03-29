@@ -91,7 +91,7 @@ const TargetAudienceSection = () => (
             {/* Content */}
             <div className="relative flex flex-col flex-1 p-4 sm:p-5 lg:p-8 justify-end">
               <h3
-                className="font-display text-base sm:text-base lg:text-xl font-bold leading-snug mb-2 sm:mb-2 lg:mb-3"
+                className="font-display text-base sm:text-xl lg:text-xl font-bold leading-snug mb-2 sm:mb-2 lg:mb-3"
                 style={{ color: item.titleColor }}
               >
                 {item.title}
