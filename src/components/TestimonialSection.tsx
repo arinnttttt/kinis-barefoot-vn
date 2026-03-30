@@ -175,7 +175,7 @@ const TestimonialSection = () => {
         {/* Scrollable track */}
         <div
           ref={scrollRef}
-          className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 scrollbar-hide"
+          className="flex items-stretch gap-4 sm:gap-5 overflow-x-auto pb-4 scrollbar-hide"
           style={{
             scrollSnapType: "x mandatory",
             WebkitOverflowScrolling: "touch",
@@ -184,7 +184,7 @@ const TestimonialSection = () => {
           }}
         >
           {testimonials.map((item) => (
-            <div key={item.name} style={{ scrollSnapAlign: "start" }}>
+            <div key={item.name} className="flex" style={{ scrollSnapAlign: "start" }}>
               <TestimonialCard item={item} />
             </div>
           ))}
