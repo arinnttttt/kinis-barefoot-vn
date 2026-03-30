@@ -292,19 +292,111 @@ Text Domain: kinis
 
 // Enqueue styles and scripts
 function kinis_enqueue_assets() {
-    // Google Fonts
-    wp_enqueue_style('kinis-fonts', 'https://fonts.googleapis.com/css2?family=Phudu:wght@300;400;500;600;700;800;900&family=Manrope:wght@200..800&display=swap', array(), null);
+    // Google Fonts - swap display for faster rendering
+    wp_enqueue_style('kinis-fonts', 'https://fonts.googleapis.com/css2?family=Phudu:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap', array(), null);
     
     // Main CSS (from Vite build)
-${cssFiles.map((f, i) => `    wp_enqueue_style('kinis-main${i > 0 ? '-' + i : ''}', get_template_directory_uri() . '/assets/css/${f}', array(), '1.0.0');`).join("\n")}
+${cssFiles.map((f, i) => \`    wp_enqueue_style('kinis-main\${i > 0 ? '-' + i : ''}', get_template_directory_uri() . '/assets/css/\${f}', array(), '2.0.2');\`).join("\\n")}
     
     // Theme stylesheet
-    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '1.0.0');
+    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '2.0.2');
     
     // Header scroll behavior (vanilla JS - replaces React scroll handler)
-    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '1.0.0', true);
+    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '2.0.2', true);
 }
 add_action('wp_enqueue_scripts', 'kinis_enqueue_assets');
+
+// ============================================
+// Performance Optimizations
+// ============================================
+
+// Add lazy loading to all images except hero (first section)
+function kinis_lazy_load_images(\$content) {
+    // Skip if in admin or feed
+    if (is_admin() || is_feed()) return \$content;
+    
+    // Add loading="lazy" to img tags that don't already have it
+    \$content = preg_replace(
+        '/<img((?!.*loading=)[^>]*)>/i',
+        '<img$1 loading="lazy">',
+        \$content
+    );
+    
+    return \$content;
+}
+add_filter('the_content', 'kinis_lazy_load_images');
+
+// Defer non-critical JS
+function kinis_defer_scripts(\$tag, \$handle, \$src) {
+    // Don't defer jQuery or admin scripts
+    if (is_admin() || \$handle === 'jquery-core' || \$handle === 'jquery-migrate') {
+        return \$tag;
+    }
+    // Add defer attribute
+    if (strpos(\$tag, 'defer') === false && strpos(\$tag, 'async') === false) {
+        \$tag = str_replace(' src=', ' defer src=', \$tag);
+    }
+    return \$tag;
+}
+add_filter('script_loader_tag', 'kinis_defer_scripts', 10, 3);
+
+// Preload critical fonts
+function kinis_preload_fonts() {
+    echo '<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Phudu:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap">' . "\\n";
+}
+add_action('wp_head', 'kinis_preload_fonts', 1);
+
+// Remove unnecessary WordPress bloat
+function kinis_cleanup_head() {
+    remove_action('wp_head', 'wp_generator');
+    remove_action('wp_head', 'wlwmanifest_link');
+    remove_action('wp_head', 'rsd_link');
+    remove_action('wp_head', 'wp_shortlink_wp_head');
+    remove_action('wp_head', 'rest_output_link_wp_head');
+    remove_action('wp_head', 'wp_oembed_add_discovery_links');
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('wp_print_styles', 'print_emoji_styles');
+    
+    // Remove block library CSS if not using Gutenberg on frontend
+    wp_dequeue_style('wp-block-library');
+    wp_dequeue_style('wp-block-library-theme');
+    wp_dequeue_style('wc-blocks-style');
+    wp_dequeue_style('global-styles');
+    wp_dequeue_style('classic-theme-styles');
+}
+add_action('wp_enqueue_scripts', 'kinis_cleanup_head', 100);
+
+// Disable emojis completely
+function kinis_disable_emojis() {
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('admin_print_scripts', 'print_emoji_detection_script');
+    remove_action('wp_print_styles', 'print_emoji_styles');
+    remove_filter('the_content_feed', 'wp_staticize_emoji');
+    remove_filter('comment_text_rss', 'wp_staticize_emoji');
+    remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
+}
+add_action('init', 'kinis_disable_emojis');
+
+// Remove jQuery migrate (not needed for this theme)
+function kinis_remove_jquery_migrate(\$scripts) {
+    if (!is_admin() && isset(\$scripts->registered['jquery'])) {
+        \$script = \$scripts->registered['jquery'];
+        if (\$script->deps) {
+            \$script->deps = array_diff(\$script->deps, array('jquery-migrate'));
+        }
+    }
+}
+add_action('wp_default_scripts', 'kinis_remove_jquery_migrate');
+
+// Add resource hints
+function kinis_resource_hints(\$urls, \$relation_type) {
+    if (\$relation_type === 'dns-prefetch') {
+        \$urls[] = 'https://fonts.googleapis.com';
+        \$urls[] = 'https://fonts.gstatic.com';
+    }
+    return \$urls;
+}
+add_filter('wp_resource_hints', 'kinis_resource_hints', 10, 2);
 
 // Theme support
 function kinis_theme_setup() {
