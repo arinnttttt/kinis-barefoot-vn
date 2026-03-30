@@ -323,7 +323,7 @@ function kinis_lazy_load_images(\$content) {
     // Add loading="lazy" to img tags that don't already have it
     \$content = preg_replace(
         '/<img((?!.*loading=)[^>]*)>/i',
-        '<img$1 loading="lazy">',
+        '<img\$1 loading="lazy">',
         \$content
     );
     
