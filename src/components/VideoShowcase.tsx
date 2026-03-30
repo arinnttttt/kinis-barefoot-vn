@@ -11,7 +11,7 @@ const VideoShowcase = () => {
     if (!video || !section) return;
 
     // Set volume to 40%
-    video.volume = 0.4;
+    video.volume = 0.1;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
