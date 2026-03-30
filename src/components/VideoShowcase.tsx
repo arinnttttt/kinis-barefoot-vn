@@ -29,7 +29,7 @@ const VideoShowcase = () => {
     <section
       ref={sectionRef}
       className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6"
-      style={{ backgroundColor: "hsl(0,0%,6%)" }}
+      style={{ backgroundColor: "hsl(0,0%,98%)" }}
     >
       <div className="max-w-5xl mx-auto">
         {/* Frame overlay container */}
