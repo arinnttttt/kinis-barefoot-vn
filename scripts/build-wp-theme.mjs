@@ -233,7 +233,12 @@ handleScroll();window.addEventListener('scroll',handleScroll,{passive:true});
     bodyContent = bodyContent
       .replace(/\/videos\//g, `${wpAssetUrl}/assets/videos/`)
       .replace(/\/assets\//g, `${wpAssetUrl}/assets/images/`)
-      .replace(/src="\/favicon\.ico"/g, `src="${wpAssetUrl}/favicon.ico"`);
+      .replace(/src="\/favicon\.ico"/g, `src="${wpAssetUrl}/favicon.ico"`)
+      // Add lazy loading to images (except hero which has opacity-50 class)
+      .replace(/<img(?![^>]*loading=)([^>]*class="[^"]*opacity-50[^"]*")/gi, '<img$1')
+      .replace(/<img(?![^>]*loading=)([^>]*>)/gi, '<img loading="lazy"$1')
+      // Video: set preload to none for lazy loading
+      .replace(/preload="metadata"/g, 'preload="none"');
 
     // Extract CSS links from head
     const cssLinks = [];
