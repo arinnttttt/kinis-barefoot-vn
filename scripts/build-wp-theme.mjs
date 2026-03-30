@@ -1182,17 +1182,13 @@ ${wpMobileMenuPanel}
   const frontPageContent = pages[0]?.bodyContent || "";
   // Match the SVG polygon separator + footer section to end
   let footerHtml = "";
-  // Try to find the footer div with data-component="footer"
-  const footerDivMatch = frontPageContent.match(/<div[^>]*data-component="footer"[\s\S]*$/i);
-  if (footerDivMatch) {
-    footerHtml = footerDivMatch[0];
+  // Try to find the footer element
+  const footerTagMatch = frontPageContent.match(/<footer[\s\S]*<\/footer>/i);
+  if (footerTagMatch) {
+    footerHtml = footerTagMatch[0];
     // Also grab the SVG polygon separator above it if present
-    const svgFooterMatch = frontPageContent.match(/<svg[^>]*preserveAspectRatio[^>]*>[\s\S]*?<\/svg>\s*<div[^>]*data-component="footer"[\s\S]*$/i);
+    const svgFooterMatch = frontPageContent.match(/<div[^>]*>\s*<svg[^>]*preserveAspectRatio[^>]*>[\s\S]*?<\/svg>\s*<\/div>\s*<footer[\s\S]*<\/footer>/i);
     if (svgFooterMatch) footerHtml = svgFooterMatch[0];
-  } else {
-    // Fallback: try matching the footer section by background color
-    const footerSection = frontPageContent.match(/<section[^>]*style="[^"]*background-color:\s*(?:rgb\(18,\s*18,\s*18\)|hsl\(0,\s*0%,\s*7%\)|#121212)[\s\S]*$/i);
-    if (footerSection) footerHtml = footerSection[0];
   }
   
   // Fix asset paths and links in footer
