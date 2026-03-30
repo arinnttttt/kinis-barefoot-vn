@@ -29,13 +29,13 @@ const VideoShowcase = () => {
     <section
       ref={sectionRef}
       className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6"
-      style={{ backgroundColor: "hsl(0,0%,6%)" }}
+      style={{ backgroundColor: "hsl(0,0%,98%)" }}
     >
       <div className="max-w-5xl mx-auto">
         {/* Frame overlay container */}
         <div className="relative">
           {/* Video inside frame */}
-          <div className="relative" style={{ padding: "3.8% 4.2% 7.5% 4.2%" }}>
+          <div className="relative" style={{ padding: "0" }}>
             <video
               ref={videoRef}
               className="w-full aspect-video object-cover rounded-sm"
