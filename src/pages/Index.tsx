@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import apmaBadge from "@/assets/apma-badge.png";
 import Layout from "@/components/layout/Layout";
-import heroImage from "@/assets/hero-person.jpg";
+const heroImage = "https://kinis.vn/wp-content/uploads/2026/03/mom-spending-time-with-kid-beach-scaled.jpg";
 import lucyShowcase from "@/assets/lucy-showcase-v3.png";
 import nomadShowcase from "@/assets/nomad-showcase-v2.jpg";
 import FootAnatomyInteractive from "@/components/FootAnatomyInteractive";
