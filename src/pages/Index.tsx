@@ -282,9 +282,9 @@ const Index = () => {
       <WhyKinisDifferent />
       <TrustedPress />
       <TargetAudienceSection />
-      <VideoShowcase />
       <TestimonialSection />
       <HomeFAQ />
+      <VideoShowcase />
     </Layout>
   );
 };
