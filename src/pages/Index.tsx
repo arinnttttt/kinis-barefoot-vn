@@ -8,6 +8,7 @@ import FootAnatomyInteractive from "@/components/FootAnatomyInteractive";
 import WhyKinisDifferent from "@/components/WhyKinisDifferent";
 import TrustedPress from "@/components/TrustedPress";
 import TargetAudienceSection from "@/components/TargetAudienceSection";
+import TestimonialSection from "@/components/TestimonialSection";
 
 const products = {
   lucy: {
