@@ -1178,8 +1178,49 @@ ${wpMobileMenuPanel}
 `;
   writeFileSync(join(THEME_DIR, "header.php"), headerPhpContent);
 
-  // 4. footer.php
-  writeFileSync(join(THEME_DIR, "footer.php"), `<?php wp_footer(); ?>
+  // 4. footer.php - extract footer from front-page render
+  const frontPageContent = pages[0]?.bodyContent || "";
+  // Match the SVG polygon separator + footer section to end
+  let footerHtml = "";
+  // Try to find the footer div with data-component="footer"
+  const footerDivMatch = frontPageContent.match(/<div[^>]*data-component="footer"[\s\S]*$/i);
+  if (footerDivMatch) {
+    footerHtml = footerDivMatch[0];
+    // Also grab the SVG polygon separator above it if present
+    const svgFooterMatch = frontPageContent.match(/<svg[^>]*preserveAspectRatio[^>]*>[\s\S]*?<\/svg>\s*<div[^>]*data-component="footer"[\s\S]*$/i);
+    if (svgFooterMatch) footerHtml = svgFooterMatch[0];
+  } else {
+    // Fallback: try matching the footer section by background color
+    const footerSection = frontPageContent.match(/<section[^>]*style="[^"]*background-color:\s*(?:rgb\(18,\s*18,\s*18\)|hsl\(0,\s*0%,\s*7%\)|#121212)[\s\S]*$/i);
+    if (footerSection) footerHtml = footerSection[0];
+  }
+  
+  // Fix asset paths and links in footer
+  footerHtml = footerHtml
+    .replace(/\/assets\//g, `${wpAssetUrl}/assets/images/`)
+    .replace(/href="\/#\/san-pham\/lucy"/g, 'href="<?php echo home_url(\'/san-pham-lucy/\'); ?>"')
+    .replace(/href="\/#\/san-pham\/nomad"/g, 'href="<?php echo home_url(\'/san-pham-nomad/\'); ?>"')
+    .replace(/href="\/#\/khoa-hoc"/g, 'href="<?php echo home_url(\'/khoa-hoc/\'); ?>"')
+    .replace(/href="\/#\/cau-chuyen"/g, 'href="<?php echo home_url(\'/cau-chuyen/\'); ?>"')
+    .replace(/href="\/#\/doi-tuong\/gym-fitness"/g, 'href="<?php echo home_url(\'/doi-tuong-gym/\'); ?>"')
+    .replace(/href="\/#\/doi-tuong\/chay-bo"/g, 'href="<?php echo home_url(\'/doi-tuong-chay-bo/\'); ?>"')
+    .replace(/href="\/#\/doi-tuong\/ban-chan-bet"/g, 'href="<?php echo home_url(\'/doi-tuong-ban-chan-bet/\'); ?>"')
+    .replace(/href="\/#\/faq"/g, 'href="<?php echo home_url(\'/faq/\'); ?>"')
+    .replace(/href="\/#\/"/g, 'href="<?php echo home_url(\'/\'); ?>"')
+    .replace(/href="#\/san-pham\/lucy"/g, 'href="<?php echo home_url(\'/san-pham-lucy/\'); ?>"')
+    .replace(/href="#\/san-pham\/nomad"/g, 'href="<?php echo home_url(\'/san-pham-nomad/\'); ?>"')
+    .replace(/href="#\/khoa-hoc"/g, 'href="<?php echo home_url(\'/khoa-hoc/\'); ?>"')
+    .replace(/href="#\/cau-chuyen"/g, 'href="<?php echo home_url(\'/cau-chuyen/\'); ?>"')
+    .replace(/href="#\/faq"/g, 'href="<?php echo home_url(\'/faq/\'); ?>"')
+    .replace(/href="#\/"/g, 'href="<?php echo home_url(\'/\'); ?>"');
+  
+  // Add lazy loading to footer images
+  footerHtml = footerHtml.replace(/<img(?![^>]*loading=)([^>]*>)/gi, '<img loading="lazy"$1');
+  
+  console.log(`  📦 Footer extracted: ${footerHtml.length > 0 ? footerHtml.length + ' chars' : 'NOT FOUND'}`);
+  
+  writeFileSync(join(THEME_DIR, "footer.php"), `${footerHtml}
+<?php wp_footer(); ?>
 </body>
 </html>
 `);
