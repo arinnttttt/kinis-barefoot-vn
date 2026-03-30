@@ -1236,6 +1236,12 @@ ${wpMobileMenuPanel}
     // Remove the header (now in header.php)
     content = content.replace(/<header[\s\S]*?<\/header>/i, "");
 
+    // Remove the footer (now in footer.php) - match SVG separator + footer div to end
+    content = content.replace(/<svg[^>]*preserveAspectRatio[^>]*>[\s\S]*?<\/svg>\s*<div[^>]*data-component="footer"[\s\S]*$/i, "");
+    content = content.replace(/<div[^>]*data-component="footer"[\s\S]*$/i, "");
+    // Fallback footer removal by background color
+    content = content.replace(/<section[^>]*style="[^"]*background-color:\s*(?:rgb\(18,\s*18,\s*18\)|hsl\(0,\s*0%,\s*7%\)|#121212)[\s\S]*$/i, "");
+
     // Remove the mobile menu panel (now in header.php)
     content = content.replace(/<div[^>]*class="lg:hidden fixed inset-0[^"]*z-\[9998\][^"]*"[\s\S]*?<\/div>\s*<\/div>/i, "");
 
