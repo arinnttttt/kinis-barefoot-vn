@@ -1228,6 +1228,18 @@ ${wpMobileMenuPanel}
     content = content.replace(/href="\/#\/faq"/g, 'href="<?php echo home_url(\'/faq/\'); ?>"');
     content = content.replace(/href="\/#\/"/g, 'href="<?php echo home_url(\'/\'); ?>"');
     
+    // Fix React Router <Link> hash links: href="#/path" (without leading /)
+    content = content.replace(/href="#\/san-pham\/lucy"/g, 'href="<?php echo home_url(\'/san-pham-lucy/\'); ?>"');
+    content = content.replace(/href="#\/san-pham\/nomad"/g, 'href="<?php echo home_url(\'/san-pham-nomad/\'); ?>"');
+    content = content.replace(/href="#\/khoa-hoc"/g, 'href="<?php echo home_url(\'/khoa-hoc/\'); ?>"');
+    content = content.replace(/href="#\/cau-chuyen"/g, 'href="<?php echo home_url(\'/cau-chuyen/\'); ?>"');
+    content = content.replace(/href="#\/doi-tuong\/gym-fitness"/g, 'href="<?php echo home_url(\'/doi-tuong-gym/\'); ?>"');
+    content = content.replace(/href="#\/doi-tuong\/gym"/g, 'href="<?php echo home_url(\'/doi-tuong-gym/\'); ?>"');
+    content = content.replace(/href="#\/doi-tuong\/chay-bo"/g, 'href="<?php echo home_url(\'/doi-tuong-chay-bo/\'); ?>"');
+    content = content.replace(/href="#\/doi-tuong\/ban-chan-bet"/g, 'href="<?php echo home_url(\'/doi-tuong-ban-chan-bet/\'); ?>"');
+    content = content.replace(/href="#\/faq"/g, 'href="<?php echo home_url(\'/faq/\'); ?>"');
+    content = content.replace(/href="#\/"/g, 'href="<?php echo home_url(\'/\'); ?>"');
+
     // Also fix product links without hash (from Index page CTA)
     content = content.replace(/href="\/san-pham\/lucy"/g, 'href="<?php echo home_url(\'/san-pham-lucy/\'); ?>"');
     content = content.replace(/href="\/san-pham\/nomad"/g, 'href="<?php echo home_url(\'/san-pham-nomad/\'); ?>"');
@@ -1235,6 +1247,7 @@ ${wpMobileMenuPanel}
     content = content.replace(/href="\/doi-tuong\/gym"/g, 'href="<?php echo home_url(\'/doi-tuong-gym/\'); ?>"');
     content = content.replace(/href="\/doi-tuong\/ban-chan-bet"/g, 'href="<?php echo home_url(\'/doi-tuong-ban-chan-bet/\'); ?>"');
     content = content.replace(/href="\/doi-tuong\/chay-bo"/g, 'href="<?php echo home_url(\'/doi-tuong-chay-bo/\'); ?>"');
+    content = content.replace(/href="\/faq"/g, 'href="<?php echo home_url(\'/faq/\'); ?>"');
 
     // Fix hero padding for subpages - use inline style because Tailwind CSS bundle
     // doesn't include pt-28/pt-32/pt-36/pt-40 (not used in React source)
