@@ -113,13 +113,7 @@ async function build() {
     mkdirSync(dir, { recursive: true });
   }
 
-  // Copy videos from public/videos/
-  const videosDir = join(ROOT, "public", "videos");
-  if (existsSync(videosDir)) {
-    for (const file of readdirSync(videosDir)) {
-      cpSync(join(videosDir, file), join(THEME_DIR, "assets", "videos", file));
-    }
-  }
+  // Videos are hosted externally - no local video copying needed
 
   // Copy all assets from dist/assets/
   const assetsDir = join(DIST, "assets");
