@@ -1196,8 +1196,9 @@ ${wpMobileMenuPanel}
   }
   
   // Fix asset paths and links in footer
+  const wpAssetUrlFooter = "<?php echo get_template_directory_uri(); ?>";
   footerHtml = footerHtml
-    .replace(/\/assets\//g, `${wpAssetUrl}/assets/images/`)
+    .replace(/\/assets\//g, `${wpAssetUrlFooter}/assets/images/`)
     .replace(/href="\/#\/san-pham\/lucy"/g, 'href="<?php echo home_url(\'/san-pham-lucy/\'); ?>"')
     .replace(/href="\/#\/san-pham\/nomad"/g, 'href="<?php echo home_url(\'/san-pham-nomad/\'); ?>"')
     .replace(/href="\/#\/khoa-hoc"/g, 'href="<?php echo home_url(\'/khoa-hoc/\'); ?>"')
