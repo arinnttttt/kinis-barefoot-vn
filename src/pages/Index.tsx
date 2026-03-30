@@ -282,6 +282,7 @@ const Index = () => {
       <WhyKinisDifferent />
       <TrustedPress />
       <TargetAudienceSection />
+      <VideoShowcase />
       <TestimonialSection />
       <HomeFAQ />
     </Layout>
