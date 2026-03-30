@@ -35,7 +35,7 @@ const VideoShowcase = () => {
         {/* Frame overlay container */}
         <div className="relative">
           {/* Video inside frame */}
-          <div className="relative" style={{ padding: "3.8% 4.2% 7.5% 4.2%" }}>
+          <div className="relative" style={{ padding: "0" }}>
             <video
               ref={videoRef}
               className="w-full aspect-video object-cover rounded-sm"
