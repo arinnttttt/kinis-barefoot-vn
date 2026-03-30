@@ -44,7 +44,7 @@ const StarRating = () => (
 
 const TestimonialCard = ({ item }: { item: (typeof testimonials)[number] }) => (
   <div
-    className="flex-shrink-0 w-[280px] sm:w-[320px] md:w-[350px] flex flex-col p-5 md:p-6 rounded-2xl"
+    className="flex-shrink-0 w-[280px] sm:w-[320px] md:w-[350px] h-full flex flex-col p-5 md:p-6 rounded-2xl"
     style={{
       backgroundColor: "hsl(0,0%,100%)",
       border: "1px solid hsl(0,0%,90%)",
@@ -175,7 +175,7 @@ const TestimonialSection = () => {
         {/* Scrollable track */}
         <div
           ref={scrollRef}
-          className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 scrollbar-hide"
+          className="flex items-stretch gap-4 sm:gap-5 overflow-x-auto pb-4 scrollbar-hide"
           style={{
             scrollSnapType: "x mandatory",
             WebkitOverflowScrolling: "touch",
@@ -184,7 +184,7 @@ const TestimonialSection = () => {
           }}
         >
           {testimonials.map((item) => (
-            <div key={item.name} style={{ scrollSnapAlign: "start" }}>
+            <div key={item.name} className="flex" style={{ scrollSnapAlign: "start" }}>
               <TestimonialCard item={item} />
             </div>
           ))}
