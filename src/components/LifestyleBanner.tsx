@@ -1,7 +1,7 @@
 import lifestyleBanner from "@/assets/lifestyle-banner.png";
 
 const LifestyleBanner = () => (
-  <section className="w-full overflow-hidden mb-12 sm:mb-16 lg:mb-20">
+  <section className="w-full overflow-hidden mb-12 sm:mb-16 lg:mb-20 relative">
     <img
       src={lifestyleBanner}
       alt="Kinis barefoot shoes lifestyle"
@@ -10,6 +10,7 @@ const LifestyleBanner = () => (
       width={4000}
       height={620}
     />
+    <div className="absolute inset-0" style={{ backgroundColor: "rgba(0,0,0,0.1)" }} />
   </section>
 );
 
