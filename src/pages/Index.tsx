@@ -9,6 +9,7 @@ import WhyKinisDifferent from "@/components/WhyKinisDifferent";
 import TrustedPress from "@/components/TrustedPress";
 import TargetAudienceSection from "@/components/TargetAudienceSection";
 import TestimonialSection from "@/components/TestimonialSection";
+import HomeFAQ from "@/components/HomeFAQ";
 
 const products = {
   lucy: {
@@ -281,6 +282,7 @@ const Index = () => {
       <TrustedPress />
       <TargetAudienceSection />
       <TestimonialSection />
+      <HomeFAQ />
     </Layout>
   );
 };
