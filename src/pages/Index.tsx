@@ -282,6 +282,7 @@ const Index = () => {
       <TrustedPress />
       <TargetAudienceSection />
       <TestimonialSection />
+      <HomeFAQ />
     </Layout>
   );
 };
