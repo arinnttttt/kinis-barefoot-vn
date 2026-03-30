@@ -280,6 +280,7 @@ const Index = () => {
       <WhyKinisDifferent />
       <TrustedPress />
       <TargetAudienceSection />
+      <TestimonialSection />
     </Layout>
   );
 };
