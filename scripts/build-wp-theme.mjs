@@ -231,6 +231,7 @@ handleScroll();window.addEventListener('scroll',handleScroll,{passive:true});
 
     // Replace asset references
     bodyContent = bodyContent
+      .replace(/\/videos\//g, `${wpAssetUrl}/assets/videos/`)
       .replace(/\/assets\//g, `${wpAssetUrl}/assets/images/`)
       .replace(/src="\/favicon\.ico"/g, `src="${wpAssetUrl}/favicon.ico"`);
 
