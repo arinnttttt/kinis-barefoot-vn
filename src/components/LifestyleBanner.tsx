@@ -1,7 +1,7 @@
 import lifestyleBanner from "@/assets/lifestyle-banner.png";
 
 const LifestyleBanner = () => (
-  <section className="w-full overflow-hidden mb-12 sm:mb-16 lg:mb-20 relative">
+  <section className="w-full overflow-hidden relative">
     <img
       src={lifestyleBanner}
       alt="Kinis barefoot shoes lifestyle"
