@@ -281,6 +281,7 @@ const Index = () => {
         </div>
       </section>
       <WhyKinisDifferent />
+      <LifestyleBanner />
       <TrustedPress />
       <TargetAudienceSection />
       <TestimonialSection />
