@@ -62,7 +62,7 @@ if (!empty($faq_categories)) :
 
 <!-- Hero section -->
 <section class="relative overflow-hidden" style="background-color: hsl(0, 0%, 7%);">
-  <div class="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-28 sm:pt-32 md:pt-36 lg:pt-40 pb-12 sm:pb-16 md:pb-20 lg:pb-24">
+  <div class="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-6 pb-12 sm:pb-16 md:pb-20 lg:pb-24" style="padding-top:140px">
     <h1 class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight uppercase tracking-tight" style="color: white;">
       <?php echo esc_html($hero_title); ?>
     </h1>
