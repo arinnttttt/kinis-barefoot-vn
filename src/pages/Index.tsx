@@ -5,6 +5,7 @@ import heroImage from "@/assets/hero-person.jpg";
 import lucyShowcase from "@/assets/lucy-showcase-v3.png";
 import nomadShowcase from "@/assets/nomad-showcase-v2.jpg";
 import FootAnatomyInteractive from "@/components/FootAnatomyInteractive";
+import LifestyleBanner from "@/components/LifestyleBanner";
 import WhyKinisDifferent from "@/components/WhyKinisDifferent";
 import TrustedPress from "@/components/TrustedPress";
 import TargetAudienceSection from "@/components/TargetAudienceSection";
@@ -280,6 +281,7 @@ const Index = () => {
         </div>
       </section>
       <WhyKinisDifferent />
+      <LifestyleBanner />
       <TrustedPress />
       <TargetAudienceSection />
       <TestimonialSection />
