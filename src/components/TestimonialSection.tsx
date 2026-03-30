@@ -44,7 +44,7 @@ const StarRating = () => (
 
 const TestimonialCard = ({ item }: { item: (typeof testimonials)[number] }) => (
   <div
-    className="flex-shrink-0 w-[280px] sm:w-[320px] md:w-[350px] flex flex-col p-5 md:p-6 rounded-2xl"
+    className="flex-shrink-0 w-[280px] sm:w-[320px] md:w-[350px] h-full flex flex-col p-5 md:p-6 rounded-2xl"
     style={{
       backgroundColor: "hsl(0,0%,100%)",
       border: "1px solid hsl(0,0%,90%)",
