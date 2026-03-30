@@ -1,9 +1,7 @@
-import lifestyleBanner from "@/assets/lifestyle-banner.png";
-
 const LifestyleBanner = () => (
   <section className="w-full overflow-hidden relative">
     <img
-      src={lifestyleBanner}
+      src="https://kinis.vn/wp-content/uploads/2026/03/kv_shoe-scaled.png"
       alt="Kinis barefoot shoes lifestyle"
       className="w-full h-auto block"
       loading="lazy"
