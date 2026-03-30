@@ -386,7 +386,7 @@ Theme URI: https://kinis.com
 Author: Arin Như Trương
 Author URI: https://kinis.com
 Description: Hệ sinh thái chăm sóc sức khỏe vận động - Giày barefoot Kinis
-Version: 2.0.4
+Version: 2.0.5
 License: Proprietary
 Text Domain: kinis
 */
@@ -407,14 +407,14 @@ function kinis_enqueue_assets() {
     wp_enqueue_style('kinis-fonts', 'https://fonts.googleapis.com/css2?family=Phudu:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap', array(), null);
     
     // Main CSS (from Vite build)
-${cssFiles.map((f, i) => `    wp_enqueue_style('kinis-main${i > 0 ? '-' + i : ''}', get_template_directory_uri() . '/assets/css/${f}', array(), '2.0.4');`).join("\n")}
+${cssFiles.map((f, i) => `    wp_enqueue_style('kinis-main${i > 0 ? '-' + i : ''}', get_template_directory_uri() . '/assets/css/${f}', array(), '2.0.5');`).join("\n")}
     
     // Theme stylesheet
-    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '2.0.4');
+    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '2.0.5');
     
     // Header scroll behavior (vanilla JS - replaces React scroll handler)
-    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '2.0.4', true);
-    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '2.0.4', true);
+    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '2.0.5', true);
+    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '2.0.5', true);
 }
 add_action('wp_enqueue_scripts', 'kinis_enqueue_assets');
 
@@ -1178,8 +1178,46 @@ ${wpMobileMenuPanel}
 `;
   writeFileSync(join(THEME_DIR, "header.php"), headerPhpContent);
 
-  // 4. footer.php
-  writeFileSync(join(THEME_DIR, "footer.php"), `<?php wp_footer(); ?>
+  // 4. footer.php - extract footer from front-page render
+  const frontPageContent = pages[0]?.bodyContent || "";
+  // Match the SVG polygon separator + footer section to end
+  let footerHtml = "";
+  // Try to find the footer element
+  const footerTagMatch = frontPageContent.match(/<footer[\s\S]*<\/footer>/i);
+  if (footerTagMatch) {
+    footerHtml = footerTagMatch[0];
+    // Also grab the SVG polygon separator above it if present
+    const svgFooterMatch = frontPageContent.match(/<div[^>]*>\s*<svg[^>]*preserveAspectRatio[^>]*>[\s\S]*?<\/svg>\s*<\/div>\s*<footer[\s\S]*<\/footer>/i);
+    if (svgFooterMatch) footerHtml = svgFooterMatch[0];
+  }
+  
+  // Fix asset paths and links in footer
+  const wpAssetUrlFooter = "<?php echo get_template_directory_uri(); ?>";
+  footerHtml = footerHtml
+    .replace(/\/assets\//g, `${wpAssetUrlFooter}/assets/images/`)
+    .replace(/href="\/#\/san-pham\/lucy"/g, 'href="<?php echo home_url(\'/san-pham-lucy/\'); ?>"')
+    .replace(/href="\/#\/san-pham\/nomad"/g, 'href="<?php echo home_url(\'/san-pham-nomad/\'); ?>"')
+    .replace(/href="\/#\/khoa-hoc"/g, 'href="<?php echo home_url(\'/khoa-hoc/\'); ?>"')
+    .replace(/href="\/#\/cau-chuyen"/g, 'href="<?php echo home_url(\'/cau-chuyen/\'); ?>"')
+    .replace(/href="\/#\/doi-tuong\/gym-fitness"/g, 'href="<?php echo home_url(\'/doi-tuong-gym/\'); ?>"')
+    .replace(/href="\/#\/doi-tuong\/chay-bo"/g, 'href="<?php echo home_url(\'/doi-tuong-chay-bo/\'); ?>"')
+    .replace(/href="\/#\/doi-tuong\/ban-chan-bet"/g, 'href="<?php echo home_url(\'/doi-tuong-ban-chan-bet/\'); ?>"')
+    .replace(/href="\/#\/faq"/g, 'href="<?php echo home_url(\'/faq/\'); ?>"')
+    .replace(/href="\/#\/"/g, 'href="<?php echo home_url(\'/\'); ?>"')
+    .replace(/href="#\/san-pham\/lucy"/g, 'href="<?php echo home_url(\'/san-pham-lucy/\'); ?>"')
+    .replace(/href="#\/san-pham\/nomad"/g, 'href="<?php echo home_url(\'/san-pham-nomad/\'); ?>"')
+    .replace(/href="#\/khoa-hoc"/g, 'href="<?php echo home_url(\'/khoa-hoc/\'); ?>"')
+    .replace(/href="#\/cau-chuyen"/g, 'href="<?php echo home_url(\'/cau-chuyen/\'); ?>"')
+    .replace(/href="#\/faq"/g, 'href="<?php echo home_url(\'/faq/\'); ?>"')
+    .replace(/href="#\/"/g, 'href="<?php echo home_url(\'/\'); ?>"');
+  
+  // Add lazy loading to footer images
+  footerHtml = footerHtml.replace(/<img(?![^>]*loading=)([^>]*>)/gi, '<img loading="lazy"$1');
+  
+  console.log(`  📦 Footer extracted: ${footerHtml.length > 0 ? footerHtml.length + ' chars' : 'NOT FOUND'}`);
+  
+  writeFileSync(join(THEME_DIR, "footer.php"), `${footerHtml}
+<?php wp_footer(); ?>
 </body>
 </html>
 `);
@@ -1194,6 +1232,10 @@ ${wpMobileMenuPanel}
 
     // Remove the header (now in header.php)
     content = content.replace(/<header[\s\S]*?<\/header>/i, "");
+
+    // Remove the footer (now in footer.php) - match SVG separator + footer tag to end
+    content = content.replace(/<div[^>]*>\s*<svg[^>]*preserveAspectRatio[^>]*>[\s\S]*?<\/svg>\s*<\/div>\s*<footer[\s\S]*<\/footer>/i, "");
+    content = content.replace(/<footer[\s\S]*<\/footer>/i, "");
 
     // Remove the mobile menu panel (now in header.php)
     content = content.replace(/<div[^>]*class="lg:hidden fixed inset-0[^"]*z-\[9998\][^"]*"[\s\S]*?<\/div>\s*<\/div>/i, "");
