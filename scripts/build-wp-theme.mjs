@@ -107,10 +107,18 @@ async function build() {
   });
 
   // Clean old assets and recreate directories
-  for (const sub of ["css", "images", "js"]) {
+  for (const sub of ["css", "images", "js", "videos"]) {
     const dir = join(THEME_DIR, "assets", sub);
     if (existsSync(dir)) rmSync(dir, { recursive: true, force: true });
     mkdirSync(dir, { recursive: true });
+  }
+
+  // Copy videos from public/videos/
+  const videosDir = join(ROOT, "public", "videos");
+  if (existsSync(videosDir)) {
+    for (const file of readdirSync(videosDir)) {
+      cpSync(join(videosDir, file), join(THEME_DIR, "assets", "videos", file));
+    }
   }
 
   // Copy all assets from dist/assets/
