@@ -10,6 +10,7 @@ import TrustedPress from "@/components/TrustedPress";
 import TargetAudienceSection from "@/components/TargetAudienceSection";
 import TestimonialSection from "@/components/TestimonialSection";
 import HomeFAQ from "@/components/HomeFAQ";
+import VideoShowcase from "@/components/VideoShowcase";
 
 const products = {
   lucy: {
