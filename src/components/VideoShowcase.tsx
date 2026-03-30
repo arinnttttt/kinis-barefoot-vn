@@ -10,6 +10,9 @@ const VideoShowcase = () => {
     const section = sectionRef.current;
     if (!video || !section) return;
 
+    // Set volume to 40%
+    video.volume = 0.4;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -32,14 +35,11 @@ const VideoShowcase = () => {
       style={{ backgroundColor: "hsl(0,0%,98%)" }}
     >
       <div className="max-w-5xl mx-auto">
-        {/* Frame overlay container */}
         <div className="relative">
-          {/* Video inside frame */}
           <div className="relative" style={{ padding: "0" }}>
             <video
               ref={videoRef}
               className="w-full aspect-video object-cover rounded-sm"
-              muted
               loop
               playsInline
               preload="metadata"
@@ -48,7 +48,6 @@ const VideoShowcase = () => {
             </video>
           </div>
 
-          {/* Frame image on top */}
           <img
             src={videoFrame}
             alt=""
