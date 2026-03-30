@@ -266,7 +266,7 @@ Theme URI: https://kinis.com
 Author: Arin Như Trương
 Author URI: https://kinis.com
 Description: Hệ sinh thái chăm sóc sức khỏe vận động - Giày barefoot Kinis
-Version: 1.0.0
+Version: 2.0.1
 License: Proprietary
 Text Domain: kinis
 */
