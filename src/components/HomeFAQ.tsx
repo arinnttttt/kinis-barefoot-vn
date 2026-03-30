@@ -127,8 +127,9 @@ const HomeFAQ = () => {
         <div className="mt-8 sm:mt-10 text-center">
           <Link
             to="/faq"
-            className="inline-flex items-center gap-2 font-body font-semibold text-sm sm:text-base transition-colors"
-            style={{ color: "hsl(27,100%,52%)" }}
+            onClick={() => window.scrollTo(0, 0)}
+            className="btn-primary-orange inline-flex items-center gap-2 font-body font-semibold text-sm sm:text-base px-6 py-3 rounded-full transition-colors"
+            style={{ backgroundColor: "hsl(27,100%,52%)", color: "#fff" }}
           >
             Xem tất cả câu hỏi
             <ArrowRight className="w-4 h-4" />
