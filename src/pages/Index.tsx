@@ -143,7 +143,7 @@ const Index = () => {
               bàn chân Việt
             </h1>
 
-            <p className="mt-5 sm:mt-6 text-base sm:text-lg md:text-xl leading-relaxed max-w-lg" style={{ color: "rgba(255,255,255,0.65)" }}>
+            <p className="mt-5 sm:mt-6 text-base sm:text-lg md:text-xl leading-relaxed sm:whitespace-nowrap" style={{ color: "rgba(255,255,255,0.65)" }}>
               Khôi phục cơ chế sinh học và vận động tự nhiên của bàn chân
             </p>
 
