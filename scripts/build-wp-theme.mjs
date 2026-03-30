@@ -231,6 +231,7 @@ handleScroll();window.addEventListener('scroll',handleScroll,{passive:true});
 
     // Replace asset references
     bodyContent = bodyContent
+      .replace(/\/videos\/kinis-showcase\.mp4/g, 'https://kinis.vn/wp-content/uploads/2026/03/pWF2AmF0GwAAAZ03ZYRcYWYAYXUOYXMaAJ4EgQ.mp4')
       .replace(/\/videos\//g, `${wpAssetUrl}/assets/videos/`)
       .replace(/\/assets\//g, `${wpAssetUrl}/assets/images/`)
       .replace(/src="\/favicon\.ico"/g, `src="${wpAssetUrl}/favicon.ico"`)
