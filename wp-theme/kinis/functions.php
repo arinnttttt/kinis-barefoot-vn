@@ -9,14 +9,14 @@ function kinis_enqueue_assets() {
     wp_enqueue_style('kinis-fonts', 'https://fonts.googleapis.com/css2?family=Phudu:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap', array(), null);
     
     // Main CSS (from Vite build)
-    wp_enqueue_style('kinis-main', get_template_directory_uri() . '/assets/css/index-CLumHAC1.css', array(), '2.0.4');
+
     
     // Theme stylesheet
-    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '2.0.4');
+    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '2.0.5');
     
     // Header scroll behavior (vanilla JS - replaces React scroll handler)
-    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '2.0.4', true);
-    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '2.0.4', true);
+    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '2.0.5', true);
+    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '2.0.5', true);
 }
 add_action('wp_enqueue_scripts', 'kinis_enqueue_assets');
 
@@ -209,110 +209,6 @@ function kinis_register_faq_cpt() {
     ));
 }
 add_action('init', 'kinis_register_faq_cpt');
-
-// ============================================
-// FAQ "Hiển thị trên Trang chủ" Meta Box
-// ============================================
-function kinis_faq_home_meta_box() {
-    add_meta_box(
-        'kinis_faq_home',
-        'Hiển thị trên Trang chủ',
-        'kinis_faq_home_meta_box_html',
-        'faq',
-        'side',
-        'high'
-    );
-}
-add_action('add_meta_boxes', 'kinis_faq_home_meta_box');
-
-function kinis_faq_home_meta_box_html($post) {
-    $value = get_post_meta($post->ID, '_kinis_show_on_home', true);
-    $current_count = kinis_count_home_faqs($post->ID);
-    wp_nonce_field('kinis_faq_home_nonce', 'kinis_faq_home_nonce_field');
-    ?>
-    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
-        <input type="checkbox" name="kinis_show_on_home" value="1" <?php checked($value, '1'); ?>>
-        <span>Hiển thị câu hỏi này trên Trang chủ</span>
-    </label>
-    <p class="description" style="margin-top:8px;">
-        Đang chọn: <strong><?php echo $current_count; ?>/8</strong> câu hỏi trên Trang chủ.
-        <?php if ($current_count >= 8 && $value !== '1') : ?>
-            <br><span style="color:#d63638;">⚠ Đã đạt giới hạn tối đa 8 câu. Hãy bỏ chọn câu khác trước.</span>
-        <?php endif; ?>
-    </p>
-    <?php
-}
-
-function kinis_count_home_faqs($exclude_id = 0) {
-    $args = array(
-        'post_type' => 'faq',
-        'post_status' => 'publish',
-        'meta_key' => '_kinis_show_on_home',
-        'meta_value' => '1',
-        'posts_per_page' => -1,
-        'fields' => 'ids',
-    );
-    if ($exclude_id) {
-        $args['post__not_in'] = array($exclude_id);
-    }
-    $query = new WP_Query($args);
-    return $query->found_posts;
-}
-
-function kinis_save_faq_home_meta($post_id) {
-    if (!isset($_POST['kinis_faq_home_nonce_field'])) return;
-    if (!wp_verify_nonce($_POST['kinis_faq_home_nonce_field'], 'kinis_faq_home_nonce')) return;
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
-    if (!current_user_can('edit_post', $post_id)) return;
-
-    if (isset($_POST['kinis_show_on_home']) && $_POST['kinis_show_on_home'] === '1') {
-        // Check max 8
-        $current = kinis_count_home_faqs($post_id);
-        if ($current < 8) {
-            update_post_meta($post_id, '_kinis_show_on_home', '1');
-        }
-    } else {
-        delete_post_meta($post_id, '_kinis_show_on_home');
-    }
-}
-add_action('save_post_faq', 'kinis_save_faq_home_meta');
-
-// Admin column for "Trang chủ" indicator
-function kinis_faq_admin_columns($columns) {
-    $new = array();
-    foreach ($columns as $key => $val) {
-        $new[$key] = $val;
-        if ($key === 'title') {
-            $new['home_faq'] = '🏠 Trang chủ';
-        }
-    }
-    return $new;
-}
-add_filter('manage_faq_posts_columns', 'kinis_faq_admin_columns');
-
-function kinis_faq_admin_column_content($column, $post_id) {
-    if ($column === 'home_faq') {
-        $val = get_post_meta($post_id, '_kinis_show_on_home', true);
-        echo $val === '1' ? '<span style="color:#f97316;font-size:16px;">★</span>' : '—';
-    }
-}
-add_action('manage_faq_posts_custom_column', 'kinis_faq_admin_column_content', 10, 2);
-
-// Make column sortable
-function kinis_faq_sortable_columns($columns) {
-    $columns['home_faq'] = 'home_faq';
-    return $columns;
-}
-add_filter('manage_edit-faq_sortable_columns', 'kinis_faq_sortable_columns');
-
-function kinis_faq_sort_by_home($query) {
-    if (!is_admin() || !$query->is_main_query()) return;
-    if ($query->get('orderby') === 'home_faq') {
-        $query->set('meta_key', '_kinis_show_on_home');
-        $query->set('orderby', 'meta_value');
-    }
-}
-add_action('pre_get_posts', 'kinis_faq_sort_by_home');
 
 // Show author credit on FAQ admin pages
 function kinis_faq_author_credit() {
