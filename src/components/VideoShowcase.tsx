@@ -51,7 +51,7 @@ const VideoShowcase = () => {
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="auto"
             >
               <source src="/videos/kinis-showcase.mp4" type="video/mp4" />
             </video>
