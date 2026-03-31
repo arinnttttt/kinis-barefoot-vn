@@ -157,10 +157,11 @@ const WhyKinisDifferent = () => {
           </div>
 
           {/* Ecosystem Card - orange bg with app mockup */}
-          <div className="relative lg:w-[62%] overflow-hidden" style={{ minHeight: "220px" }}>
-            <div className="diagonal-skew-card rounded-2xl sm:rounded-2xl overflow-visible relative pb-36 sm:pb-0" style={{ backgroundColor: "#f97316" }}>
-              <div className="diagonal-skew-content p-6 sm:p-8 lg:pl-14 relative z-10">
-                <div className="sm:max-w-[55%] lg:max-w-[60%]">
+          <div className="relative lg:w-[62%]" style={{ minHeight: "220px" }}>
+            <div className="diagonal-skew-card rounded-2xl overflow-hidden relative pb-36 sm:pb-0" style={{ backgroundColor: "#f97316" }}>
+              <div className="diagonal-skew-content flex flex-col sm:flex-row sm:items-stretch relative">
+                {/* Text content */}
+                <div className="p-6 sm:p-8 lg:pl-14 relative z-10 sm:w-[58%] lg:w-[60%] shrink-0">
                   <p className="font-display text-lg sm:text-xl font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
                     Nằm trong hệ sinh thái Kinis
                   </p>
@@ -172,15 +173,17 @@ const WhyKinisDifferent = () => {
                     Hơn 1 đôi giày, Kinis mang đến cho bạn giải pháp toàn diện — Công cụ kiểm tra thăng bằng Kinis BalancePro tích hợp AI, được APTA khuyến nghị sử dụng trong khám lâm sàng và hệ thống bài tập cá nhân hóa cải thiện cùng giày Kinis.
                   </p>
                 </div>
+                {/* Tablet + Desktop: mockup in flow, scales with card */}
+                <div className="hidden sm:flex items-center justify-end sm:w-[42%] lg:w-[40%] pr-4 lg:pr-6 py-4">
+                  <img
+                    src={appMockup}
+                    alt="Kinis BalancePro App"
+                    className="w-full h-auto max-h-[320px] object-contain pointer-events-none"
+                    style={{ transform: "skewX(5deg)" }}
+                    loading="lazy"
+                  />
+                </div>
               </div>
-              {/* Tablet + Desktop: absolute positioned mockup */}
-              <img
-                src={appMockup}
-                alt="Kinis BalancePro App"
-                className="hidden sm:block absolute right-0 sm:-right-2 lg:-right-6 top-1/2 h-[120%] sm:h-[125%] lg:h-[140%] max-h-[280px] sm:max-h-[300px] lg:max-h-[360px] object-contain pointer-events-none"
-                style={{ transform: "translateY(-50%) skewX(5deg)" }}
-                loading="lazy"
-              />
               {/* Mobile only: mockup sits inside card's extra padding, half in orange half out */}
               <div className="sm:hidden absolute bottom-0 left-0 right-0 flex justify-center translate-y-1/2 px-4">
                 <img
