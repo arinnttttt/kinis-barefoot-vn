@@ -1,7 +1,7 @@
 import { Footprints, Layers, Brain, Bone } from "lucide-react";
 const shoeImage = "https://kinis.vn/wp-content/uploads/2026/03/shoe-features.png";
 import apmaSeal from "@/assets/apma-seal.png";
-import appMockup from "@/assets/kinis-app-mockup.png";
+const appMockup = "https://kinis.vn/wp-content/uploads/2026/03/img-promo-app.png";
 import kSystemLogo from "@/assets/k-system.png";
 
 const features = [
@@ -182,11 +182,11 @@ const WhyKinisDifferent = () => {
                 loading="lazy"
               />
               {/* Mobile only: mockup sits inside card's extra padding, half in orange half out */}
-              <div className="sm:hidden absolute bottom-0 left-0 right-0 flex justify-center translate-y-1/2">
+              <div className="sm:hidden absolute bottom-0 left-0 right-0 flex justify-center translate-y-1/2 px-4">
                 <img
                   src={appMockup}
                   alt="Kinis BalancePro App"
-                  className="h-auto max-h-[280px] object-contain"
+                  className="w-full max-w-[320px] h-auto object-contain"
                   loading="lazy"
                 />
               </div>
