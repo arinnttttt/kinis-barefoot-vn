@@ -49,13 +49,13 @@ function startServer(port) {
           png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg",
           svg: "image/svg+xml", woff2: "font/woff2", woff: "font/woff", ttf: "font/ttf",
         };
-        res.writeHead(200, { "Content-Type": mimeTypes[ext] || "application/octet-stream" });
+        if (!res.headersSent) { res.writeHead(200, { "Content-Type": mimeTypes[ext] || "application/octet-stream" }); }
         res.end(content);
       } catch {
         try {
-          res.writeHead(200, { "Content-Type": "text/html" });
+          if (!res.headersSent) { res.writeHead(200, { "Content-Type": "text/html" }); }
           res.end(readFileSync(join(DIST, "index.html")));
-        } catch { res.writeHead(404); res.end("Not found"); }
+        } catch { if (!res.headersSent) { res.writeHead(404); } res.end("Not found"); }
       }
     });
     server.listen(port, () => resolve(server));
