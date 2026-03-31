@@ -157,7 +157,7 @@ const WhyKinisDifferent = () => {
           </div>
 
           {/* Ecosystem Card - orange bg with app mockup */}
-          <div className="relative lg:w-[62%]" style={{ minHeight: "220px" }}>
+          <div className="relative lg:w-[62%] overflow-hidden" style={{ minHeight: "220px" }}>
             <div className="diagonal-skew-card rounded-2xl sm:rounded-2xl overflow-visible relative pb-36 sm:pb-0" style={{ backgroundColor: "#f97316" }}>
               <div className="diagonal-skew-content p-6 sm:p-8 lg:pl-14 relative z-10">
                 <div className="sm:max-w-[55%] lg:max-w-[60%]">
@@ -177,7 +177,7 @@ const WhyKinisDifferent = () => {
               <img
                 src={appMockup}
                 alt="Kinis BalancePro App"
-                className="hidden sm:block absolute -right-4 sm:-right-6 lg:-right-14 top-1/2 h-[125%] sm:h-[130%] lg:h-[148%] max-h-[300px] sm:max-h-[320px] lg:max-h-[374px] object-contain pointer-events-none"
+                className="hidden sm:block absolute right-0 sm:-right-2 lg:-right-6 top-1/2 h-[120%] sm:h-[125%] lg:h-[140%] max-h-[280px] sm:max-h-[300px] lg:max-h-[360px] object-contain pointer-events-none"
                 style={{ transform: "translateY(-50%) skewX(5deg)" }}
                 loading="lazy"
               />
