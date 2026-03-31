@@ -344,7 +344,7 @@ handleScroll();window.addEventListener('scroll',handleScroll,{passive:true});
       .replace(/<img(?![^>]*loading=)([^>]*class="[^"]*opacity-50[^"]*")/gi, '<img$1')
       .replace(/<img(?![^>]*loading=)([^>]*>)/gi, '<img loading="lazy"$1')
       // Video: set preload to none for lazy loading
-      .replace(/preload="metadata"/g, 'preload="none"');
+      .replace(/preload="auto"/g, 'preload="auto"');
 
     // Extract CSS links from head
     const cssLinks = [];
