@@ -344,7 +344,7 @@ handleScroll();window.addEventListener('scroll',handleScroll,{passive:true});
       .replace(/<img(?![^>]*loading=)([^>]*class="[^"]*opacity-50[^"]*")/gi, '<img$1')
       .replace(/<img(?![^>]*loading=)([^>]*>)/gi, '<img loading="lazy"$1')
       // Video: set preload to none for lazy loading
-      .replace(/preload="metadata"/g, 'preload="none"');
+      .replace(/preload="auto"/g, 'preload="auto"');
 
     // Extract CSS links from head
     const cssLinks = [];
@@ -386,7 +386,7 @@ Theme URI: https://kinis.com
 Author: Arin Như Trương
 Author URI: https://kinis.com
 Description: Hệ sinh thái chăm sóc sức khỏe vận động - Giày barefoot Kinis
-Version: 2.0.5
+Version: 3.0.1
 License: Proprietary
 Text Domain: kinis
 */
@@ -407,14 +407,14 @@ function kinis_enqueue_assets() {
     wp_enqueue_style('kinis-fonts', 'https://fonts.googleapis.com/css2?family=Phudu:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap', array(), null);
     
     // Main CSS (from Vite build)
-${cssFiles.map((f, i) => `    wp_enqueue_style('kinis-main${i > 0 ? '-' + i : ''}', get_template_directory_uri() . '/assets/css/${f}', array(), '2.0.5');`).join("\n")}
+${cssFiles.map((f, i) => `    wp_enqueue_style('kinis-main${i > 0 ? '-' + i : ''}', get_template_directory_uri() . '/assets/css/${f}', array(), '3.0.1');`).join("\n")}
     
     // Theme stylesheet
-    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '2.0.5');
+    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '3.0.1');
     
     // Header scroll behavior (vanilla JS - replaces React scroll handler)
-    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '2.0.5', true);
-    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '2.0.5', true);
+    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '3.0.1', true);
+    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '3.0.1', true);
 }
 add_action('wp_enqueue_scripts', 'kinis_enqueue_assets');
 
