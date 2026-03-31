@@ -133,7 +133,7 @@ const WhyKinisDifferent = () => {
         </div>
 
         {/* Bottom two cards - diagonal with rounded corners */}
-        <div className="flex flex-col lg:flex-row lg:items-stretch gap-4 lg:gap-2">
+        <div className="flex flex-col lg:flex-row lg:items-stretch gap-5 sm:gap-6 lg:gap-2">
           {/* APMA Card - black bg, skew approach preserves border-radius */}
           <div className="diagonal-skew-card rounded-2xl overflow-visible lg:w-[38%] relative flex flex-col" style={{ backgroundColor: "#1a1a1a" }}>
             {/* APMA Seal stamp */}
