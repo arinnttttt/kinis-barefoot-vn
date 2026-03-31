@@ -1,7 +1,7 @@
 import { Footprints, Layers, Brain, Bone } from "lucide-react";
 const shoeImage = "https://kinis.vn/wp-content/uploads/2026/03/shoe-features.png";
 import apmaSeal from "@/assets/apma-seal.png";
-import appMockup from "@/assets/kinis-app-mockup.png";
+const appMockup = "https://kinis.vn/wp-content/uploads/2026/03/img-promo-app.png";
 import kSystemLogo from "@/assets/k-system.png";
 
 const features = [
