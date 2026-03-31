@@ -9,7 +9,7 @@ function kinis_enqueue_assets() {
     wp_enqueue_style('kinis-fonts', 'https://fonts.googleapis.com/css2?family=Phudu:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap', array(), null);
     
     // Main CSS (from Vite build)
-
+    wp_enqueue_style('kinis-main', get_template_directory_uri() . '/assets/css/index-D4N0WsLV.css', array(), '2.0.5');
     
     // Theme stylesheet
     wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '2.0.5');
@@ -210,10 +210,170 @@ function kinis_register_faq_cpt() {
 }
 add_action('init', 'kinis_register_faq_cpt');
 
-// Show author credit on FAQ admin pages
+// ============================================
+// FAQ "Hiển thị trên Trang chủ" Meta Box
+// ============================================
+function kinis_faq_home_meta_box() {
+    add_meta_box('kinis_faq_home', 'Hiển thị trên Trang chủ', 'kinis_faq_home_meta_box_html', 'faq', 'side', 'high');
+}
+add_action('add_meta_boxes', 'kinis_faq_home_meta_box');
+
+function kinis_faq_home_meta_box_html($post) {
+    $value = get_post_meta($post->ID, '_kinis_show_on_home', true);
+    $current_count = kinis_count_home_faqs($post->ID);
+    wp_nonce_field('kinis_faq_home_nonce', 'kinis_faq_home_nonce_field');
+    ?>
+    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+        <input type="checkbox" name="kinis_show_on_home" value="1" <?php checked($value, '1'); ?>>
+        <span>Hiển thị câu hỏi này trên Trang chủ</span>
+    </label>
+    <p class="description" style="margin-top:8px;">
+        Đang chọn: <strong><?php echo $current_count; ?>/8</strong> câu hỏi trên Trang chủ.
+        <?php if ($current_count >= 8 && $value !== '1') : ?>
+            <br><span style="color:#d63638;">⚠ Đã đạt giới hạn tối đa 8 câu. Hãy bỏ chọn câu khác trước.</span>
+        <?php endif; ?>
+    </p>
+    <?php
+}
+
+function kinis_count_home_faqs($exclude_id = 0) {
+    $args = array('post_type' => 'faq', 'post_status' => 'publish', 'meta_key' => '_kinis_show_on_home', 'meta_value' => '1', 'posts_per_page' => -1, 'fields' => 'ids');
+    if ($exclude_id) { $args['post__not_in'] = array($exclude_id); }
+    $query = new WP_Query($args);
+    return $query->found_posts;
+}
+
+function kinis_save_faq_home_meta($post_id) {
+    if (!isset($_POST['kinis_faq_home_nonce_field'])) return;
+    if (!wp_verify_nonce($_POST['kinis_faq_home_nonce_field'], 'kinis_faq_home_nonce')) return;
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (!current_user_can('edit_post', $post_id)) return;
+    if (isset($_POST['kinis_show_on_home']) && $_POST['kinis_show_on_home'] === '1') {
+        $current = kinis_count_home_faqs($post_id);
+        if ($current < 8) { update_post_meta($post_id, '_kinis_show_on_home', '1'); }
+    } else { delete_post_meta($post_id, '_kinis_show_on_home'); }
+}
+add_action('save_post_faq', 'kinis_save_faq_home_meta');
+
+// Admin column for FAQ home indicator
+function kinis_faq_admin_columns($columns) {
+    $new = array();
+    foreach ($columns as $key => $val) { $new[$key] = $val; if ($key === 'title') { $new['home_faq'] = '🏠 Trang chủ'; } }
+    return $new;
+}
+add_filter('manage_faq_posts_columns', 'kinis_faq_admin_columns');
+
+function kinis_faq_admin_column_content($column, $post_id) {
+    if ($column === 'home_faq') {
+        echo get_post_meta($post_id, '_kinis_show_on_home', true) === '1' ? '<span style="color:#f97316;font-size:16px;">★</span>' : '—';
+    }
+}
+add_action('manage_faq_posts_custom_column', 'kinis_faq_admin_column_content', 10, 2);
+
+function kinis_faq_sortable_columns($columns) { $columns['home_faq'] = 'home_faq'; return $columns; }
+add_filter('manage_edit-faq_sortable_columns', 'kinis_faq_sortable_columns');
+
+function kinis_faq_sort_by_home($query) {
+    if (!is_admin() || !$query->is_main_query()) return;
+    if ($query->get('orderby') === 'home_faq') { $query->set('meta_key', '_kinis_show_on_home'); $query->set('orderby', 'meta_value'); }
+}
+add_action('pre_get_posts', 'kinis_faq_sort_by_home');
+
+// ============================================
+// Testimonial Custom Post Type
+// ============================================
+function kinis_register_testimonial_cpt() {
+    register_post_type('kinis_testimonial', array(
+        'labels' => array(
+            'name' => 'Đánh giá khách hàng',
+            'singular_name' => 'Đánh giá',
+            'add_new' => 'Thêm đánh giá',
+            'add_new_item' => 'Thêm đánh giá mới',
+            'edit_item' => 'Sửa đánh giá',
+            'new_item' => 'Đánh giá mới',
+            'view_item' => 'Xem đánh giá',
+            'search_items' => 'Tìm đánh giá',
+            'not_found' => 'Không tìm thấy đánh giá nào',
+            'menu_name' => 'Đánh giá KH',
+        ),
+        'public' => false,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'menu_icon' => 'dashicons-star-filled',
+        'menu_position' => 26,
+        'supports' => array('title', 'editor', 'page-attributes'),
+        'has_archive' => false,
+        'rewrite' => false,
+    ));
+}
+add_action('init', 'kinis_register_testimonial_cpt');
+
+// Testimonial meta boxes
+function kinis_testimonial_meta_boxes() {
+    add_meta_box('kinis_testimonial_meta', 'Thông tin đánh giá', 'kinis_testimonial_meta_html', 'kinis_testimonial', 'side', 'high');
+}
+add_action('add_meta_boxes', 'kinis_testimonial_meta_boxes');
+
+function kinis_testimonial_meta_html($post) {
+    $stars = get_post_meta($post->ID, '_kinis_testimonial_stars', true) ?: '5';
+    $category = get_post_meta($post->ID, '_kinis_testimonial_category', true) ?: '';
+    wp_nonce_field('kinis_testimonial_nonce', 'kinis_testimonial_nonce_field');
+    ?>
+    <p><label><strong>Số sao (1-5):</strong></label><br>
+    <select name="kinis_testimonial_stars" style="width:100%;">
+        <?php for ($s = 1; $s <= 5; $s++) : ?>
+            <option value="<?php echo $s; ?>" <?php selected($stars, $s); ?>><?php echo str_repeat('★', $s) . str_repeat('☆', 5 - $s); ?></option>
+        <?php endfor; ?>
+    </select></p>
+    <p><label><strong>Nhãn danh mục:</strong></label><br>
+    <input type="text" name="kinis_testimonial_category" value="<?php echo esc_attr($category); ?>" style="width:100%;" placeholder="VD: Excellent, Great, Fantastic"></p>
+    <p class="description">Tiêu đề = Tên khách hàng. Nội dung = Lời đánh giá.</p>
+    <?php
+}
+
+function kinis_save_testimonial_meta($post_id) {
+    if (!isset($_POST['kinis_testimonial_nonce_field'])) return;
+    if (!wp_verify_nonce($_POST['kinis_testimonial_nonce_field'], 'kinis_testimonial_nonce')) return;
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (!current_user_can('edit_post', $post_id)) return;
+    if (isset($_POST['kinis_testimonial_stars'])) { update_post_meta($post_id, '_kinis_testimonial_stars', sanitize_text_field($_POST['kinis_testimonial_stars'])); }
+    if (isset($_POST['kinis_testimonial_category'])) { update_post_meta($post_id, '_kinis_testimonial_category', sanitize_text_field($_POST['kinis_testimonial_category'])); }
+}
+add_action('save_post_kinis_testimonial', 'kinis_save_testimonial_meta');
+
+// Auto-seed testimonial data on theme activation
+function kinis_seed_testimonials() {
+    if (get_option('kinis_testimonials_seeded')) return;
+    $testimonials = array(
+        array('name' => 'Shella D.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Đây là đôi giày barefoot tốt nhất mà tôi từng thử! Thiết kế tối giản nhưng vẫn đảm bảo bảo vệ, phù hợp hoàn hảo cho những buổi đi bộ dài. Chất liệu nhẹ, thoáng khí, chân cảm nhận được mặt đất rõ ràng."'),
+        array('name' => 'Gregory P.', 'stars' => 5, 'category' => 'Fantastic', 'review' => '"Tôi mua đôi Lucy cho RJ. Theo lời anh ấy: \"Đôi giày này đã thay đổi cách tôi bước đi. Thoải mái tự nhiên, nhẹ nhàng mà vẫn chắc chắn. Giờ tôi chỉ muốn đi bộ thôi!\""'),
+        array('name' => 'Brian K.', 'stars' => 4, 'category' => 'Great', 'review' => '"Tôi vừa trải qua phẫu thuật bàn chân và đôi giày Kinis thực sự rất phù hợp với tình trạng hiện tại. Bàn chân được tự do co duỗi và cảm nhận mặt đất, giúp quá trình phục hồi thoải mái hơn rất nhiều."'),
+        array('name' => 'Jennifer B.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Tôi rất thích cảm giác vừa vặn của đôi giày! Giày rất nhẹ và ôm chân hoàn hảo từ lần đầu tiên. Rất phù hợp cho những ai đang tìm kiếm giày barefoot cho đời thường."'),
+        array('name' => 'Casey B.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Ban đầu tôi hơi do dự khi mua, nhưng giờ rất vui vì đã chọn chúng cho hành trình barefoot. Sau 2 tuần đi bộ mỗi ngày, cảm giác thăng bằng của tôi cải thiện rõ rệt."'),
+        array('name' => 'Matthew O.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Đôi giày hoàn hảo với tôi. Tôi không thích mang giày và có cổ chân yếu, nhưng đôi giày này giải quyết được cả hai. Thoải mái như một đôi tất nhưng vẫn có độ bảo vệ của giày."'),
+    );
+    $order = 1;
+    foreach ($testimonials as $t) {
+        $post_id = wp_insert_post(array(
+            'post_title' => $t['name'],
+            'post_content' => $t['review'],
+            'post_status' => 'publish',
+            'post_type' => 'kinis_testimonial',
+            'menu_order' => $order++,
+        ));
+        if ($post_id && !is_wp_error($post_id)) {
+            update_post_meta($post_id, '_kinis_testimonial_stars', $t['stars']);
+            update_post_meta($post_id, '_kinis_testimonial_category', $t['category']);
+        }
+    }
+    update_option('kinis_testimonials_seeded', true);
+}
+add_action('after_switch_theme', 'kinis_seed_testimonials', 35);
+
+// Show author credit on FAQ and Testimonial admin pages
 function kinis_faq_author_credit() {
     $screen = get_current_screen();
-    if ($screen && ($screen->post_type === 'faq' || ($screen->taxonomy === 'faq_category'))) {
+    if ($screen && ($screen->post_type === 'faq' || $screen->taxonomy === 'faq_category' || $screen->post_type === 'kinis_testimonial')) {
         echo '<div class="notice notice-info" style="border-left-color:#f97316;"><p style="font-size:14px;"><strong>Tác giả: Arin Nhu Truong</strong></p></div>';
     }
 }
