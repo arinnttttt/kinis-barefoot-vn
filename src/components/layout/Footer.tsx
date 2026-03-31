@@ -39,7 +39,7 @@ const Footer = () => (
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3 sm:gap-4">
                 <a href="/#/">
-                  <img src={logoBlack} alt="Kinis" className="h-9 sm:h-12 brightness-0 invert" />
+                  <img src={logoWhite} alt="Kinis" className="h-9 sm:h-12" />
                 </a>
                 <span className="hidden sm:block text-xl" style={{ color: "rgba(255,255,255,0.3)" }}>/</span>
                 <p className="hidden sm:block text-lg md:text-xl font-display" style={{ color: "rgba(255,255,255,0.5)" }}>
