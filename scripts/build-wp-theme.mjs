@@ -12,6 +12,7 @@
  */
 
 import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync, readdirSync, rmSync } from "fs";
+import { execSync } from "child_process";
 import { join, dirname, basename, extname } from "path";
 import { fileURLToPath } from "url";
 import { createServer } from "http";
