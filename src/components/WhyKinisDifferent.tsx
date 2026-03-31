@@ -182,11 +182,11 @@ const WhyKinisDifferent = () => {
                 loading="lazy"
               />
               {/* Mobile only: mockup sits inside card's extra padding, half in orange half out */}
-              <div className="sm:hidden absolute bottom-0 left-0 right-0 flex justify-center translate-y-1/2">
+              <div className="sm:hidden absolute bottom-0 left-0 right-0 flex justify-center translate-y-1/2 px-4">
                 <img
                   src={appMockup}
                   alt="Kinis BalancePro App"
-                  className="h-auto max-h-[280px] object-contain"
+                  className="w-full max-w-[320px] h-auto object-contain"
                   loading="lazy"
                 />
               </div>
