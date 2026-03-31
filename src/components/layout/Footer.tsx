@@ -1,6 +1,7 @@
-import logoBlack from "@/assets/logo-kinis-black.png";
 import zaloIcon from "@/assets/zalo-icon.svg";
 import { Phone, Mail } from "lucide-react";
+
+const logoWhite = "https://kinis.vn/wp-content/uploads/2026/03/logo-kinis-white.png";
 
 const sitemapLinks = [
   { label: "Trang chủ", href: "/#/" },
