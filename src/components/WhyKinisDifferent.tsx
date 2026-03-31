@@ -1,7 +1,7 @@
 import { Footprints, Layers, Brain, Bone } from "lucide-react";
 const shoeImage = "https://kinis.vn/wp-content/uploads/2026/03/shoe-features.png";
 import apmaSeal from "@/assets/apma-seal.png";
-const appMockup = "https://kinis.vn/wp-content/uploads/2026/03/img-promo-app.png";
+import appMockup from "@/assets/kinis-app-mockup.png";
 import kSystemLogo from "@/assets/k-system.png";
 
 const features = [
@@ -158,9 +158,9 @@ const WhyKinisDifferent = () => {
 
           {/* Ecosystem Card - orange bg with app mockup */}
           <div className="relative lg:w-[62%]" style={{ minHeight: "220px" }}>
-            <div className="diagonal-skew-card rounded-2xl relative overflow-visible pb-36 sm:pb-0" style={{ backgroundColor: "#f97316" }}>
-              <div className="diagonal-skew-content relative">
-                <div className="p-6 sm:p-8 lg:pl-14 relative z-10 sm:max-w-[58%] lg:max-w-[56%]">
+            <div className="diagonal-skew-card rounded-2xl sm:rounded-2xl overflow-visible relative pb-36 sm:pb-0" style={{ backgroundColor: "#f97316" }}>
+              <div className="diagonal-skew-content p-6 sm:p-8 lg:pl-14 relative z-10">
+                <div className="sm:max-w-[55%] lg:max-w-[60%]">
                   <p className="font-display text-lg sm:text-xl font-medium uppercase tracking-wide" style={{ color: "#ffffff" }}>
                     Nằm trong hệ sinh thái Kinis
                   </p>
@@ -172,23 +172,23 @@ const WhyKinisDifferent = () => {
                     Hơn 1 đôi giày, Kinis mang đến cho bạn giải pháp toàn diện — Công cụ kiểm tra thăng bằng Kinis BalancePro tích hợp AI, được APTA khuyến nghị sử dụng trong khám lâm sàng và hệ thống bài tập cá nhân hóa cải thiện cùng giày Kinis.
                   </p>
                 </div>
-                {/* Tablet + Desktop: absolute mockup bleeds outside card, vw-based sizing for responsive scaling */}
+              </div>
+              {/* Tablet + Desktop: absolute positioned mockup */}
+              <img
+                src={appMockup}
+                alt="Kinis BalancePro App"
+                className="hidden sm:block absolute -right-4 sm:-right-6 lg:-right-14 top-1/2 h-[125%] sm:h-[130%] lg:h-[148%] max-h-[300px] sm:max-h-[320px] lg:max-h-[374px] object-contain pointer-events-none"
+                style={{ transform: "translateY(-50%) skewX(5deg)" }}
+                loading="lazy"
+              />
+              {/* Mobile only: mockup sits inside card's extra padding, half in orange half out */}
+              <div className="sm:hidden absolute bottom-0 left-0 right-0 flex justify-center translate-y-1/2">
                 <img
                   src={appMockup}
                   alt="Kinis BalancePro App"
+                  className="h-auto max-h-[280px] object-contain"
                   loading="lazy"
-                  className="hidden sm:block absolute top-1/2 right-[-8%] lg:right-[-12%] xl:right-[-14%] h-[148%] max-h-[374px] w-auto object-contain pointer-events-none z-20"
-                  style={{ transform: "translateY(-50%) skewX(5deg)" }}
                 />
-                {/* Mobile only */}
-                <div className="sm:hidden absolute bottom-0 left-0 right-0 flex justify-center translate-y-1/2 px-4">
-                  <img
-                    src={appMockup}
-                    alt="Kinis BalancePro App"
-                    className="w-full max-w-[320px] h-auto object-contain"
-                    loading="lazy"
-                  />
-                </div>
               </div>
             </div>
             {/* Spacer for mobile mockup overflow */}
