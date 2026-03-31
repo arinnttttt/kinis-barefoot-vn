@@ -12,6 +12,7 @@
  */
 
 import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync, readdirSync, rmSync } from "fs";
+import { execSync } from "child_process";
 import { join, dirname, basename, extname } from "path";
 import { fileURLToPath } from "url";
 import { createServer } from "http";
@@ -1734,6 +1735,13 @@ ${content}
 <?php get_footer(); ?>
 `);
 
+  // Run postprocess to inject dynamic FAQ + Testimonial PHP
+  const postprocessScript = join(ROOT, "scripts", "postprocess-frontpage.py");
+  if (existsSync(postprocessScript)) {
+    console.log("\n🔄 Running postprocess for dynamic FAQ + Testimonial...");
+    execSync(`python3 "${postprocessScript}"`, { stdio: "inherit" });
+  }
+
   console.log("\n✅ WordPress theme generated in wp-theme/kinis/");
   console.log("📁 Theme structure:");
   console.log("   kinis/");
@@ -1741,7 +1749,7 @@ ${content}
   console.log("   ├── functions.php");
   console.log("   ├── header.php");
   console.log("   ├── footer.php");
-  console.log("   ├── front-page.php");
+  console.log("   ├── front-page.php (with dynamic FAQ + Testimonial)");
   console.log("   ├── page-*.php (8 page templates)");
   console.log("   ├── index.php");
   console.log("   ├── 404.php");
