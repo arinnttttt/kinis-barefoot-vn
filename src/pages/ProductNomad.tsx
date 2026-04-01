@@ -217,77 +217,83 @@ const ProductNomad = () => {
           </p>
         </div>
 
-        {/* Arrow Step Timeline - like delivery tracker */}
-        <div className="max-w-5xl mx-auto animate-fade-up">
-          <div className="rounded-2xl border overflow-hidden" style={{ borderColor: "hsl(0,0%,20%)", backgroundColor: "hsl(0,0%,8%)" }}>
-            <div className="flex flex-col md:flex-row">
-              {[
-                {
-                  phase: "Giai đoạn 1",
-                  time: "Tuần 1 – 2",
-                  subtitle: "Làm quen",
-                  tasks: ["Mang 1–2 giờ mỗi ngày", "Tránh tập nặng hoặc vận động cường độ cao"],
-                },
-                {
-                  phase: "Giai đoạn 2",
-                  time: "Tuần 3 – 4",
-                  subtitle: "Cảm nhận",
-                  tasks: ["Bắt đầu các bài tập nhẹ", "Làm quen với cảm giác tiếp đất"],
-                },
-                {
-                  phase: "Giai đoạn 3",
-                  time: "Sau 1 – 2 tháng",
-                  subtitle: "Bứt phá",
-                  tasks: ["Có thể sử dụng như giày tập chính", "Đôi chân thích nghi hoàn toàn"],
-                },
-              ].map((stage, i, arr) => (
-                <div key={stage.phase} className="relative flex-1 flex">
-                  {/* Content */}
-                  <div className="flex-1 p-5 sm:p-6 flex items-start gap-4">
-                    {/* Number / check icon */}
-                    <div
-                      className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 font-display font-bold text-lg"
-                      style={{ backgroundColor: "hsl(27,100%,52%)", color: "#fff" }}
-                    >
-                      {i + 1}
-                    </div>
-                    <div className="min-w-0">
-                      <h3 className="font-display text-base sm:text-lg font-bold text-white leading-tight">
-                        {stage.time}: {stage.subtitle}
-                      </h3>
-                      <ul className="mt-1.5 space-y-1">
-                        {stage.tasks.map((t) => (
-                          <li key={t} className="flex items-start gap-1.5">
-                            <Check className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: "hsl(27,100%,52%)" }} />
-                            <span className="text-xs sm:text-sm" style={{ color: "hsl(0,0%,60%)" }}>{t}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+        {/* Progress Steps */}
+        <div className="max-w-4xl mx-auto animate-fade-up">
+          {/* Progress bar with connected dots */}
+          <div className="relative flex items-center justify-between mb-10">
+            {/* Background line */}
+            <div className="absolute top-5 left-[calc(16.67%)] right-[calc(16.67%)] h-1 rounded-full" style={{ backgroundColor: "hsl(0,0%,15%)" }} />
+            {/* Filled progress line */}
+            <div className="absolute top-5 left-[calc(16.67%)] h-1 rounded-full" style={{ backgroundColor: "hsl(27,100%,52%)", width: "66.66%" }} />
 
-                  {/* Arrow separator */}
-                  {i < arr.length - 1 && (
-                    <>
-                      {/* Desktop: vertical divider with arrow */}
-                      <div className="hidden md:flex items-center relative" style={{ width: "24px" }}>
-                        <div className="absolute inset-y-0 left-0 w-px" style={{ backgroundColor: "hsl(0,0%,20%)" }} />
-                        <svg className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                          <path d="M7 4L13 10L7 16" stroke="hsl(27,100%,52%)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </div>
-                      {/* Mobile: horizontal divider with arrow */}
-                      <div className="flex md:hidden items-center justify-center relative" style={{ height: "24px" }}>
-                        <div className="absolute inset-x-0 top-0 h-px" style={{ backgroundColor: "hsl(0,0%,20%)" }} />
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                          <path d="M4 7L10 13L16 7" stroke="hsl(27,100%,52%)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </div>
-                    </>
-                  )}
+            {[
+              { label: "Làm quen", num: 1 },
+              { label: "Cảm nhận", num: 2 },
+              { label: "Bứt phá", num: 3 },
+            ].map((step, i) => (
+              <div key={step.num} className="relative z-10 flex flex-col items-center" style={{ width: "33.33%" }}>
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-base border-4"
+                  style={{
+                    backgroundColor: "hsl(27,100%,52%)",
+                    borderColor: "hsl(0,0%,5%)",
+                    color: "#fff",
+                  }}
+                >
+                  {step.num}
                 </div>
-              ))}
-            </div>
+                <span className="mt-2 text-xs sm:text-sm font-body font-semibold text-white">{step.label}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Detail cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              {
+                time: "Tuần 1 – 2",
+                subtitle: "Làm quen",
+                tasks: ["Mang 1–2 giờ mỗi ngày", "Tránh tập nặng hoặc vận động cường độ cao"],
+              },
+              {
+                time: "Tuần 3 – 4",
+                subtitle: "Cảm nhận",
+                tasks: ["Bắt đầu các bài tập nhẹ", "Làm quen với cảm giác tiếp đất"],
+              },
+              {
+                time: "Sau 1 – 2 tháng",
+                subtitle: "Bứt phá",
+                tasks: ["Có thể sử dụng như giày tập chính", "Đôi chân thích nghi hoàn toàn"],
+              },
+            ].map((stage, i) => (
+              <div
+                key={stage.time}
+                className="rounded-xl p-5 sm:p-6 animate-fade-up"
+                style={{
+                  animationDelay: `${i * 100}ms`,
+                  backgroundColor: "hsl(0,0%,10%)",
+                  border: "1px solid hsl(0,0%,18%)",
+                }}
+              >
+                <p className="text-xs font-body font-semibold uppercase tracking-wider mb-1" style={{ color: "hsl(27,100%,52%)" }}>
+                  Giai đoạn {i + 1}
+                </p>
+                <h3 className="font-display text-lg sm:text-xl font-bold text-white mb-1">
+                  {stage.time}
+                </h3>
+                <p className="text-sm font-semibold mb-3" style={{ color: "hsl(27,100%,65%)" }}>
+                  {stage.subtitle}
+                </p>
+                <ul className="space-y-2">
+                  {stage.tasks.map((t) => (
+                    <li key={t} className="flex items-start gap-2">
+                      <Check className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "hsl(27,100%,52%)" }} />
+                      <span className="text-sm" style={{ color: "hsl(0,0%,65%)" }}>{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 
