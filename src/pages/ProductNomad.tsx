@@ -75,7 +75,7 @@ const ProductNomad = () => {
             </h1>
             <div className="mt-6 sm:mt-8">
               <a
-                href="https://kinis.vn/san-pham/nomad"
+                href="https://byebeoshop.com/san-pham-2/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 md:px-8 md:py-3.5 font-body font-semibold text-sm rounded-xl text-white transition-opacity hover:opacity-90"
