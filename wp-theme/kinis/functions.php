@@ -353,6 +353,8 @@ function kinis_save_testimonial_meta($post_id) {
     if (!current_user_can('edit_post', $post_id)) return;
     if (isset($_POST['kinis_testimonial_stars'])) { update_post_meta($post_id, '_kinis_testimonial_stars', sanitize_text_field($_POST['kinis_testimonial_stars'])); }
     if (isset($_POST['kinis_testimonial_category'])) { update_post_meta($post_id, '_kinis_testimonial_category', sanitize_text_field($_POST['kinis_testimonial_category'])); }
+    $pages = isset($_POST['kinis_testimonial_pages']) ? array_map('sanitize_text_field', $_POST['kinis_testimonial_pages']) : array('home');
+    update_post_meta($post_id, '_kinis_testimonial_pages', $pages);
 }
 add_action('save_post_kinis_testimonial', 'kinis_save_testimonial_meta');
 
