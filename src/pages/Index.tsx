@@ -5,6 +5,7 @@ const heroImage = "https://kinis.vn/wp-content/uploads/2026/03/mom-spending-time
 import lucyShowcase from "@/assets/lucy-showcase-v3.png";
 import nomadShowcase from "@/assets/nomad-showcase-v2.jpg";
 import apolloShowcase from "@/assets/apollo-showcase.jpg";
+const apolloShowcaseUrl = "https://kinis.vn/wp-content/uploads/2026/04/kinis-apollo.png";
 import FootAnatomyInteractive from "@/components/FootAnatomyInteractive";
 import LifestyleBanner from "@/components/LifestyleBanner";
 import WhyKinisDifferent from "@/components/WhyKinisDifferent";
