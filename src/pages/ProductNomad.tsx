@@ -24,7 +24,29 @@ const benefits = [
   },
 ];
 
-const ProductNomad = () => (
+const ProductNomad = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const section = sectionRef.current;
+    if (!video || !section) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
   <Layout>
     {/* Hero Section - White, 2 columns */}
     <section style={{ backgroundColor: "#FFFFFF" }}>
