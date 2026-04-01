@@ -278,6 +278,7 @@ const ProductNomad = () => {
       </div>
     </section>
   </Layout>
-);
+  );
+};
 
 export default ProductNomad;
