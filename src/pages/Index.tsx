@@ -234,6 +234,15 @@ const Index = () => {
               >
                 {nomad.label}
               </label>
+              <label
+                id="product-tab-label-apollo"
+                htmlFor="product-tab-apollo"
+                className="product-tab-trigger px-8 py-3 sm:px-10 sm:py-3.5 font-body text-sm font-semibold md:px-14 md:text-base"
+                data-tab-trigger="apollo"
+                aria-controls="tabpanel-apollo"
+              >
+                {apollo.label}
+              </label>
             </div>
 
             <div
