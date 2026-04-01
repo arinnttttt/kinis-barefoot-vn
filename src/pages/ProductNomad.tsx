@@ -75,7 +75,7 @@ const ProductNomad = () => (
     {/* Why Kinis Nomad Section */}
     <section id="why-nomad" className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "hsl(0,0%,98%)" }}>
       <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 animate-fade-up">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-fade-up">
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">
             Tại sao bạn cần <span style={{ color: "hsl(27,100%,52%)" }}>Kinis Nomad</span>?
           </h2>
