@@ -336,8 +336,32 @@ const ProductNomad = () => {
     {/* Testimonial Section */}
     <TestimonialSection page="nomad" title={<>Mọi người nghĩ gì về <span style={{ color: "hsl(27,100%,52%)" }}>Kinis Nomad</span></>} subtitle={null} />
 
+    {/* Quote CTA Section - Dark */}
+    <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
+      <div className="max-w-3xl mx-auto text-center animate-fade-up">
+        <div className="mb-3" style={{ color: "hsl(27,100%,52%)" }}>
+          <svg className="w-10 h-10 mx-auto opacity-40" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C9.591 11.69 11 13.166 11 15c0 1.933-1.567 3.5-3.5 3.5-1.172 0-2.324-.566-2.917-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C19.591 11.69 21 13.166 21 15c0 1.933-1.567 3.5-3.5 3.5-1.172 0-2.324-.566-2.917-1.179z"/></svg>
+        </div>
+        <p className="font-display text-xl sm:text-2xl md:text-3xl font-bold leading-snug text-white mb-3">
+          Kinis Nomad không chỉ là một đôi giày tập luyện.
+        </p>
+        <p className="text-base sm:text-lg leading-relaxed mb-10" style={{ color: "hsl(0,0%,60%)" }}>
+          Đó là công cụ giúp bạn kích hoạt sức mạnh tự nhiên của đôi chân và chăm sóc sức khỏe vận động bền vững.
+        </p>
+        <a
+          href="https://kinis.vn/san-pham/nomad"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:px-10 sm:py-4 font-body font-semibold text-sm sm:text-base rounded-xl text-white transition-opacity hover:opacity-90"
+          style={{ backgroundColor: "hsl(27,100%,52%)" }}
+        >
+          Mua Trực Tiếp Tại Đại Lý
+        </a>
+      </div>
+    </section>
+
     {/* Disclaimer / Warning Section */}
-    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#FFFFFF" }}>
+    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "hsl(0,0%,96%)" }}>
       <div className="max-w-4xl mx-auto">
         <div
           className="rounded-2xl p-6 sm:p-8 lg:p-10 animate-fade-up"
@@ -381,30 +405,6 @@ const ProductNomad = () => {
             ))}
           </div>
         </div>
-      </div>
-    </section>
-
-    {/* Quote CTA Section - Dark */}
-    <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
-      <div className="max-w-3xl mx-auto text-center animate-fade-up">
-        <div className="mb-3" style={{ color: "hsl(27,100%,52%)" }}>
-          <svg className="w-10 h-10 mx-auto opacity-40" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C9.591 11.69 11 13.166 11 15c0 1.933-1.567 3.5-3.5 3.5-1.172 0-2.324-.566-2.917-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C19.591 11.69 21 13.166 21 15c0 1.933-1.567 3.5-3.5 3.5-1.172 0-2.324-.566-2.917-1.179z"/></svg>
-        </div>
-        <p className="font-display text-xl sm:text-2xl md:text-3xl font-bold leading-snug text-white mb-3">
-          Kinis Nomad không chỉ là một đôi giày tập luyện.
-        </p>
-        <p className="text-base sm:text-lg leading-relaxed mb-10" style={{ color: "hsl(0,0%,60%)" }}>
-          Đó là công cụ giúp bạn kích hoạt sức mạnh tự nhiên của đôi chân và chăm sóc sức khỏe vận động bền vững.
-        </p>
-        <a
-          href="https://kinis.vn/san-pham/nomad"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:px-10 sm:py-4 font-body font-semibold text-sm sm:text-base rounded-xl text-white transition-opacity hover:opacity-90"
-          style={{ backgroundColor: "hsl(27,100%,52%)" }}
-        >
-          Mua Trực Tiếp Tại Đại Lý
-        </a>
       </div>
     </section>
   </Layout>
