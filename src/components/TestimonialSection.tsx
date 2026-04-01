@@ -201,7 +201,7 @@ const TestimonialSection = ({ page = "home" }: TestimonialSectionProps) => {
             scrollbarWidth: "none",
           }}
         >
-          {testimonials.map((item) => (
+          {filtered.map((item) => (
             <div key={item.name} className="flex" style={{ scrollSnapAlign: "start" }}>
               <TestimonialCard item={item} />
             </div>
