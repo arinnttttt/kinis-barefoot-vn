@@ -29,6 +29,7 @@ const routes = [
   { path: "/cau-chuyen", template: "page-cau-chuyen", title: "Câu chuyện" },
   { path: "/san-pham/lucy", template: "page-san-pham-lucy", title: "Kinis Lucy" },
   { path: "/san-pham/nomad", template: "page-san-pham-nomad", title: "Kinis Nomad" },
+  { path: "/san-pham/apollo", template: "page-san-pham-apollo", title: "Kinis Apollo" },
   { path: "/khoa-hoc", template: "page-khoa-hoc", title: "Khoa học" },
   { path: "/doi-tuong/gym-fitness", template: "page-doi-tuong-gym", title: "Gym & Fitness" },
   { path: "/doi-tuong/chay-bo", template: "page-doi-tuong-chay-bo", title: "Chạy bộ" },
@@ -88,6 +89,7 @@ function getAcfReplacements(template) {
     ],
     "page-san-pham-lucy": [],
     "page-san-pham-nomad": [],
+    "page-san-pham-apollo": [],
     "page-khoa-hoc": [],
     "page-doi-tuong-gym": [],
     "page-doi-tuong-chay-bo": [],
@@ -387,7 +389,7 @@ Theme URI: https://kinis.com
 Author: Arin Như Trương
 Author URI: https://kinis.com
 Description: Hệ sinh thái chăm sóc sức khỏe vận động - Giày barefoot Kinis
-Version: 3.0.2
+Version: 3.4.0
 License: Proprietary
 Text Domain: kinis
 */
@@ -408,14 +410,14 @@ function kinis_enqueue_assets() {
     wp_enqueue_style('kinis-fonts', 'https://fonts.googleapis.com/css2?family=Phudu:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap', array(), null);
     
     // Main CSS (from Vite build)
-${cssFiles.map((f, i) => `    wp_enqueue_style('kinis-main${i > 0 ? '-' + i : ''}', get_template_directory_uri() . '/assets/css/${f}', array(), '3.0.2');`).join("\n")}
+${cssFiles.map((f, i) => `    wp_enqueue_style('kinis-main${i > 0 ? '-' + i : ''}', get_template_directory_uri() . '/assets/css/${f}', array(), '3.4.0');`).join("\n")}
     
     // Theme stylesheet
-    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '3.0.2');
+    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '3.4.0');
     
     // Header scroll behavior (vanilla JS - replaces React scroll handler)
-    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '3.0.2', true);
-    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '3.0.2', true);
+    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '3.4.0', true);
+    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '3.4.0', true);
 }
 add_action('wp_enqueue_scripts', 'kinis_enqueue_assets');
 
@@ -531,6 +533,7 @@ function kinis_create_pages() {
         array('title' => 'Câu chuyện', 'slug' => 'cau-chuyen', 'template' => 'page-cau-chuyen.php'),
         array('title' => 'Kinis Lucy', 'slug' => 'san-pham-lucy', 'template' => 'page-san-pham-lucy.php'),
         array('title' => 'Kinis Nomad', 'slug' => 'san-pham-nomad', 'template' => 'page-san-pham-nomad.php'),
+        array('title' => 'Kinis Apollo', 'slug' => 'san-pham-apollo', 'template' => 'page-san-pham-apollo.php'),
         array('title' => 'Khoa học', 'slug' => 'khoa-hoc', 'template' => 'page-khoa-hoc.php'),
         array('title' => 'Gym & Fitness', 'slug' => 'doi-tuong-gym', 'template' => 'page-doi-tuong-gym.php'),
         array('title' => 'Chạy bộ', 'slug' => 'doi-tuong-chay-bo', 'template' => 'page-doi-tuong-chay-bo.php'),
@@ -735,6 +738,7 @@ function kinis_testimonial_meta_html(\$post) {
         'home' => 'Trang chủ (Home)',
         'nomad' => 'Kinis Nomad',
         'lucy' => 'Kinis Lucy',
+        'apollo' => 'Kinis Apollo',
     );
     foreach (\$page_options as \$val => \$label) : ?>
         <label style="display:block;margin:4px 0;">
