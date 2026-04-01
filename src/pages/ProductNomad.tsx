@@ -399,7 +399,7 @@ const ProductNomad = () => {
                 className="flex items-center gap-3 px-4 py-3 rounded-xl"
                 style={{ backgroundColor: "hsl(0 60% 94%)" }}
               >
-                <img src={item.icon} alt="" className="w-8 h-8 flex-shrink-0" />
+                <img src={item.icon} alt="" className="h-8 w-auto flex-shrink-0" />
                 <span className="text-sm sm:text-base font-medium" style={{ color: "hsl(0 50% 30%)" }}>{item.text}</span>
               </div>
             ))}
