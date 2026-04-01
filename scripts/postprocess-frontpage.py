@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
-"""Post-process front-page.php to inject dynamic Testimonial + FAQ sections."""
+"""Post-process front-page.php and page-san-pham-nomad.php to inject dynamic Testimonial + FAQ sections."""
 import sys, os, re
-
-fp_path = os.path.join(os.path.dirname(__file__), '..', 'wp-theme', 'kinis', 'front-page.php')
-fp = open(fp_path, 'rb').read().decode('utf-8')
 
 def find_section(content, marker):
     idx = content.find(marker)
@@ -24,13 +21,20 @@ def find_section(content, marker):
             i += 1
     return start, len(content), content[start:]
 
-# ===== TESTIMONIAL =====
-t_start, t_end, orig_testimonial = find_section(fp, 'aria-labelledby="testimonial-heading"')
-if t_start is not None:
-    dynamic_testimonial = '''<?php
-$testimonials = get_posts(array('post_type'=>'kinis_testimonial','post_status'=>'publish','posts_per_page'=>10,'orderby'=>'menu_order','order'=>'ASC'));
+def make_testimonial_php(page_filter, title_html, subtitle_html=None):
+    """Generate dynamic testimonial PHP block with page filter."""
+    meta_query = ''
+    if page_filter:
+        meta_query = f"""'meta_query'=>array(array('key'=>'_kinis_testimonial_pages','value'=>'"{page_filter}"','compare'=>'LIKE')),"""
+
+    subtitle_block = ''
+    if subtitle_html:
+        subtitle_block = f'<p class="text-sm sm:text-base lg:text-lg leading-relaxed" style="color: rgb(128, 128, 128);">{subtitle_html}</p>'
+
+    return '''<?php
+$testimonials = get_posts(array('post_type'=>'kinis_testimonial','post_status'=>'publish','posts_per_page'=>10,'orderby'=>'menu_order','order'=>'ASC',''' + meta_query + '''));
 if (!empty($testimonials)) : ?>
-<section class="py-10 sm:py-14 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden" aria-labelledby="testimonial-heading" style="background-color: rgb(245, 245, 245);"><div class="max-w-7xl mx-auto"><div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-6 sm:mb-8 lg:mb-10 gap-4"><div><h2 id="testimonial-heading" class="font-display text-2xl sm:text-3xl lg:text-[2.5rem] font-bold leading-tight uppercase tracking-tight mb-2 sm:mb-3" style="color: rgb(26, 26, 26);">Ph\u1EA3n h\u1ED3i ch\u00E2n th\u1EF1c t\u1EEB <span style="color: rgb(255, 120, 10);">kh\u00E1ch h\u00E0ng</span></h2><p class="text-sm sm:text-base lg:text-lg leading-relaxed" style="color: rgb(128, 128, 128);">\u0110\u00E1nh gi\u00E1 ch\u00E2n th\u1EF1c t\u1EEB nh\u1EEFng ng\u01B0\u1EDDi \u0111\u00E3 tr\u1EA3i nghi\u1EC7m gi\u00E0y Kinis</p></div><div class="flex items-center gap-2"><button aria-label="Previous" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-colors" style="background-color: hsl(0,0%,85%); color: rgb(255,255,255); opacity:0.5;" disabled><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 sm:w-5 sm:h-5"><path d="m15 18-6-6 6-6"></path></svg></button><button aria-label="Next" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-colors" style="background-color: hsl(0,0%,10%); color: rgb(255,255,255);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 sm:w-5 sm:h-5"><path d="m9 18 6-6-6-6"></path></svg></button></div></div><div class="overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4" style="scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;"><div class="flex gap-4 items-stretch"><?php foreach ($testimonials as $t_post) :
+<section class="py-10 sm:py-14 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden" aria-labelledby="testimonial-heading" style="background-color: rgb(245, 245, 245);"><div class="max-w-7xl mx-auto"><div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-6 sm:mb-8 lg:mb-10 gap-4"><div><h2 id="testimonial-heading" class="font-display text-2xl sm:text-3xl lg:text-[2.5rem] font-bold leading-tight uppercase tracking-tight mb-2 sm:mb-3" style="color: rgb(26, 26, 26);">''' + title_html + '''</h2>''' + subtitle_block + '''</div><div class="flex items-center gap-2"><button aria-label="Previous" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-colors" style="background-color: hsl(0,0%,85%); color: rgb(255,255,255); opacity:0.5;" disabled><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 sm:w-5 sm:h-5"><path d="m15 18-6-6 6-6"></path></svg></button><button aria-label="Next" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-colors" style="background-color: hsl(0,0%,10%); color: rgb(255,255,255);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 sm:w-5 sm:h-5"><path d="m9 18 6-6-6-6"></path></svg></button></div></div><div class="overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4" style="scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;"><div class="flex gap-4 items-stretch"><?php foreach ($testimonials as $t_post) :
     $t_name = esc_html($t_post->post_title);
     $t_review = esc_html(wp_strip_all_tags($t_post->post_content));
     $t_stars = intval(get_post_meta($t_post->ID, '_kinis_testimonial_stars', true) ?: 5);
@@ -39,13 +43,24 @@ if (!empty($testimonials)) : ?>
     $star_filled = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" class="w-4 h-4" style="color:rgb(255,120,10);"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>';
     $star_empty = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4" style="color:rgb(220,220,220);"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>';
 ?><div class="flex-shrink-0 w-[280px] md:w-[350px]" style="scroll-snap-align: start;"><div class="p-5 sm:p-6 rounded-2xl h-full flex flex-col" style="background-color: rgb(255,255,255); border: 1px solid rgb(229,229,229); box-shadow: rgba(0,0,0,0.04) 0px 2px 8px;"><div class="flex items-center justify-between mb-3"><div class="flex gap-0.5"><?php for ($s=0; $s<5; $s++) echo $s < $t_stars ? $star_filled : $star_empty; ?></div><?php if ($t_category) : ?><span class="px-2.5 py-1 rounded-full text-xs font-medium" style="background-color:rgb(245,245,245);color:rgb(115,115,115);"><?php echo $t_category; ?></span><?php endif; ?></div><p class="text-sm sm:text-[15px] leading-relaxed flex-1" style="color: rgb(82,82,82);"><?php echo $t_review; ?></p><div class="flex items-center gap-3 pt-3" style="border-top: 1px solid rgb(237,237,237);"><div class="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-sm" style="background-color:rgb(26,26,26);color:rgb(255,255,255);"><?php echo $t_initial; ?></div><span class="font-body font-semibold text-sm" style="color: rgb(38,38,38);"><?php echo $t_name; ?></span></div></div></div><?php endforeach; ?></div></div></div></section>
-<?php else : ?>
-''' + orig_testimonial + '''
 <?php endif; ?>'''
-    fp = fp[:t_start] + dynamic_testimonial + fp[t_end:]
-    print("✅ Testimonial section replaced with dynamic PHP")
+
+# ===== FRONT PAGE =====
+fp_path = os.path.join(os.path.dirname(__file__), '..', 'wp-theme', 'kinis', 'front-page.php')
+fp = open(fp_path, 'rb').read().decode('utf-8')
+
+# ===== TESTIMONIAL (front page) =====
+t_start, t_end, orig_testimonial = find_section(fp, 'aria-labelledby="testimonial-heading"')
+if t_start is not None:
+    title = 'Ph\u1EA3n h\u1ED3i ch\u00E2n th\u1EF1c t\u1EEB <span style="color: rgb(255, 120, 10);">kh\u00E1ch h\u00E0ng</span>'
+    subtitle = '\u0110\u00E1nh gi\u00E1 ch\u00E2n th\u1EF1c t\u1EEB nh\u1EEFng ng\u01B0\u1EDDi \u0111\u00E3 tr\u1EA3i nghi\u1EC7m gi\u00E0y Kinis'
+    dynamic = make_testimonial_php('home', title, subtitle)
+    # Wrap with fallback
+    dynamic_with_fallback = dynamic.replace('<?php endif; ?>', '<?php else : ?>\n' + orig_testimonial + '\n<?php endif; ?>')
+    fp = fp[:t_start] + dynamic_with_fallback + fp[t_end:]
+    print("✅ Testimonial section replaced with dynamic PHP (front page)")
 else:
-    print("⚠ Testimonial section not found")
+    print("⚠ Testimonial section not found (front page)")
 
 # ===== FAQ =====
 f_start, f_end, orig_faq = find_section(fp, 'aria-labelledby="home-faq-heading"')
@@ -69,3 +84,20 @@ else:
 
 open(fp_path, 'wb').write(fp.encode('utf-8'))
 print("✅ front-page.php post-processed successfully")
+
+# ===== NOMAD PAGE =====
+nomad_path = os.path.join(os.path.dirname(__file__), '..', 'wp-theme', 'kinis', 'page-san-pham-nomad.php')
+if os.path.exists(nomad_path):
+    nomad = open(nomad_path, 'rb').read().decode('utf-8')
+    nt_start, nt_end, orig_nomad_testimonial = find_section(nomad, 'aria-labelledby="testimonial-heading"')
+    if nt_start is not None:
+        title = 'M\u1ECDi ng\u01B0\u1EDDi ngh\u0129 g\u00EC v\u1EC1 <span style="color: rgb(255, 120, 10);">Kinis Nomad</span>'
+        dynamic = make_testimonial_php('nomad', title)
+        dynamic_with_fallback = dynamic.replace('<?php endif; ?>', '<?php else : ?>\n' + orig_nomad_testimonial + '\n<?php endif; ?>')
+        nomad = nomad[:nt_start] + dynamic_with_fallback + nomad[nt_end:]
+        open(nomad_path, 'wb').write(nomad.encode('utf-8'))
+        print("✅ Testimonial section replaced with dynamic PHP (Nomad page)")
+    else:
+        print("⚠ Testimonial section not found (Nomad page)")
+else:
+    print("⚠ page-san-pham-nomad.php not found")
