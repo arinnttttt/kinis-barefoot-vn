@@ -145,33 +145,23 @@ const ProductNomad = () => {
       </div>
     </section>
 
-    {/* Technology Section - Dark & Bold */}
-    <section className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
-      {/* Subtle glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-15 pointer-events-none" style={{ background: "radial-gradient(circle, hsl(27,100%,52%) 0%, transparent 70%)" }} />
-
-      <div className="relative max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Rotating shoe */}
+    {/* Technology Section - White & Clean */}
+    <section ref={sectionRef} className="relative py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "#FFFFFF" }}>
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Video 360° */}
           <div className="flex items-center justify-center animate-fade-up">
-            <div className="relative w-full max-w-md aspect-square">
-              <style>{`
-                @keyframes nomadSpin {
-                  0%, 40% { opacity: 1; }
-                  50%, 90% { opacity: 0; }
-                  100% { opacity: 1; }
-                }
-                @keyframes nomadSpinReverse {
-                  0%, 40% { opacity: 0; }
-                  50%, 90% { opacity: 1; }
-                  100% { opacity: 0; }
-                }
-                .nomad-front { animation: nomadSpin 4s ease-in-out infinite; }
-                .nomad-back { animation: nomadSpinReverse 4s ease-in-out infinite; }
-              `}</style>
-              <img src={nomadFront} alt="Kinis Nomad - Mặt trước" className="nomad-front absolute inset-0 w-full h-full object-contain drop-shadow-2xl" />
-              <img src={nomadBack} alt="Kinis Nomad - Mặt sau" className="nomad-back absolute inset-0 w-full h-full object-contain drop-shadow-2xl" />
-            </div>
+            <video
+              ref={videoRef}
+              className="w-full max-w-md object-contain"
+              muted
+              loop
+              playsInline
+              autoPlay
+              preload="auto"
+            >
+              <source src="https://kinis.vn/wp-content/uploads/2026/04/Nomad-rotate.mp4" type="video/mp4" />
+            </video>
           </div>
 
           {/* Text content */}
@@ -179,12 +169,12 @@ const ProductNomad = () => {
             <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: "hsl(27,100%,52%)" }}>
               Công nghệ
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#ffffff" }}>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight text-foreground">
               Công nghệ vật liệu
               <br />
               <span style={{ color: "hsl(27,100%,52%)" }}>đột phá</span>
             </h2>
-            <p className="mt-4 text-base sm:text-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
+            <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
               Kinis Nomad sử dụng 100% sợi kỹ thuật Honeywell Spectra® – loại sợi siêu cường lực thường được sử dụng trong áo chống đạn và thiết bị bảo hộ cao cấp.
             </p>
 
@@ -200,10 +190,10 @@ const ProductNomad = () => {
                   className="flex items-center gap-4 animate-fade-up"
                   style={{ animationDelay: `${200 + i * 100}ms` }}
                 >
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(27 100% 52% / 0.15)" }}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(27 100% 52% / 0.1)" }}>
                     <item.icon className="w-5 h-5" style={{ color: "hsl(27,100%,52%)" }} />
                   </div>
-                  <span className="text-sm sm:text-base font-medium" style={{ color: "rgba(255,255,255,0.85)" }}>{item.text}</span>
+                  <span className="text-sm sm:text-base font-medium text-foreground">{item.text}</span>
                 </div>
               ))}
             </div>
