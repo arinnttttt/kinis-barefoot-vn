@@ -4,6 +4,7 @@ import Layout from "@/components/layout/Layout";
 const heroImage = "https://kinis.vn/wp-content/uploads/2026/03/mom-spending-time-with-kid-beach-scaled.jpg";
 import lucyShowcase from "@/assets/lucy-showcase-v3.png";
 import nomadShowcase from "@/assets/nomad-showcase-v2.jpg";
+import apolloShowcase from "@/assets/apollo-showcase.jpg";
 import FootAnatomyInteractive from "@/components/FootAnatomyInteractive";
 import LifestyleBanner from "@/components/LifestyleBanner";
 import WhyKinisDifferent from "@/components/WhyKinisDifferent";
@@ -33,6 +34,16 @@ const products = {
     image: nomadShowcase,
     tags: ["Tập gym", "Yoga/Pilates", "Bàn chân bẹt", "Tăng sức mạnh cơ chân"],
     href: "/san-pham/nomad",
+  },
+  apollo: {
+    label: "Kinis Apollo",
+    badge: "Pro Training",
+    subtitle: "Giày luyện tập chuyên sâu",
+    description:
+      "Kinis Apollo được thiết kế dành riêng cho những buổi tập luyện cường độ cao. Kết hợp triết lý barefoot với công nghệ hỗ trợ vận động, Apollo giúp bạn tối ưu hiệu suất trong mọi bài tập — từ HIIT, CrossFit đến weightlifting.",
+    image: apolloShowcase,
+    tags: ["HIIT", "CrossFit", "Weightlifting", "Luyện tập chuyên sâu"],
+    href: "/san-pham/apollo",
   },
 };
 
@@ -122,6 +133,7 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
 const Index = () => {
   const lucy = products.lucy;
   const nomad = products.nomad;
+  const apollo = products.apollo;
 
   return (
     <Layout>
@@ -190,6 +202,13 @@ const Index = () => {
               className="product-tab-input"
               data-tab-control="nomad"
             />
+            <input
+              id="product-tab-apollo"
+              type="radio"
+              name="product-tabs"
+              className="product-tab-input"
+              data-tab-control="apollo"
+            />
 
              <div
               className="relative z-20 flex justify-center gap-1"
@@ -215,6 +234,15 @@ const Index = () => {
               >
                 {nomad.label}
               </label>
+              <label
+                id="product-tab-label-apollo"
+                htmlFor="product-tab-apollo"
+                className="product-tab-trigger px-8 py-3 sm:px-10 sm:py-3.5 font-body text-sm font-semibold md:px-14 md:text-base"
+                data-tab-trigger="apollo"
+                aria-controls="tabpanel-apollo"
+              >
+                {apollo.label}
+              </label>
             </div>
 
             <div
@@ -230,6 +258,7 @@ const Index = () => {
             >
               <ProductPanel product={lucy} tabKey="lucy" />
               <ProductPanel product={nomad} tabKey="nomad" />
+              <ProductPanel product={apollo} tabKey="apollo" />
             </div>
           </div>
         </div>

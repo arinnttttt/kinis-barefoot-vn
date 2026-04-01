@@ -231,7 +231,8 @@ html {
 
   /* Selected tab: full size */
   #product-tab-lucy:checked ~ [data-tabs-labels] [for="product-tab-lucy"],
-  #product-tab-nomad:checked ~ [data-tabs-labels] [for="product-tab-nomad"] {
+  #product-tab-nomad:checked ~ [data-tabs-labels] [for="product-tab-nomad"],
+  #product-tab-apollo:checked ~ [data-tabs-labels] [for="product-tab-apollo"] {
     background: hsl(var(--primary));
     color: hsl(var(--primary-foreground));
     transform: scale(1);
@@ -241,7 +242,9 @@ html {
   #product-tab-lucy:checked ~ [data-tabs-labels] [for="product-tab-lucy"]::before,
   #product-tab-lucy:checked ~ [data-tabs-labels] [for="product-tab-lucy"]::after,
   #product-tab-nomad:checked ~ [data-tabs-labels] [for="product-tab-nomad"]::before,
-  #product-tab-nomad:checked ~ [data-tabs-labels] [for="product-tab-nomad"]::after {
+  #product-tab-nomad:checked ~ [data-tabs-labels] [for="product-tab-nomad"]::after,
+  #product-tab-apollo:checked ~ [data-tabs-labels] [for="product-tab-apollo"]::before,
+  #product-tab-apollo:checked ~ [data-tabs-labels] [for="product-tab-apollo"]::after {
     opacity: 1;
   }
 
@@ -274,7 +277,8 @@ html {
   }
 
   #product-tab-lucy:checked ~ [data-tabs-panels] [data-tab-content="lucy"],
-  #product-tab-nomad:checked ~ [data-tabs-panels] [data-tab-content="nomad"] {
+  #product-tab-nomad:checked ~ [data-tabs-panels] [data-tab-content="nomad"],
+  #product-tab-apollo:checked ~ [data-tabs-panels] [data-tab-content="apollo"] {
     display: grid;
   }
 
