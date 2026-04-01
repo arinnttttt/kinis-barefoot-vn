@@ -231,7 +231,8 @@ html {
 
   /* Selected tab: full size */
   #product-tab-lucy:checked ~ [data-tabs-labels] [for="product-tab-lucy"],
-  #product-tab-nomad:checked ~ [data-tabs-labels] [for="product-tab-nomad"] {
+  #product-tab-nomad:checked ~ [data-tabs-labels] [for="product-tab-nomad"],
+  #product-tab-apollo:checked ~ [data-tabs-labels] [for="product-tab-apollo"] {
     background: hsl(var(--primary));
     color: hsl(var(--primary-foreground));
     transform: scale(1);
