@@ -4,7 +4,7 @@ import Layout from "@/components/layout/Layout";
 const heroImage = "https://kinis.vn/wp-content/uploads/2026/03/mom-spending-time-with-kid-beach-scaled.jpg";
 import lucyShowcase from "@/assets/lucy-showcase-v3.png";
 import nomadShowcase from "@/assets/nomad-showcase-v2.jpg";
-import apolloShowcase from "@/assets/apollo-showcase.jpg";
+const apolloShowcaseUrl = "https://kinis.vn/wp-content/uploads/2026/04/kinis-apollo.png";
 import FootAnatomyInteractive from "@/components/FootAnatomyInteractive";
 import LifestyleBanner from "@/components/LifestyleBanner";
 import WhyKinisDifferent from "@/components/WhyKinisDifferent";
@@ -41,7 +41,7 @@ const products = {
     subtitle: "Giày luyện tập chuyên sâu",
     description:
       "Kinis Apollo được thiết kế dành riêng cho những buổi tập luyện cường độ cao. Kết hợp triết lý barefoot với công nghệ hỗ trợ vận động, Apollo giúp bạn tối ưu hiệu suất trong mọi bài tập — từ HIIT, CrossFit đến weightlifting.",
-    image: apolloShowcase,
+    image: apolloShowcaseUrl,
     tags: ["HIIT", "CrossFit", "Weightlifting", "Luyện tập chuyên sâu"],
     href: "/san-pham/apollo",
   },
