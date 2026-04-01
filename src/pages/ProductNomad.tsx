@@ -86,7 +86,7 @@ const ProductNomad = () => {
             <img
               src={nomadImage}
               alt="Kinis Nomad"
-              className="w-full max-w-lg object-contain"
+              className="w-full max-w-xl lg:max-w-2xl object-contain"
             />
           </div>
         </div>
