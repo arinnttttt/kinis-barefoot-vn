@@ -1,6 +1,12 @@
 import Layout from "@/components/layout/Layout";
 import { Footprints, Activity, Brain, Shield, Feather, Wind, SprayCan, Check } from "lucide-react";
 const nomadImage = "https://kinis.vn/wp-content/uploads/2026/04/kinis-nomad-transparent.png";
+import audienceGymImg from "@/assets/audience-gym-weightlifting.jpg";
+import audiencePostureImg from "@/assets/audience-posture.jpg";
+import audienceYogaImg from "@/assets/audience-yoga.jpg";
+import audienceFlatfeetImg from "@/assets/audience-flatfeet-strength.jpg";
+import audienceFunctionalImg from "@/assets/audience-functional.jpg";
+import audienceTrailRunnerImg from "@/assets/audience-trail-runner.jpg";
 import { useEffect, useRef } from "react";
 
 const benefits = [
@@ -299,21 +305,23 @@ const ProductNomad = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {[
-            { emoji: "🏋️", title: "Gym & Weightlifting", desc: "Tăng độ ổn định khi tập luyện và truyền lực tốt hơn khi nâng tạ." },
-            { emoji: "🚶", title: "Cải thiện tư thế đứng & dáng đi", desc: "Hỗ trợ kích hoạt cơ bàn chân và cải thiện sự ổn định khi di chuyển." },
-            { emoji: "🧘", title: "Yoga & Pilates", desc: "Ôm sát bàn chân, giúp giữ thăng bằng và kiểm soát chuyển động tốt hơn." },
-            { emoji: "🦶", title: "Tăng cường cơ bàn chân bẹt", desc: "Mũi giày rộng giúp ngón chân xòe tự nhiên và kích hoạt cơ bàn chân." },
-            { emoji: "⚡", title: "Functional Training", desc: "Linh hoạt cho các bài tập đa hướng như squat, lunge." },
-            { emoji: "🏃", title: "Runner chuyên nghiệp", desc: "Hỗ trợ tăng cường sức mạnh cơ bàn chân, đặc biệt hữu ích cho runner chạy trail." },
+            { img: audienceGymImg, title: "Gym & Weightlifting", desc: "Tăng độ ổn định khi tập luyện và truyền lực tốt hơn khi nâng tạ." },
+            { img: audiencePostureImg, title: "Cải thiện tư thế đứng & dáng đi", desc: "Hỗ trợ kích hoạt cơ bàn chân và cải thiện sự ổn định khi di chuyển." },
+            { img: audienceYogaImg, title: "Yoga & Pilates", desc: "Ôm sát bàn chân, giúp giữ thăng bằng và kiểm soát chuyển động tốt hơn." },
+            { img: audienceFlatfeetImg, title: "Tăng cường cơ bàn chân bẹt", desc: "Mũi giày rộng giúp ngón chân xòe tự nhiên và kích hoạt cơ bàn chân." },
+            { img: audienceFunctionalImg, title: "Functional Training", desc: "Linh hoạt cho các bài tập đa hướng như squat, lunge." },
+            { img: audienceTrailRunnerImg, title: "Runner chuyên nghiệp", desc: "Hỗ trợ tăng cường sức mạnh cơ bàn chân, đặc biệt hữu ích cho runner chạy trail." },
           ].map((item, i) => (
             <div
               key={item.title}
-              className="rounded-2xl p-6 sm:p-7 bg-card border border-border animate-fade-up"
+              className="rounded-2xl overflow-hidden bg-card border border-border animate-fade-up"
               style={{ animationDelay: `${i * 80}ms`, boxShadow: "0 4px 24px -4px rgba(0,0,0,0.06)" }}
             >
-              <span className="text-3xl mb-4 block">{item.emoji}</span>
-              <h3 className="font-display text-lg sm:text-xl font-semibold mb-2 text-foreground">{item.title}</h3>
-              <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">{item.desc}</p>
+              <img src={item.img} alt={item.title} loading="lazy" width={1024} height={576} className="w-full aspect-video object-cover" />
+              <div className="p-5 sm:p-6">
+                <h3 className="font-display text-lg sm:text-xl font-semibold mb-2 text-foreground">{item.title}</h3>
+                <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">{item.desc}</p>
+              </div>
             </div>
           ))}
         </div>
