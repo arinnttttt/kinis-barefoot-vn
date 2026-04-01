@@ -217,68 +217,65 @@ const ProductNomad = () => {
           </p>
         </div>
 
-        {/* Progress Steps - cards with integrated progress */}
-        <div className="max-w-4xl mx-auto">
-          {/* Progress line connecting cards */}
-          <div className="hidden md:flex items-center justify-center mb-6 px-12">
-            <div className="flex-1 h-1 rounded-full" style={{ backgroundColor: "hsl(27,100%,52%)" }} />
-            <div className="w-3 h-3 rounded-full mx-1" style={{ backgroundColor: "hsl(27,100%,52%)" }} />
-            <div className="flex-1 h-1 rounded-full" style={{ backgroundColor: "hsl(27,90%,46%)" }} />
-            <div className="w-3 h-3 rounded-full mx-1" style={{ backgroundColor: "hsl(27,90%,46%)" }} />
-            <div className="flex-1 h-1 rounded-full" style={{ backgroundColor: "hsl(27,80%,40%)" }} />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {/* Steps Infographic */}
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 text-center">
             {[
               {
+                num: "1",
                 time: "Tuần 1 – 2",
                 subtitle: "Làm quen",
                 tasks: ["Mang 1–2 giờ mỗi ngày", "Tránh tập nặng hoặc vận động cường độ cao"],
-                accent: "hsl(27,100%,52%)",
               },
               {
+                num: "2",
                 time: "Tuần 3 – 4",
                 subtitle: "Cảm nhận",
                 tasks: ["Bắt đầu các bài tập nhẹ", "Làm quen với cảm giác tiếp đất"],
-                accent: "hsl(27,90%,46%)",
               },
               {
+                num: "3",
                 time: "Sau 1 – 2 tháng",
                 subtitle: "Bứt phá",
                 tasks: ["Có thể sử dụng như giày tập chính", "Đôi chân thích nghi hoàn toàn"],
-                accent: "hsl(27,80%,40%)",
               },
             ].map((stage, i) => (
               <div
-                key={stage.time}
-                className="rounded-xl overflow-hidden animate-fade-up"
-                style={{
-                  animationDelay: `${i * 100}ms`,
-                  backgroundColor: "hsl(0,0%,10%)",
-                  border: "1px solid hsl(0,0%,18%)",
-                }}
+                key={stage.num}
+                className="flex flex-col items-center animate-fade-up"
+                style={{ animationDelay: `${i * 120}ms` }}
               >
-                {/* Top accent bar with number */}
-                <div className="flex items-center gap-3 px-5 py-3" style={{ backgroundColor: stage.accent }}>
-                  <span className="w-8 h-8 rounded-full flex items-center justify-center font-display font-bold text-sm" style={{ backgroundColor: "hsla(0,0%,100%,0.25)", color: "#fff" }}>
-                    {i + 1}
-                  </span>
-                  <div>
-                    <p className="font-display text-sm font-bold text-white leading-tight">{stage.time}</p>
-                    <p className="text-xs text-white/80">{stage.subtitle}</p>
-                  </div>
-                </div>
+                {/* Giant number */}
+                <span
+                  className="font-display font-bold leading-none select-none"
+                  style={{
+                    fontSize: "clamp(5rem, 10vw, 8rem)",
+                    background: "linear-gradient(180deg, hsl(27,100%,52%) 0%, hsl(27,80%,35%) 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    filter: "drop-shadow(0 4px 12px hsla(27,100%,52%,0.3))",
+                  }}
+                >
+                  {stage.num}
+                </span>
+
+                {/* Title */}
+                <h3 className="font-display text-lg sm:text-xl font-bold text-white mt-2 mb-1">
+                  {stage.time}
+                </h3>
+                <p className="text-sm font-semibold mb-4" style={{ color: "hsl(27,100%,60%)" }}>
+                  {stage.subtitle}
+                </p>
+
                 {/* Tasks */}
-                <div className="p-5">
-                  <ul className="space-y-2.5">
-                    {stage.tasks.map((t) => (
-                      <li key={t} className="flex items-start gap-2">
-                        <Check className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: stage.accent }} />
-                        <span className="text-sm" style={{ color: "hsl(0,0%,65%)" }}>{t}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <ul className="space-y-2 text-left w-full max-w-[260px]">
+                  {stage.tasks.map((t) => (
+                    <li key={t} className="flex items-start gap-2">
+                      <Check className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "hsl(27,100%,52%)" }} />
+                      <span className="text-sm" style={{ color: "hsl(0,0%,60%)" }}>{t}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
