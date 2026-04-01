@@ -283,11 +283,11 @@ const ProductNomad = () => {
                           <path d="M4 7L10 13L16 7" stroke="hsl(27,100%,52%)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </div>
-                    </>
                   )}
-              )}
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
         {/* Care note */}
