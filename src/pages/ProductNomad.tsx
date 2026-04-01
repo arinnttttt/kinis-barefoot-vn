@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import { Footprints, Activity, Brain } from "lucide-react";
+import { Footprints, Activity, Brain, Shield, Feather, Wind, SprayCan, Check } from "lucide-react";
 import nomadImage from "@/assets/kinis-nomad.png";
 
 const benefits = [
@@ -113,12 +113,125 @@ const ProductNomad = () => (
               border: "1px solid hsl(220 40% 85%)",
             }}
           >
-            <span className="text-xl">🇺🇸</span>
+            <span className="text-3xl">🇺🇸</span>
             <span className="text-sm font-body font-semibold uppercase tracking-wider" style={{ color: "hsl(220,50%,30%)" }}>
               Sản phẩm nhập khẩu chính hãng từ Hoa Kỳ
             </span>
           </div>
         </div>
+      </div>
+    </section>
+
+    {/* Technology Section */}
+    <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-background">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 animate-fade-up">
+          <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: "hsl(27,100%,52%)" }}>
+            Công nghệ
+          </span>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+            Công nghệ vật liệu đột phá
+          </h2>
+          <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
+            Kinis Nomad sử dụng 100% sợi kỹ thuật Honeywell Spectra® – loại sợi siêu cường lực thường được sử dụng trong áo chống đạn và thiết bị bảo hộ cao cấp.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 max-w-3xl mx-auto">
+          {[
+            { icon: Shield, text: "Vải siêu bền và chống mài mòn" },
+            { icon: Feather, text: "Độ đàn hồi cao – ôm chân như 'làn da thứ hai'" },
+            { icon: Wind, text: "Nhẹ và thoáng khí – mang lại cảm giác tự do" },
+            { icon: SprayCan, text: "Kháng khuẩn – kiểm soát mùi khi tập luyện" },
+          ].map((item, i) => (
+            <div
+              key={item.text}
+              className="flex items-start gap-4 rounded-2xl p-5 sm:p-6 bg-card border border-border animate-fade-up"
+              style={{ animationDelay: `${i * 80}ms`, boxShadow: "0 4px 24px -4px rgba(0,0,0,0.06)" }}
+            >
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(27 100% 52% / 0.1)" }}>
+                <item.icon className="w-5 h-5" style={{ color: "hsl(27,100%,52%)" }} />
+              </div>
+              <span className="text-sm sm:text-base font-medium text-foreground leading-relaxed">{item.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Adaptation Roadmap Section */}
+    <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "hsl(0,0%,98%)" }}>
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 animate-fade-up">
+          <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: "hsl(27,100%,52%)" }}>
+            Lộ trình thích nghi
+          </span>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+            Giày Kinis Nomad giúp bàn chân mạnh hơn
+          </h2>
+          <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
+            Nhưng cần thời gian thích nghi. Hãy kiên nhẫn theo lộ trình 3–6 tháng mà Kinis gợi ý.
+          </p>
+        </div>
+
+        {/* Timeline */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
+          {[
+            {
+              phase: "Giai đoạn 1",
+              time: "Tuần 1 – 2: Làm quen",
+              tasks: ["Mang 1–2 giờ mỗi ngày", "Tránh tập nặng hoặc vận động cường độ cao"],
+              color: "hsl(27,100%,52%)",
+            },
+            {
+              phase: "Giai đoạn 2",
+              time: "Tuần 3 – 4: Cảm nhận",
+              tasks: ["Bắt đầu các bài tập nhẹ", "Làm quen với cảm giác tiếp đất"],
+              color: "hsl(27,90%,46%)",
+            },
+            {
+              phase: "Giai đoạn 3",
+              time: "Sau 1 – 2 tháng: Bứt phá",
+              tasks: ["Có thể sử dụng như giày tập chính", "Đôi chân thích nghi hoàn toàn"],
+              color: "hsl(27,80%,40%)",
+            },
+          ].map((stage, i) => (
+            <div
+              key={stage.phase}
+              className="relative rounded-2xl p-6 sm:p-8 bg-card border border-border animate-fade-up"
+              style={{ animationDelay: `${i * 120}ms`, boxShadow: "0 4px 24px -4px rgba(0,0,0,0.06)" }}
+            >
+              {/* Phase number badge */}
+              <div
+                className="w-10 h-10 rounded-full flex items-center justify-center text-white font-display font-bold text-sm mb-4"
+                style={{ backgroundColor: stage.color }}
+              >
+                {i + 1}
+              </div>
+              <p className="text-xs font-body font-semibold uppercase tracking-wider mb-1" style={{ color: stage.color }}>
+                {stage.phase}
+              </p>
+              <h3 className="font-display text-lg sm:text-xl font-bold text-foreground mb-4">
+                {stage.time}
+              </h3>
+              <ul className="space-y-2.5">
+                {stage.tasks.map((t) => (
+                  <li key={t} className="flex items-start gap-2.5">
+                    <div className="mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${stage.color}15` }}>
+                      <Check className="w-3 h-3" style={{ color: stage.color }} />
+                    </div>
+                    <span className="text-sm sm:text-base text-muted-foreground">{t}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Care note */}
+        <p className="text-center text-sm text-muted-foreground mt-10 sm:mt-12 max-w-2xl mx-auto animate-fade-up">
+          ⚡ Có thể giặt máy (sử dụng túi giặt) và phơi khô tự nhiên để giữ độ bền của giày.
+        </p>
       </div>
     </section>
   </Layout>
