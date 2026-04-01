@@ -54,12 +54,6 @@ const ProductNomad = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[70vh] py-12 sm:py-16 lg:py-20">
           {/* Text column */}
           <div className="animate-fade-up">
-            <span
-              className="inline-block px-4 py-1.5 rounded-full text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-5"
-              style={{ backgroundColor: "hsl(27 100% 52% / 0.12)", color: "hsl(27,100%,52%)" }}
-            >
-              Kinis Nomad
-            </span>
             <p className="text-sm sm:text-base font-body uppercase tracking-widest mb-3 text-muted-foreground">
               Giày tập luyện chân trần chuyên nghiệp
             </p>
