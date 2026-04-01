@@ -217,81 +217,68 @@ const ProductNomad = () => {
           </p>
         </div>
 
-        {/* Progress Steps */}
-        <div className="max-w-4xl mx-auto animate-fade-up">
-          {/* Progress bar with connected dots */}
-          <div className="relative flex items-center justify-between mb-10">
-            {/* Background line */}
-            <div className="absolute top-5 left-[calc(16.67%)] right-[calc(16.67%)] h-1 rounded-full" style={{ backgroundColor: "hsl(0,0%,15%)" }} />
-            {/* Filled progress line */}
-            <div className="absolute top-5 left-[calc(16.67%)] h-1 rounded-full" style={{ backgroundColor: "hsl(27,100%,52%)", width: "66.66%" }} />
-
-            {[
-              { label: "Làm quen", num: 1 },
-              { label: "Cảm nhận", num: 2 },
-              { label: "Bứt phá", num: 3 },
-            ].map((step, i) => (
-              <div key={step.num} className="relative z-10 flex flex-col items-center" style={{ width: "33.33%" }}>
-                <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-base border-4"
-                  style={{
-                    backgroundColor: "hsl(27,100%,52%)",
-                    borderColor: "hsl(0,0%,5%)",
-                    color: "#fff",
-                  }}
-                >
-                  {step.num}
-                </div>
-                <span className="mt-2 text-xs sm:text-sm font-body font-semibold text-white">{step.label}</span>
-              </div>
-            ))}
+        {/* Progress Steps - cards with integrated progress */}
+        <div className="max-w-4xl mx-auto">
+          {/* Progress line connecting cards */}
+          <div className="hidden md:flex items-center justify-center mb-6 px-12">
+            <div className="flex-1 h-1 rounded-full" style={{ backgroundColor: "hsl(27,100%,52%)" }} />
+            <div className="w-3 h-3 rounded-full mx-1" style={{ backgroundColor: "hsl(27,100%,52%)" }} />
+            <div className="flex-1 h-1 rounded-full" style={{ backgroundColor: "hsl(27,90%,46%)" }} />
+            <div className="w-3 h-3 rounded-full mx-1" style={{ backgroundColor: "hsl(27,90%,46%)" }} />
+            <div className="flex-1 h-1 rounded-full" style={{ backgroundColor: "hsl(27,80%,40%)" }} />
           </div>
 
-          {/* Detail cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               {
                 time: "Tuần 1 – 2",
                 subtitle: "Làm quen",
                 tasks: ["Mang 1–2 giờ mỗi ngày", "Tránh tập nặng hoặc vận động cường độ cao"],
+                accent: "hsl(27,100%,52%)",
               },
               {
                 time: "Tuần 3 – 4",
                 subtitle: "Cảm nhận",
                 tasks: ["Bắt đầu các bài tập nhẹ", "Làm quen với cảm giác tiếp đất"],
+                accent: "hsl(27,90%,46%)",
               },
               {
                 time: "Sau 1 – 2 tháng",
                 subtitle: "Bứt phá",
                 tasks: ["Có thể sử dụng như giày tập chính", "Đôi chân thích nghi hoàn toàn"],
+                accent: "hsl(27,80%,40%)",
               },
             ].map((stage, i) => (
               <div
                 key={stage.time}
-                className="rounded-xl p-5 sm:p-6 animate-fade-up"
+                className="rounded-xl overflow-hidden animate-fade-up"
                 style={{
                   animationDelay: `${i * 100}ms`,
                   backgroundColor: "hsl(0,0%,10%)",
                   border: "1px solid hsl(0,0%,18%)",
                 }}
               >
-                <p className="text-xs font-body font-semibold uppercase tracking-wider mb-1" style={{ color: "hsl(27,100%,52%)" }}>
-                  Giai đoạn {i + 1}
-                </p>
-                <h3 className="font-display text-lg sm:text-xl font-bold text-white mb-1">
-                  {stage.time}
-                </h3>
-                <p className="text-sm font-semibold mb-3" style={{ color: "hsl(27,100%,65%)" }}>
-                  {stage.subtitle}
-                </p>
-                <ul className="space-y-2">
-                  {stage.tasks.map((t) => (
-                    <li key={t} className="flex items-start gap-2">
-                      <Check className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "hsl(27,100%,52%)" }} />
-                      <span className="text-sm" style={{ color: "hsl(0,0%,65%)" }}>{t}</span>
-                    </li>
-                  ))}
-                </ul>
+                {/* Top accent bar with number */}
+                <div className="flex items-center gap-3 px-5 py-3" style={{ backgroundColor: stage.accent }}>
+                  <span className="w-8 h-8 rounded-full flex items-center justify-center font-display font-bold text-sm" style={{ backgroundColor: "hsla(0,0%,100%,0.25)", color: "#fff" }}>
+                    {i + 1}
+                  </span>
+                  <div>
+                    <p className="font-display text-sm font-bold text-white leading-tight">{stage.time}</p>
+                    <p className="text-xs text-white/80">{stage.subtitle}</p>
+                  </div>
+                </div>
+                {/* Tasks */}
+                <div className="p-5">
+                  <ul className="space-y-2.5">
+                    {stage.tasks.map((t) => (
+                      <li key={t} className="flex items-start gap-2">
+                        <Check className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: stage.accent }} />
+                        <span className="text-sm" style={{ color: "hsl(0,0%,65%)" }}>{t}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ))}
           </div>
