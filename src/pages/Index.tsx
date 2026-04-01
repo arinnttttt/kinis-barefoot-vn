@@ -202,6 +202,13 @@ const Index = () => {
               className="product-tab-input"
               data-tab-control="nomad"
             />
+            <input
+              id="product-tab-apollo"
+              type="radio"
+              name="product-tabs"
+              className="product-tab-input"
+              data-tab-control="apollo"
+            />
 
              <div
               className="relative z-20 flex justify-center gap-1"
