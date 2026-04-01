@@ -246,8 +246,8 @@ const ProductNomad = () => {
                     style={{
                       fontSize: "clamp(5rem, 10vw, 8rem)",
                       color: "hsl(27,100%,52%)",
-                      maskImage: "linear-gradient(180deg, rgba(0,0,0,1) 45%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.12) 85%)",
-                      WebkitMaskImage: "linear-gradient(180deg, rgba(0,0,0,1) 45%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.12) 85%)",
+                      maskImage: "linear-gradient(180deg, rgba(0,0,0,1) 45%, rgba(0,0,0,0.2) 55%, rgba(0,0,0,0.05) 85%)",
+                      WebkitMaskImage: "linear-gradient(180deg, rgba(0,0,0,1) 45%, rgba(0,0,0,0.2) 55%, rgba(0,0,0,0.05) 85%)",
                     }}
                   >
                     {stage.num}
