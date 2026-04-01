@@ -75,7 +75,7 @@ const ProductNomad = () => {
             </h1>
             <div className="mt-6 sm:mt-8">
               <a
-                href="https://kinis.vn/san-pham/nomad"
+                href="https://byebeoshop.com/san-pham-2/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 md:px-8 md:py-3.5 font-body font-semibold text-sm rounded-xl text-white transition-opacity hover:opacity-90"
@@ -364,7 +364,7 @@ const ProductNomad = () => {
           Đó là công cụ giúp bạn kích hoạt sức mạnh tự nhiên của đôi chân và chăm sóc sức khỏe vận động bền vững.
         </p>
         <a
-          href="https://kinis.vn/san-pham/nomad"
+          href="https://byebeoshop.com/san-pham-2/"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:px-10 sm:py-4 font-body font-semibold text-sm sm:text-base rounded-xl text-white transition-opacity hover:opacity-90"
