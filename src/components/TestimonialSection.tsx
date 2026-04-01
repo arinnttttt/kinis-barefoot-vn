@@ -1,36 +1,49 @@
 import { Star } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-const testimonials = [
+export interface Testimonial {
+  name: string;
+  badge: string;
+  text: string;
+  pages?: string[]; // e.g. ["home", "nomad", "lucy"] — empty/undefined = home only
+}
+
+const testimonials: Testimonial[] = [
   {
     name: "Shella D.",
     badge: "Excellent",
     text: "Đây là đôi giày barefoot tốt nhất mà tôi từng thử! Thiết kế tối giản nhưng vẫn rất phong cách. Tôi rất thích cảm giác của đôi giày trên chân. Ban đầu tôi đặt nhầm size, nhưng đội ngũ chăm sóc khách hàng đã hỗ trợ rất nhanh.",
+    pages: ["home", "nomad"],
   },
   {
     name: "Gregory P.",
     badge: "Fantastic",
     text: 'Tôi mua đôi Lucy cho RJ. Theo lời anh ấy: "Đôi giày này đã thay đổi cách tôi bước đi theo hướng tốt hơn. Tôi không muốn quay lại mang giày thông thường nữa."',
+    pages: ["home"],
   },
   {
     name: "Brian K.",
     badge: "Great",
     text: "Tôi vừa trải qua phẫu thuật bàn chân và đôi giày Kinis thực sự rất phù hợp với đôi chân của tôi thời điểm phục hồi này. Rất thoải mái nhưng vẫn có độ hỗ trợ cần thiết.",
+    pages: ["home", "nomad"],
   },
   {
     name: "Jennifer B.",
     badge: "Excellent",
     text: "Tôi rất thích cảm giác vừa vặn của đôi giày! Giày rất nhẹ và ôm chân hoàn hảo từ ngón chân đến gót chân. Tôi mang khi tập luyện và cả trong sinh hoạt hàng ngày.",
+    pages: ["home", "nomad"],
   },
   {
     name: "Casey B.",
     badge: "Excellent",
     text: "Ban đầu tôi hơi do dự khi mua, nhưng giờ rất vui vì đã chọn chúng cho hành trình làm quen với barefoot. Tôi bắt đầu cảm nhận rõ các nhóm cơ bàn chân khi đi bộ.",
+    pages: ["home"],
   },
   {
     name: "Matthew O.",
     badge: "Excellent",
     text: "Đôi giày hoàn hảo với tôi. Tôi không thích mang giày và có cổ chân yếu, nhưng đôi giày này giải quyết được cả hai. Thoải mái như một đôi tất nhưng vẫn có độ bảo vệ của giày.",
+    pages: ["home", "nomad"],
   },
 ];
 
@@ -85,7 +98,12 @@ const TestimonialCard = ({ item }: { item: (typeof testimonials)[number] }) => (
   </div>
 );
 
-const TestimonialSection = () => {
+interface TestimonialSectionProps {
+  page?: string; // filter testimonials by page, e.g. "home", "nomad", "lucy"
+}
+
+const TestimonialSection = ({ page = "home" }: TestimonialSectionProps) => {
+  const filtered = testimonials.filter((t) => !t.pages || t.pages.includes(page));
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
@@ -183,7 +201,7 @@ const TestimonialSection = () => {
             scrollbarWidth: "none",
           }}
         >
-          {testimonials.map((item) => (
+          {filtered.map((item) => (
             <div key={item.name} className="flex" style={{ scrollSnapAlign: "start" }}>
               <TestimonialCard item={item} />
             </div>
