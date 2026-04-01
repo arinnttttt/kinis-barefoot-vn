@@ -317,7 +317,14 @@ add_action('add_meta_boxes', 'kinis_testimonial_meta_boxes');
 function kinis_testimonial_meta_html($post) {
     $stars = get_post_meta($post->ID, '_kinis_testimonial_stars', true) ?: '5';
     $category = get_post_meta($post->ID, '_kinis_testimonial_category', true) ?: '';
+    $pages = get_post_meta($post->ID, '_kinis_testimonial_pages', true);
+    if (!is_array($pages)) $pages = array('home');
     wp_nonce_field('kinis_testimonial_nonce', 'kinis_testimonial_nonce_field');
+    $available_pages = array(
+        'home' => 'Trang chủ',
+        'nomad' => 'Kinis Nomad',
+        'lucy' => 'Kinis Lucy',
+    );
     ?>
     <p><label><strong>Số sao (1-5):</strong></label><br>
     <select name="kinis_testimonial_stars" style="width:100%;">
@@ -327,7 +334,15 @@ function kinis_testimonial_meta_html($post) {
     </select></p>
     <p><label><strong>Nhãn danh mục:</strong></label><br>
     <input type="text" name="kinis_testimonial_category" value="<?php echo esc_attr($category); ?>" style="width:100%;" placeholder="VD: Excellent, Great, Fantastic"></p>
-    <p class="description">Tiêu đề = Tên khách hàng. Nội dung = Lời đánh giá.</p>
+    <p><label><strong>Hiển thị ở trang:</strong></label><br>
+    <?php foreach ($available_pages as $key => $label) : ?>
+        <label style="display:block;margin:4px 0;">
+            <input type="checkbox" name="kinis_testimonial_pages[]" value="<?php echo $key; ?>" <?php checked(in_array($key, $pages)); ?>>
+            <?php echo $label; ?>
+        </label>
+    <?php endforeach; ?>
+    </p>
+    <p class="description">Tiêu đề = Tên khách hàng. Nội dung = Lời đánh giá.<br>Chọn trang mà đánh giá này sẽ hiển thị. Trang chủ luôn được chọn mặc định.</p>
     <?php
 }
 
