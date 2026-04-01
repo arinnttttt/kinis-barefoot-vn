@@ -7,6 +7,10 @@ import audienceYogaImg from "@/assets/audience-yoga.jpg";
 import audienceFlatfeetImg from "@/assets/audience-flatfeet-strength.jpg";
 import audienceFunctionalImg from "@/assets/audience-functional.jpg";
 import audienceTrailRunnerImg from "@/assets/audience-trail-runner.jpg";
+import iconNoRunning from "@/assets/icon-no-running.png";
+import iconNoWet from "@/assets/icon-no-wet.png";
+import iconNoConstruction from "@/assets/icon-no-construction.png";
+import iconNoInjury from "@/assets/icon-no-injury.png";
 import TestimonialSection from "@/components/TestimonialSection";
 import { useEffect, useRef } from "react";
 
@@ -361,18 +365,18 @@ const ProductNomad = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {[
-              "Không sử dụng để chạy bộ đường dài",
-              "Không sử dụng trong môi trường ướt hoặc trơn trượt",
-              "Không dùng tại công trường hoặc khu vực có vật sắc nhọn",
-              "Không dùng khi đang có chấn thương bàn chân cấp tính",
+              { text: "Không sử dụng để chạy bộ đường dài", icon: iconNoRunning },
+              { text: "Không sử dụng trong môi trường ướt hoặc trơn trượt", icon: iconNoWet },
+              { text: "Không dùng tại công trường hoặc khu vực có vật sắc nhọn", icon: iconNoConstruction },
+              { text: "Không dùng khi đang có chấn thương bàn chân cấp tính", icon: iconNoInjury },
             ].map((item) => (
               <div
-                key={item}
-                className="flex items-start gap-3 px-4 py-3 rounded-xl"
+                key={item.text}
+                className="flex items-center gap-3 px-4 py-3 rounded-xl"
                 style={{ backgroundColor: "hsl(0 60% 94%)" }}
               >
-                <span className="text-base mt-0.5" style={{ color: "hsl(0 70% 50%)" }}>✕</span>
-                <span className="text-sm sm:text-base font-medium" style={{ color: "hsl(0 50% 30%)" }}>{item}</span>
+                <img src={item.icon} alt="" className="w-8 h-8 flex-shrink-0" />
+                <span className="text-sm sm:text-base font-medium" style={{ color: "hsl(0 50% 30%)" }}>{item.text}</span>
               </div>
             ))}
           </div>
