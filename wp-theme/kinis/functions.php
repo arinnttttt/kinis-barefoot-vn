@@ -381,6 +381,7 @@ function kinis_seed_testimonials() {
         if ($post_id && !is_wp_error($post_id)) {
             update_post_meta($post_id, '_kinis_testimonial_stars', $t['stars']);
             update_post_meta($post_id, '_kinis_testimonial_category', $t['category']);
+            update_post_meta($post_id, '_kinis_testimonial_pages', $t['pages']);
         }
     }
     update_option('kinis_testimonials_seeded', true);
