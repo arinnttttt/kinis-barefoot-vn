@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Story from "./pages/Story";
 import ProductLucy from "./pages/ProductLucy";
 import ProductNomad from "./pages/ProductNomad";
+import ProductApollo from "./pages/ProductApollo";
 import Science from "./pages/Science";
 import TargetAudience from "./pages/TargetAudience";
 import FAQ from "./pages/FAQ";
