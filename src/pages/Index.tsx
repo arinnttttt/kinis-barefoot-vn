@@ -258,6 +258,7 @@ const Index = () => {
             >
               <ProductPanel product={lucy} tabKey="lucy" />
               <ProductPanel product={nomad} tabKey="nomad" />
+              <ProductPanel product={apollo} tabKey="apollo" />
             </div>
           </div>
         </div>
