@@ -29,6 +29,7 @@ const routes = [
   { path: "/cau-chuyen", template: "page-cau-chuyen", title: "Câu chuyện" },
   { path: "/san-pham/lucy", template: "page-san-pham-lucy", title: "Kinis Lucy" },
   { path: "/san-pham/nomad", template: "page-san-pham-nomad", title: "Kinis Nomad" },
+  { path: "/san-pham/apollo", template: "page-san-pham-apollo", title: "Kinis Apollo" },
   { path: "/khoa-hoc", template: "page-khoa-hoc", title: "Khoa học" },
   { path: "/doi-tuong/gym-fitness", template: "page-doi-tuong-gym", title: "Gym & Fitness" },
   { path: "/doi-tuong/chay-bo", template: "page-doi-tuong-chay-bo", title: "Chạy bộ" },
