@@ -282,9 +282,41 @@ const ProductNomad = () => {
         </div>
 
         {/* Care note */}
-        <p className="text-center text-sm mt-10 sm:mt-12 max-w-2xl mx-auto animate-fade-up" style={{ color: "hsl(0,0%,55%)" }}>
+        <p className="text-center text-base sm:text-lg mt-10 sm:mt-12 max-w-2xl mx-auto animate-fade-up" style={{ color: "hsl(0,0%,55%)" }}>
           ⚡ Có thể giặt máy (sử dụng túi giặt) và phơi khô tự nhiên để giữ độ bền của giày.
         </p>
+      </div>
+    </section>
+
+    {/* Đối tượng Phù hợp Section */}
+    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "hsl(0,0%,98%)" }}>
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-fade-up">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+            Đối tượng <span style={{ color: "hsl(27,100%,52%)" }}>phù hợp</span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          {[
+            { emoji: "🏋️", title: "Gym & Weightlifting", desc: "Tăng độ ổn định khi tập luyện và truyền lực tốt hơn khi nâng tạ." },
+            { emoji: "🚶", title: "Cải thiện tư thế đứng & dáng đi", desc: "Hỗ trợ kích hoạt cơ bàn chân và cải thiện sự ổn định khi di chuyển." },
+            { emoji: "🧘", title: "Yoga & Pilates", desc: "Ôm sát bàn chân, giúp giữ thăng bằng và kiểm soát chuyển động tốt hơn." },
+            { emoji: "🦶", title: "Tăng cường cơ bàn chân bẹt", desc: "Mũi giày rộng giúp ngón chân xòe tự nhiên và kích hoạt cơ bàn chân." },
+            { emoji: "⚡", title: "Functional Training", desc: "Linh hoạt cho các bài tập đa hướng như squat, lunge." },
+            { emoji: "🏃", title: "Runner chuyên nghiệp", desc: "Hỗ trợ tăng cường sức mạnh cơ bàn chân, đặc biệt hữu ích cho runner chạy trail." },
+          ].map((item, i) => (
+            <div
+              key={item.title}
+              className="rounded-2xl p-6 sm:p-7 bg-card border border-border animate-fade-up"
+              style={{ animationDelay: `${i * 80}ms`, boxShadow: "0 4px 24px -4px rgba(0,0,0,0.06)" }}
+            >
+              <span className="text-3xl mb-4 block">{item.emoji}</span>
+              <h3 className="font-display text-lg sm:text-xl font-semibold mb-2 text-foreground">{item.title}</h3>
+              <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">{item.desc}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   </Layout>
