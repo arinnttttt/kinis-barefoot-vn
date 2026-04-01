@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import { Footprints, Activity, Brain, Shield, Feather, Wind, SprayCan, Check, AlertTriangle } from "lucide-react";
+import { Zap, Compass, Radio, Shield, Feather, Wind, SprayCan, Check, AlertTriangle } from "lucide-react";
 const nomadImage = "https://kinis.vn/wp-content/uploads/2026/04/kinis-nomad-transparent.png";
 import audienceGymImg from "@/assets/audience-gym-weightlifting.jpg";
 import audiencePostureImg from "@/assets/audience-posture.jpg";
