@@ -277,7 +277,8 @@ html {
   }
 
   #product-tab-lucy:checked ~ [data-tabs-panels] [data-tab-content="lucy"],
-  #product-tab-nomad:checked ~ [data-tabs-panels] [data-tab-content="nomad"] {
+  #product-tab-nomad:checked ~ [data-tabs-panels] [data-tab-content="nomad"],
+  #product-tab-apollo:checked ~ [data-tabs-panels] [data-tab-content="apollo"] {
     display: grid;
   }
 
