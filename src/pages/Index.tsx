@@ -35,6 +35,16 @@ const products = {
     tags: ["Tập gym", "Yoga/Pilates", "Bàn chân bẹt", "Tăng sức mạnh cơ chân"],
     href: "/san-pham/nomad",
   },
+  apollo: {
+    label: "Kinis Apollo",
+    badge: "Pro Training",
+    subtitle: "Giày luyện tập chuyên sâu",
+    description:
+      "Kinis Apollo được thiết kế dành riêng cho những buổi tập luyện cường độ cao. Kết hợp triết lý barefoot với công nghệ hỗ trợ vận động, Apollo giúp bạn tối ưu hiệu suất trong mọi bài tập — từ HIIT, CrossFit đến weightlifting.",
+    image: apolloShowcase,
+    tags: ["HIIT", "CrossFit", "Weightlifting", "Luyện tập chuyên sâu"],
+    href: "/san-pham/apollo",
+  },
 };
 
 type ProductKey = keyof typeof products;
