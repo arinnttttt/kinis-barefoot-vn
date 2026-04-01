@@ -7,6 +7,10 @@ import audienceYogaImg from "@/assets/audience-yoga.jpg";
 import audienceFlatfeetImg from "@/assets/audience-flatfeet-strength.jpg";
 import audienceFunctionalImg from "@/assets/audience-functional.jpg";
 import audienceTrailRunnerImg from "@/assets/audience-trail-runner.jpg";
+import iconNoRunning from "@/assets/icon-no-running.png";
+import iconNoWet from "@/assets/icon-no-wet.png";
+import iconNoConstruction from "@/assets/icon-no-construction.png";
+import iconNoInjury from "@/assets/icon-no-injury.png";
 import TestimonialSection from "@/components/TestimonialSection";
 import { useEffect, useRef } from "react";
 
