@@ -125,7 +125,7 @@ const ProductNomad = () => (
     </section>
 
     {/* Technology Section - Dark & Bold */}
-    <section className="relative py-20 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
+    <section className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
       {/* Subtle glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-15 pointer-events-none" style={{ background: "radial-gradient(circle, hsl(27,100%,52%) 0%, transparent 70%)" }} />
 
