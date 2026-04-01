@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import { Footprints, Activity, Brain, Shield, Feather, Wind, SprayCan, Check, AlertTriangle } from "lucide-react";
+import { Zap, Compass, Radio, Shield, Feather, Wind, SprayCan, Check, AlertTriangle } from "lucide-react";
 const nomadImage = "https://kinis.vn/wp-content/uploads/2026/04/kinis-nomad-transparent.png";
 import audienceGymImg from "@/assets/audience-gym-weightlifting.jpg";
 import audiencePostureImg from "@/assets/audience-posture.jpg";
@@ -16,19 +16,19 @@ import { useEffect, useRef } from "react";
 
 const benefits = [
   {
-    icon: Footprints,
+    icon: Zap,
     title: "Kích hoạt sức mạnh bàn chân",
     description:
       "Thiết kế zero-drop hay đế phẳng, giúp cơ bàn chân hoạt động tự nhiên, tăng cường sức mạnh nội tại của cơ chân theo thời gian.",
   },
   {
-    icon: Activity,
+    icon: Compass,
     title: "Hiệu chỉnh dáng đi và tư thế",
     description:
       "Đế phẳng giúp cơ thể tự căn chỉnh tư thế đứng và di chuyển đúng sinh cơ học.",
   },
   {
-    icon: Brain,
+    icon: Radio,
     title: "Tăng cường cảm nhận mặt đất",
     description:
       "Đế mỏng truyền tải tín hiệu từ mặt đất, nâng cao khả năng thăng bằng và phản xạ.",
@@ -62,7 +62,7 @@ const ProductNomad = () => {
     {/* Hero Section - White, 2 columns */}
     <section style={{ backgroundColor: "#FFFFFF" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[70vh] py-12 sm:py-16 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-[70vh] py-12 sm:py-16 lg:py-20">
           {/* Text column */}
           <div className="animate-fade-up">
             <p className="text-sm sm:text-base font-body uppercase tracking-widest mb-3 text-muted-foreground">
@@ -110,7 +110,7 @@ const ProductNomad = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 mb-10 sm:mb-12">
           {benefits.map((b, i) => (
             <div
               key={b.title}
@@ -141,7 +141,22 @@ const ProductNomad = () => {
               border: "1px solid hsl(220 40% 85%)",
             }}
           >
-            <span className="text-3xl">🇺🇸</span>
+            <svg className="w-8 h-6 flex-shrink-0" viewBox="0 0 60 30" aria-label="Cờ Hoa Kỳ">
+              <rect width="60" height="30" fill="#B22234"/>
+              <rect y="2.3" width="60" height="2.3" fill="#fff"/>
+              <rect y="6.9" width="60" height="2.3" fill="#fff"/>
+              <rect y="11.5" width="60" height="2.3" fill="#fff"/>
+              <rect y="16.2" width="60" height="2.3" fill="#fff"/>
+              <rect y="20.8" width="60" height="2.3" fill="#fff"/>
+              <rect y="25.4" width="60" height="2.3" fill="#fff"/>
+              <rect width="24" height="16.15" fill="#3C3B6E"/>
+              <g fill="#fff" fontSize="3">
+                <text x="2" y="4">★ ★ ★ ★ ★</text>
+                <text x="4" y="7">★ ★ ★ ★</text>
+                <text x="2" y="10">★ ★ ★ ★ ★</text>
+                <text x="4" y="13">★ ★ ★ ★</text>
+              </g>
+            </svg>
             <span className="text-sm font-body font-semibold uppercase tracking-wider" style={{ color: "hsl(220,50%,30%)" }}>
               Sản phẩm nhập khẩu chính hãng từ Hoa Kỳ
             </span>
