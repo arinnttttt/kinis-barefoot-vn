@@ -57,7 +57,7 @@ const ProductNomad = () => {
             <p className="text-sm sm:text-base font-body uppercase tracking-widest mb-3 text-muted-foreground">
               Giày tập luyện chân trần chuyên nghiệp
             </p>
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] text-foreground">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-foreground">
               Đánh thức
               <br />
               <span style={{ color: "hsl(27,100%,52%)" }}>sức mạnh</span> đôi chân
