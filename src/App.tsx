@@ -26,6 +26,7 @@ const App = () => (
           <Route path="/cau-chuyen" element={<Story />} />
           <Route path="/san-pham/lucy" element={<ProductLucy />} />
           <Route path="/san-pham/nomad" element={<ProductNomad />} />
+          <Route path="/san-pham/apollo" element={<ProductApollo />} />
           <Route path="/khoa-hoc" element={<Science />} />
           <Route path="/doi-tuong/gym-fitness" element={<TargetAudience variant="gym" />} />
           <Route path="/doi-tuong/chay-bo" element={<TargetAudience variant="runner" />} />
