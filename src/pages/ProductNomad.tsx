@@ -330,7 +330,7 @@ const ProductNomad = () => {
     </section>
 
     {/* Testimonial Section */}
-    <TestimonialSection page="nomad" />
+    <TestimonialSection page="nomad" title={<>Mọi người nghĩ gì về <span style={{ color: "hsl(27,100%,52%)" }}>Kinis Nomad</span></>} subtitle={null} />
 
     {/* Disclaimer / Warning Section */}
     <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#FFFFFF" }}>
