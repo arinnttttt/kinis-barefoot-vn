@@ -77,7 +77,7 @@ const ProductNomad = () => {
                 className="inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:px-10 sm:py-4 font-body font-semibold text-sm sm:text-base rounded-xl text-white transition-opacity hover:opacity-90"
                 style={{ backgroundColor: "hsl(27,100%,52%)" }}
               >
-                Mua ngay
+                Mua Trực Tiếp Tại Đại Lý
               </a>
             </div>
           </div>
