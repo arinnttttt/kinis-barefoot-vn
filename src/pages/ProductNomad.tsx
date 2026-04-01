@@ -217,87 +217,74 @@ const ProductNomad = () => {
           </p>
         </div>
 
-        {/* Arrow Timeline */}
-        <div className="flex flex-col md:flex-row items-stretch max-w-5xl mx-auto gap-0">
-          {[
-            {
-              phase: "Giai đoạn 1",
-              time: "Tuần 1 – 2",
-              subtitle: "Làm quen",
-              tasks: ["Mang 1–2 giờ mỗi ngày", "Tránh tập nặng hoặc vận động cường độ cao"],
-              color: "hsl(27,100%,52%)",
-              bg: "hsl(27,100%,52%)",
-            },
-            {
-              phase: "Giai đoạn 2",
-              time: "Tuần 3 – 4",
-              subtitle: "Cảm nhận",
-              tasks: ["Bắt đầu các bài tập nhẹ", "Làm quen với cảm giác tiếp đất"],
-              color: "hsl(27,90%,46%)",
-              bg: "hsl(27,90%,46%)",
-            },
-            {
-              phase: "Giai đoạn 3",
-              time: "Sau 1 – 2 tháng",
-              subtitle: "Bứt phá",
-              tasks: ["Có thể sử dụng như giày tập chính", "Đôi chân thích nghi hoàn toàn"],
-              color: "hsl(27,80%,40%)",
-              bg: "hsl(27,80%,40%)",
-            },
-          ].map((stage, i, arr) => (
-            <div
-              key={stage.phase}
-              className="relative flex-1 animate-fade-up"
-              style={{ animationDelay: `${i * 120}ms` }}
-            >
-              {/* Arrow shape container */}
-              <div className="relative h-full">
-                {/* Main card body */}
-                <div
-                  className="relative h-full p-6 sm:p-7"
-                  style={{
-                    backgroundColor: stage.bg,
-                    clipPath: i < arr.length - 1
-                      ? "polygon(0 0, calc(100% - 24px) 0, 100% 50%, calc(100% - 24px) 100%, 0 100%)"
-                      : "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-                    paddingRight: i < arr.length - 1 ? "2.5rem" : undefined,
-                    paddingLeft: i > 0 ? "2rem" : undefined,
-                    borderRadius: i === 0 ? "12px 0 0 12px" : i === arr.length - 1 ? "0 12px 12px 0" : undefined,
-                  }}
-                >
-                  {/* Phase number */}
-                  <div className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-display font-bold mb-3" style={{ backgroundColor: "hsla(0,0%,100%,0.25)", color: "#fff" }}>
-                    {i + 1}
+        {/* Arrow Step Timeline - like delivery tracker */}
+        <div className="max-w-5xl mx-auto animate-fade-up">
+          <div className="rounded-2xl border overflow-hidden" style={{ borderColor: "hsl(0,0%,20%)", backgroundColor: "hsl(0,0%,8%)" }}>
+            <div className="flex flex-col md:flex-row">
+              {[
+                {
+                  phase: "Giai đoạn 1",
+                  time: "Tuần 1 – 2",
+                  subtitle: "Làm quen",
+                  tasks: ["Mang 1–2 giờ mỗi ngày", "Tránh tập nặng hoặc vận động cường độ cao"],
+                },
+                {
+                  phase: "Giai đoạn 2",
+                  time: "Tuần 3 – 4",
+                  subtitle: "Cảm nhận",
+                  tasks: ["Bắt đầu các bài tập nhẹ", "Làm quen với cảm giác tiếp đất"],
+                },
+                {
+                  phase: "Giai đoạn 3",
+                  time: "Sau 1 – 2 tháng",
+                  subtitle: "Bứt phá",
+                  tasks: ["Có thể sử dụng như giày tập chính", "Đôi chân thích nghi hoàn toàn"],
+                },
+              ].map((stage, i, arr) => (
+                <div key={stage.phase} className="relative flex-1 flex">
+                  {/* Content */}
+                  <div className="flex-1 p-5 sm:p-6 flex items-start gap-4">
+                    {/* Number / check icon */}
+                    <div
+                      className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 font-display font-bold text-lg"
+                      style={{ backgroundColor: "hsl(27,100%,52%)", color: "#fff" }}
+                    >
+                      {i + 1}
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="font-display text-base sm:text-lg font-bold text-white leading-tight">
+                        {stage.time}: {stage.subtitle}
+                      </h3>
+                      <ul className="mt-1.5 space-y-1">
+                        {stage.tasks.map((t) => (
+                          <li key={t} className="flex items-start gap-1.5">
+                            <Check className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: "hsl(27,100%,52%)" }} />
+                            <span className="text-xs sm:text-sm" style={{ color: "hsl(0,0%,60%)" }}>{t}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                  <p className="text-[10px] sm:text-xs font-body font-semibold uppercase tracking-wider mb-0.5" style={{ color: "hsla(0,0%,100%,0.7)" }}>
-                    {stage.phase}
-                  </p>
-                  <h3 className="font-display text-base sm:text-lg font-bold text-white mb-1">
-                    {stage.time}
-                  </h3>
-                  <p className="text-xs sm:text-sm font-semibold text-white mb-3" style={{ opacity: 0.85 }}>
-                    {stage.subtitle}
-                  </p>
-                  <ul className="space-y-2">
-                    {stage.tasks.map((t) => (
-                      <li key={t} className="flex items-start gap-2">
-                        <div className="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsla(0,0%,100%,0.25)" }}>
-                          <Check className="w-2.5 h-2.5 text-white" />
-                        </div>
-                        <span className="text-xs sm:text-sm" style={{ color: "hsla(0,0%,100%,0.9)" }}>{t}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
 
-              {/* Mobile arrow indicator */}
-              {i < arr.length - 1 && (
-                <div className="flex md:hidden justify-center py-2">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 4L12 20M12 20L6 14M12 20L18 14" stroke="hsl(27,100%,52%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
+                  {/* Arrow separator */}
+                  {i < arr.length - 1 && (
+                    <>
+                      {/* Desktop: vertical divider with arrow */}
+                      <div className="hidden md:flex items-center relative" style={{ width: "24px" }}>
+                        <div className="absolute inset-y-0 left-0 w-px" style={{ backgroundColor: "hsl(0,0%,20%)" }} />
+                        <svg className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                          <path d="M7 4L13 10L7 16" stroke="hsl(27,100%,52%)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                      {/* Mobile: horizontal divider with arrow */}
+                      <div className="flex md:hidden items-center justify-center relative" style={{ height: "24px" }}>
+                        <div className="absolute inset-x-0 top-0 h-px" style={{ backgroundColor: "hsl(0,0%,20%)" }} />
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                          <path d="M4 7L10 13L16 7" stroke="hsl(27,100%,52%)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                    </>
+                  )}
               )}
             </div>
           ))}
