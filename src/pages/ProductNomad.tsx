@@ -141,7 +141,22 @@ const ProductNomad = () => {
               border: "1px solid hsl(220 40% 85%)",
             }}
           >
-            <span className="text-3xl">🇺🇸</span>
+            <svg className="w-8 h-6 flex-shrink-0" viewBox="0 0 60 30" aria-label="Cờ Hoa Kỳ">
+              <rect width="60" height="30" fill="#B22234"/>
+              <rect y="2.3" width="60" height="2.3" fill="#fff"/>
+              <rect y="6.9" width="60" height="2.3" fill="#fff"/>
+              <rect y="11.5" width="60" height="2.3" fill="#fff"/>
+              <rect y="16.2" width="60" height="2.3" fill="#fff"/>
+              <rect y="20.8" width="60" height="2.3" fill="#fff"/>
+              <rect y="25.4" width="60" height="2.3" fill="#fff"/>
+              <rect width="24" height="16.15" fill="#3C3B6E"/>
+              <g fill="#fff" fontSize="3">
+                <text x="2" y="4">★ ★ ★ ★ ★</text>
+                <text x="4" y="7">★ ★ ★ ★</text>
+                <text x="2" y="10">★ ★ ★ ★ ★</text>
+                <text x="4" y="13">★ ★ ★ ★</text>
+              </g>
+            </svg>
             <span className="text-sm font-body font-semibold uppercase tracking-wider" style={{ color: "hsl(220,50%,30%)" }}>
               Sản phẩm nhập khẩu chính hãng từ Hoa Kỳ
             </span>
