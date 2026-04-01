@@ -133,6 +133,7 @@ const ProductPanel = ({ product, tabKey }: { product: Product; tabKey: ProductKe
 const Index = () => {
   const lucy = products.lucy;
   const nomad = products.nomad;
+  const apollo = products.apollo;
 
   return (
     <Layout>
