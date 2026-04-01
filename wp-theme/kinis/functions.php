@@ -362,12 +362,12 @@ add_action('save_post_kinis_testimonial', 'kinis_save_testimonial_meta');
 function kinis_seed_testimonials() {
     if (get_option('kinis_testimonials_seeded')) return;
     $testimonials = array(
-        array('name' => 'Shella D.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Đây là đôi giày barefoot tốt nhất mà tôi từng thử! Thiết kế tối giản nhưng vẫn đảm bảo bảo vệ, phù hợp hoàn hảo cho những buổi đi bộ dài. Chất liệu nhẹ, thoáng khí, chân cảm nhận được mặt đất rõ ràng."'),
-        array('name' => 'Gregory P.', 'stars' => 5, 'category' => 'Fantastic', 'review' => '"Tôi mua đôi Lucy cho RJ. Theo lời anh ấy: \"Đôi giày này đã thay đổi cách tôi bước đi. Thoải mái tự nhiên, nhẹ nhàng mà vẫn chắc chắn. Giờ tôi chỉ muốn đi bộ thôi!\""'),
-        array('name' => 'Brian K.', 'stars' => 4, 'category' => 'Great', 'review' => '"Tôi vừa trải qua phẫu thuật bàn chân và đôi giày Kinis thực sự rất phù hợp với tình trạng hiện tại. Bàn chân được tự do co duỗi và cảm nhận mặt đất, giúp quá trình phục hồi thoải mái hơn rất nhiều."'),
-        array('name' => 'Jennifer B.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Tôi rất thích cảm giác vừa vặn của đôi giày! Giày rất nhẹ và ôm chân hoàn hảo từ lần đầu tiên. Rất phù hợp cho những ai đang tìm kiếm giày barefoot cho đời thường."'),
-        array('name' => 'Casey B.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Ban đầu tôi hơi do dự khi mua, nhưng giờ rất vui vì đã chọn chúng cho hành trình barefoot. Sau 2 tuần đi bộ mỗi ngày, cảm giác thăng bằng của tôi cải thiện rõ rệt."'),
-        array('name' => 'Matthew O.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Đôi giày hoàn hảo với tôi. Tôi không thích mang giày và có cổ chân yếu, nhưng đôi giày này giải quyết được cả hai. Thoải mái như một đôi tất nhưng vẫn có độ bảo vệ của giày."'),
+        array('name' => 'Shella D.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Đây là đôi giày barefoot tốt nhất mà tôi từng thử! Thiết kế tối giản nhưng vẫn đảm bảo bảo vệ, phù hợp hoàn hảo cho những buổi đi bộ dài. Chất liệu nhẹ, thoáng khí, chân cảm nhận được mặt đất rõ ràng."', 'pages' => array('home', 'nomad')),
+        array('name' => 'Gregory P.', 'stars' => 5, 'category' => 'Fantastic', 'review' => '"Tôi mua đôi Lucy cho RJ. Theo lời anh ấy: \"Đôi giày này đã thay đổi cách tôi bước đi. Thoải mái tự nhiên, nhẹ nhàng mà vẫn chắc chắn. Giờ tôi chỉ muốn đi bộ thôi!\""', 'pages' => array('home')),
+        array('name' => 'Brian K.', 'stars' => 4, 'category' => 'Great', 'review' => '"Tôi vừa trải qua phẫu thuật bàn chân và đôi giày Kinis thực sự rất phù hợp với tình trạng hiện tại. Bàn chân được tự do co duỗi và cảm nhận mặt đất, giúp quá trình phục hồi thoải mái hơn rất nhiều."', 'pages' => array('home', 'nomad')),
+        array('name' => 'Jennifer B.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Tôi rất thích cảm giác vừa vặn của đôi giày! Giày rất nhẹ và ôm chân hoàn hảo từ lần đầu tiên. Rất phù hợp cho những ai đang tìm kiếm giày barefoot cho đời thường."', 'pages' => array('home', 'nomad')),
+        array('name' => 'Casey B.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Ban đầu tôi hơi do dự khi mua, nhưng giờ rất vui vì đã chọn chúng cho hành trình barefoot. Sau 2 tuần đi bộ mỗi ngày, cảm giác thăng bằng của tôi cải thiện rõ rệt."', 'pages' => array('home')),
+        array('name' => 'Matthew O.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Đôi giày hoàn hảo với tôi. Tôi không thích mang giày và có cổ chân yếu, nhưng đôi giày này giải quyết được cả hai. Thoải mái như một đôi tất nhưng vẫn có độ bảo vệ của giày."', 'pages' => array('home', 'nomad')),
     );
     $order = 1;
     foreach ($testimonials as $t) {
