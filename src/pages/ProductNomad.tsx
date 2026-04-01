@@ -105,9 +105,20 @@ const ProductNomad = () => (
           ))}
         </div>
 
-        <p className="text-center text-sm font-body font-medium uppercase tracking-wider text-muted-foreground">
-          Sản phẩm nhập khẩu chính hãng từ Hoa Kỳ
-        </p>
+        <div className="flex justify-center">
+          <div
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-full"
+            style={{
+              background: "linear-gradient(135deg, hsl(220 60% 95%), hsl(0 0% 100%), hsl(0 80% 95%))",
+              border: "1px solid hsl(220 40% 85%)",
+            }}
+          >
+            <span className="text-xl">🇺🇸</span>
+            <span className="text-sm font-body font-semibold uppercase tracking-wider" style={{ color: "hsl(220,50%,30%)" }}>
+              Sản phẩm nhập khẩu chính hãng từ Hoa Kỳ
+            </span>
+          </div>
+        </div>
       </div>
     </section>
   </Layout>
