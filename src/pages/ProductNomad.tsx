@@ -160,7 +160,7 @@ const ProductNomad = () => {
               autoPlay
               preload="auto"
             >
-              <source src="https://kinis.vn/wp-content/uploads/2026/04/Nomad-rotate.mp4" type="video/mp4" />
+              <source src="https://kinis.vn/wp-content/uploads/2026/04/nomad-180-rotate.mp4" type="video/mp4" />
             </video>
           </div>
 
@@ -202,77 +202,109 @@ const ProductNomad = () => {
       </div>
     </section>
 
-    {/* Adaptation Roadmap Section */}
-    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "hsl(0,0%,98%)" }}>
+    {/* Adaptation Roadmap Section - Dark */}
+    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-fade-up">
           <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: "hsl(27,100%,52%)" }}>
             Lộ trình thích nghi
           </span>
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
             Giày Kinis Nomad giúp bàn chân mạnh hơn
           </h2>
-          <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-4 text-base sm:text-lg leading-relaxed" style={{ color: "hsl(0,0%,65%)" }}>
             Nhưng cần thời gian thích nghi. Hãy kiên nhẫn theo lộ trình 3–6 tháng mà Kinis gợi ý.
           </p>
         </div>
 
-        {/* Timeline */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
+        {/* Arrow Timeline */}
+        <div className="flex flex-col md:flex-row items-stretch max-w-5xl mx-auto gap-0">
           {[
             {
               phase: "Giai đoạn 1",
-              time: "Tuần 1 – 2: Làm quen",
+              time: "Tuần 1 – 2",
+              subtitle: "Làm quen",
               tasks: ["Mang 1–2 giờ mỗi ngày", "Tránh tập nặng hoặc vận động cường độ cao"],
               color: "hsl(27,100%,52%)",
+              bg: "hsl(27,100%,52%)",
             },
             {
               phase: "Giai đoạn 2",
-              time: "Tuần 3 – 4: Cảm nhận",
+              time: "Tuần 3 – 4",
+              subtitle: "Cảm nhận",
               tasks: ["Bắt đầu các bài tập nhẹ", "Làm quen với cảm giác tiếp đất"],
               color: "hsl(27,90%,46%)",
+              bg: "hsl(27,90%,46%)",
             },
             {
               phase: "Giai đoạn 3",
-              time: "Sau 1 – 2 tháng: Bứt phá",
+              time: "Sau 1 – 2 tháng",
+              subtitle: "Bứt phá",
               tasks: ["Có thể sử dụng như giày tập chính", "Đôi chân thích nghi hoàn toàn"],
               color: "hsl(27,80%,40%)",
+              bg: "hsl(27,80%,40%)",
             },
-          ].map((stage, i) => (
+          ].map((stage, i, arr) => (
             <div
               key={stage.phase}
-              className="relative rounded-2xl p-6 sm:p-8 bg-card border border-border animate-fade-up"
-              style={{ animationDelay: `${i * 120}ms`, boxShadow: "0 4px 24px -4px rgba(0,0,0,0.06)" }}
+              className="relative flex-1 animate-fade-up"
+              style={{ animationDelay: `${i * 120}ms` }}
             >
-              {/* Phase number badge */}
-              <div
-                className="w-10 h-10 rounded-full flex items-center justify-center text-white font-display font-bold text-sm mb-4"
-                style={{ backgroundColor: stage.color }}
-              >
-                {i + 1}
+              {/* Arrow shape container */}
+              <div className="relative h-full">
+                {/* Main card body */}
+                <div
+                  className="relative h-full p-6 sm:p-7"
+                  style={{
+                    backgroundColor: stage.bg,
+                    clipPath: i < arr.length - 1
+                      ? "polygon(0 0, calc(100% - 24px) 0, 100% 50%, calc(100% - 24px) 100%, 0 100%)"
+                      : "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+                    paddingRight: i < arr.length - 1 ? "2.5rem" : undefined,
+                    paddingLeft: i > 0 ? "2rem" : undefined,
+                    borderRadius: i === 0 ? "12px 0 0 12px" : i === arr.length - 1 ? "0 12px 12px 0" : undefined,
+                  }}
+                >
+                  {/* Phase number */}
+                  <div className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-display font-bold mb-3" style={{ backgroundColor: "hsla(0,0%,100%,0.25)", color: "#fff" }}>
+                    {i + 1}
+                  </div>
+                  <p className="text-[10px] sm:text-xs font-body font-semibold uppercase tracking-wider mb-0.5" style={{ color: "hsla(0,0%,100%,0.7)" }}>
+                    {stage.phase}
+                  </p>
+                  <h3 className="font-display text-base sm:text-lg font-bold text-white mb-1">
+                    {stage.time}
+                  </h3>
+                  <p className="text-xs sm:text-sm font-semibold text-white mb-3" style={{ opacity: 0.85 }}>
+                    {stage.subtitle}
+                  </p>
+                  <ul className="space-y-2">
+                    {stage.tasks.map((t) => (
+                      <li key={t} className="flex items-start gap-2">
+                        <div className="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsla(0,0%,100%,0.25)" }}>
+                          <Check className="w-2.5 h-2.5 text-white" />
+                        </div>
+                        <span className="text-xs sm:text-sm" style={{ color: "hsla(0,0%,100%,0.9)" }}>{t}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <p className="text-xs font-body font-semibold uppercase tracking-wider mb-1" style={{ color: stage.color }}>
-                {stage.phase}
-              </p>
-              <h3 className="font-display text-lg sm:text-xl font-bold text-foreground mb-4">
-                {stage.time}
-              </h3>
-              <ul className="space-y-2.5">
-                {stage.tasks.map((t) => (
-                  <li key={t} className="flex items-start gap-2.5">
-                    <div className="mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${stage.color}15` }}>
-                      <Check className="w-3 h-3" style={{ color: stage.color }} />
-                    </div>
-                    <span className="text-sm sm:text-base text-muted-foreground">{t}</span>
-                  </li>
-                ))}
-              </ul>
+
+              {/* Mobile arrow indicator */}
+              {i < arr.length - 1 && (
+                <div className="flex md:hidden justify-center py-2">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 4L12 20M12 20L6 14M12 20L18 14" stroke="hsl(27,100%,52%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+              )}
             </div>
           ))}
         </div>
 
         {/* Care note */}
-        <p className="text-center text-sm text-muted-foreground mt-10 sm:mt-12 max-w-2xl mx-auto animate-fade-up">
+        <p className="text-center text-sm mt-10 sm:mt-12 max-w-2xl mx-auto animate-fade-up" style={{ color: "hsl(0,0%,55%)" }}>
           ⚡ Có thể giặt máy (sử dụng túi giặt) và phơi khô tự nhiên để giữ độ bền của giày.
         </p>
       </div>
