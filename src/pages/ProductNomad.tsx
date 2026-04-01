@@ -314,6 +314,16 @@ const ProductNomad = () => {
       </div>
     </section>
 
+    {/* KOL Banner - flush with Roadmap */}
+    <section className="w-full">
+      <img
+        src={nomadKolBanner}
+        alt="Kinis Nomad KOL"
+        className="w-full block"
+        loading="lazy"
+      />
+    </section>
+
     {/* Đối tượng Phù hợp Section */}
     <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "hsl(0,0%,98%)" }}>
       <div className="max-w-7xl mx-auto">
