@@ -42,7 +42,7 @@ const products = {
     subtitle: "Giày luyện tập chuyên sâu",
     description:
       "Kinis Apollo được thiết kế dành riêng cho những buổi tập luyện cường độ cao. Kết hợp triết lý barefoot với công nghệ hỗ trợ vận động, Apollo giúp bạn tối ưu hiệu suất trong mọi bài tập — từ HIIT, CrossFit đến weightlifting.",
-    image: apolloShowcase,
+    image: apolloShowcaseUrl,
     tags: ["HIIT", "CrossFit", "Weightlifting", "Luyện tập chuyên sâu"],
     href: "/san-pham/apollo",
   },
