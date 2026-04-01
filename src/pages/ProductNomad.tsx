@@ -262,32 +262,20 @@ const ProductNomad = () => {
                   />
                 </div>
 
-                {/* Glass card */}
-                <div
-                  className="rounded-2xl p-6 sm:p-7 w-full"
-                  style={{
-                    background: "linear-gradient(135deg, hsla(0,0%,100%,0.06) 0%, hsla(0,0%,100%,0.02) 100%)",
-                    backdropFilter: "blur(16px)",
-                    WebkitBackdropFilter: "blur(16px)",
-                    border: "1px solid hsla(0,0%,100%,0.08)",
-                    boxShadow: "0 8px 32px hsla(0,0%,0%,0.3), inset 0 1px 0 hsla(0,0%,100%,0.06)",
-                  }}
-                >
-                  <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-1">
-                    {stage.time}
-                  </h3>
-                  <p className="text-sm sm:text-base font-semibold mb-4" style={{ color: "hsl(27,100%,60%)" }}>
-                    {stage.subtitle}
-                  </p>
-                  <ul className="space-y-3 text-left">
-                    {stage.tasks.map((t) => (
-                      <li key={t} className="flex items-start gap-2.5">
-                        <Check className="w-4.5 h-4.5 mt-0.5 flex-shrink-0" style={{ color: "hsl(27,100%,52%)" }} />
-                        <span className="text-sm sm:text-base" style={{ color: "hsl(0,0%,70%)" }}>{t}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-1">
+                  {stage.time}
+                </h3>
+                <p className="text-sm sm:text-base font-semibold mb-4" style={{ color: "hsl(27,100%,60%)" }}>
+                  {stage.subtitle}
+                </p>
+                <ul className="space-y-3 text-left">
+                  {stage.tasks.map((t) => (
+                    <li key={t} className="flex items-start gap-2.5">
+                      <Check className="w-4.5 h-4.5 mt-0.5 flex-shrink-0" style={{ color: "hsl(27,100%,52%)" }} />
+                      <span className="text-sm sm:text-base" style={{ color: "hsl(0,0%,70%)" }}>{t}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
