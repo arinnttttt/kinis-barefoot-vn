@@ -328,6 +328,81 @@ const ProductNomad = () => {
         </div>
       </div>
     </section>
+
+    {/* Testimonial Section */}
+    <TestimonialSection page="nomad" />
+
+    {/* Disclaimer / Warning Section */}
+    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#FFFFFF" }}>
+      <div className="max-w-4xl mx-auto">
+        <div
+          className="rounded-2xl p-6 sm:p-8 lg:p-10 animate-fade-up"
+          style={{
+            backgroundColor: "hsl(0 80% 97%)",
+            border: "1px solid hsl(0 70% 90%)",
+          }}
+        >
+          <div className="flex items-start gap-4 mb-6">
+            <div
+              className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+              style={{ backgroundColor: "hsl(0 70% 55%)", color: "#fff" }}
+            >
+              <AlertTriangle className="w-5 h-5" />
+            </div>
+            <div>
+              <h2 className="font-display text-xl sm:text-2xl font-bold" style={{ color: "hsl(0 70% 35%)" }}>
+                Lưu ý – Khuyến nghị quan trọng
+              </h2>
+              <p className="text-sm sm:text-base mt-1" style={{ color: "hsl(0 40% 45%)" }}>
+                Để đảm bảo an toàn và độ bền sản phẩm, Kinis Nomad không khuyến khích sử dụng trong các trường hợp sau:
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            {[
+              "Không sử dụng để chạy bộ đường dài",
+              "Không sử dụng trong môi trường ướt hoặc trơn trượt",
+              "Không dùng tại công trường hoặc khu vực có vật sắc nhọn",
+              "Không dùng khi đang có chấn thương bàn chân cấp tính",
+            ].map((item) => (
+              <div
+                key={item}
+                className="flex items-start gap-3 px-4 py-3 rounded-xl"
+                style={{ backgroundColor: "hsl(0 60% 94%)" }}
+              >
+                <span className="text-base mt-0.5" style={{ color: "hsl(0 70% 50%)" }}>✕</span>
+                <span className="text-sm sm:text-base font-medium" style={{ color: "hsl(0 50% 30%)" }}>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Quote CTA Section - Dark */}
+    <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
+      <div className="max-w-3xl mx-auto text-center animate-fade-up">
+        <div className="mb-3" style={{ color: "hsl(27,100%,52%)" }}>
+          <svg className="w-10 h-10 mx-auto opacity-40" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C9.591 11.69 11 13.166 11 15c0 1.933-1.567 3.5-3.5 3.5-1.172 0-2.324-.566-2.917-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C19.591 11.69 21 13.166 21 15c0 1.933-1.567 3.5-3.5 3.5-1.172 0-2.324-.566-2.917-1.179z"/></svg>
+        </div>
+        <p className="font-display text-xl sm:text-2xl md:text-3xl font-bold leading-snug text-white mb-3">
+          Kinis Nomad không chỉ là một đôi giày tập luyện.
+        </p>
+        <p className="text-base sm:text-lg leading-relaxed mb-10" style={{ color: "hsl(0,0%,60%)" }}>
+          Đó là công cụ giúp bạn kích hoạt sức mạnh tự nhiên của đôi chân và chăm sóc sức khỏe vận động bền vững.
+        </p>
+        <a
+          href="https://kinis.vn/san-pham/nomad"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:px-10 sm:py-4 font-body font-semibold text-sm sm:text-base rounded-xl text-white transition-opacity hover:opacity-90"
+          style={{ backgroundColor: "hsl(27,100%,52%)" }}
+        >
+          Mua Trực Tiếp Tại Đại Lý
+        </a>
+      </div>
+    </section>
   </Layout>
   );
 };
