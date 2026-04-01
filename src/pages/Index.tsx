@@ -4,6 +4,7 @@ import Layout from "@/components/layout/Layout";
 const heroImage = "https://kinis.vn/wp-content/uploads/2026/03/mom-spending-time-with-kid-beach-scaled.jpg";
 import lucyShowcase from "@/assets/lucy-showcase-v3.png";
 import nomadShowcase from "@/assets/nomad-showcase-v2.jpg";
+import apolloShowcase from "@/assets/apollo-showcase.jpg";
 import FootAnatomyInteractive from "@/components/FootAnatomyInteractive";
 import LifestyleBanner from "@/components/LifestyleBanner";
 import WhyKinisDifferent from "@/components/WhyKinisDifferent";
