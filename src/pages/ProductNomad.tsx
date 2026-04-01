@@ -1,6 +1,8 @@
 import Layout from "@/components/layout/Layout";
 import { Footprints, Activity, Brain, Shield, Feather, Wind, SprayCan, Check } from "lucide-react";
 import nomadImage from "@/assets/kinis-nomad.png";
+import nomadFront from "@/assets/kinis-nomad-front.png";
+import nomadBack from "@/assets/kinis-nomad-back.jpg";
 
 const benefits = [
   {
@@ -122,39 +124,69 @@ const ProductNomad = () => (
       </div>
     </section>
 
-    {/* Technology Section */}
-    <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-background">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 animate-fade-up">
-          <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: "hsl(27,100%,52%)" }}>
-            Công nghệ
-          </span>
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">
-            Công nghệ vật liệu đột phá
-          </h2>
-          <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
-            Kinis Nomad sử dụng 100% sợi kỹ thuật Honeywell Spectra® – loại sợi siêu cường lực thường được sử dụng trong áo chống đạn và thiết bị bảo hộ cao cấp.
-          </p>
-        </div>
+    {/* Technology Section - Dark & Bold */}
+    <section className="relative py-20 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
+      {/* Subtle glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-15 pointer-events-none" style={{ background: "radial-gradient(circle, hsl(27,100%,52%) 0%, transparent 70%)" }} />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 max-w-3xl mx-auto">
-          {[
-            { icon: Shield, text: "Vải siêu bền và chống mài mòn" },
-            { icon: Feather, text: "Độ đàn hồi cao – ôm chân như 'làn da thứ hai'" },
-            { icon: Wind, text: "Nhẹ và thoáng khí – mang lại cảm giác tự do" },
-            { icon: SprayCan, text: "Kháng khuẩn – kiểm soát mùi khi tập luyện" },
-          ].map((item, i) => (
-            <div
-              key={item.text}
-              className="flex items-start gap-4 rounded-2xl p-5 sm:p-6 bg-card border border-border animate-fade-up"
-              style={{ animationDelay: `${i * 80}ms`, boxShadow: "0 4px 24px -4px rgba(0,0,0,0.06)" }}
-            >
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(27 100% 52% / 0.1)" }}>
-                <item.icon className="w-5 h-5" style={{ color: "hsl(27,100%,52%)" }} />
-              </div>
-              <span className="text-sm sm:text-base font-medium text-foreground leading-relaxed">{item.text}</span>
+      <div className="relative max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Rotating shoe */}
+          <div className="flex items-center justify-center animate-fade-up">
+            <div className="relative w-full max-w-md aspect-square">
+              <style>{`
+                @keyframes nomadSpin {
+                  0%, 40% { opacity: 1; }
+                  50%, 90% { opacity: 0; }
+                  100% { opacity: 1; }
+                }
+                @keyframes nomadSpinReverse {
+                  0%, 40% { opacity: 0; }
+                  50%, 90% { opacity: 1; }
+                  100% { opacity: 0; }
+                }
+                .nomad-front { animation: nomadSpin 4s ease-in-out infinite; }
+                .nomad-back { animation: nomadSpinReverse 4s ease-in-out infinite; }
+              `}</style>
+              <img src={nomadFront} alt="Kinis Nomad - Mặt trước" className="nomad-front absolute inset-0 w-full h-full object-contain drop-shadow-2xl" />
+              <img src={nomadBack} alt="Kinis Nomad - Mặt sau" className="nomad-back absolute inset-0 w-full h-full object-contain drop-shadow-2xl" />
             </div>
-          ))}
+          </div>
+
+          {/* Text content */}
+          <div className="animate-fade-up [animation-delay:150ms]">
+            <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: "hsl(27,100%,52%)" }}>
+              Công nghệ
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#ffffff" }}>
+              Công nghệ vật liệu
+              <br />
+              <span style={{ color: "hsl(27,100%,52%)" }}>đột phá</span>
+            </h2>
+            <p className="mt-4 text-base sm:text-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
+              Kinis Nomad sử dụng 100% sợi kỹ thuật Honeywell Spectra® – loại sợi siêu cường lực thường được sử dụng trong áo chống đạn và thiết bị bảo hộ cao cấp.
+            </p>
+
+            <div className="mt-8 sm:mt-10 space-y-4">
+              {[
+                { icon: Shield, text: "Vải siêu bền và chống mài mòn" },
+                { icon: Feather, text: "Độ đàn hồi cao – ôm chân như 'làn da thứ hai'" },
+                { icon: Wind, text: "Nhẹ và thoáng khí – mang lại cảm giác tự do" },
+                { icon: SprayCan, text: "Kháng khuẩn – kiểm soát mùi khi tập luyện" },
+              ].map((item, i) => (
+                <div
+                  key={item.text}
+                  className="flex items-center gap-4 animate-fade-up"
+                  style={{ animationDelay: `${200 + i * 100}ms` }}
+                >
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(27 100% 52% / 0.15)" }}>
+                    <item.icon className="w-5 h-5" style={{ color: "hsl(27,100%,52%)" }} />
+                  </div>
+                  <span className="text-sm sm:text-base font-medium" style={{ color: "rgba(255,255,255,0.85)" }}>{item.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
