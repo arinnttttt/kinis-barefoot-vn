@@ -716,6 +716,8 @@ add_action('add_meta_boxes', 'kinis_testimonial_meta_boxes');
 function kinis_testimonial_meta_html(\$post) {
     \$stars = get_post_meta(\$post->ID, '_kinis_testimonial_stars', true) ?: '5';
     \$category = get_post_meta(\$post->ID, '_kinis_testimonial_category', true) ?: '';
+    \$pages = get_post_meta(\$post->ID, '_kinis_testimonial_pages', true);
+    if (!is_array(\$pages)) \$pages = array('home');
     wp_nonce_field('kinis_testimonial_nonce', 'kinis_testimonial_nonce_field');
     ?>
     <p><label><strong>Số sao (1-5):</strong></label><br>
@@ -726,6 +728,22 @@ function kinis_testimonial_meta_html(\$post) {
     </select></p>
     <p><label><strong>Nhãn danh mục:</strong></label><br>
     <input type="text" name="kinis_testimonial_category" value="<?php echo esc_attr(\$category); ?>" style="width:100%;" placeholder="VD: Excellent, Great, Fantastic"></p>
+    <hr style="margin:12px 0;">
+    <p><label><strong>Hiển thị ở trang:</strong></label></p>
+    <?php
+    \$page_options = array(
+        'home' => 'Trang chủ (Home)',
+        'nomad' => 'Kinis Nomad',
+        'lucy' => 'Kinis Lucy',
+    );
+    foreach (\$page_options as \$val => \$label) : ?>
+        <label style="display:block;margin:4px 0;">
+            <input type="checkbox" name="kinis_testimonial_pages[]" value="<?php echo \$val; ?>" <?php checked(in_array(\$val, \$pages)); ?>>
+            <?php echo \$label; ?>
+        </label>
+    <?php endforeach; ?>
+    <p class="description" style="margin-top:8px;">Chọn trang mà đánh giá này sẽ hiển thị. Mặc định: Trang chủ.</p>
+    <hr style="margin:12px 0;">
     <p class="description">Tiêu đề = Tên khách hàng. Nội dung = Lời đánh giá.</p>
     <?php
 }
@@ -737,6 +755,8 @@ function kinis_save_testimonial_meta(\$post_id) {
     if (!current_user_can('edit_post', \$post_id)) return;
     if (isset(\$_POST['kinis_testimonial_stars'])) { update_post_meta(\$post_id, '_kinis_testimonial_stars', sanitize_text_field(\$_POST['kinis_testimonial_stars'])); }
     if (isset(\$_POST['kinis_testimonial_category'])) { update_post_meta(\$post_id, '_kinis_testimonial_category', sanitize_text_field(\$_POST['kinis_testimonial_category'])); }
+    \$pages = isset(\$_POST['kinis_testimonial_pages']) ? array_map('sanitize_text_field', \$_POST['kinis_testimonial_pages']) : array('home');
+    update_post_meta(\$post_id, '_kinis_testimonial_pages', \$pages);
 }
 add_action('save_post_kinis_testimonial', 'kinis_save_testimonial_meta');
 
@@ -763,6 +783,7 @@ function kinis_seed_testimonials() {
         if (\$post_id && !is_wp_error(\$post_id)) {
             update_post_meta(\$post_id, '_kinis_testimonial_stars', \$t['stars']);
             update_post_meta(\$post_id, '_kinis_testimonial_category', \$t['category']);
+            update_post_meta(\$post_id, '_kinis_testimonial_pages', array('home'));
         }
     }
     update_option('kinis_testimonials_seeded', true);
