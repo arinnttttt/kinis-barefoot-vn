@@ -317,7 +317,7 @@ const ProductNomad = () => {
               className="rounded-2xl overflow-hidden bg-card border border-border animate-fade-up"
               style={{ animationDelay: `${i * 80}ms`, boxShadow: "0 4px 24px -4px rgba(0,0,0,0.06)" }}
             >
-              <img src={item.img} alt={item.title} loading="lazy" width={1024} height={576} className="w-full aspect-video object-cover" />
+              <img src={item.img} alt={item.title} loading="lazy" width={1824} height={512} className="w-full object-cover" style={{ aspectRatio: "32/9" }} />
               <div className="p-5 sm:p-6">
                 <h3 className="font-display text-lg sm:text-xl font-semibold mb-2 text-foreground">{item.title}</h3>
                 <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">{item.desc}</p>
