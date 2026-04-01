@@ -361,7 +361,7 @@ const ProductNomad = () => {
     </section>
 
     {/* Disclaimer / Warning Section */}
-    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#FFFFFF" }}>
+    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 bg-background">
       <div className="max-w-4xl mx-auto">
         <div
           className="rounded-2xl p-6 sm:p-8 lg:p-10 animate-fade-up"
