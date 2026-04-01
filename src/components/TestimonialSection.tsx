@@ -104,7 +104,7 @@ interface TestimonialSectionProps {
   subtitle?: string | null;
 }
 
-const TestimonialSection = ({ page = "home" }: TestimonialSectionProps) => {
+const TestimonialSection = ({ page = "home", title, subtitle }: TestimonialSectionProps) => {
   const filtered = testimonials.filter((t) => !t.pages || t.pages.includes(page));
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
