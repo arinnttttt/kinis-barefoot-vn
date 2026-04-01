@@ -62,7 +62,7 @@ const ProductNomad = () => {
     {/* Hero Section - White, 2 columns */}
     <section style={{ backgroundColor: "#FFFFFF" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-[70vh] py-12 sm:py-16 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 items-center min-h-[70vh] py-12 sm:py-14 lg:py-20">
           {/* Text column */}
           <div className="animate-fade-up">
             <p className="text-sm sm:text-base font-body uppercase tracking-widest mb-3 text-muted-foreground">
@@ -73,12 +73,12 @@ const ProductNomad = () => {
               <br />
               <span style={{ color: "hsl(27,100%,52%)" }}>sức mạnh</span> đôi chân
             </h1>
-            <div className="mt-8 sm:mt-10">
+            <div className="mt-6 sm:mt-8">
               <a
                 href="https://kinis.vn/san-pham/nomad"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:px-10 sm:py-4 font-body font-semibold text-sm sm:text-base rounded-xl text-white transition-opacity hover:opacity-90"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 md:px-8 md:py-3.5 font-body font-semibold text-sm rounded-xl text-white transition-opacity hover:opacity-90"
                 style={{ backgroundColor: "hsl(27,100%,52%)" }}
               >
                 Mua Trực Tiếp Tại Đại Lý
@@ -91,7 +91,7 @@ const ProductNomad = () => {
             <img
               src={nomadImage}
               alt="Kinis Nomad"
-              className="w-3/4 max-w-2xl lg:max-w-3xl object-contain"
+              className="w-full md:w-[90%] max-w-2xl lg:max-w-3xl object-contain"
             />
           </div>
         </div>
