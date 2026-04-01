@@ -16,19 +16,19 @@ import { useEffect, useRef } from "react";
 
 const benefits = [
   {
-    icon: Footprints,
+    icon: Zap,
     title: "Kích hoạt sức mạnh bàn chân",
     description:
       "Thiết kế zero-drop hay đế phẳng, giúp cơ bàn chân hoạt động tự nhiên, tăng cường sức mạnh nội tại của cơ chân theo thời gian.",
   },
   {
-    icon: Activity,
+    icon: Compass,
     title: "Hiệu chỉnh dáng đi và tư thế",
     description:
       "Đế phẳng giúp cơ thể tự căn chỉnh tư thế đứng và di chuyển đúng sinh cơ học.",
   },
   {
-    icon: Brain,
+    icon: Radio,
     title: "Tăng cường cảm nhận mặt đất",
     description:
       "Đế mỏng truyền tải tín hiệu từ mặt đất, nâng cao khả năng thăng bằng và phản xạ.",
