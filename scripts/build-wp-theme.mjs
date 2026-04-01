@@ -738,6 +738,7 @@ function kinis_testimonial_meta_html(\$post) {
         'home' => 'Trang chủ (Home)',
         'nomad' => 'Kinis Nomad',
         'lucy' => 'Kinis Lucy',
+        'apollo' => 'Kinis Apollo',
     );
     foreach (\$page_options as \$val => \$label) : ?>
         <label style="display:block;margin:4px 0;">
