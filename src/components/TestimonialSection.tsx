@@ -99,10 +99,12 @@ const TestimonialCard = ({ item }: { item: (typeof testimonials)[number] }) => (
 );
 
 interface TestimonialSectionProps {
-  page?: string; // filter testimonials by page, e.g. "home", "nomad", "lucy"
+  page?: string;
+  title?: React.ReactNode;
+  subtitle?: string | null;
 }
 
-const TestimonialSection = ({ page = "home" }: TestimonialSectionProps) => {
+const TestimonialSection = ({ page = "home", title, subtitle }: TestimonialSectionProps) => {
   const filtered = testimonials.filter((t) => !t.pages || t.pages.includes(page));
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
@@ -148,15 +150,17 @@ const TestimonialSection = ({ page = "home" }: TestimonialSectionProps) => {
               className="font-display text-2xl sm:text-3xl lg:text-[2.5rem] font-bold leading-tight uppercase tracking-tight mb-2 sm:mb-3"
               style={{ color: "hsl(0,0%,10%)" }}
             >
-              Phản hồi chân thực từ{" "}
-              <span style={{ color: "hsl(27,100%,52%)" }}>khách hàng</span>
+              {title || (<>Phản hồi chân thực từ{" "}
+              <span style={{ color: "hsl(27,100%,52%)" }}>khách hàng</span></>)}
             </h2>
-            <p
-              className="text-sm sm:text-base lg:text-lg max-w-xl leading-relaxed"
-              style={{ color: "hsl(0,0%,50%)" }}
-            >
-              Những chia sẻ thật từ người dùng Kinis tại Hoa Kỳ
-            </p>
+            {subtitle !== null && (
+              <p
+                className="text-sm sm:text-base lg:text-lg max-w-xl leading-relaxed"
+                style={{ color: "hsl(0,0%,50%)" }}
+              >
+                {subtitle || "Những chia sẻ thật từ người dùng Kinis tại Hoa Kỳ"}
+              </p>
+            )}
           </div>
 
           {/* Nav arrows - hidden on mobile, visible on sm+ */}
