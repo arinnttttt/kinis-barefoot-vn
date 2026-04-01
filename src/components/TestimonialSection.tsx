@@ -98,7 +98,12 @@ const TestimonialCard = ({ item }: { item: (typeof testimonials)[number] }) => (
   </div>
 );
 
-const TestimonialSection = () => {
+interface TestimonialSectionProps {
+  page?: string; // filter testimonials by page, e.g. "home", "nomad", "lucy"
+}
+
+const TestimonialSection = ({ page = "home" }: TestimonialSectionProps) => {
+  const filtered = testimonials.filter((t) => !t.pages || t.pages.includes(page));
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
