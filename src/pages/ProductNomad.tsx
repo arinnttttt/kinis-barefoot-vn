@@ -11,6 +11,7 @@ import iconNoRunning from "@/assets/icon-no-running.png";
 import iconNoWet from "@/assets/icon-no-wet.png";
 import iconNoConstruction from "@/assets/icon-no-construction.png";
 import iconNoInjury from "@/assets/icon-no-injury.png";
+import nomadKolBanner from "@/assets/nomad-kol-banner.png";
 import TestimonialSection from "@/components/TestimonialSection";
 import { useEffect, useRef } from "react";
 
@@ -223,7 +224,7 @@ const ProductNomad = () => {
     </section>
 
     {/* Adaptation Roadmap Section - Dark */}
-    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
+    <section className="pt-10 sm:pt-14 lg:pt-16 pb-0 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-fade-up">
           <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: "hsl(27,100%,52%)" }}>
@@ -312,6 +313,16 @@ const ProductNomad = () => {
           ⚡ Có thể giặt máy (sử dụng túi giặt) và phơi khô tự nhiên để giữ độ bền của giày.
         </p>
       </div>
+    </section>
+
+    {/* KOL Banner - flush with Roadmap */}
+    <section className="w-full">
+      <img
+        src={nomadKolBanner}
+        alt="Kinis Nomad KOL"
+        className="w-full block"
+        loading="lazy"
+      />
     </section>
 
     {/* Đối tượng Phù hợp Section */}
