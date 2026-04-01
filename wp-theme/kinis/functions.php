@@ -317,14 +317,7 @@ add_action('add_meta_boxes', 'kinis_testimonial_meta_boxes');
 function kinis_testimonial_meta_html($post) {
     $stars = get_post_meta($post->ID, '_kinis_testimonial_stars', true) ?: '5';
     $category = get_post_meta($post->ID, '_kinis_testimonial_category', true) ?: '';
-    $pages = get_post_meta($post->ID, '_kinis_testimonial_pages', true);
-    if (!is_array($pages)) $pages = array('home');
     wp_nonce_field('kinis_testimonial_nonce', 'kinis_testimonial_nonce_field');
-    $available_pages = array(
-        'home' => 'Trang chủ',
-        'nomad' => 'Kinis Nomad',
-        'lucy' => 'Kinis Lucy',
-    );
     ?>
     <p><label><strong>Số sao (1-5):</strong></label><br>
     <select name="kinis_testimonial_stars" style="width:100%;">
@@ -334,15 +327,7 @@ function kinis_testimonial_meta_html($post) {
     </select></p>
     <p><label><strong>Nhãn danh mục:</strong></label><br>
     <input type="text" name="kinis_testimonial_category" value="<?php echo esc_attr($category); ?>" style="width:100%;" placeholder="VD: Excellent, Great, Fantastic"></p>
-    <p><label><strong>Hiển thị ở trang:</strong></label><br>
-    <?php foreach ($available_pages as $key => $label) : ?>
-        <label style="display:block;margin:4px 0;">
-            <input type="checkbox" name="kinis_testimonial_pages[]" value="<?php echo $key; ?>" <?php checked(in_array($key, $pages)); ?>>
-            <?php echo $label; ?>
-        </label>
-    <?php endforeach; ?>
-    </p>
-    <p class="description">Tiêu đề = Tên khách hàng. Nội dung = Lời đánh giá.<br>Chọn trang mà đánh giá này sẽ hiển thị. Trang chủ luôn được chọn mặc định.</p>
+    <p class="description">Tiêu đề = Tên khách hàng. Nội dung = Lời đánh giá.</p>
     <?php
 }
 
@@ -353,8 +338,6 @@ function kinis_save_testimonial_meta($post_id) {
     if (!current_user_can('edit_post', $post_id)) return;
     if (isset($_POST['kinis_testimonial_stars'])) { update_post_meta($post_id, '_kinis_testimonial_stars', sanitize_text_field($_POST['kinis_testimonial_stars'])); }
     if (isset($_POST['kinis_testimonial_category'])) { update_post_meta($post_id, '_kinis_testimonial_category', sanitize_text_field($_POST['kinis_testimonial_category'])); }
-    $pages = isset($_POST['kinis_testimonial_pages']) ? array_map('sanitize_text_field', $_POST['kinis_testimonial_pages']) : array('home');
-    update_post_meta($post_id, '_kinis_testimonial_pages', $pages);
 }
 add_action('save_post_kinis_testimonial', 'kinis_save_testimonial_meta');
 
@@ -362,12 +345,12 @@ add_action('save_post_kinis_testimonial', 'kinis_save_testimonial_meta');
 function kinis_seed_testimonials() {
     if (get_option('kinis_testimonials_seeded')) return;
     $testimonials = array(
-        array('name' => 'Shella D.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Đây là đôi giày barefoot tốt nhất mà tôi từng thử! Thiết kế tối giản nhưng vẫn đảm bảo bảo vệ, phù hợp hoàn hảo cho những buổi đi bộ dài. Chất liệu nhẹ, thoáng khí, chân cảm nhận được mặt đất rõ ràng."', 'pages' => array('home', 'nomad')),
-        array('name' => 'Gregory P.', 'stars' => 5, 'category' => 'Fantastic', 'review' => '"Tôi mua đôi Lucy cho RJ. Theo lời anh ấy: \"Đôi giày này đã thay đổi cách tôi bước đi. Thoải mái tự nhiên, nhẹ nhàng mà vẫn chắc chắn. Giờ tôi chỉ muốn đi bộ thôi!\""', 'pages' => array('home')),
-        array('name' => 'Brian K.', 'stars' => 4, 'category' => 'Great', 'review' => '"Tôi vừa trải qua phẫu thuật bàn chân và đôi giày Kinis thực sự rất phù hợp với tình trạng hiện tại. Bàn chân được tự do co duỗi và cảm nhận mặt đất, giúp quá trình phục hồi thoải mái hơn rất nhiều."', 'pages' => array('home', 'nomad')),
-        array('name' => 'Jennifer B.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Tôi rất thích cảm giác vừa vặn của đôi giày! Giày rất nhẹ và ôm chân hoàn hảo từ lần đầu tiên. Rất phù hợp cho những ai đang tìm kiếm giày barefoot cho đời thường."', 'pages' => array('home', 'nomad')),
-        array('name' => 'Casey B.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Ban đầu tôi hơi do dự khi mua, nhưng giờ rất vui vì đã chọn chúng cho hành trình barefoot. Sau 2 tuần đi bộ mỗi ngày, cảm giác thăng bằng của tôi cải thiện rõ rệt."', 'pages' => array('home')),
-        array('name' => 'Matthew O.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Đôi giày hoàn hảo với tôi. Tôi không thích mang giày và có cổ chân yếu, nhưng đôi giày này giải quyết được cả hai. Thoải mái như một đôi tất nhưng vẫn có độ bảo vệ của giày."', 'pages' => array('home', 'nomad')),
+        array('name' => 'Shella D.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Đây là đôi giày barefoot tốt nhất mà tôi từng thử! Thiết kế tối giản nhưng vẫn đảm bảo bảo vệ, phù hợp hoàn hảo cho những buổi đi bộ dài. Chất liệu nhẹ, thoáng khí, chân cảm nhận được mặt đất rõ ràng."'),
+        array('name' => 'Gregory P.', 'stars' => 5, 'category' => 'Fantastic', 'review' => '"Tôi mua đôi Lucy cho RJ. Theo lời anh ấy: \"Đôi giày này đã thay đổi cách tôi bước đi. Thoải mái tự nhiên, nhẹ nhàng mà vẫn chắc chắn. Giờ tôi chỉ muốn đi bộ thôi!\""'),
+        array('name' => 'Brian K.', 'stars' => 4, 'category' => 'Great', 'review' => '"Tôi vừa trải qua phẫu thuật bàn chân và đôi giày Kinis thực sự rất phù hợp với tình trạng hiện tại. Bàn chân được tự do co duỗi và cảm nhận mặt đất, giúp quá trình phục hồi thoải mái hơn rất nhiều."'),
+        array('name' => 'Jennifer B.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Tôi rất thích cảm giác vừa vặn của đôi giày! Giày rất nhẹ và ôm chân hoàn hảo từ lần đầu tiên. Rất phù hợp cho những ai đang tìm kiếm giày barefoot cho đời thường."'),
+        array('name' => 'Casey B.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Ban đầu tôi hơi do dự khi mua, nhưng giờ rất vui vì đã chọn chúng cho hành trình barefoot. Sau 2 tuần đi bộ mỗi ngày, cảm giác thăng bằng của tôi cải thiện rõ rệt."'),
+        array('name' => 'Matthew O.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Đôi giày hoàn hảo với tôi. Tôi không thích mang giày và có cổ chân yếu, nhưng đôi giày này giải quyết được cả hai. Thoải mái như một đôi tất nhưng vẫn có độ bảo vệ của giày."'),
     );
     $order = 1;
     foreach ($testimonials as $t) {
@@ -381,7 +364,6 @@ function kinis_seed_testimonials() {
         if ($post_id && !is_wp_error($post_id)) {
             update_post_meta($post_id, '_kinis_testimonial_stars', $t['stars']);
             update_post_meta($post_id, '_kinis_testimonial_category', $t['category']);
-            update_post_meta($post_id, '_kinis_testimonial_pages', $t['pages']);
         }
     }
     update_option('kinis_testimonials_seeded', true);
