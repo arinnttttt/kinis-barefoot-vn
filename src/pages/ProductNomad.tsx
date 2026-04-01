@@ -160,7 +160,7 @@ const ProductNomad = () => {
               autoPlay
               preload="auto"
             >
-              <source src="https://kinis.vn/wp-content/uploads/2026/04/Nomad-rotate.mp4" type="video/mp4" />
+              <source src="https://kinis.vn/wp-content/uploads/2026/04/nomad-180-rotate.mp4" type="video/mp4" />
             </video>
           </div>
 
