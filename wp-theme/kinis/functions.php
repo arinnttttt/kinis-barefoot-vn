@@ -9,7 +9,7 @@ function kinis_enqueue_assets() {
     wp_enqueue_style('kinis-fonts', 'https://fonts.googleapis.com/css2?family=Phudu:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap', array(), null);
     
     // Main CSS (from Vite build)
-
+    wp_enqueue_style('kinis-main', get_template_directory_uri() . '/assets/css/index-DDq6IvMv.css', array(), '3.0.2');
     
     // Theme stylesheet
     wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '3.0.2');
