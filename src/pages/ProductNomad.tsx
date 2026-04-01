@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import { Footprints, Activity, Brain, Shield, Feather, Wind, SprayCan, Check } from "lucide-react";
+import { Footprints, Activity, Brain, Shield, Feather, Wind, SprayCan, Check, AlertTriangle } from "lucide-react";
 const nomadImage = "https://kinis.vn/wp-content/uploads/2026/04/kinis-nomad-transparent.png";
 import audienceGymImg from "@/assets/audience-gym-weightlifting.jpg";
 import audiencePostureImg from "@/assets/audience-posture.jpg";
@@ -7,6 +7,7 @@ import audienceYogaImg from "@/assets/audience-yoga.jpg";
 import audienceFlatfeetImg from "@/assets/audience-flatfeet-strength.jpg";
 import audienceFunctionalImg from "@/assets/audience-functional.jpg";
 import audienceTrailRunnerImg from "@/assets/audience-trail-runner.jpg";
+import TestimonialSection from "@/components/TestimonialSection";
 import { useEffect, useRef } from "react";
 
 const benefits = [
