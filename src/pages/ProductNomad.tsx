@@ -245,19 +245,30 @@ const ProductNomad = () => {
                 className="flex flex-col items-center animate-fade-up"
                 style={{ animationDelay: `${i * 120}ms` }}
               >
-                {/* Giant number */}
-                <span
-                  className="font-display font-bold leading-none select-none"
-                  style={{
-                    fontSize: "clamp(5rem, 10vw, 8rem)",
-                    background: "linear-gradient(180deg, hsl(27,100%,52%) 0%, hsl(27,80%,35%) 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    filter: "drop-shadow(0 4px 12px hsla(27,100%,52%,0.3))",
-                  }}
-                >
-                  {stage.num}
-                </span>
+                {/* Giant number with line cut + fade below */}
+                <div className="relative select-none" style={{ height: "clamp(5rem, 10vw, 8rem)" }}>
+                  {/* Number - top half solid, bottom half fades */}
+                  <span
+                    className="font-display font-bold leading-none block"
+                    style={{
+                      fontSize: "clamp(5rem, 10vw, 8rem)",
+                      color: "hsl(27,100%,52%)",
+                      maskImage: "linear-gradient(180deg, rgba(0,0,0,1) 45%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0) 85%)",
+                      WebkitMaskImage: "linear-gradient(180deg, rgba(0,0,0,1) 45%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0) 85%)",
+                    }}
+                  >
+                    {stage.num}
+                  </span>
+                  {/* Horizontal line through middle */}
+                  <div
+                    className="absolute left-1/2 -translate-x-1/2 w-[120%] h-px"
+                    style={{
+                      top: "50%",
+                      backgroundColor: "hsl(27,100%,52%)",
+                      boxShadow: "0 0 8px hsla(27,100%,52%,0.4)",
+                    }}
+                  />
+                </div>
 
                 {/* Title */}
                 <h3 className="font-display text-lg sm:text-xl font-bold text-white mt-2 mb-1">
