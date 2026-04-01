@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import { Footprints, Activity, Brain, Shield, Feather, Wind, SprayCan, Check } from "lucide-react";
-import nomadImage from "@/assets/kinis-nomad.png";
+const nomadImage = "https://kinis.vn/wp-content/uploads/2026/04/kinis-nomad-transparent.png";
 import { useEffect, useRef } from "react";
 
 const benefits = [
