@@ -89,6 +89,7 @@ function getAcfReplacements(template) {
     ],
     "page-san-pham-lucy": [],
     "page-san-pham-nomad": [],
+    "page-san-pham-apollo": [],
     "page-khoa-hoc": [],
     "page-doi-tuong-gym": [],
     "page-doi-tuong-chay-bo": [],
