@@ -99,7 +99,9 @@ const TestimonialCard = ({ item }: { item: (typeof testimonials)[number] }) => (
 );
 
 interface TestimonialSectionProps {
-  page?: string; // filter testimonials by page, e.g. "home", "nomad", "lucy"
+  page?: string;
+  title?: React.ReactNode;
+  subtitle?: string | null;
 }
 
 const TestimonialSection = ({ page = "home" }: TestimonialSectionProps) => {
