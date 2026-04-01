@@ -62,7 +62,7 @@ const ProductNomad = () => {
     {/* Hero Section - White, 2 columns */}
     <section style={{ backgroundColor: "#FFFFFF" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[70vh] py-12 sm:py-16 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-[70vh] py-12 sm:py-16 lg:py-20">
           {/* Text column */}
           <div className="animate-fade-up">
             <p className="text-sm sm:text-base font-body uppercase tracking-widest mb-3 text-muted-foreground">
