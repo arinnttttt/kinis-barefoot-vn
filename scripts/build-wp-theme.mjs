@@ -389,7 +389,7 @@ Theme URI: https://kinis.com
 Author: Arin Như Trương
 Author URI: https://kinis.com
 Description: Hệ sinh thái chăm sóc sức khỏe vận động - Giày barefoot Kinis
-Version: 3.4.0
+Version: 3.6.0
 License: Proprietary
 Text Domain: kinis
 */
@@ -410,14 +410,14 @@ function kinis_enqueue_assets() {
     wp_enqueue_style('kinis-fonts', 'https://fonts.googleapis.com/css2?family=Phudu:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap', array(), null);
     
     // Main CSS (from Vite build)
-${cssFiles.map((f, i) => `    wp_enqueue_style('kinis-main${i > 0 ? '-' + i : ''}', get_template_directory_uri() . '/assets/css/${f}', array(), '3.4.0');`).join("\n")}
+${cssFiles.map((f, i) => `    wp_enqueue_style('kinis-main${i > 0 ? '-' + i : ''}', get_template_directory_uri() . '/assets/css/${f}', array(), '3.6.0');`).join("\n")}
     
     // Theme stylesheet
-    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '3.4.0');
+    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '3.6.0');
     
     // Header scroll behavior (vanilla JS - replaces React scroll handler)
-    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '3.4.0', true);
-    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '3.4.0', true);
+    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '3.6.0', true);
+    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '3.6.0', true);
 }
 add_action('wp_enqueue_scripts', 'kinis_enqueue_assets');
 

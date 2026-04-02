@@ -1,83 +1,91 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const variants = [
   {
     src: "https://kinis.vn/wp-content/uploads/2026/04/nomad-gray-scaled.png",
     label: "Xám",
-    color: "hsl(0,0%,60%)",
+    color: "hsl(0 0% 60%)",
   },
   {
     src: "https://kinis.vn/wp-content/uploads/2026/04/nomad-black-scaled.png",
     label: "Đen",
-    color: "hsl(0,0%,15%)",
+    color: "hsl(0 0% 15%)",
   },
   {
     src: "https://kinis.vn/wp-content/uploads/2026/04/nomad-red-scaled.png",
     label: "Đỏ",
-    color: "hsl(0,75%,45%)",
+    color: "hsl(0 75% 45%)",
   },
 ];
+
+const visibleOffsets = [-1, 0, 1] as const;
 
 const NomadColorCarousel = () => {
   const [active, setActive] = useState(1);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const timer = window.setInterval(() => {
       setActive((prev) => (prev + 1) % variants.length);
     }, 3000);
-    return () => clearInterval(timer);
+
+    return () => window.clearInterval(timer);
   }, []);
 
-  const getIndex = (offset: number) =>
-    (active + offset + variants.length) % variants.length;
-
   return (
-    <section className="py-4 sm:py-6 lg:py-8 overflow-hidden" style={{ backgroundColor: "#FFFFFF" }}>
-      <div className="relative flex items-center justify-center" style={{ height: "340px" }}>
-        {[-1, 0, 1].map((offset) => {
-          const idx = getIndex(offset);
-          const item = variants[idx];
-          const isActive = offset === 0;
+    <section
+      className="py-4 sm:py-6 lg:py-8 overflow-hidden"
+      style={{ backgroundColor: "hsl(0 0% 100%)" }}
+    >
+      <div className="mx-auto max-w-6xl px-2 sm:px-4">
+        <div className="flex items-end justify-center gap-0 sm:gap-2 md:gap-4 lg:gap-6">
+          {visibleOffsets.map((offset) => {
+            const idx = (active + offset + variants.length) % variants.length;
+            const item = variants[idx];
+            const isActive = offset === 0;
 
-          return (
-            <div
-              key={`${offset}-${idx}`}
-              onClick={() => !isActive && setActive(idx)}
-              className="absolute flex flex-col items-center transition-all duration-500 ease-in-out"
-              style={{
-                transform: isActive
-                  ? "translateX(0) scale(1)"
-                  : offset === -1
-                  ? "translateX(-60%) scale(0.6)"
-                  : "translateX(60%) scale(0.6)",
-                opacity: isActive ? 1 : 0.35,
-                zIndex: isActive ? 10 : 5,
-                cursor: isActive ? "default" : "pointer",
-              }}
-            >
-              <img
-                src={item.src}
-                alt={`Kinis Nomad ${item.label}`}
-                className="w-56 sm:w-72 md:w-80 lg:w-96 object-contain pointer-events-none select-none"
-                draggable={false}
-              />
-              {isActive && (
-                <div className="flex items-center gap-2 mt-4 animate-fade-in">
+            return (
+              <button
+                key={`${offset}-${idx}`}
+                type="button"
+                onClick={() => !isActive && setActive(idx)}
+                className="flex flex-col items-center border-0 bg-transparent p-0 transition-all duration-500 ease-out"
+                style={{
+                  opacity: isActive ? 1 : 0.35,
+                  transform: isActive ? "translateY(0) scale(1)" : "translateY(10px) scale(0.82)",
+                  width: isActive ? "clamp(12rem, 30vw, 24rem)" : "clamp(6rem, 17vw, 12rem)",
+                  cursor: isActive ? "default" : "pointer",
+                }}
+                aria-label={`Chọn màu ${item.label}`}
+              >
+                <img
+                  src={item.src}
+                  alt={`Kinis Nomad ${item.label}`}
+                  className="block w-full h-auto object-contain select-none"
+                  draggable={false}
+                  loading="eager"
+                  decoding="async"
+                />
+
+                <div
+                  className="mt-3 flex items-center gap-2 transition-opacity duration-300"
+                  style={{ opacity: isActive ? 1 : 0 }}
+                  aria-hidden={!isActive}
+                >
                   <span
-                    className="w-5 h-5 rounded-full border-2 border-white flex-shrink-0"
+                    className="h-4 w-4 rounded-full flex-shrink-0"
                     style={{
                       backgroundColor: item.color,
-                      boxShadow: "0 0 0 1px hsl(0 0% 80%)",
+                      boxShadow: "0 0 0 1px hsl(0 0% 82%)",
                     }}
                   />
                   <span className="text-sm sm:text-base font-display font-semibold text-foreground tracking-wide">
                     {item.label}
                   </span>
                 </div>
-              )}
-            </div>
-          );
-        })}
+              </button>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
