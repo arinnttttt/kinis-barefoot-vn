@@ -223,23 +223,8 @@ const ProductNomad = () => {
       </div>
     </section>
 
-    {/* Color Variants Section */}
-    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#FFFFFF" }}>
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
-          {[
-            { src: "https://kinis.vn/wp-content/uploads/2026/04/nomad-gray-scaled.png", label: "Xám" },
-            { src: "https://kinis.vn/wp-content/uploads/2026/04/nomad-black-scaled.png", label: "Đen" },
-            { src: "https://kinis.vn/wp-content/uploads/2026/04/nomad-red-scaled.png", label: "Đỏ" },
-          ].map((item, i) => (
-            <div key={item.label} className="flex flex-col items-center animate-fade-up" style={{ animationDelay: `${i * 100}ms` }}>
-              <img src={item.src} alt={`Kinis Nomad ${item.label}`} className="w-full max-w-sm object-contain" loading="lazy" />
-              <span className="mt-3 text-sm sm:text-base font-display font-semibold text-foreground tracking-wide">{item.label}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    {/* Color Variants Carousel */}
+    <NomadColorCarousel />
 
     {/* KOL Banner */}
     <section className="w-full">
