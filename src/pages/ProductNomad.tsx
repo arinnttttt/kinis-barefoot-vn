@@ -13,6 +13,7 @@ import iconNoConstruction from "@/assets/icon-no-construction.png";
 import iconNoInjury from "@/assets/icon-no-injury.png";
 import nomadKolBanner from "@/assets/nomad-kol-banner.png";
 import TestimonialSection from "@/components/TestimonialSection";
+import NomadColorCarousel from "@/components/NomadColorCarousel";
 import { useEffect, useRef, useState } from "react";
 
 const benefits = [
