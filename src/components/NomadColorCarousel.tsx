@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const variants = [
   {
@@ -21,29 +21,36 @@ const variants = [
 const NomadColorCarousel = () => {
   const [active, setActive] = useState(1);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % variants.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
   const getIndex = (offset: number) =>
     (active + offset + variants.length) % variants.length;
 
   return (
-    <section className="py-10 sm:py-14 lg:py-16 overflow-hidden" style={{ backgroundColor: "#FFFFFF" }}>
-      <div className="relative flex items-center justify-center" style={{ minHeight: "340px" }}>
+    <section className="py-4 sm:py-6 lg:py-8 overflow-hidden" style={{ backgroundColor: "#FFFFFF" }}>
+      <div className="relative flex items-center justify-center" style={{ height: "340px" }}>
         {[-1, 0, 1].map((offset) => {
           const idx = getIndex(offset);
           const item = variants[idx];
           const isActive = offset === 0;
 
           return (
-            <button
+            <div
               key={`${offset}-${idx}`}
-              onClick={() => setActive(idx)}
-              className="absolute flex flex-col items-center transition-all duration-500 ease-in-out focus:outline-none"
+              onClick={() => !isActive && setActive(idx)}
+              className="absolute flex flex-col items-center transition-all duration-500 ease-in-out"
               style={{
                 transform: isActive
                   ? "translateX(0) scale(1)"
                   : offset === -1
-                  ? "translateX(-65%) scale(0.65)"
-                  : "translateX(65%) scale(0.65)",
-                opacity: isActive ? 1 : 0.4,
+                  ? "translateX(-60%) scale(0.6)"
+                  : "translateX(60%) scale(0.6)",
+                opacity: isActive ? 1 : 0.35,
                 zIndex: isActive ? 10 : 5,
                 cursor: isActive ? "default" : "pointer",
               }}
@@ -68,25 +75,9 @@ const NomadColorCarousel = () => {
                   </span>
                 </div>
               )}
-            </button>
+            </div>
           );
         })}
-      </div>
-
-      {/* Dot indicators */}
-      <div className="flex justify-center gap-2 mt-4">
-        {variants.map((item, i) => (
-          <button
-            key={item.label}
-            onClick={() => setActive(i)}
-            className="w-3 h-3 rounded-full transition-all duration-300 focus:outline-none"
-            style={{
-              backgroundColor: i === active ? item.color : "hsl(0,0%,82%)",
-              transform: i === active ? "scale(1.3)" : "scale(1)",
-            }}
-            aria-label={item.label}
-          />
-        ))}
       </div>
     </section>
   );
