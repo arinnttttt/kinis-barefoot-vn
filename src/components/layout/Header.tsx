@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
-import logoBlack from "@/assets/logo-kinis-black.png";
+import logoBlack from "@/assets/logo-kinis-header.png";
 
 const navigation = [
   { name: "Trang chủ", href: "/#/" },
