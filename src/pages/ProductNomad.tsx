@@ -223,8 +223,36 @@ const ProductNomad = () => {
       </div>
     </section>
 
+    {/* Color Variants Section */}
+    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#FFFFFF" }}>
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+          {[
+            { src: "https://kinis.vn/wp-content/uploads/2026/04/nomad-gray-scaled.png", label: "Xám" },
+            { src: "https://kinis.vn/wp-content/uploads/2026/04/nomad-black-scaled.png", label: "Đen" },
+            { src: "https://kinis.vn/wp-content/uploads/2026/04/nomad-red-scaled.png", label: "Đỏ" },
+          ].map((item, i) => (
+            <div key={item.label} className="flex flex-col items-center animate-fade-up" style={{ animationDelay: `${i * 100}ms` }}>
+              <img src={item.src} alt={`Kinis Nomad ${item.label}`} className="w-full max-w-sm object-contain" loading="lazy" />
+              <span className="mt-3 text-sm sm:text-base font-display font-semibold text-foreground tracking-wide">{item.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* KOL Banner */}
+    <section className="w-full">
+      <img
+        src={nomadKolBanner}
+        alt="Kinis Nomad KOL"
+        className="w-full block"
+        loading="lazy"
+      />
+    </section>
+
     {/* Adaptation Roadmap Section - Dark */}
-    <section className="pt-10 sm:pt-14 lg:pt-16 pb-0 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
+    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-fade-up">
           <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: "hsl(27,100%,52%)" }}>
@@ -313,16 +341,6 @@ const ProductNomad = () => {
           ⚡ Có thể giặt máy (sử dụng túi giặt) và phơi khô tự nhiên để giữ độ bền của giày.
         </p>
       </div>
-    </section>
-
-    {/* KOL Banner - flush with Roadmap */}
-    <section className="w-full">
-      <img
-        src={nomadKolBanner}
-        alt="Kinis Nomad KOL"
-        className="w-full block"
-        loading="lazy"
-      />
     </section>
 
     {/* Đối tượng Phù hợp Section */}
