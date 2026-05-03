@@ -5,18 +5,20 @@
 
 // Enqueue styles and scripts
 function kinis_enqueue_assets() {
+    $theme_version = wp_get_theme()->get('Version');
+
     // Google Fonts - swap display for faster rendering
     wp_enqueue_style('kinis-fonts', 'https://fonts.googleapis.com/css2?family=Phudu:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap', array(), null);
     
     // Main CSS (from Vite build)
-    wp_enqueue_style('kinis-main', get_template_directory_uri() . '/assets/css/index-DrpaF9Vc.css', array(), '3.6.0');
+    wp_enqueue_style('kinis-main', get_template_directory_uri() . '/assets/css/index-DrpaF9Vc.css', array(), $theme_version);
     
     // Theme stylesheet
-    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '3.6.0');
+    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), $theme_version);
     
     // Header scroll behavior (vanilla JS - replaces React scroll handler)
-    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '3.6.0', true);
-    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '3.6.0', true);
+    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), $theme_version, true);
+    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), $theme_version, true);
 }
 add_action('wp_enqueue_scripts', 'kinis_enqueue_assets');
 
