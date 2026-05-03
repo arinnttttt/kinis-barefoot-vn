@@ -120,16 +120,15 @@ async function build() {
 
   // Videos are hosted externally - no local video copying needed
 
-  // Copy all assets from dist/assets/
+  // Copy only the assets the static WP templates need. React chunk JS is not
+  // enqueued in WP; interactions are recreated below with small vanilla scripts.
   const assetsDir = join(DIST, "assets");
   if (existsSync(assetsDir)) {
     for (const file of readdirSync(assetsDir)) {
       const ext = extname(file).toLowerCase();
       if ([".css"].includes(ext)) {
         cpSync(join(assetsDir, file), join(THEME_DIR, "assets", "css", file));
-      } else if ([".js"].includes(ext)) {
-        cpSync(join(assetsDir, file), join(THEME_DIR, "assets", "js", file));
-      } else {
+      } else if (![".js", ".map"].includes(ext)) {
         cpSync(join(assetsDir, file), join(THEME_DIR, "assets", "images", file));
       }
     }
