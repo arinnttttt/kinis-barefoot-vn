@@ -134,11 +134,10 @@ async function build() {
     }
   }
 
-  // Also ship source assets with their stable filenames. The static WP templates may
-  // contain browser-rendered hashed names from older renders; keeping both hashed
-  // Vite assets and original asset names prevents missing images after updates.
+  // Source assets are intentionally not copied wholesale. The current pre-rendered
+  // WP templates reference hashed Vite images, so stable duplicates only add size.
   const sourceAssetsDir = join(ROOT, "src", "assets");
-  if (existsSync(sourceAssetsDir)) {
+  if (false && existsSync(sourceAssetsDir)) {
     for (const file of readdirSync(sourceAssetsDir)) {
       const ext = extname(file).toLowerCase();
       if ([".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".ico", ".avif"].includes(ext)) {
