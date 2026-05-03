@@ -86,7 +86,7 @@ const ProductApollo = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-fade-up">
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">
-            Tại sao bạn cần <span style={{ color: ACCENT }}>Kinis Apollo Pro</span>?
+            Lý do bạn nên chọn <span style={{ color: ACCENT }}>Kinis Apollo</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
             Kết hợp triết lý barefoot với công nghệ hỗ trợ vận động, Kinis Apollo Pro giúp bạn tối ưu hiệu suất trong mọi bài tập.
