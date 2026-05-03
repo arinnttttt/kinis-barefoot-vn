@@ -62,7 +62,7 @@ const ProductNomad = () => {
   return (
   <Layout>
     {/* Hero Section - White, 2 columns */}
-    <section className="relative overflow-hidden" style={{ backgroundColor: "#FFFFFF" }}>
+    <section className="relative overflow-hidden -mt-16 lg:-mt-20" style={{ backgroundColor: "#FFFFFF" }}>
       <div className="grid grid-cols-1 md:grid-cols-2 min-h-[70vh]">
         {/* Text column */}
         <div className="flex items-center animate-fade-up px-4 sm:px-6 lg:px-8 xl:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] pt-24 pb-12 sm:py-14 lg:py-20">
