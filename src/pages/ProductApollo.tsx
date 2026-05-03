@@ -163,19 +163,8 @@ const ProductApollo = () => {
     <ApolloColorCarousel />
 
     {/* Lifestyle Banner */}
-    {apolloLifestyleBannerUrl ? (
-      <section className="w-full">
-        <img src={apolloLifestyleBannerUrl} alt="Kinis Apollo Pro Lifestyle" className="w-full block" loading="lazy" />
-      </section>
-    ) : (
-      <section className="w-full bg-muted flex items-center justify-center" style={{ height: "300px" }}>
-        <span className="text-muted-foreground text-sm">Banner sắp có</span>
-      </section>
-    )}
-
-    {/* KOL Banner */}
     <section className="w-full">
-      <img src={nomadKolBanner} alt="Kinis Apollo Pro KOL" className="w-full block" loading="lazy" />
+      <img src="https://kinis.vn/wp-content/uploads/2026/05/apollo-lifestyle.png" alt="Kinis Apollo Pro Lifestyle" className="w-full block" loading="lazy" />
     </section>
 
     {/* Guide Section - Dark (cloned from Lucy) */}
