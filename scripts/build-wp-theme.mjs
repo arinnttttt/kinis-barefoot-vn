@@ -295,8 +295,8 @@ if (homeFaqSection) {
 
 })();`);
 
-  // Generate header-scroll.js — read from the already-written file
-  // (header-scroll.js is maintained as a standalone file, copied during build)
+  // Copy header-scroll.js from source
+  cpSync(join(ROOT, "src", "wp-assets", "js", "header-scroll.js"), join(THEME_DIR, "assets", "js", "header-scroll.js"));
 
 
 
