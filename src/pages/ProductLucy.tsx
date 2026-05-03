@@ -142,7 +142,7 @@ const ProductLucy = () => {
           <div className="animate-fade-up [animation-delay:150ms]">
             <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: ACCENT }}>Công nghệ</span>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight text-foreground">
-              Chất liệu<br /><span style={{ color: ACCENT }}>cao cấp</span>
+              Chất liệu <span style={{ color: ACCENT }}>cao cấp</span>
             </h2>
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
               Kinis Lucy được sản xuất với chất liệu vải Nylon cao cấp, mang lại sự thoải mái và độ bền cho các hoạt động đi bộ hằng ngày.
