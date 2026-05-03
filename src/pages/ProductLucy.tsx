@@ -50,8 +50,8 @@ const ProductLucy = () => {
               mỗi ngày
             </h1>
             <div className="mt-4 flex flex-col items-start gap-2">
-              <img src={apmabadge} alt="APMA Seal of Acceptance" className="h-16 sm:h-20 w-auto" />
               <span className="text-xs sm:text-sm font-body font-semibold uppercase tracking-widest text-muted-foreground">Chứng nhận bởi Hiệp hội Y khoa Bàn chân Hoa Kỳ</span>
+              <img src={apmabadge} alt="APMA Seal of Acceptance" className="h-12 sm:h-14 w-auto" />
             </div>
             <div className="mt-6 sm:mt-8">
               <a
