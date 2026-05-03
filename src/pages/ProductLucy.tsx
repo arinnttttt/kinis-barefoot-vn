@@ -195,14 +195,12 @@ const ProductLucy = () => {
             Đối tượng <span style={{ color: ACCENT }}>phù hợp</span>
           </h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
           {[
-            { img: audiencePostureImg, title: "Đi bộ & Du lịch", desc: "Hỗ trợ vòm chân khi di chuyển nhiều, giảm mỏi và đau chân hiệu quả." },
-            { img: audienceGymImg, title: "Gym & Fitness", desc: "Tăng sự ổn định khi tập luyện, giảm chấn động cho khớp gối và cột sống." },
-            { img: audienceYogaImg, title: "Sử dụng hàng ngày", desc: "Phù hợp đi làm, đi học, hoạt động thường nhật với sự thoải mái tối đa." },
-            { img: audienceFlatfeetImg, title: "Bàn chân bẹt", desc: "Hỗ trợ nâng vòm chân, cải thiện cấu trúc bàn chân bẹt theo thời gian." },
-            { img: audienceFunctionalImg, title: "Cải thiện thăng bằng", desc: "Phân bổ áp lực đều giúp cải thiện khả năng giữ thăng bằng tự nhiên." },
-            { img: audienceTrailRunnerImg, title: "Chạy bộ nhẹ", desc: "Hấp thụ chấn động khi chạy, bảo vệ khớp và nâng cao hiệu suất vận động." },
+            { img: audiencePostureImg, title: "Người yêu thích đi bộ", desc: "Lucy nhẹ và linh hoạt giúp bàn chân vận động tự nhiên và thoải mái khi đi lại hằng ngày." },
+            { img: audienceGymImg, title: "Người muốn cải thiện sức khỏe bàn chân", desc: "Giúp tăng cường thăng bằng và cải thiện chức năng vận động của bàn chân." },
+            { img: audienceTrailRunnerImg, title: "Runner cần phục hồi bàn chân", desc: "Hỗ trợ kích hoạt cơ bàn chân và cải thiện cảm nhận mặt đất sau thời gian sử dụng giày đệm dày." },
+            { img: audienceFlatfeetImg, title: "Người có bàn chân bẹt", desc: "Thiết kế mũi giày rộng giúp ngón chân xòe tự nhiên, hỗ trợ kích hoạt cơ bàn chân." },
           ].map((item, i) => (
             <div key={item.title} className="rounded-2xl overflow-hidden bg-card border border-border animate-fade-up" style={{ animationDelay: `${i * 80}ms`, boxShadow: "0 4px 24px -4px rgba(0,0,0,0.06)" }}>
               <img src={item.img} alt={item.title} loading="lazy" width={1824} height={512} className="w-full object-cover" style={{ aspectRatio: "32/9" }} />
