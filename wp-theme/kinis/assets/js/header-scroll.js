@@ -49,7 +49,8 @@ ready(function(){
   }
 
   // Detect hero background luminance ONCE on page load
-  var heroDark=true;
+  // Default to LIGHT (dark text) — safer for white-background pages like Lucy/Nomad
+  var heroDark=false;
   function detectHero(){
     var h=window.innerWidth>=1024?80:64;
     var els=document.elementsFromPoint(Math.max(1,window.innerWidth/2),h+1);
