@@ -128,7 +128,16 @@ const ProductLucy = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="flex items-center justify-center animate-fade-up">
-            <img src={lucyImage} alt="Kinis Lucy Technology" className="w-full max-w-md object-contain" />
+            <video
+              className="w-full max-w-md object-contain"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+            >
+              <source src="https://kinis.vn/wp-content/uploads/2026/05/Lucy-rotate.mp4" type="video/mp4" />
+            </video>
           </div>
           <div className="animate-fade-up [animation-delay:150ms]">
             <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: ACCENT }}>Công nghệ</span>
