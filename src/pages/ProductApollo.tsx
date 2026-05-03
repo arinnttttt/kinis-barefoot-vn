@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import { Zap, Compass, Activity, Shield, Feather, Wind, Check, AlertTriangle, Footprints, Dumbbell, ArrowRightLeft, PersonStanding } from "lucide-react";
+import { Zap, Compass, Activity, Shield, Feather, Wind, Check, AlertTriangle, Footprints, Dumbbell, ArrowRightLeft, PersonStanding, Weight, Trophy, Shirt } from "lucide-react";
 import audienceGymImg from "@/assets/audience-gym-weightlifting.jpg";
 import audiencePostureImg from "@/assets/audience-posture.jpg";
 import audienceYogaImg from "@/assets/audience-yoga.jpg";
@@ -177,9 +177,9 @@ const ProductApollo = () => {
 
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {[
-            { icon: Dumbbell, title: "Pro-Training", subtitle: "Lựa chọn số một cho các bài tập hạng nặng squat, deadlift trong phòng Gym." },
-            { icon: Zap, title: "Giày tập luyện", subtitle: "Dành cho vận động viên chuyên nghiệp với cường độ tập luyện dày đặc, hỗ trợ tăng cường sức mạnh cơ bắp trong thời gian chuẩn bị thi đấu." },
-            { icon: Compass, title: "Phong cách Lifestyle", subtitle: "Sử dụng hàng ngày với phom dáng và thiết kế hiện đại, phù hợp mang đi làm, đi chơi hay đi dạo hàng ngày." },
+            { icon: Weight, title: "Pro-Training", subtitle: "Lựa chọn số một cho các bài tập hạng nặng squat, deadlift trong phòng Gym." },
+            { icon: Trophy, title: "Giày tập luyện", subtitle: "Dành cho vận động viên chuyên nghiệp với cường độ tập luyện dày đặc, hỗ trợ tăng cường sức mạnh cơ bắp trong thời gian chuẩn bị thi đấu." },
+            { icon: Shirt, title: "Phong cách Lifestyle", subtitle: "Sử dụng hàng ngày với phom dáng và thiết kế hiện đại, phù hợp mang đi làm, đi chơi hay đi dạo hàng ngày." },
           ].map((item, i) => (
             <div
               key={item.title}
