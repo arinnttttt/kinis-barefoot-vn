@@ -22,7 +22,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const DIST = join(ROOT, "dist");
 const THEME_DIR = join(ROOT, "wp-theme", "kinis");
-const THEME_VERSION = "5.1.3";
+const THEME_VERSION = "5.1.4";
 
 // Route config: path → WP page template name + title
 const routes = [
@@ -423,6 +423,65 @@ function getVariantLabel(selector, idx) { return getVariants(selector)[idx].labe
 
 initColorCarousel('[data-lucy-carousel]');
 initColorCarousel('[data-nomad-carousel]');
+
+// ============ APOLLO COLOR CAROUSEL (2 variants) ============
+var apolloVariants = [
+  { src: 'https://kinis.vn/wp-content/uploads/2026/05/apollo-black-scaled.png', label: 'Cam', color: 'hsl(27,100%,52%)' },
+  { src: 'https://kinis.vn/wp-content/uploads/2026/05/apollo-orange-scaled.png', label: 'Đen', color: 'hsl(0,0%,15%)' }
+];
+
+(function initApolloCarousel() {
+  var section = document.querySelector('[data-apollo-carousel]');
+  if (!section) return;
+  var buttons = section.querySelectorAll('button[aria-label]');
+  if (buttons.length < 2) return;
+
+  var active = 0;
+
+  function applyState() {
+    for (var i = 0; i < buttons.length; i++) {
+      var btn = buttons[i];
+      var isActive = (i === active);
+      var v = apolloVariants[i];
+      var img = btn.querySelector('img');
+      var label = btn.querySelector('.mt-3');
+      var colorDot = btn.querySelector('.rounded-full');
+      var labelText = btn.querySelector('.font-display.font-semibold');
+
+      if (img) { img.src = v.src; img.alt = 'Kinis Apollo Pro ' + v.label; }
+      if (label) label.style.opacity = isActive ? '1' : '0';
+      if (colorDot) colorDot.style.backgroundColor = v.color;
+      if (labelText) labelText.textContent = v.label;
+
+      btn.style.opacity = isActive ? '1' : '0.35';
+      btn.style.transform = isActive ? 'translateY(0) scale(1)' : 'translateY(10px) scale(0.82)';
+      btn.style.width = isActive ? 'clamp(12rem, 30vw, 24rem)' : 'clamp(6rem, 17vw, 12rem)';
+      btn.style.cursor = isActive ? 'default' : 'pointer';
+    }
+  }
+
+  for (var i = 0; i < buttons.length; i++) {
+    (function(index) {
+      buttons[index].addEventListener('click', function() {
+        active = index;
+        applyState();
+      });
+    })(i);
+  }
+
+  var timer = setInterval(function() {
+    active = (active + 1) % apolloVariants.length;
+    applyState();
+  }, 3000);
+
+  section.addEventListener('mouseenter', function() { clearInterval(timer); });
+  section.addEventListener('mouseleave', function() {
+    timer = setInterval(function() {
+      active = (active + 1) % apolloVariants.length;
+      applyState();
+    }, 3000);
+  });
+})();
 
 })();`);
 
