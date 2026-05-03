@@ -147,6 +147,7 @@ function getAcfReplacements(template) {
     "page-doi-tuong-chay-bo": [],
     "page-doi-tuong-ban-chan-bet": [],
     "page-faq": [],
+    "page-coming-soon": [],
   };
   return maps[template] || [];
 }
