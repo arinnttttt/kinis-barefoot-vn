@@ -222,29 +222,32 @@ const Index = () => {
               <label
                 id="product-tab-label-lucy"
                 htmlFor="product-tab-lucy"
-                className="product-tab-trigger px-8 py-3 sm:px-10 sm:py-3.5 font-body text-sm font-semibold md:px-14 md:text-base"
+                className="product-tab-trigger px-5 py-3 sm:px-10 sm:py-3.5 font-body text-sm font-semibold md:px-14 md:text-base whitespace-nowrap"
                 data-tab-trigger="lucy"
                 aria-controls="tabpanel-lucy"
               >
-                {lucy.label}
+                <span className="sm:hidden">{lucy.shortLabel}</span>
+                <span className="hidden sm:inline">{lucy.label}</span>
               </label>
               <label
                 id="product-tab-label-nomad"
                 htmlFor="product-tab-nomad"
-                className="product-tab-trigger px-8 py-3 sm:px-10 sm:py-3.5 font-body text-sm font-semibold md:px-14 md:text-base"
+                className="product-tab-trigger px-5 py-3 sm:px-10 sm:py-3.5 font-body text-sm font-semibold md:px-14 md:text-base whitespace-nowrap"
                 data-tab-trigger="nomad"
                 aria-controls="tabpanel-nomad"
               >
-                {nomad.label}
+                <span className="sm:hidden">{nomad.shortLabel}</span>
+                <span className="hidden sm:inline">{nomad.label}</span>
               </label>
               <label
                 id="product-tab-label-apollo"
                 htmlFor="product-tab-apollo"
-                className="product-tab-trigger px-8 py-3 sm:px-10 sm:py-3.5 font-body text-sm font-semibold md:px-14 md:text-base"
+                className="product-tab-trigger px-5 py-3 sm:px-10 sm:py-3.5 font-body text-sm font-semibold md:px-14 md:text-base whitespace-nowrap"
                 data-tab-trigger="apollo"
                 aria-controls="tabpanel-apollo"
               >
-                {apollo.label}
+                <span className="sm:hidden">{apollo.shortLabel}</span>
+                <span className="hidden sm:inline">{apollo.label}</span>
               </label>
             </div>
 
