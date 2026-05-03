@@ -60,7 +60,7 @@ const ProductApollo = () => {
           </div>
 
           <div className="flex items-center justify-center animate-fade-up [animation-delay:150ms]">
-            <img src={apolloImage} alt="Kinis Apollo" className="w-full md:w-[90%] max-w-2xl lg:max-w-3xl object-contain" />
+            <img src={apolloImage} alt="Kinis Apollo Pro" className="w-full md:w-[90%] max-w-2xl lg:max-w-3xl object-contain" />
           </div>
         </div>
       </div>
