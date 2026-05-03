@@ -124,9 +124,9 @@ const ProductLucy = () => {
     </section>
 
     {/* Technology Section */}
-    <section className="relative pt-6 sm:pt-8 lg:pt-10 pb-2 sm:pb-3 lg:pb-4 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "#FFFFFF" }}>
+    <section className="relative pt-4 sm:pt-6 lg:pt-8 pb-0 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "#FFFFFF" }}>
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center">
           <div className="flex items-center justify-center animate-fade-up">
             <video
               className="w-full max-w-md object-contain"
