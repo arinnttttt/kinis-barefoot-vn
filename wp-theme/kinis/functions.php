@@ -14,15 +14,15 @@ function kinis_enqueue_assets() {
     if (!empty($css_files)) {
         sort($css_files);
         $css_file = basename(end($css_files));
-        wp_enqueue_style('kinis-main', get_template_directory_uri() . '/assets/css/' . $css_file, array(), '5.1.4');
+        wp_enqueue_style('kinis-main', get_template_directory_uri() . '/assets/css/' . $css_file, array(), '5.1.5');
     }
     
     // Theme stylesheet
-    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '5.1.4');
+    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '5.1.5');
     
     // Header scroll behavior (vanilla JS - replaces React scroll handler)
-    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '5.1.4', true);
-    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '5.1.4', true);
+    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '5.1.5', true);
+    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '5.1.5', true);
 }
 add_action('wp_enqueue_scripts', 'kinis_enqueue_assets');
 
@@ -371,7 +371,7 @@ add_action('save_post_kinis_testimonial', 'kinis_save_testimonial_meta');
 
 // Auto-seed testimonial data on theme activation (versioned re-seed)
 function kinis_seed_testimonials() {
-    $current_version = '5.1.4';
+    $current_version = '5.1.5';
     $seeded_version = get_option('kinis_testimonials_seeded_version', '');
     if ($seeded_version === $current_version) return;
     
@@ -386,6 +386,8 @@ function kinis_seed_testimonials() {
         array('name' => 'Jennifer B.', 'stars' => 5, 'category' => 'Excellent', 'pages' => array('home', 'nomad', 'lucy'), 'review' => 'Tôi rất thích cảm giác vừa vặn của đôi giày! Giày rất nhẹ và ôm chân hoàn hảo từ ngón chân đến gót chân. Tôi mang khi tập luyện và cả trong sinh hoạt hàng ngày.'),
         array('name' => 'Casey B.', 'stars' => 5, 'category' => 'Excellent', 'pages' => array('home', 'lucy'), 'review' => 'Ban đầu tôi hơi do dự khi mua, nhưng giờ rất vui vì đã chọn chúng cho hành trình làm quen với barefoot. Tôi bắt đầu cảm nhận rõ các nhóm cơ bàn chân khi đi bộ.'),
         array('name' => 'Matthew O.', 'stars' => 5, 'category' => 'Excellent', 'pages' => array('home', 'nomad', 'lucy'), 'review' => 'Đôi giày hoàn hảo với tôi. Tôi không thích mang giày và có cổ chân yếu, nhưng đôi giày này giải quyết được cả hai. Thoải mái như một đôi tất nhưng vẫn có độ bảo vệ của giày.'),
+        array('name' => 'Alejandro M.', 'stars' => 4, 'category' => 'Great', 'pages' => array('apollo'), 'review' => 'Với hầu hết các loại giày khác, rất khó cảm nhận trọng tâm cơ thể khi di chuyển. Nhưng với Kinis, tôi có thể tập luyện và cảm nhận rõ mình đang đặt trọng lượng ở đâu. Sau khi quen, mọi thứ rất tự nhiên.'),
+        array('name' => 'Ian A.', 'stars' => 4, 'category' => 'Great', 'pages' => array('apollo'), 'review' => 'Đây chính xác là đôi giày tôi đang tìm kiếm! Không thể tập gym với chân trần, nên đôi giày này là giải pháp thay thế hoàn hảo.'),
     );
     $order = 1;
     foreach ($testimonials as $t) {
@@ -408,7 +410,7 @@ add_action('after_switch_theme', 'kinis_seed_testimonials', 35);
 
 // Also run seed on init to catch theme updates without re-activation
 function kinis_maybe_reseed_testimonials() {
-    $current_version = '5.1.4';
+    $current_version = '5.1.5';
     $seeded_version = get_option('kinis_testimonials_seeded_version', '');
     if ($seeded_version !== $current_version) {
         kinis_seed_testimonials();

@@ -118,3 +118,20 @@ if os.path.exists(lucy_path):
         print("⚠ Testimonial section not found (Lucy page)")
 else:
     print("⚠ page-san-pham-lucy.php not found")
+
+# ===== APOLLO PAGE =====
+apollo_path = os.path.join(os.path.dirname(__file__), '..', 'wp-theme', 'kinis', 'page-san-pham-apollo.php')
+if os.path.exists(apollo_path):
+    apollo = open(apollo_path, 'rb').read().decode('utf-8')
+    at_start, at_end, orig_apollo_testimonial = find_section(apollo, 'aria-labelledby="testimonial-heading"')
+    if at_start is not None:
+        title = 'M\u1ECDi ng\u01B0\u1EDDi ngh\u0129 g\u00EC v\u1EC1 <span style="color: rgb(255, 120, 10);">Kinis Apollo Pro</span>'
+        dynamic = make_testimonial_php('apollo', title)
+        dynamic_with_fallback = dynamic.replace('<?php endif; ?>', '<?php else : ?>\n' + orig_apollo_testimonial + '\n<?php endif; ?>')
+        apollo = apollo[:at_start] + dynamic_with_fallback + apollo[at_end:]
+        open(apollo_path, 'wb').write(apollo.encode('utf-8'))
+        print("✅ Testimonial section replaced with dynamic PHP (Apollo page)")
+    else:
+        print("⚠ Testimonial section not found (Apollo page)")
+else:
+    print("⚠ page-san-pham-apollo.php not found")
