@@ -3,7 +3,7 @@ import { Zap, Compass, Activity, Shield, Feather, Wind, Check, AlertTriangle, Pe
 import lucyImage from "@/assets/lucy-showcase-v3.png";
 import apmaSeal from "@/assets/apma-seal.png";
 
-const heroLucy = "https://kinis.vn/wp-content/uploads/2026/05/hero-lucy-scaled.png";
+const heroLucy = "https://kinis.vn/wp-content/uploads/2026/05/hero-lucy-1-scaled.png";
 const lucyLifestyleBannerUrl = "https://kinis.vn/wp-content/uploads/2026/05/lucy-lifestyle.png";
 import audienceGymImg from "@/assets/audience-gym-weightlifting.jpg";
 import audiencePostureImg from "@/assets/audience-posture.jpg";
@@ -49,10 +49,11 @@ const ProductLucy = () => {
   return (
   <Layout>
     {/* Hero Section */}
-    <section style={{ backgroundColor: "#FFFFFF" }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-4 md:gap-6 lg:gap-8 items-center min-h-[70vh] pt-24 pb-12 sm:py-14 lg:py-20">
-          <div className="animate-fade-up">
+    <section className="relative overflow-hidden -mt-16 lg:-mt-20" style={{ backgroundColor: "#FFFFFF" }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[70vh]">
+        {/* Text column */}
+        <div className="flex items-center animate-fade-up px-4 sm:px-6 lg:px-8 xl:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] pt-24 pb-12 sm:py-14 lg:py-20">
+          <div>
             <p className="text-sm sm:text-base font-body uppercase tracking-widest mb-3 text-muted-foreground">
               Giày đi bộ barefoot
             </p>
@@ -79,10 +80,11 @@ const ProductLucy = () => {
               </a>
             </div>
           </div>
+        </div>
 
-          <div className="flex items-center justify-end animate-fade-up [animation-delay:150ms] md:-mr-8 lg:-mr-12">
-            <img src={heroLucy} alt="Kinis Lucy" className="w-full h-auto object-contain max-h-[75vh]" />
-          </div>
+        {/* Image column - flush right & bottom */}
+        <div className="animate-fade-up [animation-delay:150ms] self-end">
+          <img src={heroLucy} alt="Kinis Lucy" className="w-full h-auto block" />
         </div>
       </div>
     </section>
