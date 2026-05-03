@@ -9,7 +9,7 @@ import audienceTrailRunnerImg from "@/assets/audience-trail-runner.jpg";
 import nomadKolBanner from "@/assets/nomad-kol-banner.png";
 import TestimonialSection from "@/components/TestimonialSection";
 
-const apolloImage = "https://kinis.vn/wp-content/uploads/2026/04/kinis-apollo.png";
+const apolloImage = "https://kinis.vn/wp-content/uploads/2026/04/kinis-apollo-1.png";
 const ACCENT = "hsl(27,100%,52%)";
 
 const benefits = [
