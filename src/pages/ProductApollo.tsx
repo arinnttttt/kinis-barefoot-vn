@@ -216,7 +216,7 @@ const ProductApollo = () => {
     </section>
 
     {/* Testimonial Section */}
-    <TestimonialSection page="apollo" title={<>Mọi người nghĩ gì về <span style={{ color: ACCENT }}>Kinis Apollo</span></>} subtitle={null} />
+    <TestimonialSection page="apollo" title={<>Mọi người nghĩ gì về <span style={{ color: ACCENT }}>Kinis Apollo Pro</span></>} subtitle={null} />
 
     {/* Quote CTA Section - Dark */}
     <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
