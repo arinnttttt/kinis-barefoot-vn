@@ -154,7 +154,10 @@ const ProductLucy = () => {
       </div>
     </section>
 
-    {/* KOL Banner */}
+    {/* Color Carousel */}
+    <LucyColorCarousel />
+
+
     <section className="w-full">
       <img src={nomadKolBanner} alt="Kinis Lucy KOL" className="w-full block" loading="lazy" />
     </section>
