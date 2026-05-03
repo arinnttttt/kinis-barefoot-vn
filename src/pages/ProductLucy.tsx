@@ -14,7 +14,7 @@ import iconNoRunning from "@/assets/icon-no-running.png";
 import iconNoWet from "@/assets/icon-no-wet.png";
 import iconNoConstruction from "@/assets/icon-no-construction.png";
 import iconNoInjury from "@/assets/icon-no-injury.png";
-import nomadKolBanner from "@/assets/nomad-kol-banner.png";
+import lucyLifestyleBanner from "@/assets/lucy-lifestyle-banner.png";
 import TestimonialSection from "@/components/TestimonialSection";
 import LucyColorCarousel from "@/components/LucyColorCarousel";
 
@@ -160,7 +160,7 @@ const ProductLucy = () => {
 
 
     <section className="w-full">
-      <img src={nomadKolBanner} alt="Kinis Lucy KOL" className="w-full block" loading="lazy" />
+      <img src={lucyLifestyleBanner} alt="Kinis Lucy Lifestyle" className="w-full block" loading="lazy" />
     </section>
 
     {/* Guide Section - Dark */}
