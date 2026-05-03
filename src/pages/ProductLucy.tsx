@@ -15,6 +15,7 @@ import iconNoConstruction from "@/assets/icon-no-construction.png";
 import iconNoInjury from "@/assets/icon-no-injury.png";
 import nomadKolBanner from "@/assets/nomad-kol-banner.png";
 import TestimonialSection from "@/components/TestimonialSection";
+import LucyColorCarousel from "@/components/LucyColorCarousel";
 
 const ACCENT = "hsl(27,100%,52%)";
 
@@ -153,7 +154,10 @@ const ProductLucy = () => {
       </div>
     </section>
 
-    {/* KOL Banner */}
+    {/* Color Carousel */}
+    <LucyColorCarousel />
+
+
     <section className="w-full">
       <img src={nomadKolBanner} alt="Kinis Lucy KOL" className="w-full block" loading="lazy" />
     </section>
