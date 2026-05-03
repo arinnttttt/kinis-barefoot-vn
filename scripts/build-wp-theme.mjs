@@ -133,6 +133,19 @@ async function build() {
     }
   }
 
+  // Also ship source assets with their stable filenames. The static WP templates may
+  // contain browser-rendered hashed names from older renders; keeping both hashed
+  // Vite assets and original asset names prevents missing images after updates.
+  const sourceAssetsDir = join(ROOT, "src", "assets");
+  if (existsSync(sourceAssetsDir)) {
+    for (const file of readdirSync(sourceAssetsDir)) {
+      const ext = extname(file).toLowerCase();
+      if ([".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".ico", ".avif"].includes(ext)) {
+        cpSync(join(sourceAssetsDir, file), join(THEME_DIR, "assets", "images", file));
+      }
+    }
+  }
+
   // Generate kinis-interactions.js (vanilla JS for testimonial, video, FAQ accordion)
   writeFileSync(join(THEME_DIR, "assets", "js", "kinis-interactions.js"), `(function(){
 'use strict';
@@ -244,73 +257,107 @@ if (homeFaqSection) {
 
 })();`);
 
-  // Generate header-scroll.js (vanilla JS for WP - replaces React state)
+  // Generate header-scroll.js (vanilla JS for WP - mirrors React Header behavior)
   writeFileSync(join(THEME_DIR, "assets", "js", "header-scroll.js"), `(function(){
 'use strict';
-var header=document.querySelector('header[data-component="header"]');
-var mobileMenu=document.getElementById('kinis-mobile-menu');
-var menuBtn=document.querySelector('[data-menu-toggle]');
-var logo=header?header.querySelector('img[alt="Kinis"]'):null;
-var isOpen=false;
-if(!header)return;
-var menuIcon='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>';
-var closeIcon='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>';
-if(menuBtn&&mobileMenu){
-  menuBtn.addEventListener('click',function(){
-    isOpen=!isOpen;
-    if(isOpen){
-      mobileMenu.style.opacity='1';mobileMenu.style.visibility='visible';mobileMenu.style.pointerEvents='auto';
-      document.body.style.overflow='hidden';menuBtn.innerHTML=closeIcon;
-      menuBtn.setAttribute('aria-label','Đóng menu');
-      header.style.backgroundColor='#000000';header.style.backdropFilter='none';header.style.webkitBackdropFilter='none';
-      if(logo)logo.style.filter='brightness(0) invert(1)';menuBtn.style.color='#ffffff';
-    }else{
-      mobileMenu.style.opacity='0';mobileMenu.style.visibility='hidden';mobileMenu.style.pointerEvents='none';
-      document.body.style.overflow='';menuBtn.innerHTML=menuIcon;
-      menuBtn.setAttribute('aria-label','Mở menu');handleScroll();
+function ready(fn){if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',fn,{once:true});}else{fn();}}
+ready(function(){
+  var header=document.querySelector('header[data-component="header"]');
+  var mobileMenu=document.getElementById('kinis-mobile-menu');
+  var menuBtn=document.querySelector('[data-menu-toggle]');
+  var logo=header?header.querySelector('img[alt="Kinis"]'):null;
+  var isOpen=false;
+  if(!header)return;
+  var menuIcon='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu w-6 h-6"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>';
+  var closeIcon='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x w-6 h-6"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>';
+  function getPath(){return (window.location.pathname||'/').replace(/\/+$/,'/')||'/';}
+  function hrefPath(el){try{return new URL(el.getAttribute('href')||'',window.location.origin).pathname.replace(/\/+$/,'/')||'/';}catch(e){return '';}}
+  function isActive(el){var p=hrefPath(el),cur=getPath();return p&&p===cur;}
+  function getTheme(){
+    var h=window.innerWidth>=1024?80:64;
+    var els=document.elementsFromPoint(Math.max(1,window.innerWidth/2),h+1);
+    var sec=null;
+    for(var i=0;i<els.length;i++){var tag=els[i].tagName;if(tag==='SECTION'||tag==='FOOTER'||tag==='MAIN'){sec=els[i];break;}}
+    if(!sec)return'dark';
+    var node=sec;
+    while(node&&node!==document.body){
+      var bg=window.getComputedStyle(node).backgroundColor;
+      var m=bg&&bg.match(/[\d.]+/g);
+      if(m&&m.length>=3&&!(m.length>=4&&parseFloat(m[3])===0)){
+        var r=parseFloat(m[0]),g=parseFloat(m[1]),b=parseFloat(m[2]);
+        return(0.299*r+0.587*g+0.114*b)/255<0.5?'dark':'light';
+      }
+      node=node.parentElement;
     }
-  });
-  var links=mobileMenu.querySelectorAll('a');
-  for(var i=0;i<links.length;i++){
-    links[i].addEventListener('click',function(){
-      if(isOpen){isOpen=false;mobileMenu.style.opacity='0';mobileMenu.style.visibility='hidden';mobileMenu.style.pointerEvents='none';
-      document.body.style.overflow='';menuBtn.innerHTML=menuIcon;menuBtn.setAttribute('aria-label','Mở menu');handleScroll();}
-    });
+    return'dark';
   }
-}
-var navLinks=header.querySelectorAll('.header-nav-link');
-var navBtns=header.querySelectorAll('.header-submenu-trigger');
-function getTheme(){
-  var h=80;var els=document.elementsFromPoint(window.innerWidth/2,h);var sec=null;
-  for(var i=0;i<els.length;i++){var t=els[i].tagName;if(t==='SECTION'||t==='FOOTER'){sec=els[i];break;}}
-  if(!sec)return'dark';var bg=window.getComputedStyle(sec).backgroundColor;var m=bg.match(/\\d+/g);
-  if(!m)return'dark';var r=parseInt(m[0]),g=parseInt(m[1]),b=parseInt(m[2]);
-  return(0.299*r+0.587*g+0.114*b)/255<0.5?'dark':'light';
-}
-function handleScroll(){
-  if(isOpen)return;var scrolled=window.scrollY>20;var theme=getTheme();var isDark=theme==='dark';
-  header.setAttribute('data-header-scrolled',scrolled?'true':'false');header.setAttribute('data-header-theme',theme);
-  if(scrolled){header.style.backgroundColor=isDark?'rgba(0,0,0,0.75)':'rgba(255,255,255,0.85)';
-    header.style.backdropFilter='blur(16px)';header.style.webkitBackdropFilter='blur(16px)';
-  }else{header.style.backgroundColor='transparent';header.style.backdropFilter='none';header.style.webkitBackdropFilter='none';}
-  if(logo)logo.style.filter=isDark?'brightness(0) invert(1)':'none';
-  var tc=isDark?'#ffffff':'#1a1a1a';var ac='hsl(27,100%,52%)';
-  for(var i=0;i<navLinks.length;i++){var l=navLinks[i];
-    var isA=l.classList.contains('text-secondary')||(l.href&&window.location.href===l.href);
-    l.style.color=isA?ac:tc;}
-  for(var j=0;j<navBtns.length;j++){navBtns[j].style.color=navBtns[j].classList.contains('text-secondary')?ac:tc;}
-  if(menuBtn)menuBtn.style.color=isDark?'#ffffff':'#1a1a1a';
-}
-handleScroll();window.addEventListener('scroll',handleScroll,{passive:true});
+  function handleScroll(){
+    if(isOpen)return;
+    var scrolled=window.scrollY>20;
+    var theme=getTheme();
+    var isDark=theme==='dark';
+    header.setAttribute('data-header-scrolled',scrolled?'true':'false');
+    header.setAttribute('data-header-theme',theme);
+    header.classList.toggle('header-theme-dark',isDark);
+    header.classList.toggle('header-theme-light',!isDark);
+    if(scrolled){
+      header.style.backgroundColor=isDark?'rgba(0,0,0,0.75)':'rgba(255,255,255,0.85)';
+      header.style.backdropFilter='blur(16px)';
+      header.style.webkitBackdropFilter='blur(16px)';
+    }else{
+      header.style.backgroundColor='transparent';
+      header.style.backdropFilter='none';
+      header.style.webkitBackdropFilter='none';
+    }
+    if(logo)logo.style.filter=isDark?'brightness(0) invert(1)':'none';
+    var tc=isDark?'#ffffff':'#1a1a1a';
+    var ac='hsl(27,100%,52%)';
+    var navItems=header.querySelectorAll('.header-nav-link,.header-submenu-trigger');
+    for(var i=0;i<navItems.length;i++){
+      var el=navItems[i];
+      var active=el.classList.contains('text-secondary')||isActive(el)||el.closest('.group')&&el.closest('.group').querySelector('.header-dropdown-link[data-active="true"]');
+      el.style.color=active?ac:tc;
+      el.style.webkitTextFillColor=active?ac:tc;
+    }
+    if(menuBtn){menuBtn.style.color=isDark?'#ffffff':'#1a1a1a';menuBtn.style.webkitTextFillColor=isDark?'#ffffff':'#1a1a1a';}
+  }
+  function closeMobile(){
+    isOpen=false;
+    if(mobileMenu){mobileMenu.style.opacity='0';mobileMenu.style.visibility='hidden';mobileMenu.style.pointerEvents='none';}
+    document.body.style.overflow='';
+    if(menuBtn){menuBtn.innerHTML=menuIcon;menuBtn.setAttribute('aria-label','Mở menu');}
+    handleScroll();
+  }
+  if(menuBtn&&mobileMenu){
+    menuBtn.addEventListener('click',function(){
+      isOpen=!isOpen;
+      if(isOpen){
+        mobileMenu.style.opacity='1';mobileMenu.style.visibility='visible';mobileMenu.style.pointerEvents='auto';
+        document.body.style.overflow='hidden';menuBtn.innerHTML=closeIcon;menuBtn.setAttribute('aria-label','Đóng menu');
+        header.style.backgroundColor='#000000';header.style.backdropFilter='none';header.style.webkitBackdropFilter='none';
+        if(logo)logo.style.filter='brightness(0) invert(1)';menuBtn.style.color='#ffffff';menuBtn.style.webkitTextFillColor='#ffffff';
+      }else{closeMobile();}
+    });
+    var links=mobileMenu.querySelectorAll('a');
+    for(var i=0;i<links.length;i++){links[i].addEventListener('click',closeMobile);}
+  }
+  handleScroll();
+  window.addEventListener('scroll',handleScroll,{passive:true});
+  window.addEventListener('resize',handleScroll,{passive:true});
+});
 })();`);
 
 
 
-  // Copy favicon to assets/images
-  if (existsSync(join(DIST, "favicon.ico"))) {
-    cpSync(join(DIST, "favicon.ico"), join(THEME_DIR, "assets", "images", "favicon.ico"));
-  } else if (existsSync(join(ROOT, "public", "favicon.ico"))) {
-    cpSync(join(ROOT, "public", "favicon.ico"), join(THEME_DIR, "assets", "images", "favicon.ico"));
+  // Copy favicon to both theme root and assets/images for maximum WP/browser compatibility
+  const faviconSource = existsSync(join(DIST, "favicon.ico"))
+    ? join(DIST, "favicon.ico")
+    : existsSync(join(ROOT, "public", "favicon.ico"))
+      ? join(ROOT, "public", "favicon.ico")
+      : null;
+  if (faviconSource) {
+    cpSync(faviconSource, join(THEME_DIR, "assets", "images", "favicon.ico"));
+    cpSync(faviconSource, join(THEME_DIR, "favicon.ico"));
   }
 
   console.log(`\n🎨 Pre-rendering ${routes.length} routes into WP templates...\n`);
@@ -389,7 +436,7 @@ Theme URI: https://kinis.com
 Author: Arin Như Trương
 Author URI: https://kinis.com
 Description: Hệ sinh thái chăm sóc sức khỏe vận động - Giày barefoot Kinis
-Version: 3.6.0
+Version: 5.0.1
 License: Proprietary
 Text Domain: kinis
 */
@@ -409,15 +456,21 @@ function kinis_enqueue_assets() {
     // Google Fonts - swap display for faster rendering
     wp_enqueue_style('kinis-fonts', 'https://fonts.googleapis.com/css2?family=Phudu:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap', array(), null);
     
-    // Main CSS (from Vite build)
-${cssFiles.map((f, i) => `    wp_enqueue_style('kinis-main${i > 0 ? '-' + i : ''}', get_template_directory_uri() . '/assets/css/${f}', array(), '3.6.0');`).join("\n")}
+    // Main CSS (from Vite build) - auto-detect filename for WP-safe installs
+    $css_dir = get_template_directory() . '/assets/css/';
+    $css_files = glob($css_dir . 'index-*.css');
+    if (!empty($css_files)) {
+        sort($css_files);
+        $css_file = basename(end($css_files));
+        wp_enqueue_style('kinis-main', get_template_directory_uri() . '/assets/css/' . $css_file, array(), '5.0.1');
+    }
     
     // Theme stylesheet
-    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '3.6.0');
+    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '5.0.1');
     
     // Header scroll behavior (vanilla JS - replaces React scroll handler)
-    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '3.6.0', true);
-    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '3.6.0', true);
+    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '5.0.1', true);
+    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '5.0.1', true);
 }
 add_action('wp_enqueue_scripts', 'kinis_enqueue_assets');
 
