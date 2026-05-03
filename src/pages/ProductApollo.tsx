@@ -63,6 +63,9 @@ const ProductApollo = () => {
             <img src={apolloImage} alt="Kinis Apollo Pro" className="w-full md:w-[90%] max-w-2xl lg:max-w-3xl object-contain" />
           </div>
         </div>
+        <div className="animate-fade-up [animation-delay:150ms] self-end">
+          <img src={apolloImage} alt="Kinis Apollo Pro" className="w-full h-auto block" />
+        </div>
       </div>
     </section>
 
