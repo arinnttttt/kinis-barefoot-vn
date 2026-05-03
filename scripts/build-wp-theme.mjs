@@ -76,6 +76,18 @@ for p in root.iterdir():
 PY`, { cwd: ROOT, stdio: "inherit" });
 }
 
+function packageThemeZip() {
+  const outputName = `kinis-v${THEME_VERSION}.zip`;
+  const outputPath = join("/mnt/documents", outputName);
+  if (existsSync(outputPath)) rmSync(outputPath, { force: true });
+  execSync(`zip -qr "${outputPath}" kinis`, { cwd: join(ROOT, "wp-theme"), stdio: "inherit" });
+  const listing = execSync(`unzip -l "${outputPath}" | sed -n '1,35p'`, { encoding: "utf8" });
+  if (!listing.includes("kinis/style.css") || listing.includes("wp-theme/kinis/style.css")) {
+    throw new Error(`Invalid WordPress theme ZIP structure for ${outputName}`);
+  }
+  console.log(`\n📦 Installable theme ZIP: ${outputPath}`);
+}
+
 // Simple static server
 function startServer(port) {
   return new Promise((resolve) => {
@@ -1786,6 +1798,8 @@ ${content}
   console.log("   ├── index.php");
   console.log("   ├── 404.php");
   console.log("   └── assets/ (css, images, js)");
+
+  packageThemeZip();
 }
 
 build().catch((err) => {
