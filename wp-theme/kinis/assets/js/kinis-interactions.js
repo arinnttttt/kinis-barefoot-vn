@@ -106,4 +106,118 @@ if (homeFaqSection) {
   });
 }
 
+// ============ LUCY COLOR CAROUSEL (STATIC WORDPRESS) ============
+function initLucyCarousels() {
+  var variants = [
+    { src: 'https://kinis.vn/wp-content/uploads/2026/05/lucy-red-scaled.png', label: 'Đỏ', color: 'hsl(0 75% 35%)' },
+    { src: 'https://kinis.vn/wp-content/uploads/2026/05/lucy-white-scaled.png', label: 'Trắng', color: 'hsl(40 30% 90%)' },
+    { src: 'https://kinis.vn/wp-content/uploads/2026/05/lucy-gray-scaled.png', label: 'Xám', color: 'hsl(0 0% 60%)' },
+    { src: 'https://kinis.vn/wp-content/uploads/2026/05/lucy-black-scaled.png', label: 'Đen', color: 'hsl(0 0% 15%)' }
+  ];
+
+  document.querySelectorAll('[data-lucy-carousel]').forEach(function(carousel) {
+    if (carousel.getAttribute('data-lucy-ready') === 'true') return;
+
+    var buttons = Array.prototype.slice.call(carousel.querySelectorAll('button'));
+    if (!buttons.length) return;
+
+    carousel.setAttribute('data-lucy-ready', 'true');
+    var center = Math.floor(buttons.length / 2);
+    var active = 0;
+    var timer = null;
+
+    buttons.forEach(function(button, index) {
+      var img = button.querySelector('img');
+      var isActiveButton = button.style.opacity === '1' || button.getAttribute('aria-current') === 'true';
+      if (img && isActiveButton) {
+        var src = img.getAttribute('src') || '';
+        variants.forEach(function(item, variantIndex) {
+          if (src.indexOf(item.src) !== -1 || item.src.indexOf(src) !== -1) active = variantIndex;
+        });
+      } else if (index === center && img) {
+        var fallbackSrc = img.getAttribute('src') || '';
+        variants.forEach(function(item, variantIndex) {
+          if (fallbackSrc.indexOf(item.src) !== -1 || item.src.indexOf(fallbackSrc) !== -1) active = variantIndex;
+        });
+      }
+    });
+
+    function wrap(index) {
+      return (index + variants.length) % variants.length;
+    }
+
+    function render() {
+      buttons.forEach(function(button, buttonIndex) {
+        var offset = buttonIndex - center;
+        var variantIndex = wrap(active + offset);
+        var item = variants[variantIndex];
+        var isActive = buttonIndex === center;
+        var img = button.querySelector('img');
+        var labelWrap = button.querySelector('div[aria-hidden]');
+        var swatch = labelWrap ? labelWrap.querySelector('span:first-child') : null;
+        var label = labelWrap ? labelWrap.querySelector('span:last-child') : null;
+
+        button.setAttribute('data-lucy-variant-index', String(variantIndex));
+        button.setAttribute('aria-label', 'Chọn màu ' + item.label);
+        button.setAttribute('aria-current', isActive ? 'true' : 'false');
+        button.style.opacity = isActive ? '1' : '0.35';
+        button.style.transform = isActive ? 'translateY(0) scale(1)' : 'translateY(10px) scale(0.82)';
+        button.style.width = isActive ? 'clamp(12rem, 30vw, 24rem)' : 'clamp(6rem, 17vw, 12rem)';
+        button.style.cursor = isActive ? 'default' : 'pointer';
+
+        if (img) {
+          img.setAttribute('src', item.src);
+          img.setAttribute('alt', 'Kinis Lucy ' + item.label);
+          img.setAttribute('draggable', 'false');
+        }
+        if (labelWrap) {
+          labelWrap.style.opacity = isActive ? '1' : '0';
+          labelWrap.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+        }
+        if (swatch) swatch.style.backgroundColor = item.color;
+        if (label) label.textContent = item.label;
+      });
+    }
+
+    function goTo(index) {
+      active = wrap(index);
+      render();
+    }
+
+    function stopTimer() {
+      if (timer) window.clearInterval(timer);
+      timer = null;
+    }
+
+    function startTimer() {
+      stopTimer();
+      if (document.hidden) return;
+      timer = window.setInterval(function() {
+        goTo(active + 1);
+      }, 3000);
+    }
+
+    buttons.forEach(function(button) {
+      button.addEventListener('click', function(event) {
+        event.preventDefault();
+        var nextIndex = parseInt(button.getAttribute('data-lucy-variant-index'), 10);
+        if (!isNaN(nextIndex)) {
+          goTo(nextIndex);
+          startTimer();
+        }
+      });
+    });
+
+    document.addEventListener('visibilitychange', startTimer);
+    render();
+    startTimer();
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initLucyCarousels, { once: true });
+} else {
+  initLucyCarousels();
+}
+
 })();
