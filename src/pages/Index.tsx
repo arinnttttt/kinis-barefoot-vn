@@ -17,6 +17,7 @@ import VideoShowcase from "@/components/VideoShowcase";
 const products = {
   lucy: {
     label: "Kinis Lucy",
+    shortLabel: "Lucy",
     badge: "Chứng nhận APMA",
     subtitle: "Giày đi bộ hàng ngày",
     description:
@@ -27,6 +28,7 @@ const products = {
   },
   nomad: {
     label: "Kinis Nomad",
+    shortLabel: "Nomad",
     badge: "Giày barefoot",
     subtitle: "Giày tập luyện chân trần",
     description:
@@ -37,6 +39,7 @@ const products = {
   },
   apollo: {
     label: "Kinis Apollo Pro",
+    shortLabel: "Apollo Pro",
     badge: "Pro Training",
     subtitle: "Giày luyện tập chuyên biệt",
     description:
