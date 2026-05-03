@@ -305,6 +305,125 @@ if (homeFaqSection) {
   });
 }
 
+// ============ COLOR CAROUSEL (Lucy & Nomad) ============
+function initColorCarousel(selector) {
+  var section = document.querySelector(selector);
+  if (!section) return;
+  var buttons = section.querySelectorAll('button[aria-label]');
+  if (buttons.length < 2) return;
+  
+  var total = buttons.length;
+  // The pre-rendered HTML shows 3 visible slots: offsets [-1, 0, 1]
+  // We need to figure out total variants and active index from the data
+  // Lucy has 4 variants, Nomad has 3
+  var isLucy = selector.indexOf('lucy') !== -1;
+  var variantCount = isLucy ? 4 : 3;
+  var active = isLucy ? 0 : 1;
+  
+  function applyState() {
+    // Calculate the 3 visible indices
+    var indices = [
+      (active - 1 + variantCount) % variantCount,
+      active,
+      (active + 1) % variantCount
+    ];
+    
+    for (var i = 0; i < buttons.length; i++) {
+      var btn = buttons[i];
+      var isCenter = (i === 1); // middle button is always the active one
+      var idx = indices[i];
+      
+      // Update image src and alt
+      var img = btn.querySelector('img');
+      var label = btn.querySelector('.mt-3');
+      var colorDot = btn.querySelector('.rounded-full');
+      
+      if (img) {
+        img.src = getVariantSrc(selector, idx);
+        img.alt = getVariantAlt(selector, idx);
+      }
+      if (label) {
+        label.style.opacity = isCenter ? '1' : '0';
+      }
+      
+      // Apply scale/opacity
+      btn.style.opacity = isCenter ? '1' : '0.35';
+      btn.style.transform = isCenter ? 'translateY(0) scale(1)' : 'translateY(10px) scale(0.82)';
+      btn.style.width = isCenter ? 'clamp(12rem, 30vw, 24rem)' : 'clamp(6rem, 17vw, 12rem)';
+      btn.style.cursor = isCenter ? 'default' : 'pointer';
+      
+      // Update color dot
+      if (colorDot) {
+        colorDot.style.backgroundColor = getVariantColor(selector, idx);
+      }
+      // Update label text
+      var labelText = btn.querySelector('.font-display.font-semibold');
+      if (labelText) {
+        labelText.textContent = getVariantLabel(selector, idx);
+      }
+    }
+  }
+  
+  // Click handlers
+  for (var i = 0; i < buttons.length; i++) {
+    (function(index) {
+      buttons[index].addEventListener('click', function() {
+        if (index === 1) return; // center, do nothing
+        if (index === 0) {
+          // Previous
+          active = (active - 1 + variantCount) % variantCount;
+        } else {
+          // Next
+          active = (active + 1) % variantCount;
+        }
+        applyState();
+      });
+    })(i);
+  }
+  
+  // Autoplay every 3 seconds
+  var timer = setInterval(function() {
+    active = (active + 1) % variantCount;
+    applyState();
+  }, 3000);
+  
+  // Pause on hover
+  section.addEventListener('mouseenter', function() { clearInterval(timer); });
+  section.addEventListener('mouseleave', function() {
+    timer = setInterval(function() {
+      active = (active + 1) % variantCount;
+      applyState();
+    }, 3000);
+  });
+}
+
+// Lucy variant data
+var lucyVariants = [
+  { src: 'https://kinis.vn/wp-content/uploads/2026/05/lucy-red-scaled.png', label: 'Đỏ', color: 'hsl(0,75%,35%)' },
+  { src: 'https://kinis.vn/wp-content/uploads/2026/05/lucy-white-scaled.png', label: 'Trắng', color: 'hsl(40,30%,90%)' },
+  { src: 'https://kinis.vn/wp-content/uploads/2026/05/lucy-gray-scaled.png', label: 'Xám', color: 'hsl(0,0%,60%)' },
+  { src: 'https://kinis.vn/wp-content/uploads/2026/05/lucy-black-scaled.png', label: 'Đen', color: 'hsl(0,0%,15%)' }
+];
+var nomadVariants = [
+  { src: 'https://kinis.vn/wp-content/uploads/2026/04/nomad-gray-scaled.png', label: 'Xám', color: 'hsl(0,0%,60%)' },
+  { src: 'https://kinis.vn/wp-content/uploads/2026/04/nomad-black-scaled.png', label: 'Đen', color: 'hsl(0,0%,15%)' },
+  { src: 'https://kinis.vn/wp-content/uploads/2026/04/nomad-red-scaled.png', label: 'Đỏ', color: 'hsl(0,75%,45%)' }
+];
+
+function getVariants(selector) {
+  return selector.indexOf('lucy') !== -1 ? lucyVariants : nomadVariants;
+}
+function getVariantSrc(selector, idx) { return getVariants(selector)[idx].src; }
+function getVariantAlt(selector, idx) {
+  var name = selector.indexOf('lucy') !== -1 ? 'Kinis Lucy' : 'Kinis Nomad';
+  return name + ' ' + getVariants(selector)[idx].label;
+}
+function getVariantColor(selector, idx) { return getVariants(selector)[idx].color; }
+function getVariantLabel(selector, idx) { return getVariants(selector)[idx].label; }
+
+initColorCarousel('[data-lucy-carousel]');
+initColorCarousel('[data-nomad-carousel]');
+
 })();`);
 
   // Copy header-scroll.js from source
