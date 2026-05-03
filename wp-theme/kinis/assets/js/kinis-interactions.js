@@ -183,23 +183,16 @@ function initColorCarousel(selector) {
   }
   
   // Autoplay every 3 seconds
-  var timer = null;
-  function startAutoplay() {
-    stopAutoplay();
-    timer = setInterval(function() {
-      active = (active + 1) % variantCount;
-      applyState();
-    }, 3000);
-  }
-  function stopAutoplay() {
-    if (timer) { clearInterval(timer); timer = null; }
-  }
-  startAutoplay();
+  var timer = setInterval(function() {
+    active = (active + 1) % variantCount;
+    applyState();
+  }, 3000);
   
   // Pause on hover
-  section.addEventListener('mouseenter', stopAutoplay);
+  section.addEventListener('mouseenter', function() { clearInterval(timer); });
   section.addEventListener('mouseleave', function() {
-    startAutoplay();
+    timer = setInterval(function() {
+      active = (active + 1) % variantCount;
       applyState();
     }, 3000);
   });
