@@ -57,30 +57,25 @@ const Header = () => {
   const isParentActive = (children?: { href: string }[]) =>
     Boolean(children?.some((child) => isActive(child.href)));
 
-  const isDark = headerTheme === "dark";
-
-  // When mobile menu is open, force light bar style (white bg, dark text)
-  const barIsDark = mobileOpen ? false : isDark;
+  // At top: dark theme (white text on transparent). Scrolled: light theme (dark text on white glassmorphism)
+  const barIsDark = mobileOpen ? false : !scrolled;
 
   return (
     <>
-      {/* Header bar - no backdrop-filter issues */}
       <header
         className="fixed top-0 left-0 right-0 z-[9999]"
         style={{
           backgroundColor: mobileOpen
             ? "#000000"
             : scrolled
-              ? barIsDark
-                ? "rgba(0,0,0,0.75)"
-                : "rgba(255,255,255,0.85)"
+              ? "rgba(255,255,255,0.85)"
               : "transparent",
           backdropFilter: !mobileOpen && scrolled ? "blur(16px)" : "none",
           WebkitBackdropFilter: !mobileOpen && scrolled ? "blur(16px)" : "none",
           transition: "background-color 0.5s, backdrop-filter 0.5s",
         }}
         data-component="header"
-        data-header-theme={headerTheme}
+        data-header-theme={scrolled ? "light" : "dark"}
         data-header-scrolled={scrolled ? "true" : "false"}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
