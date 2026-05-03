@@ -79,8 +79,8 @@ const Header = () => {
   const isParentActive = (children?: { href: string }[]) =>
     Boolean(children?.some((child) => isActive(child.href)));
 
-  // At top: dark theme (white text on transparent). Scrolled: light theme (dark text on white glassmorphism)
-  const barIsDark = mobileOpen ? false : !scrolled;
+  // Not scrolled: follow hero luminance. Scrolled: always light (white bg, dark text).
+  const barIsDark = mobileOpen ? false : (!scrolled && heroDark);
 
   return (
     <>
