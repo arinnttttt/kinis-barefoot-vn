@@ -110,7 +110,7 @@ const ProductApollo = () => {
             <img src={apolloImage} alt="Kinis Apollo Pro Technology" className="w-full max-w-md object-contain" />
           </div>
           <div className="animate-fade-up [animation-delay:150ms]">
-            <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: ACCENT }}>Công nghệ</span>
+            <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: ACCENT }}>Sức mạnh tối ưu</span>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight text-foreground">
               Thiết kế<br /><span style={{ color: ACCENT }}>chuyên biệt</span> Pro
             </h2>
