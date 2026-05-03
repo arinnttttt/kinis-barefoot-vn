@@ -6,7 +6,7 @@ import audienceYogaImg from "@/assets/audience-yoga.jpg";
 import audienceFlatfeetImg from "@/assets/audience-flatfeet-strength.jpg";
 import audienceFunctionalImg from "@/assets/audience-functional.jpg";
 import audienceTrailRunnerImg from "@/assets/audience-trail-runner.jpg";
-import nomadKolBanner from "@/assets/nomad-kol-banner.png";
+const nomadKolBanner = "https://kinis.vn/wp-content/uploads/2026/05/nomad-kol-banner.png";
 import TestimonialSection from "@/components/TestimonialSection";
 
 const apolloImage = "https://kinis.vn/wp-content/uploads/2026/04/kinis-apollo-1.png";
