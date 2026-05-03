@@ -122,10 +122,14 @@ const ProductApollo = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center">
           <div className="flex items-center justify-center animate-fade-up">
-            {/* Video placeholder - sẽ thêm sau */}
-            <div className="w-full max-w-md aspect-square bg-muted rounded-xl flex items-center justify-center">
-              <span className="text-muted-foreground text-sm">Video sắp có</span>
-            </div>
+            <video
+              src="https://kinis.vn/wp-content/uploads/2026/05/apollo-rotate.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full max-w-md rounded-xl"
+            />
           </div>
           <div className="animate-fade-up [animation-delay:150ms]">
             <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: ACCENT }}>Chất liệu</span>
