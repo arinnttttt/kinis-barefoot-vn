@@ -1858,6 +1858,9 @@ ${content}
     execSync(`python3 "${postprocessScript}"`, { stdio: "inherit" });
   }
 
+  console.log("\n🗜️ Optimizing WP theme images for upload-size limits...");
+  optimizeThemeImages();
+
   console.log("\n✅ WordPress theme generated in wp-theme/kinis/");
   console.log("📁 Theme structure:");
   console.log("   kinis/");
