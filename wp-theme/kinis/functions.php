@@ -14,15 +14,15 @@ function kinis_enqueue_assets() {
     if (!empty($css_files)) {
         sort($css_files);
         $css_file = basename(end($css_files));
-        wp_enqueue_style('kinis-main', get_template_directory_uri() . '/assets/css/' . $css_file, array(), '5.1.1');
+        wp_enqueue_style('kinis-main', get_template_directory_uri() . '/assets/css/' . $css_file, array(), '5.1.2');
     }
     
     // Theme stylesheet
-    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '5.1.1');
+    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '5.1.2');
     
     // Header scroll behavior (vanilla JS - replaces React scroll handler)
-    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '5.1.1', true);
-    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '5.1.1', true);
+    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '5.1.2', true);
+    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '5.1.2', true);
 }
 add_action('wp_enqueue_scripts', 'kinis_enqueue_assets');
 
@@ -371,58 +371,14 @@ add_action('save_post_kinis_testimonial', 'kinis_save_testimonial_meta');
 
 // Auto-seed testimonial data on theme activation
 function kinis_seed_testimonials() {
-    // Allow re-seeding by checking version
-    $seeded_version = get_option('kinis_testimonials_seeded_version', '');
-    $current_version = '5.1.2';
-    if ($seeded_version === $current_version) return;
-
-    // Delete old seeded testimonials before re-seeding
-    $old_posts = get_posts(array('post_type' => 'kinis_testimonial', 'posts_per_page' => -1, 'fields' => 'ids'));
-    foreach ($old_posts as $old_id) { wp_delete_post($old_id, true); }
-
+    if (get_option('kinis_testimonials_seeded')) return;
     $testimonials = array(
-        array(
-            'name' => 'Shella D.',
-            'stars' => 5,
-            'category' => 'Excellent',
-            'review' => 'Đây là đôi giày barefoot tốt nhất mà tôi từng thử! Thiết kế tối giản nhưng vẫn rất phong cách. Tôi rất thích cảm giác của đôi giày trên chân. Ban đầu tôi đặt nhầm size, nhưng đội ngũ chăm sóc khách hàng đã hỗ trợ rất nhanh.',
-            'pages' => array('home', 'nomad'),
-        ),
-        array(
-            'name' => 'Gregory P.',
-            'stars' => 5,
-            'category' => 'Fantastic',
-            'review' => 'Tôi mua đôi Lucy cho RJ. Theo lời anh ấy: "Đôi giày này đã thay đổi cách tôi bước đi theo hướng tốt hơn. Tôi không muốn quay lại mang giày thông thường nữa."',
-            'pages' => array('home', 'lucy'),
-        ),
-        array(
-            'name' => 'Brian K.',
-            'stars' => 5,
-            'category' => 'Great',
-            'review' => 'Tôi vừa trải qua phẫu thuật bàn chân và đôi giày Kinis thực sự rất phù hợp với đôi chân của tôi thời điểm phục hồi này. Rất thoải mái nhưng vẫn có độ hỗ trợ cần thiết.',
-            'pages' => array('home', 'nomad'),
-        ),
-        array(
-            'name' => 'Jennifer B.',
-            'stars' => 5,
-            'category' => 'Excellent',
-            'review' => 'Tôi rất thích cảm giác vừa vặn của đôi giày! Giày rất nhẹ và ôm chân hoàn hảo từ ngón chân đến gót chân. Tôi mang khi tập luyện và cả trong sinh hoạt hàng ngày.',
-            'pages' => array('home', 'nomad', 'lucy'),
-        ),
-        array(
-            'name' => 'Casey B.',
-            'stars' => 5,
-            'category' => 'Excellent',
-            'review' => 'Ban đầu tôi hơi do dự khi mua, nhưng giờ rất vui vì đã chọn chúng cho hành trình làm quen với barefoot. Tôi bắt đầu cảm nhận rõ các nhóm cơ bàn chân khi đi bộ.',
-            'pages' => array('home', 'lucy'),
-        ),
-        array(
-            'name' => 'Matthew O.',
-            'stars' => 5,
-            'category' => 'Excellent',
-            'review' => 'Đôi giày hoàn hảo với tôi. Tôi không thích mang giày và có cổ chân yếu, nhưng đôi giày này giải quyết được cả hai. Thoải mái như một đôi tất nhưng vẫn có độ bảo vệ của giày.',
-            'pages' => array('home', 'nomad', 'lucy'),
-        ),
+        array('name' => 'Shella D.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Đây là đôi giày barefoot tốt nhất mà tôi từng thử! Thiết kế tối giản nhưng vẫn đảm bảo bảo vệ, phù hợp hoàn hảo cho những buổi đi bộ dài. Chất liệu nhẹ, thoáng khí, chân cảm nhận được mặt đất rõ ràng."'),
+        array('name' => 'Gregory P.', 'stars' => 5, 'category' => 'Fantastic', 'review' => '"Tôi mua đôi Lucy cho RJ. Theo lời anh ấy: \"Đôi giày này đã thay đổi cách tôi bước đi. Thoải mái tự nhiên, nhẹ nhàng mà vẫn chắc chắn. Giờ tôi chỉ muốn đi bộ thôi!\""'),
+        array('name' => 'Brian K.', 'stars' => 4, 'category' => 'Great', 'review' => '"Tôi vừa trải qua phẫu thuật bàn chân và đôi giày Kinis thực sự rất phù hợp với tình trạng hiện tại. Bàn chân được tự do co duỗi và cảm nhận mặt đất, giúp quá trình phục hồi thoải mái hơn rất nhiều."'),
+        array('name' => 'Jennifer B.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Tôi rất thích cảm giác vừa vặn của đôi giày! Giày rất nhẹ và ôm chân hoàn hảo từ lần đầu tiên. Rất phù hợp cho những ai đang tìm kiếm giày barefoot cho đời thường."'),
+        array('name' => 'Casey B.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Ban đầu tôi hơi do dự khi mua, nhưng giờ rất vui vì đã chọn chúng cho hành trình barefoot. Sau 2 tuần đi bộ mỗi ngày, cảm giác thăng bằng của tôi cải thiện rõ rệt."'),
+        array('name' => 'Matthew O.', 'stars' => 5, 'category' => 'Excellent', 'review' => '"Đôi giày hoàn hảo với tôi. Tôi không thích mang giày và có cổ chân yếu, nhưng đôi giày này giải quyết được cả hai. Thoải mái như một đôi tất nhưng vẫn có độ bảo vệ của giày."'),
     );
     $order = 1;
     foreach ($testimonials as $t) {
@@ -436,12 +392,10 @@ function kinis_seed_testimonials() {
         if ($post_id && !is_wp_error($post_id)) {
             update_post_meta($post_id, '_kinis_testimonial_stars', $t['stars']);
             update_post_meta($post_id, '_kinis_testimonial_category', $t['category']);
-            update_post_meta($post_id, '_kinis_testimonial_pages', $t['pages']);
+            update_post_meta($post_id, '_kinis_testimonial_pages', array('home'));
         }
     }
-    update_option('kinis_testimonials_seeded_version', $current_version);
-    // Remove old flag
-    delete_option('kinis_testimonials_seeded');
+    update_option('kinis_testimonials_seeded', true);
 }
 add_action('after_switch_theme', 'kinis_seed_testimonials', 35);
 
