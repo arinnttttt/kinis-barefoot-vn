@@ -167,22 +167,19 @@ const ProductApollo = () => {
       <img src="https://kinis.vn/wp-content/uploads/2026/05/apollo-lifestyle.png" alt="Kinis Apollo Pro Lifestyle" className="w-full block" loading="lazy" />
     </section>
 
-    {/* Guide Section - Dark (cloned from Lucy) */}
+    {/* Nghệ thuật trải nghiệm Section */}
     <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-fade-up">
-          <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: ACCENT }}>Lộ trình thích nghi</span>
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">Kinis Apollo Pro giúp bạn tập luyện hiệu quả hơn</h2>
-          <p className="mt-4 text-base sm:text-lg leading-relaxed" style={{ color: "hsl(0,0%,65%)" }}>
-            Cần thời gian để bàn chân thích nghi với đế Pro zero-drop. Hãy kiên nhẫn theo lộ trình 3–6 tuần.
-          </p>
+          <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: ACCENT }}>Nghệ thuật trải nghiệm</span>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">Sử dụng <span style={{ color: ACCENT }}>đa nhiệm</span></h2>
         </div>
 
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {[
-            { icon: Footprints, title: "Tuần 1 – 2", subtitle: "Làm quen", desc: "Mang tập nhẹ 1–2 giờ mỗi buổi. Tránh bài tập cường độ cao ngay lập tức." },
-            { icon: Dumbbell, title: "Tuần 3 – 4", subtitle: "Tăng cường", desc: "Bắt đầu các bài tập chuyên biệt nhẹ. Tăng dần thời gian và cường độ tập." },
-            { icon: ArrowRightLeft, title: "Sau 1 – 2 tháng", subtitle: "Bứt phá", desc: "Sử dụng cho mọi bài tập chuyên biệt. Cảm nhận sự ổn định và truyền lực tối ưu." },
+            { icon: Dumbbell, title: "Pro-Training", subtitle: "Lựa chọn số một cho các bài tập hạng nặng squat, deadlift trong phòng Gym." },
+            { icon: Zap, title: "Giày tập luyện", subtitle: "Dành cho vận động viên chuyên nghiệp với cường độ tập luyện dày đặc, hỗ trợ tăng cường sức mạnh cơ bắp trong thời gian chuẩn bị thi đấu." },
+            { icon: Compass, title: "Phong cách Lifestyle", subtitle: "Sử dụng hàng ngày với phom dáng và thiết kế hiện đại, phù hợp mang đi làm, đi chơi hay đi dạo hàng ngày." },
           ].map((item, i) => (
             <div
               key={item.title}
@@ -196,16 +193,11 @@ const ProductApollo = () => {
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5" style={{ backgroundColor: "hsl(27 100% 52% / 0.12)" }}>
                 <item.icon className="w-7 h-7" style={{ color: ACCENT }} />
               </div>
-              <h3 className="font-display text-lg sm:text-xl font-bold text-white mb-1">{item.title}</h3>
-              <p className="text-sm sm:text-base font-semibold mb-3" style={{ color: "hsl(27,100%,60%)" }}>{item.subtitle}</p>
-              <p className="text-sm sm:text-base leading-relaxed" style={{ color: "hsl(0,0%,65%)" }}>{item.desc}</p>
+              <h3 className="font-display text-lg sm:text-xl font-bold text-white mb-3">{item.title}</h3>
+              <p className="text-sm sm:text-base leading-relaxed" style={{ color: "hsl(0,0%,65%)" }}>{item.subtitle}</p>
             </div>
           ))}
         </div>
-
-        <p className="text-center text-base sm:text-lg mt-10 sm:mt-12 max-w-2xl mx-auto animate-fade-up" style={{ color: "hsl(0,0%,55%)" }}>
-          ⚡ Vệ sinh bằng khăn ẩm sau mỗi buổi tập. Phơi nơi thoáng mát để giữ độ bền tối ưu.
-        </p>
       </div>
     </section>
 
