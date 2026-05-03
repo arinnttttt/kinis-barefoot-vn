@@ -149,7 +149,7 @@ const ProductApollo = () => {
           <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: ACCENT }}>Lộ trình thích nghi</span>
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">Kinis Apollo Pro giúp bạn tập luyện hiệu quả hơn</h2>
           <p className="mt-4 text-base sm:text-lg leading-relaxed" style={{ color: "hsl(0,0%,65%)" }}>
-            Cần thời gian để bàn chân thích nghi với đế zero-drop. Hãy kiên nhẫn theo lộ trình 3–6 tuần.
+            Cần thời gian để bàn chân thích nghi với đế Pro zero-drop. Hãy kiên nhẫn theo lộ trình 3–6 tuần.
           </p>
         </div>
 
