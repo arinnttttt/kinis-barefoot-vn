@@ -236,6 +236,27 @@ const ProductApollo = () => {
     {/* Testimonial Section */}
     <TestimonialSection page="apollo" title={<>Mọi người nghĩ gì về <span style={{ color: ACCENT }}>Kinis Apollo Pro</span></>} subtitle={null} />
 
+    {/* APMA Certification Section */}
+    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#FFFFFF" }}>
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-8 sm:mb-10 animate-fade-up">
+          <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: ACCENT }}>Chứng nhận</span>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+            Chứng nhận <span style={{ color: ACCENT }}>y khoa</span>
+          </h2>
+        </div>
+        <div className="flex flex-col items-center text-center animate-fade-up [animation-delay:150ms]">
+          <img src={apmaSeal} alt="APMA Seal of Acceptance" className="h-28 sm:h-36 w-auto mb-6" />
+          <p className="text-base sm:text-lg leading-relaxed text-muted-foreground max-w-2xl mb-4">
+            Giày Kinis Apollo Pro đã được Hiệp hội American Podiatric Medical Association (APMA) chứng nhận là sản phẩm hỗ trợ sức khỏe bàn chân.
+          </p>
+          <p className="text-sm sm:text-base leading-relaxed text-muted-foreground max-w-2xl">
+            APMA là tổ chức y khoa hàng đầu tại Hoa Kỳ chuyên về sức khỏe bàn chân và mắt cá chân. Chứng nhận APMA Seal of Acceptance đảm bảo sản phẩm đáp ứng các tiêu chuẩn khoa học nghiêm ngặt trong việc hỗ trợ và bảo vệ sức khỏe bàn chân.
+          </p>
+        </div>
+      </div>
+    </section>
+
     {/* Quote CTA Section - Dark */}
     <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
       <div className="max-w-3xl mx-auto text-center animate-fade-up">
