@@ -248,7 +248,7 @@ const ProductApollo = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {[
               { text: "Không sử dụng để chạy bộ đường dài" },
-              { text: "Cần thời gian thích nghi với đế zero-drop" },
+              { text: "Cần thời gian thích nghi với đế Pro zero-drop" },
               { text: "Không dùng khi đang có chấn thương bàn chân cấp tính" },
               { text: "Tham khảo ý kiến chuyên gia nếu có vấn đề về khớp" },
             ].map((item) => (
