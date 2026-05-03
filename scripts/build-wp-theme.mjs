@@ -133,6 +133,19 @@ async function build() {
     }
   }
 
+  // Also ship source assets with their stable filenames. The static WP templates may
+  // contain browser-rendered hashed names from older renders; keeping both hashed
+  // Vite assets and original asset names prevents missing images after updates.
+  const sourceAssetsDir = join(ROOT, "src", "assets");
+  if (existsSync(sourceAssetsDir)) {
+    for (const file of readdirSync(sourceAssetsDir)) {
+      const ext = extname(file).toLowerCase();
+      if ([".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".ico", ".avif"].includes(ext)) {
+        cpSync(join(sourceAssetsDir, file), join(THEME_DIR, "assets", "images", file));
+      }
+    }
+  }
+
   // Generate kinis-interactions.js (vanilla JS for testimonial, video, FAQ accordion)
   writeFileSync(join(THEME_DIR, "assets", "js", "kinis-interactions.js"), `(function(){
 'use strict';
