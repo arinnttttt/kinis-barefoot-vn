@@ -57,11 +57,11 @@ const ProductLucy = () => {
             <p className="text-sm sm:text-base font-body uppercase tracking-widest mb-3 text-muted-foreground">
               Giày đi bộ barefoot
             </p>
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-foreground">
-              Cải thiện
-              <br />
-              <span style={{ color: ACCENT }}>sức mạnh</span> bàn chân
-              <br />
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-foreground">
+              Cải thiện{" "}
+              <br className="sm:hidden" />
+              <span style={{ color: ACCENT }}>sức mạnh</span> bàn chân{" "}
+              <br className="sm:hidden" />
               mỗi ngày
             </h1>
             <div className="mt-4 flex flex-col items-start gap-2">
