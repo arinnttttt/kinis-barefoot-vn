@@ -22,7 +22,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const DIST = join(ROOT, "dist");
 const THEME_DIR = join(ROOT, "wp-theme", "kinis");
-const THEME_VERSION = "5.1.5";
+const THEME_VERSION = "5.2.0";
 
 // Route config: path → WP page template name + title
 const routes = [
@@ -36,6 +36,7 @@ const routes = [
   { path: "/doi-tuong/chay-bo", template: "page-doi-tuong-chay-bo", title: "Chạy bộ" },
   { path: "/doi-tuong/ban-chan-bet", template: "page-doi-tuong-ban-chan-bet", title: "Bàn chân bẹt" },
   { path: "/faq", template: "page-faq", title: "FAQ" },
+  { path: "/coming-soon", template: "page-coming-soon", title: "Coming Soon" },
 ];
 
 function optimizeThemeImages() {
@@ -146,6 +147,7 @@ function getAcfReplacements(template) {
     "page-doi-tuong-chay-bo": [],
     "page-doi-tuong-ban-chan-bet": [],
     "page-faq": [],
+    "page-coming-soon": [],
   };
   return maps[template] || [];
 }
@@ -1460,6 +1462,47 @@ Lưu ý quan trọng:
     update_option('kinis_faq_seeded', true);
 }
 add_action('after_switch_theme', 'kinis_seed_faq_data', 30);
+
+// ============================================
+// Coming Soon: redirect draft/pending pages
+// ============================================
+function kinis_coming_soon_redirect() {
+    if (!is_404()) return;
+    
+    // Get the requested path
+    \\$request_uri = trim(parse_url(\\$_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+    if (empty(\\$request_uri)) return;
+    
+    // Check if there's a page with this slug in draft/pending/future status
+    \\$slug = basename(\\$request_uri);
+    \\$found = get_posts(array(
+        'name'        => \\$slug,
+        'post_type'   => 'page',
+        'post_status' => array('draft', 'pending', 'future'),
+        'numberposts' => 1,
+    ));
+    
+    // Also check parent/child slugs (e.g. san-pham/new-shoe)
+    if (empty(\\$found)) {
+        \\$all_segments = explode('/', \\$request_uri);
+        foreach (\\$all_segments as \\$seg) {
+            \\$found = get_posts(array(
+                'name'        => \\$seg,
+                'post_type'   => 'page',
+                'post_status' => array('draft', 'pending', 'future'),
+                'numberposts' => 1,
+            ));
+            if (!empty(\\$found)) break;
+        }
+    }
+    
+    if (!empty(\\$found)) {
+        status_header(200);
+        get_template_part('page-coming-soon');
+        exit;
+    }
+}
+add_action('template_redirect', 'kinis_coming_soon_redirect');
 `);
 
   // 3. header.php - extract header + mobile menu from first page
