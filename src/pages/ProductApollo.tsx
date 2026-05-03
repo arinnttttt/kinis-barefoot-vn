@@ -134,7 +134,6 @@ const ProductApollo = () => {
           </div>
         </div>
       </div>
-    </section>
 
     {/* KOL Banner */}
     <section className="w-full">
