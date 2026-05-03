@@ -1,6 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import { Zap, Compass, Activity, Shield, Feather, Wind, Check, AlertTriangle, PersonStanding, Footprints, Dumbbell, ArrowRightLeft } from "lucide-react";
 import lucyImage from "@/assets/lucy-showcase-v3.png";
+import heroLucy from "@/assets/hero-lucy.png";
 import apmaSeal from "@/assets/apma-seal.png";
 import audienceGymImg from "@/assets/audience-gym-weightlifting.jpg";
 import audiencePostureImg from "@/assets/audience-posture.jpg";
