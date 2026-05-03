@@ -22,6 +22,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const DIST = join(ROOT, "dist");
 const THEME_DIR = join(ROOT, "wp-theme", "kinis");
+const THEME_VERSION = "5.0.1";
 
 // Route config: path → WP page template name + title
 const routes = [
@@ -109,11 +110,12 @@ async function build() {
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
 
-  // Clean old assets and recreate directories
+  // Clean the whole assets folder first. Older builds left hashed images directly
+  // under assets/, which made the WP ZIP exceed upload limits.
+  const themeAssetsDir = join(THEME_DIR, "assets");
+  if (existsSync(themeAssetsDir)) rmSync(themeAssetsDir, { recursive: true, force: true });
   for (const sub of ["css", "images", "js", "videos"]) {
-    const dir = join(THEME_DIR, "assets", sub);
-    if (existsSync(dir)) rmSync(dir, { recursive: true, force: true });
-    mkdirSync(dir, { recursive: true });
+    mkdirSync(join(themeAssetsDir, sub), { recursive: true });
   }
 
   // Videos are hosted externally - no local video copying needed
