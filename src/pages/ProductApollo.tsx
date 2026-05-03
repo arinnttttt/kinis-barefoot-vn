@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import { Zap, Compass, Radio, Shield, Feather, Wind, Check, AlertTriangle, Footprints, Dumbbell, ArrowRightLeft } from "lucide-react";
+import { Zap, Compass, Activity, Shield, Feather, Wind, Check, AlertTriangle, Footprints, Dumbbell, ArrowRightLeft, PersonStanding } from "lucide-react";
 import audienceGymImg from "@/assets/audience-gym-weightlifting.jpg";
 import audiencePostureImg from "@/assets/audience-posture.jpg";
 import audienceYogaImg from "@/assets/audience-yoga.jpg";
@@ -19,23 +19,23 @@ const ACCENT = "hsl(27,100%,52%)";
 const benefits = [
   {
     icon: Zap,
-    title: "Đế Pro zero-drop tối ưu hiệu suất",
-    description: "Thiết kế đế phẳng zero-drop giúp truyền lực trực tiếp từ bàn chân xuống mặt sàn, tối ưu cho các bài tập compound như squat và deadlift.",
+    title: "Thiết kế dựa trên cơ sinh học",
+    description: "Sự kết hợp hoàn mỹ giữa khoa học cơ sinh học (Biomechanics) và nghệ thuật chế tác tối giản (Minimalist), ôm vừa vặn đôi chân, linh hoạt trong từng chuyển động.",
   },
   {
-    icon: Radio,
-    title: "Bám sàn vượt trội",
-    description: "Đế ngoài cao su đặc biệt mang đến khả năng bám sàn tuyệt vời, giúp bạn tự tin trong mọi bài tập.",
+    icon: Activity,
+    title: "Cải thiện phản xạ thần kinh",
+    description: "Đế mỏng truyền tải tín hiệu mặt đất, giúp hệ thần kinh phản xạ tốt hơn.",
   },
   {
     icon: Compass,
-    title: "Ổn định tối đa cho bài tập chuyên biệt",
-    description: "Wide toe-box cho phép ngón chân xòe tự nhiên, tạo nền tảng vững chắc khi thực hiện các bài tập chuyên biệt.",
+    title: "Hỗ trợ dáng đi tự nhiên",
+    description: "Thiết kế zero-drop (đế phẳng) và mũi giày rộng (wide box toe) giúp cơ thể tự căn chỉnh tư thế khi di chuyển.",
   },
   {
-    icon: Shield,
-    title: "Bền bỉ qua từng buổi tập",
-    description: "Chất liệu upper cao cấp và đế cao su chịu lực, đảm bảo độ bền cho các buổi tập cường độ cao.",
+    icon: PersonStanding,
+    title: "Giảm nguy cơ té ngã trong luyện tập",
+    description: "Tăng cường cảm nhận mặt đất và phản xạ thăng bằng, hạn chế chấn thương khi luyện tập các bài tập luyện chuyên biệt.",
   },
 ];
 
@@ -86,7 +86,7 @@ const ProductApollo = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-fade-up">
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">
-            Tại sao bạn cần <span style={{ color: ACCENT }}>Kinis Apollo Pro</span>?
+            Lý do bạn nên chọn <span style={{ color: ACCENT }}>Kinis Apollo</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
             Kết hợp triết lý barefoot với công nghệ hỗ trợ vận động, Kinis Apollo Pro giúp bạn tối ưu hiệu suất trong mọi bài tập.
