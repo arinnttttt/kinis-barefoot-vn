@@ -28,7 +28,7 @@ const navigation = [
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [headerTheme, setHeaderTheme] = useState<"dark" | "light">("dark");
+  const [heroDark, setHeroDark] = useState(true); // is the hero section dark?
 
   useEffect(() => {
     if (mobileOpen) {
@@ -41,29 +41,39 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 20);
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
 
+    // Detect hero background luminance once on mount
+    const detectHero = () => {
       const headerHeight = 80;
       const elements = document.elementsFromPoint(window.innerWidth / 2, headerHeight);
       const section = elements.find(
         (el) => el.tagName === "SECTION" || el.tagName === "FOOTER"
       );
-
       if (section) {
         const bg = window.getComputedStyle(section).backgroundColor;
         const match = bg.match(/\d+/g);
         if (match) {
           const [r, g, b] = match.map(Number);
           const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-          setHeaderTheme(luminance < 0.5 ? "dark" : "light");
+          setHeroDark(luminance < 0.5);
         }
       }
     };
+    // Delay slightly to ensure page has rendered
+    setTimeout(detectHero, 100);
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Re-detect on route change
+    const onHashChange = () => setTimeout(detectHero, 200);
+    window.addEventListener("hashchange", onHashChange);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("hashchange", onHashChange);
+    };
   }, []);
 
   const closeMobile = useCallback(() => setMobileOpen(false), []);
@@ -76,30 +86,25 @@ const Header = () => {
   const isParentActive = (children?: { href: string }[]) =>
     Boolean(children?.some((child) => isActive(child.href)));
 
-  const isDark = headerTheme === "dark";
-
-  // When mobile menu is open, force light bar style (white bg, dark text)
-  const barIsDark = mobileOpen ? false : isDark;
+  // Not scrolled: follow hero luminance. Scrolled: always light (white bg, dark text).
+  const barIsDark = mobileOpen ? false : (!scrolled && heroDark);
 
   return (
     <>
-      {/* Header bar - no backdrop-filter issues */}
       <header
         className="fixed top-0 left-0 right-0 z-[9999]"
         style={{
           backgroundColor: mobileOpen
             ? "#000000"
             : scrolled
-              ? barIsDark
-                ? "rgba(0,0,0,0.75)"
-                : "rgba(255,255,255,0.85)"
+              ? "rgba(255,255,255,0.85)"
               : "transparent",
           backdropFilter: !mobileOpen && scrolled ? "blur(16px)" : "none",
           WebkitBackdropFilter: !mobileOpen && scrolled ? "blur(16px)" : "none",
           transition: "background-color 0.5s, backdrop-filter 0.5s",
         }}
         data-component="header"
-        data-header-theme={headerTheme}
+        data-header-theme={scrolled ? "light" : "dark"}
         data-header-scrolled={scrolled ? "true" : "false"}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
