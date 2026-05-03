@@ -28,6 +28,7 @@ const navigation = [
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [heroDark, setHeroDark] = useState(true); // is the hero section dark?
 
   useEffect(() => {
     if (mobileOpen) {
@@ -44,6 +45,27 @@ const Header = () => {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
+
+    // Detect hero background luminance once on mount
+    const detectHero = () => {
+      const headerHeight = 80;
+      const elements = document.elementsFromPoint(window.innerWidth / 2, headerHeight);
+      const section = elements.find(
+        (el) => el.tagName === "SECTION" || el.tagName === "FOOTER"
+      );
+      if (section) {
+        const bg = window.getComputedStyle(section).backgroundColor;
+        const match = bg.match(/\d+/g);
+        if (match) {
+          const [r, g, b] = match.map(Number);
+          const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+          setHeroDark(luminance < 0.5);
+        }
+      }
+    };
+    // Delay slightly to ensure page has rendered
+    setTimeout(detectHero, 100);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
