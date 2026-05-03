@@ -45,6 +45,18 @@ const testimonials: Testimonial[] = [
     text: "Đôi giày hoàn hảo với tôi. Tôi không thích mang giày và có cổ chân yếu, nhưng đôi giày này giải quyết được cả hai. Thoải mái như một đôi tất nhưng vẫn có độ bảo vệ của giày.",
     pages: ["home", "nomad", "lucy"],
   },
+  {
+    name: "Alejandro M.",
+    badge: "Great",
+    text: "Với hầu hết các loại giày khác, rất khó cảm nhận trọng tâm cơ thể khi di chuyển. Nhưng với Kinis, tôi có thể tập luyện và cảm nhận rõ mình đang đặt trọng lượng ở đâu. Sau khi quen, mọi thứ rất tự nhiên.",
+    pages: ["apollo"],
+  },
+  {
+    name: "Ian A.",
+    badge: "Great",
+    text: "Đây chính xác là đôi giày tôi đang tìm kiếm! Không thể tập gym với chân trần, nên đôi giày này là giải pháp thay thế hoàn hảo.",
+    pages: ["apollo"],
+  },
 ];
 
 const StarRating = () => (
