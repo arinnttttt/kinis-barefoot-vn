@@ -198,11 +198,7 @@ function initColorCarousel(selector) {
   
   // Pause on hover
   section.addEventListener('mouseenter', stopAutoplay);
-  section.addEventListener('mouseleave', function() {
-    startAutoplay();
-      applyState();
-    }, 3000);
-  });
+  section.addEventListener('mouseleave', startAutoplay);
 }
 
 // Lucy variant data
