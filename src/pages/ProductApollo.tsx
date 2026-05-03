@@ -15,7 +15,7 @@ const ACCENT = "hsl(27,100%,52%)";
 const benefits = [
   {
     icon: Zap,
-    title: "Đế zero-drop tối ưu hiệu suất",
+    title: "Đế Pro zero-drop tối ưu hiệu suất",
     description: "Thiết kế đế phẳng zero-drop giúp truyền lực trực tiếp từ bàn chân xuống mặt sàn, tối ưu cho các bài tập compound như squat và deadlift.",
   },
   {
