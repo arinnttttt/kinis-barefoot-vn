@@ -64,7 +64,7 @@ const ProductLucy = () => {
               <br className="sm:hidden" />
               mỗi ngày
             </h1>
-            <div className="mt-4 flex flex-col items-start gap-2">
+            <div className="mt-4 flex flex-col sm:flex-row sm:items-center items-start gap-2 sm:gap-3">
               <span className="text-xs sm:text-sm font-body font-semibold uppercase tracking-widest text-muted-foreground">Chứng nhận bởi Hiệp hội Y khoa Bàn chân Hoa Kỳ</span>
               <img src={apmabadge} alt="APMA Seal of Acceptance" className="h-12 sm:h-14 w-auto" />
             </div>
