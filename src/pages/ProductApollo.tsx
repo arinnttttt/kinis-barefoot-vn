@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import { Zap, Compass, Radio, Shield, Feather, Wind, SprayCan, Check, AlertTriangle } from "lucide-react";
+import { Zap, Compass, Radio, Shield, Feather, Wind, Check, AlertTriangle, Footprints, Dumbbell, ArrowRightLeft } from "lucide-react";
 import audienceGymImg from "@/assets/audience-gym-weightlifting.jpg";
 import audiencePostureImg from "@/assets/audience-posture.jpg";
 import audienceYogaImg from "@/assets/audience-yoga.jpg";
@@ -8,8 +8,10 @@ import audienceFunctionalImg from "@/assets/audience-functional.jpg";
 import audienceTrailRunnerImg from "@/assets/audience-trail-runner.jpg";
 const nomadKolBanner = "https://kinis.vn/wp-content/uploads/2026/05/nomad-kol-banner.png";
 import TestimonialSection from "@/components/TestimonialSection";
+import ApolloColorCarousel from "@/components/ApolloColorCarousel";
 
 const apolloImage = "https://kinis.vn/wp-content/uploads/2026/04/kinis-apollo-1.png";
+const apolloLifestyleBannerUrl = ""; // placeholder - sẽ thêm sau
 const ACCENT = "hsl(27,100%,52%)";
 
 const benefits = [
@@ -19,31 +21,36 @@ const benefits = [
     description: "Thiết kế đế phẳng zero-drop giúp truyền lực trực tiếp từ bàn chân xuống mặt sàn, tối ưu cho các bài tập compound như squat và deadlift.",
   },
   {
+    icon: Radio,
+    title: "Bám sàn vượt trội",
+    description: "Đế ngoài cao su đặc biệt mang đến khả năng bám sàn tuyệt vời, giúp bạn tự tin trong mọi bài tập.",
+  },
+  {
     icon: Compass,
     title: "Ổn định tối đa cho bài tập chuyên biệt",
     description: "Wide toe-box cho phép ngón chân xòe tự nhiên, tạo nền tảng vững chắc khi thực hiện các bài tập chuyên biệt.",
   },
   {
-    icon: Radio,
-    title: "Bám sàn vượt trội",
-    description: "Đế ngoài cao su đặc biệt mang đến khả năng bám sàn tuyệt vời, giúp bạn tự tin trong mọi bài tập.",
+    icon: Shield,
+    title: "Bền bỉ qua từng buổi tập",
+    description: "Chất liệu upper cao cấp và đế cao su chịu lực, đảm bảo độ bền cho các buổi tập cường độ cao.",
   },
 ];
 
 const ProductApollo = () => {
   return (
   <Layout>
-    {/* Hero Section */}
+    {/* Hero Section - cloned from Lucy */}
     <section className="relative overflow-hidden -mt-16 lg:-mt-20" style={{ backgroundColor: "#FFFFFF" }}>
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[70vh]">
-        <div className="flex items-center animate-fade-up px-4 sm:px-6 lg:px-8 xl:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] pt-24 pb-12 sm:py-14 lg:py-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-0 lg:min-h-[70vh]">
+        <div className="flex items-center animate-fade-up px-4 sm:px-6 lg:px-8 xl:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] pt-32 sm:pt-40 lg:pt-52 pb-6 sm:pb-8 lg:pb-20">
           <div>
             <p className="text-sm sm:text-base font-body uppercase tracking-widest mb-3 text-muted-foreground">
               Giày tập luyện chuyên biệt
             </p>
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-foreground">
-              Tối ưu
-              <br />
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-foreground">
+              Tối ưu{" "}
+              <br className="sm:hidden" />
               <span style={{ color: ACCENT }}>hiệu suất</span> tập luyện
             </h1>
             <div className="mt-6 sm:mt-8">
@@ -51,7 +58,7 @@ const ProductApollo = () => {
                 href="https://byebeoshop.com/san-pham-2/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 md:px-8 md:py-3.5 font-body font-semibold text-sm rounded-xl text-white transition-opacity hover:opacity-90"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 lg:px-8 lg:py-3.5 font-body font-semibold text-sm rounded-xl text-white transition-opacity hover:opacity-90"
                 style={{ backgroundColor: ACCENT }}
               >
                 Mua Trực Tiếp Tại Đại Lý
@@ -59,8 +66,8 @@ const ProductApollo = () => {
             </div>
           </div>
         </div>
-        <div className="flex items-end justify-center animate-fade-up [animation-delay:150ms] self-end overflow-hidden h-full">
-          <img src={apolloImage} alt="Kinis Apollo Pro" className="w-full h-auto block" />
+        <div className="animate-fade-up [animation-delay:150ms] self-end">
+          <img src={apolloImage} alt="Kinis Apollo Pro" className="w-full h-auto block max-h-[60vh] object-contain lg:max-h-none" />
         </div>
       </div>
     </section>
@@ -77,7 +84,7 @@ const ProductApollo = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 mb-10 sm:mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-10 sm:mb-12">
           {benefits.map((b, i) => (
             <div key={b.title} className="rounded-2xl p-6 sm:p-8 bg-card border border-border animate-fade-up" style={{ animationDelay: `${i * 100}ms`, boxShadow: "0 4px 24px -4px rgba(0,0,0,0.06)" }}>
               <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ backgroundColor: "hsl(27 100% 52% / 0.1)" }}>
@@ -101,16 +108,20 @@ const ProductApollo = () => {
       </div>
     </section>
 
-    <section className="relative pt-10 sm:pt-14 lg:pt-16 pb-0 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "#FFFFFF" }}>
+    {/* Technology Section */}
+    <section className="relative pt-4 sm:pt-6 lg:pt-8 pb-0 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "#FFFFFF" }}>
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center">
           <div className="flex items-center justify-center animate-fade-up">
-            <img src={apolloImage} alt="Kinis Apollo Pro Technology" className="w-full max-w-md object-contain" />
+            {/* Video placeholder - sẽ thêm sau */}
+            <div className="w-full max-w-md aspect-square bg-muted rounded-xl flex items-center justify-center">
+              <span className="text-muted-foreground text-sm">Video sắp có</span>
+            </div>
           </div>
           <div className="animate-fade-up [animation-delay:150ms]">
             <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: ACCENT }}>Sức mạnh tối ưu</span>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight text-foreground">
-              Thiết kế<br /><span style={{ color: ACCENT }}>chuyên biệt</span> Pro
+              Thiết kế <span style={{ color: ACCENT }}>chuyên biệt</span> Pro
             </h2>
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
               Kinis Apollo Pro được thiết kế riêng cho vận động chuyên biệt, kết hợp đế zero-drop với chất liệu upper thoáng khí và đế cao su bám sàn vượt trội.
@@ -120,7 +131,6 @@ const ProductApollo = () => {
                 { icon: Shield, text: "Đế Pro zero-drop – Truyền lực tối ưu khi nâng tạ" },
                 { icon: Feather, text: "Upper thoáng khí – Bền bỉ qua từng buổi tập" },
                 { icon: Wind, text: "Wide toe-box – Ngón chân xòe tự nhiên, ổn định hơn" },
-                { icon: SprayCan, text: "Đế cao su – Bám sàn vượt trội cho mọi bài tập" },
               ].map((item, i) => (
                 <div key={item.text} className="flex items-center gap-4 animate-fade-up" style={{ animationDelay: `${200 + i * 100}ms` }}>
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(27 100% 52% / 0.1)" }}>
@@ -134,12 +144,27 @@ const ProductApollo = () => {
         </div>
       </div>
     </section>
+
+    {/* Color Carousel */}
+    <ApolloColorCarousel />
+
+    {/* Lifestyle Banner */}
+    {apolloLifestyleBannerUrl ? (
+      <section className="w-full">
+        <img src={apolloLifestyleBannerUrl} alt="Kinis Apollo Pro Lifestyle" className="w-full block" loading="lazy" />
+      </section>
+    ) : (
+      <section className="w-full bg-muted flex items-center justify-center" style={{ height: "300px" }}>
+        <span className="text-muted-foreground text-sm">Banner sắp có</span>
+      </section>
+    )}
+
     {/* KOL Banner */}
     <section className="w-full">
       <img src={nomadKolBanner} alt="Kinis Apollo Pro KOL" className="w-full block" loading="lazy" />
     </section>
 
-    {/* Adaptation Roadmap Section - Dark */}
+    {/* Guide Section - Dark (cloned from Lucy) */}
     <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-fade-up">
@@ -150,31 +175,29 @@ const ProductApollo = () => {
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 text-center">
-            {[
-              { num: "1", time: "Tuần 1 – 2", subtitle: "Làm quen", tasks: ["Mang tập nhẹ 1–2 giờ mỗi buổi", "Tránh bài tập cường độ cao ngay lập tức"] },
-              { num: "2", time: "Tuần 3 – 4", subtitle: "Tăng cường", tasks: ["Bắt đầu các bài tập chuyên biệt nhẹ", "Tăng dần thời gian và cường độ tập"] },
-              { num: "3", time: "Sau 1 – 2 tháng", subtitle: "Bứt phá", tasks: ["Sử dụng cho mọi bài tập chuyên biệt", "Cảm nhận sự ổn định và truyền lực tối ưu"] },
-            ].map((stage, i) => (
-              <div key={stage.num} className="flex flex-col items-center animate-fade-up" style={{ animationDelay: `${i * 120}ms` }}>
-                <div className="relative select-none mb-5" style={{ height: "clamp(5rem, 10vw, 8rem)" }}>
-                  <span className="font-display font-bold leading-none block" style={{ fontSize: "clamp(5rem, 10vw, 8rem)", color: ACCENT, maskImage: "linear-gradient(180deg, rgba(0,0,0,1) 45%, rgba(0,0,0,0.2) 55%, rgba(0,0,0,0.05) 85%)", WebkitMaskImage: "linear-gradient(180deg, rgba(0,0,0,1) 45%, rgba(0,0,0,0.2) 55%, rgba(0,0,0,0.05) 85%)" }}>{stage.num}</span>
-                  <div className="absolute left-1/2 -translate-x-1/2 w-[120%] h-px" style={{ top: "50%", backgroundColor: ACCENT, boxShadow: "0 0 8px hsla(27,100%,52%,0.4)" }} />
-                </div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-1">{stage.time}</h3>
-                <p className="text-sm sm:text-base font-semibold mb-4" style={{ color: "hsl(27,100%,60%)" }}>{stage.subtitle}</p>
-                <ul className="space-y-3 text-left">
-                  {stage.tasks.map((t) => (
-                    <li key={t} className="flex items-start gap-2.5">
-                      <Check className="w-4.5 h-4.5 mt-0.5 flex-shrink-0" style={{ color: ACCENT }} />
-                      <span className="text-sm sm:text-base" style={{ color: "hsl(0,0%,70%)" }}>{t}</span>
-                    </li>
-                  ))}
-                </ul>
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          {[
+            { icon: Footprints, title: "Tuần 1 – 2", subtitle: "Làm quen", desc: "Mang tập nhẹ 1–2 giờ mỗi buổi. Tránh bài tập cường độ cao ngay lập tức." },
+            { icon: Dumbbell, title: "Tuần 3 – 4", subtitle: "Tăng cường", desc: "Bắt đầu các bài tập chuyên biệt nhẹ. Tăng dần thời gian và cường độ tập." },
+            { icon: ArrowRightLeft, title: "Sau 1 – 2 tháng", subtitle: "Bứt phá", desc: "Sử dụng cho mọi bài tập chuyên biệt. Cảm nhận sự ổn định và truyền lực tối ưu." },
+          ].map((item, i) => (
+            <div
+              key={item.title}
+              className="rounded-2xl p-6 sm:p-8 text-center animate-fade-up"
+              style={{
+                animationDelay: `${i * 120}ms`,
+                backgroundColor: "hsl(0,0%,10%)",
+                border: "1px solid hsl(0,0%,16%)",
+              }}
+            >
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5" style={{ backgroundColor: "hsl(27 100% 52% / 0.12)" }}>
+                <item.icon className="w-7 h-7" style={{ color: ACCENT }} />
               </div>
-            ))}
-          </div>
+              <h3 className="font-display text-lg sm:text-xl font-bold text-white mb-1">{item.title}</h3>
+              <p className="text-sm sm:text-base font-semibold mb-3" style={{ color: "hsl(27,100%,60%)" }}>{item.subtitle}</p>
+              <p className="text-sm sm:text-base leading-relaxed" style={{ color: "hsl(0,0%,65%)" }}>{item.desc}</p>
+            </div>
+          ))}
         </div>
 
         <p className="text-center text-base sm:text-lg mt-10 sm:mt-12 max-w-2xl mx-auto animate-fade-up" style={{ color: "hsl(0,0%,55%)" }}>
@@ -191,7 +214,7 @@ const ProductApollo = () => {
             Đối tượng <span style={{ color: ACCENT }}>phù hợp</span>
           </h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
           {[
             { img: audienceGymImg, title: "HIIT & CrossFit", desc: "Đế bám sàn vượt trội, hỗ trợ chuyển động đa hướng nhanh và mạnh cho bài tập chuyên biệt." },
             { img: audiencePostureImg, title: "Weightlifting", desc: "Đế Pro zero-drop truyền lực tối ưu khi squat, deadlift và clean & jerk." },
