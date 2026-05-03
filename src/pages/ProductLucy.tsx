@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import { Zap, Compass, Activity, Shield, Feather, Wind, SprayCan, Check, AlertTriangle, PersonStanding } from "lucide-react";
+import { Zap, Compass, Activity, Shield, Feather, Wind, Check, AlertTriangle, PersonStanding, Footprints, Dumbbell, ArrowRightLeft } from "lucide-react";
 import lucyImage from "@/assets/lucy-showcase-v3.png";
 import audienceGymImg from "@/assets/audience-gym-weightlifting.jpg";
 import audiencePostureImg from "@/assets/audience-posture.jpg";
@@ -163,9 +163,9 @@ const ProductLucy = () => {
 
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {[
-            { icon: Compass, title: "Sử dụng hằng ngày", desc: "Thay thế giày thông thường khi đi bộ hoặc sinh hoạt hằng ngày." },
-            { icon: Activity, title: "Hỗ trợ tập luyện", desc: "Hoàn hảo cho các bài tập kích hoạt cơ bàn chân nhẹ." },
-            { icon: Zap, title: "Bước đệm hoàn hảo", desc: "Giúp bạn chuyển từ giày truyền thống sang giày barefoot một cách an toàn." },
+            { icon: Footprints, title: "Sử dụng hằng ngày", desc: "Thay thế giày thông thường khi đi bộ hoặc sinh hoạt hằng ngày." },
+            { icon: Dumbbell, title: "Hỗ trợ tập luyện", desc: "Hoàn hảo cho các bài tập kích hoạt cơ bàn chân nhẹ." },
+            { icon: ArrowRightLeft, title: "Bước đệm hoàn hảo", desc: "Giúp bạn chuyển từ giày truyền thống sang giày barefoot một cách an toàn." },
           ].map((item, i) => (
             <div
               key={item.title}
