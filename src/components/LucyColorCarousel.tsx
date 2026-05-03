@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
-import lucyRed from "@/assets/lucy-red.jpg";
-import lucyWhite from "@/assets/lucy-white.jpg";
-import lucyGray from "@/assets/lucy-gray.jpg";
-import lucyBlack from "@/assets/lucy-black.jpg";
 
 const variants = [
-  { src: lucyRed, label: "Đỏ", color: "hsl(0 75% 35%)" },
-  { src: lucyWhite, label: "Trắng", color: "hsl(40 30% 90%)" },
-  { src: lucyGray, label: "Xám", color: "hsl(0 0% 60%)" },
-  { src: lucyBlack, label: "Đen", color: "hsl(0 0% 15%)" },
+  { src: "https://kinis.vn/wp-content/uploads/2026/05/lucy-red-scaled.png", label: "Đỏ", color: "hsl(0 75% 35%)" },
+  { src: "https://kinis.vn/wp-content/uploads/2026/05/lucy-white-scaled.png", label: "Trắng", color: "hsl(40 30% 90%)" },
+  { src: "https://kinis.vn/wp-content/uploads/2026/05/lucy-gray-scaled.png", label: "Xám", color: "hsl(0 0% 60%)" },
+  { src: "https://kinis.vn/wp-content/uploads/2026/05/lucy-black-scaled.png", label: "Đen", color: "hsl(0 0% 15%)" },
 ];
 
 const visibleOffsets = [-1, 0, 1] as const;

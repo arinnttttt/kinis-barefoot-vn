@@ -1,8 +1,10 @@
 import Layout from "@/components/layout/Layout";
 import { Zap, Compass, Activity, Shield, Feather, Wind, Check, AlertTriangle, PersonStanding, Footprints, Dumbbell, ArrowRightLeft } from "lucide-react";
 import lucyImage from "@/assets/lucy-showcase-v3.png";
-import heroLucy from "@/assets/hero-lucy.png";
 import apmaSeal from "@/assets/apma-seal.png";
+
+const heroLucy = "https://kinis.vn/wp-content/uploads/2026/05/hero-lucy-scaled.png";
+const lucyLifestyleBannerUrl = "https://kinis.vn/wp-content/uploads/2026/05/lucy-lifestyle.png";
 import audienceGymImg from "@/assets/audience-gym-weightlifting.jpg";
 import audiencePostureImg from "@/assets/audience-posture.jpg";
 import audienceYogaImg from "@/assets/audience-yoga.jpg";
