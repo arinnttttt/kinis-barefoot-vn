@@ -38,6 +38,44 @@ const routes = [
   { path: "/faq", template: "page-faq", title: "FAQ" },
 ];
 
+function optimizeThemeImages() {
+  execSync(`python3 - <<'PY'
+from pathlib import Path
+from PIL import Image
+root = Path('wp-theme/kinis/assets/images')
+caps = {
+  'richmond-bizsense-D0pjS6m4.png': 900,
+  'apma-badge-dPw7mhCG.png': 1100,
+  'elevation-outdoors-C_Zl9G28.png': 640,
+  'food-travelist-CzdzNeYY.png': 640,
+  'william-mary-2b0t7oBN.png': 900,
+  'video-frame-lSJOxxyK.png': 1280,
+}
+for p in root.iterdir():
+    if p.suffix.lower() not in ['.png', '.jpg', '.jpeg']:
+        continue
+    before = p.stat().st_size
+    im = Image.open(p); im.load()
+    max_dim = caps.get(p.name)
+    if max_dim:
+        w, h = im.size
+        scale = min(1, max_dim / max(w, h))
+        if scale < 1:
+            im = im.resize((round(w * scale), round(h * scale)), Image.Resampling.LANCZOS)
+    if p.suffix.lower() == '.png':
+        if im.mode in ('RGBA', 'LA'):
+            im.convert('RGBA').quantize(colors=192, method=Image.Quantize.FASTOCTREE).save(p, optimize=True)
+        else:
+            im.save(p, optimize=True, compress_level=9)
+    else:
+        if im.mode != 'RGB': im = im.convert('RGB')
+        im.save(p, quality=82, optimize=True, progressive=True, subsampling=1)
+    after = p.stat().st_size
+    if after < before:
+        print(p.name + ': ' + str(round(before/1024, 1)) + 'KB -> ' + str(round(after/1024, 1)) + 'KB')
+PY`, { cwd: ROOT, stdio: "inherit" });
+}
+
 // Simple static server
 function startServer(port) {
   return new Promise((resolve) => {
