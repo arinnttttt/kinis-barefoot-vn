@@ -134,7 +134,7 @@ const ProductApollo = () => {
           </div>
         </div>
       </div>
-
+    </section>
     {/* KOL Banner */}
     <section className="w-full">
       <img src={nomadKolBanner} alt="Kinis Apollo Pro KOL" className="w-full block" loading="lazy" />
