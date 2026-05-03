@@ -16,7 +16,7 @@ import iconNoRunning from "@/assets/icon-no-running.png";
 import iconNoWet from "@/assets/icon-no-wet.png";
 import iconNoConstruction from "@/assets/icon-no-construction.png";
 import iconNoInjury from "@/assets/icon-no-injury.png";
-import lucyLifestyleBanner from "@/assets/lucy-lifestyle-banner.png";
+
 import TestimonialSection from "@/components/TestimonialSection";
 import LucyColorCarousel from "@/components/LucyColorCarousel";
 
