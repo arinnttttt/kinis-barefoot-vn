@@ -102,17 +102,16 @@ const TargetAudienceSection = () => (
               >
                 {item.description}
               </p>
-              <a
-                href={`/#${item.href}`}
-                className="inline-flex items-center gap-2 self-start px-5 py-2.5 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-xl font-body font-semibold text-sm sm:text-xs lg:text-sm transition-all duration-300 ease-out hover:shadow-lg"
+              <span
+                className="inline-flex items-center gap-2 self-start px-5 py-2.5 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-xl font-body font-semibold text-sm sm:text-xs lg:text-sm opacity-50 cursor-default"
                 style={{
                   backgroundColor: item.btnBg,
                   color: item.btnText,
                 }}
               >
                 Xem chi tiết
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
+                <ArrowRight className="w-4 h-4" />
+              </span>
             </div>
           </div>
         ))}
