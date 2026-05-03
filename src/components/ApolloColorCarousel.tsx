@@ -5,8 +5,6 @@ const variants = [
   { src: "https://kinis.vn/wp-content/uploads/2026/05/apollo-orange-scaled.png", label: "Đen", color: "hsl(0 0% 15%)" },
 ];
 
-const visibleOffsets = [-1, 0, 1] as const;
-
 const ApolloColorCarousel = () => {
   const [active, setActive] = useState(0);
 
@@ -25,16 +23,13 @@ const ApolloColorCarousel = () => {
     >
       <div className="mx-auto max-w-6xl px-2 sm:px-4">
         <div className="flex items-end justify-center gap-0 sm:gap-2 md:gap-4 lg:gap-6">
-          {visibleOffsets.map((offset) => {
-            const idx = (active + offset + variants.length) % variants.length;
-            const item = variants[idx];
-            const isActive = offset === 0;
-
+          {variants.map((item, idx) => {
+            const isActive = idx === active;
             return (
               <button
-                key={`${offset}-${idx}`}
+                key={idx}
                 type="button"
-                onClick={() => !isActive && setActive(idx)}
+                onClick={() => setActive(idx)}
                 className="flex flex-col items-center border-0 bg-transparent p-0 transition-all duration-500 ease-out"
                 style={{
                   opacity: isActive ? 1 : 0.35,
