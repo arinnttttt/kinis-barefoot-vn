@@ -115,7 +115,7 @@ const ProductApollo = () => {
               Thiết kế<br /><span style={{ color: ACCENT }}>chuyên biệt</span>
             </h2>
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
-              Kinis Apollo Pro được thiết kế riêng cho vận động cường độ cao, kết hợp đế zero-drop với chất liệu upper thoáng khí và đế cao su bám sàn vượt trội.
+              Kinis Apollo Pro được thiết kế riêng cho vận động chuyên biệt, kết hợp đế zero-drop với chất liệu upper thoáng khí và đế cao su bám sàn vượt trội.
             </p>
             <div className="mt-8 sm:mt-10 space-y-4">
               {[
