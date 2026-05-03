@@ -36,7 +36,7 @@ const products = {
     href: "/san-pham/nomad",
   },
   apollo: {
-    label: "Kinis Apollo",
+    label: "Kinis Apollo Pro",
     badge: "Pro Training",
     subtitle: "Giày luyện tập chuyên sâu",
     description:
