@@ -52,7 +52,7 @@ const ProductLucy = () => {
     <section className="relative overflow-hidden -mt-16 lg:-mt-20" style={{ backgroundColor: "#FFFFFF" }}>
       <div className="grid grid-cols-1 md:grid-cols-2 min-h-[70vh]">
         {/* Text column */}
-        <div className="flex items-center animate-fade-up px-4 sm:px-6 lg:px-8 xl:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] pt-24 pb-12 sm:py-14 lg:py-20">
+        <div className="flex items-center animate-fade-up px-4 sm:px-6 lg:px-8 xl:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] pt-32 lg:pt-36 pb-12 sm:pb-14 lg:pb-20">
           <div>
             <p className="text-sm sm:text-base font-body uppercase tracking-widest mb-3 text-muted-foreground">
               Giày đi bộ barefoot
