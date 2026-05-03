@@ -10,7 +10,7 @@ const navigation = [
     children: [
       { name: "Kinis Lucy", href: "/#/san-pham/lucy" },
       { name: "Kinis Nomad", href: "/#/san-pham/nomad" },
-      { name: "Kinis Apollo", href: "/#/san-pham/apollo" },
+      { name: "Kinis Apollo Pro", href: "/#/san-pham/apollo" },
     ],
   },
   { name: "Khoa học", href: "/#/khoa-hoc" },

@@ -9,19 +9,19 @@ import audienceTrailRunnerImg from "@/assets/audience-trail-runner.jpg";
 import nomadKolBanner from "@/assets/nomad-kol-banner.png";
 import TestimonialSection from "@/components/TestimonialSection";
 
-const apolloImage = "https://kinis.vn/wp-content/uploads/2026/04/kinis-apollo.png";
+const apolloImage = "https://kinis.vn/wp-content/uploads/2026/04/kinis-apollo-1.png";
 const ACCENT = "hsl(27,100%,52%)";
 
 const benefits = [
   {
     icon: Zap,
-    title: "Đế zero-drop tối ưu hiệu suất",
+    title: "Đế Pro zero-drop tối ưu hiệu suất",
     description: "Thiết kế đế phẳng zero-drop giúp truyền lực trực tiếp từ bàn chân xuống mặt sàn, tối ưu cho các bài tập compound như squat và deadlift.",
   },
   {
     icon: Compass,
-    title: "Ổn định tối đa khi nâng tạ",
-    description: "Wide toe-box cho phép ngón chân xòe tự nhiên, tạo nền tảng vững chắc khi thực hiện các bài tập cường độ cao.",
+    title: "Ổn định tối đa cho bài tập chuyên biệt",
+    description: "Wide toe-box cho phép ngón chân xòe tự nhiên, tạo nền tảng vững chắc khi thực hiện các bài tập chuyên biệt.",
   },
   {
     icon: Radio,
@@ -34,12 +34,12 @@ const ProductApollo = () => {
   return (
   <Layout>
     {/* Hero Section */}
-    <section style={{ backgroundColor: "#FFFFFF" }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 items-center min-h-[70vh] pt-24 pb-12 sm:py-14 lg:py-20">
-          <div className="animate-fade-up">
+    <section className="relative overflow-hidden -mt-16 lg:-mt-20" style={{ backgroundColor: "#FFFFFF" }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[70vh]">
+        <div className="flex items-center animate-fade-up px-4 sm:px-6 lg:px-8 xl:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] pt-24 pb-12 sm:py-14 lg:py-20">
+          <div>
             <p className="text-sm sm:text-base font-body uppercase tracking-widest mb-3 text-muted-foreground">
-              Giày tập luyện cường độ cao
+              Giày tập luyện chuyên biệt
             </p>
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-foreground">
               Tối ưu
@@ -58,10 +58,9 @@ const ProductApollo = () => {
               </a>
             </div>
           </div>
-
-          <div className="flex items-center justify-center animate-fade-up [animation-delay:150ms]">
-            <img src={apolloImage} alt="Kinis Apollo" className="w-full md:w-[90%] max-w-2xl lg:max-w-3xl object-contain" />
-          </div>
+        </div>
+        <div className="flex items-end justify-center animate-fade-up [animation-delay:150ms] self-end overflow-hidden h-full">
+          <img src={apolloImage} alt="Kinis Apollo Pro" className="w-full h-auto block" />
         </div>
       </div>
     </section>
@@ -71,10 +70,10 @@ const ProductApollo = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-fade-up">
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">
-            Tại sao bạn cần <span style={{ color: ACCENT }}>Kinis Apollo</span>?
+            Tại sao bạn cần <span style={{ color: ACCENT }}>Kinis Apollo Pro</span>?
           </h2>
           <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
-            Kết hợp triết lý barefoot với công nghệ hỗ trợ vận động, Kinis Apollo giúp bạn tối ưu hiệu suất trong mọi bài tập.
+            Kết hợp triết lý barefoot với công nghệ hỗ trợ vận động, Kinis Apollo Pro giúp bạn tối ưu hiệu suất trong mọi bài tập.
           </p>
         </div>
 
@@ -102,24 +101,23 @@ const ProductApollo = () => {
       </div>
     </section>
 
-    {/* Technology Section */}
-    <section className="relative pt-10 sm:pt-14 lg:pt-16 pb-4 sm:pb-6 lg:pb-8 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "#FFFFFF" }}>
+    <section className="relative pt-10 sm:pt-14 lg:pt-16 pb-0 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "#FFFFFF" }}>
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="flex items-center justify-center animate-fade-up">
-            <img src={apolloImage} alt="Kinis Apollo Technology" className="w-full max-w-md object-contain" />
+            <img src={apolloImage} alt="Kinis Apollo Pro Technology" className="w-full max-w-md object-contain" />
           </div>
           <div className="animate-fade-up [animation-delay:150ms]">
-            <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: ACCENT }}>Công nghệ</span>
+            <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: ACCENT }}>Sức mạnh tối ưu</span>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight text-foreground">
-              Thiết kế<br /><span style={{ color: ACCENT }}>chuyên biệt</span>
+              Thiết kế<br /><span style={{ color: ACCENT }}>chuyên biệt</span> Pro
             </h2>
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
-              Kinis Apollo được thiết kế riêng cho vận động cường độ cao, kết hợp đế zero-drop với chất liệu upper thoáng khí và đế cao su bám sàn vượt trội.
+              Kinis Apollo Pro được thiết kế riêng cho vận động chuyên biệt, kết hợp đế zero-drop với chất liệu upper thoáng khí và đế cao su bám sàn vượt trội.
             </p>
             <div className="mt-8 sm:mt-10 space-y-4">
               {[
-                { icon: Shield, text: "Đế zero-drop – Truyền lực tối ưu khi nâng tạ" },
+                { icon: Shield, text: "Đế Pro zero-drop – Truyền lực tối ưu khi nâng tạ" },
                 { icon: Feather, text: "Upper thoáng khí – Bền bỉ qua từng buổi tập" },
                 { icon: Wind, text: "Wide toe-box – Ngón chân xòe tự nhiên, ổn định hơn" },
                 { icon: SprayCan, text: "Đế cao su – Bám sàn vượt trội cho mọi bài tập" },
@@ -136,10 +134,9 @@ const ProductApollo = () => {
         </div>
       </div>
     </section>
-
     {/* KOL Banner */}
     <section className="w-full">
-      <img src={nomadKolBanner} alt="Kinis Apollo KOL" className="w-full block" loading="lazy" />
+      <img src={nomadKolBanner} alt="Kinis Apollo Pro KOL" className="w-full block" loading="lazy" />
     </section>
 
     {/* Adaptation Roadmap Section - Dark */}
@@ -147,9 +144,9 @@ const ProductApollo = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-fade-up">
           <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: ACCENT }}>Lộ trình thích nghi</span>
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">Kinis Apollo giúp bạn tập luyện hiệu quả hơn</h2>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">Kinis Apollo Pro giúp bạn tập luyện hiệu quả hơn</h2>
           <p className="mt-4 text-base sm:text-lg leading-relaxed" style={{ color: "hsl(0,0%,65%)" }}>
-            Cần thời gian để bàn chân thích nghi với đế zero-drop. Hãy kiên nhẫn theo lộ trình 3–6 tuần.
+            Cần thời gian để bàn chân thích nghi với đế Pro zero-drop. Hãy kiên nhẫn theo lộ trình 3–6 tuần.
           </p>
         </div>
 
@@ -157,8 +154,8 @@ const ProductApollo = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 text-center">
             {[
               { num: "1", time: "Tuần 1 – 2", subtitle: "Làm quen", tasks: ["Mang tập nhẹ 1–2 giờ mỗi buổi", "Tránh bài tập cường độ cao ngay lập tức"] },
-              { num: "2", time: "Tuần 3 – 4", subtitle: "Tăng cường", tasks: ["Bắt đầu các bài compound nhẹ", "Tăng dần thời gian và cường độ tập"] },
-              { num: "3", time: "Sau 1 – 2 tháng", subtitle: "Bứt phá", tasks: ["Sử dụng cho mọi bài tập cường độ cao", "Cảm nhận sự ổn định và truyền lực tối ưu"] },
+              { num: "2", time: "Tuần 3 – 4", subtitle: "Tăng cường", tasks: ["Bắt đầu các bài tập chuyên biệt nhẹ", "Tăng dần thời gian và cường độ tập"] },
+              { num: "3", time: "Sau 1 – 2 tháng", subtitle: "Bứt phá", tasks: ["Sử dụng cho mọi bài tập chuyên biệt", "Cảm nhận sự ổn định và truyền lực tối ưu"] },
             ].map((stage, i) => (
               <div key={stage.num} className="flex flex-col items-center animate-fade-up" style={{ animationDelay: `${i * 120}ms` }}>
                 <div className="relative select-none mb-5" style={{ height: "clamp(5rem, 10vw, 8rem)" }}>
@@ -196,12 +193,12 @@ const ProductApollo = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {[
-            { img: audienceGymImg, title: "HIIT & CrossFit", desc: "Đế bám sàn vượt trội, hỗ trợ chuyển động đa hướng nhanh và mạnh." },
-            { img: audiencePostureImg, title: "Weightlifting", desc: "Đế zero-drop truyền lực tối ưu khi squat, deadlift và clean & jerk." },
-            { img: audienceFunctionalImg, title: "Functional Training", desc: "Linh hoạt cho mọi bài tập từ box jump đến rope climb." },
-            { img: audienceFlatfeetImg, title: "Powerlifting", desc: "Nền tảng ổn định tuyệt đối cho các bài nâng tạ nặng." },
-            { img: audienceYogaImg, title: "Calisthenics", desc: "Nhẹ và linh hoạt, hỗ trợ các bài tập thể lực với trọng lượng cơ thể." },
-            { img: audienceTrailRunnerImg, title: "Obstacle Course Racing", desc: "Bám sàn và bền bỉ, phù hợp các thử thách vượt chướng ngại vật." },
+            { img: audienceGymImg, title: "HIIT & CrossFit", desc: "Đế bám sàn vượt trội, hỗ trợ chuyển động đa hướng nhanh và mạnh cho bài tập chuyên biệt." },
+            { img: audiencePostureImg, title: "Weightlifting", desc: "Đế Pro zero-drop truyền lực tối ưu khi squat, deadlift và clean & jerk." },
+            { img: audienceFunctionalImg, title: "Functional Training", desc: "Linh hoạt cho mọi bài tập chuyên biệt từ box jump đến rope climb." },
+            { img: audienceFlatfeetImg, title: "Powerlifting", desc: "Nền tảng ổn định tuyệt đối cho các bài tập chuyên biệt nặng." },
+            { img: audienceYogaImg, title: "Calisthenics", desc: "Nhẹ và linh hoạt, hỗ trợ bài tập chuyên biệt với trọng lượng cơ thể." },
+            { img: audienceTrailRunnerImg, title: "OCR Training", desc: "Bám sàn và bền bỉ, phù hợp các bài tập chuyên biệt vượt chướng ngại vật." },
           ].map((item, i) => (
             <div key={item.title} className="rounded-2xl overflow-hidden bg-card border border-border animate-fade-up" style={{ animationDelay: `${i * 80}ms`, boxShadow: "0 4px 24px -4px rgba(0,0,0,0.06)" }}>
               <img src={item.img} alt={item.title} loading="lazy" width={1824} height={512} className="w-full object-cover" style={{ aspectRatio: "32/9" }} />
@@ -216,7 +213,7 @@ const ProductApollo = () => {
     </section>
 
     {/* Testimonial Section */}
-    <TestimonialSection page="apollo" title={<>Mọi người nghĩ gì về <span style={{ color: ACCENT }}>Kinis Apollo</span></>} subtitle={null} />
+    <TestimonialSection page="apollo" title={<>Mọi người nghĩ gì về <span style={{ color: ACCENT }}>Kinis Apollo Pro</span></>} subtitle={null} />
 
     {/* Quote CTA Section - Dark */}
     <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
@@ -224,8 +221,8 @@ const ProductApollo = () => {
         <div className="mb-3" style={{ color: ACCENT }}>
           <svg className="w-10 h-10 mx-auto opacity-40" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C9.591 11.69 11 13.166 11 15c0 1.933-1.567 3.5-3.5 3.5-1.172 0-2.324-.566-2.917-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C19.591 11.69 21 13.166 21 15c0 1.933-1.567 3.5-3.5 3.5-1.172 0-2.324-.566-2.917-1.179z"/></svg>
         </div>
-        <p className="font-display text-xl sm:text-2xl md:text-3xl font-bold leading-snug text-white mb-3">Kinis Apollo không chỉ là một đôi giày tập luyện.</p>
-        <p className="text-base sm:text-lg leading-relaxed mb-10" style={{ color: "hsl(0,0%,60%)" }}>Đó là công cụ giúp bạn đạt hiệu suất tối đa trong mọi bài tập cường độ cao, từ HIIT đến Weightlifting.</p>
+        <p className="font-display text-xl sm:text-2xl md:text-3xl font-bold leading-snug text-white mb-3">Kinis Apollo Pro không chỉ là một đôi giày tập luyện.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-10" style={{ color: "hsl(0,0%,60%)" }}>Đó là công cụ giúp bạn đạt hiệu suất tối đa trong mọi bài tập chuyên biệt, từ HIIT đến Weightlifting.</p>
         <a href="https://byebeoshop.com/san-pham-2/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:px-10 sm:py-4 font-body font-semibold text-sm sm:text-base rounded-xl text-white transition-opacity hover:opacity-90" style={{ backgroundColor: ACCENT }}>
           Mua Trực Tiếp Tại Đại Lý
         </a>
@@ -248,7 +245,7 @@ const ProductApollo = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {[
               { text: "Không sử dụng để chạy bộ đường dài" },
-              { text: "Cần thời gian thích nghi với đế zero-drop" },
+              { text: "Cần thời gian thích nghi với đế Pro zero-drop" },
               { text: "Không dùng khi đang có chấn thương bàn chân cấp tính" },
               { text: "Tham khảo ý kiến chuyên gia nếu có vấn đề về khớp" },
             ].map((item) => (

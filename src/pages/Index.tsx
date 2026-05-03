@@ -4,7 +4,7 @@ import Layout from "@/components/layout/Layout";
 const heroImage = "https://kinis.vn/wp-content/uploads/2026/03/mom-spending-time-with-kid-beach-scaled.jpg";
 import lucyShowcase from "@/assets/lucy-showcase-v3.png";
 import nomadShowcase from "@/assets/nomad-showcase-v2.jpg";
-const apolloShowcaseUrl = "https://kinis.vn/wp-content/uploads/2026/04/kinis-apollo.png";
+const apolloShowcaseUrl = "https://kinis.vn/wp-content/uploads/2026/04/kinis-apollo-1.png";
 import FootAnatomyInteractive from "@/components/FootAnatomyInteractive";
 import LifestyleBanner from "@/components/LifestyleBanner";
 import WhyKinisDifferent from "@/components/WhyKinisDifferent";
@@ -36,13 +36,13 @@ const products = {
     href: "/san-pham/nomad",
   },
   apollo: {
-    label: "Kinis Apollo",
+    label: "Kinis Apollo Pro",
     badge: "Pro Training",
-    subtitle: "Giày luyện tập chuyên sâu",
+    subtitle: "Giày luyện tập chuyên biệt",
     description:
-      "Kinis Apollo được thiết kế dành riêng cho những buổi tập luyện cường độ cao. Kết hợp triết lý barefoot với công nghệ hỗ trợ vận động, Apollo giúp bạn tối ưu hiệu suất trong mọi bài tập — từ HIIT, CrossFit đến weightlifting.",
+      "Kinis Apollo Pro được thiết kế dành riêng cho những buổi tập luyện cường độ cao. Kết hợp triết lý barefoot với công nghệ hỗ trợ vận động, Apollo Pro giúp bạn tối ưu hiệu suất trong mọi bài tập — từ HIIT, CrossFit đến weightlifting.",
     image: apolloShowcaseUrl,
-    tags: ["HIIT", "CrossFit", "Weightlifting", "Luyện tập chuyên sâu"],
+    tags: ["HIIT", "CrossFit", "Weightlifting", "Luyện tập chuyên biệt"],
     href: "/san-pham/apollo",
   },
 };
