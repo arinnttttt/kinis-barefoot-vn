@@ -43,9 +43,9 @@ const products = {
     badge: "Pro Training",
     subtitle: "Giày luyện tập chuyên biệt",
     description:
-      "Kinis Apollo Pro được thiết kế dành riêng cho những buổi tập luyện cường độ cao. Kết hợp triết lý barefoot với công nghệ hỗ trợ vận động, Apollo Pro giúp bạn tối ưu hiệu suất trong mọi bài tập — từ HIIT, CrossFit đến weightlifting.",
+      "Kinis Apollo Pro được chế tác từ những sợi kĩ thuật độc quyền với công nghệ dệt 360° Flex-knit. Bên trong là hệ thống lót đa tầng tự nhiên: da cao cấp kết hợp lõi bần (cork), mang đến trải nghiệm êm ái, kiểm soát nhiệt độ và tôn vinh từng bước chạm của bạn.",
     image: apolloShowcaseUrl,
-    tags: ["HIIT", "CrossFit", "Weightlifting", "Luyện tập chuyên biệt"],
+    tags: ["Pro-Training", "Luyện tập chuyên biệt", "Phong cách Lifestyle"],
     href: "/san-pham/apollo",
   },
 };
