@@ -9,6 +9,10 @@ import audienceTrailRunnerImg from "@/assets/audience-trail-runner.jpg";
 const nomadKolBanner = "https://kinis.vn/wp-content/uploads/2026/05/nomad-kol-banner.png";
 import TestimonialSection from "@/components/TestimonialSection";
 import apmabadge from "@/assets/apma-badge.png";
+import iconNoRunning from "@/assets/icon-no-running.png";
+import iconNoWet from "@/assets/icon-no-wet.png";
+import iconNoConstruction from "@/assets/icon-no-construction.png";
+import iconNoInjury from "@/assets/icon-no-injury.png";
 import ApolloColorCarousel from "@/components/ApolloColorCarousel";
 
 const apolloImage = "https://kinis.vn/wp-content/uploads/2026/04/kinis-apollo-1.png";
@@ -255,18 +259,18 @@ const ProductApollo = () => {
             </div>
             <div>
               <h2 className="font-display text-xl sm:text-2xl font-bold" style={{ color: "hsl(0 70% 35%)" }}>Lưu ý – Khuyến nghị quan trọng</h2>
-              <p className="text-sm sm:text-base mt-1" style={{ color: "hsl(0 40% 45%)" }}>Để đảm bảo an toàn và hiệu quả tập luyện, vui lòng lưu ý:</p>
+              <p className="text-sm sm:text-base mt-1" style={{ color: "hsl(0 40% 45%)" }}>Để đảm bảo an toàn và độ bền sản phẩm, Kinis Apollo không khuyến khích sử dụng trong các trường hợp sau:</p>
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {[
-              { text: "Không sử dụng để chạy bộ đường dài" },
-              { text: "Cần thời gian thích nghi với đế Pro zero-drop" },
-              { text: "Không dùng khi đang có chấn thương bàn chân cấp tính" },
-              { text: "Tham khảo ý kiến chuyên gia nếu có vấn đề về khớp" },
+              { text: "Không sử dụng để chạy bộ đường dài", icon: iconNoRunning },
+              { text: "Không sử dụng trong môi trường ướt hoặc trơn trượt", icon: iconNoWet },
+              { text: "Không dùng tại công trường hoặc khu vực có vật sắc nhọn", icon: iconNoConstruction },
+              { text: "Không dùng khi đang có chấn thương bàn chân cấp tính", icon: iconNoInjury },
             ].map((item) => (
               <div key={item.text} className="flex items-center gap-3 px-4 py-3 rounded-xl" style={{ backgroundColor: "hsl(0 60% 94%)" }}>
-                <AlertTriangle className="w-5 h-5 flex-shrink-0" style={{ color: "hsl(0 70% 55%)" }} />
+                <img src={item.icon} alt="" className="h-8 w-auto flex-shrink-0" />
                 <span className="text-sm sm:text-base font-medium" style={{ color: "hsl(0 50% 30%)" }}>{item.text}</span>
               </div>
             ))}
