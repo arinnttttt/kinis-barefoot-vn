@@ -39,7 +39,7 @@ const ProductApollo = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 items-center min-h-[70vh] pt-24 pb-12 sm:py-14 lg:py-20">
           <div className="animate-fade-up">
             <p className="text-sm sm:text-base font-body uppercase tracking-widest mb-3 text-muted-foreground">
-              Giày tập luyện cường độ cao
+              Giày tập luyện chuyên biệt
             </p>
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-foreground">
               Tối ưu
