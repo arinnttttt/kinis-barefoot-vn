@@ -89,7 +89,7 @@ const ProductApollo = () => {
             Lý do bạn nên chọn <span style={{ color: ACCENT }}>Kinis Apollo</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
-            Kết hợp triết lý barefoot với công nghệ hỗ trợ vận động, Kinis Apollo Pro giúp bạn tối ưu hiệu suất trong mọi bài tập.
+            Apollo giải phóng sức mạnh tự nhiên của bàn chân, tạo ra một bệ đỡ vững vàng giúp tối ưu hóa toàn bộ hệ thống cơ xương khớp từ dưới lên trên.
           </p>
         </div>
 
