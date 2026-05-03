@@ -38,7 +38,7 @@ const products = {
   apollo: {
     label: "Kinis Apollo Pro",
     badge: "Pro Training",
-    subtitle: "Giày luyện tập chuyên sâu",
+    subtitle: "Giày luyện tập chuyên biệt",
     description:
       "Kinis Apollo Pro được thiết kế dành riêng cho những buổi tập luyện cường độ cao. Kết hợp triết lý barefoot với công nghệ hỗ trợ vận động, Apollo Pro giúp bạn tối ưu hiệu suất trong mọi bài tập — từ HIIT, CrossFit đến weightlifting.",
     image: apolloShowcaseUrl,
