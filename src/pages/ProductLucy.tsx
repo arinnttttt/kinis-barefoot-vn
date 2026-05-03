@@ -153,47 +153,37 @@ const ProductLucy = () => {
       <img src={nomadKolBanner} alt="Kinis Lucy KOL" className="w-full block" loading="lazy" />
     </section>
 
-    {/* Adaptation Roadmap Section - Dark */}
+    {/* Guide Section - Dark */}
     <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-fade-up">
-          <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: ACCENT }}>Lộ trình thích nghi</span>
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">Kinis Lucy giúp bàn chân khỏe hơn</h2>
-          <p className="mt-4 text-base sm:text-lg leading-relaxed" style={{ color: "hsl(0,0%,65%)" }}>
-            Hãy kiên nhẫn để bàn chân thích nghi. Lộ trình 2–4 tuần giúp bạn cảm nhận sự khác biệt rõ rệt.
-          </p>
+          <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: ACCENT }}>Hướng dẫn</span>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">Cách sử dụng</h2>
         </div>
 
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 text-center">
-            {[
-              { num: "1", time: "Tuần 1", subtitle: "Làm quen", tasks: ["Sử dụng 2–3 giờ mỗi ngày", "Để bàn chân quen với lớp hỗ trợ mới"] },
-              { num: "2", time: "Tuần 2 – 3", subtitle: "Thích nghi", tasks: ["Tăng dần thời gian sử dụng", "Bắt đầu sử dụng khi tập luyện nhẹ"] },
-              { num: "3", time: "Sau 1 tháng", subtitle: "Hoàn thiện", tasks: ["Sử dụng cả ngày thoải mái", "Cảm nhận sự cải thiện rõ rệt về dáng đi"] },
-            ].map((stage, i) => (
-              <div key={stage.num} className="flex flex-col items-center animate-fade-up" style={{ animationDelay: `${i * 120}ms` }}>
-                <div className="relative select-none mb-5" style={{ height: "clamp(5rem, 10vw, 8rem)" }}>
-                  <span className="font-display font-bold leading-none block" style={{ fontSize: "clamp(5rem, 10vw, 8rem)", color: ACCENT, maskImage: "linear-gradient(180deg, rgba(0,0,0,1) 45%, rgba(0,0,0,0.2) 55%, rgba(0,0,0,0.05) 85%)", WebkitMaskImage: "linear-gradient(180deg, rgba(0,0,0,1) 45%, rgba(0,0,0,0.2) 55%, rgba(0,0,0,0.05) 85%)" }}>{stage.num}</span>
-                  <div className="absolute left-1/2 -translate-x-1/2 w-[120%] h-px" style={{ top: "50%", backgroundColor: ACCENT, boxShadow: "0 0 8px hsla(27,100%,52%,0.4)" }} />
-                </div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-1">{stage.time}</h3>
-                <p className="text-sm sm:text-base font-semibold mb-4" style={{ color: "hsl(27,100%,60%)" }}>{stage.subtitle}</p>
-                <ul className="space-y-3 text-left">
-                  {stage.tasks.map((t) => (
-                    <li key={t} className="flex items-start gap-2.5">
-                      <Check className="w-4.5 h-4.5 mt-0.5 flex-shrink-0" style={{ color: ACCENT }} />
-                      <span className="text-sm sm:text-base" style={{ color: "hsl(0,0%,70%)" }}>{t}</span>
-                    </li>
-                  ))}
-                </ul>
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          {[
+            { icon: Compass, title: "Sử dụng hằng ngày", desc: "Thay thế giày thông thường khi đi bộ hoặc sinh hoạt hằng ngày." },
+            { icon: Activity, title: "Hỗ trợ tập luyện", desc: "Hoàn hảo cho các bài tập kích hoạt cơ bàn chân nhẹ." },
+            { icon: Zap, title: "Bước đệm hoàn hảo", desc: "Giúp bạn chuyển từ giày truyền thống sang giày barefoot một cách an toàn." },
+          ].map((item, i) => (
+            <div
+              key={item.title}
+              className="rounded-2xl p-6 sm:p-8 text-center animate-fade-up"
+              style={{
+                animationDelay: `${i * 120}ms`,
+                backgroundColor: "hsl(0,0%,10%)",
+                border: "1px solid hsl(0,0%,16%)",
+              }}
+            >
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5" style={{ backgroundColor: "hsl(27 100% 52% / 0.12)" }}>
+                <item.icon className="w-7 h-7" style={{ color: ACCENT }} />
               </div>
-            ))}
-          </div>
+              <h3 className="font-display text-lg sm:text-xl font-bold text-white mb-3">{item.title}</h3>
+              <p className="text-sm sm:text-base leading-relaxed" style={{ color: "hsl(0,0%,65%)" }}>{item.desc}</p>
+            </div>
+          ))}
         </div>
-
-        <p className="text-center text-base sm:text-lg mt-10 sm:mt-12 max-w-2xl mx-auto animate-fade-up" style={{ color: "hsl(0,0%,55%)" }}>
-          ⚡ Có thể tháo rời và vệ sinh dễ dàng. Phơi khô tự nhiên để giữ độ bền của sản phẩm.
-        </p>
       </div>
     </section>
 
