@@ -50,14 +50,14 @@ const ProductLucy = () => {
   <Layout>
     {/* Hero Section */}
     <section className="relative overflow-hidden -mt-16 lg:-mt-20" style={{ backgroundColor: "#FFFFFF" }}>
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[70vh]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-0 lg:min-h-[70vh]">
         {/* Text column */}
-        <div className="flex items-center animate-fade-up px-4 sm:px-6 lg:px-8 xl:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] pt-40 lg:pt-48 pb-12 sm:pb-14 lg:pb-20">
+        <div className="flex items-center animate-fade-up px-4 sm:px-6 lg:px-8 xl:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] pt-28 sm:pt-32 lg:pt-48 pb-6 sm:pb-8 lg:pb-20">
           <div>
             <p className="text-sm sm:text-base font-body uppercase tracking-widest mb-3 text-muted-foreground">
               Giày đi bộ barefoot
             </p>
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-foreground">
+            <h1 className="font-display text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-foreground">
               Cải thiện
               <br />
               <span style={{ color: ACCENT }}>sức mạnh</span> bàn chân
@@ -73,7 +73,7 @@ const ProductLucy = () => {
                 href="https://byebeoshop.com/san-pham-2/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 md:px-8 md:py-3.5 font-body font-semibold text-sm rounded-xl text-white transition-opacity hover:opacity-90"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 lg:px-8 lg:py-3.5 font-body font-semibold text-sm rounded-xl text-white transition-opacity hover:opacity-90"
                 style={{ backgroundColor: ACCENT }}
               >
                 Mua Trực Tiếp Tại Đại Lý
@@ -84,7 +84,7 @@ const ProductLucy = () => {
 
         {/* Image column - flush right & bottom */}
         <div className="animate-fade-up [animation-delay:150ms] self-end">
-          <img src={heroLucy} alt="Kinis Lucy" className="w-full h-auto block" />
+          <img src={heroLucy} alt="Kinis Lucy" className="w-full h-auto block max-h-[60vh] object-contain lg:max-h-none" />
         </div>
       </div>
     </section>
