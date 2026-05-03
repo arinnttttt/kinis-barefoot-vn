@@ -8,6 +8,7 @@ import audienceFunctionalImg from "@/assets/audience-functional.jpg";
 import audienceTrailRunnerImg from "@/assets/audience-trail-runner.jpg";
 const nomadKolBanner = "https://kinis.vn/wp-content/uploads/2026/05/nomad-kol-banner.png";
 import TestimonialSection from "@/components/TestimonialSection";
+import apmabadge from "@/assets/apma-badge.png";
 import ApolloColorCarousel from "@/components/ApolloColorCarousel";
 
 const apolloImage = "https://kinis.vn/wp-content/uploads/2026/04/kinis-apollo-1.png";
