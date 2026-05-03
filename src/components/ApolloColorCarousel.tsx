@@ -5,6 +5,8 @@ const variants = [
   { src: "https://kinis.vn/wp-content/uploads/2026/05/apollo-orange-scaled.png", label: "Đen", color: "hsl(0 0% 15%)" },
 ];
 
+const visibleOffsets = [-1, 0, 1] as const;
+
 const ApolloColorCarousel = () => {
   const [active, setActive] = useState(0);
 
@@ -22,19 +24,22 @@ const ApolloColorCarousel = () => {
       style={{ backgroundColor: "hsl(0 0% 100%)" }}
     >
       <div className="mx-auto max-w-6xl px-2 sm:px-4">
-        <div className="flex items-end justify-center gap-2 sm:gap-4 md:gap-8 lg:gap-12">
-          {variants.map((item, idx) => {
-            const isActive = idx === active;
+        <div className="flex items-end justify-center gap-0 sm:gap-2 md:gap-4 lg:gap-6">
+          {visibleOffsets.map((offset) => {
+            const idx = (active + offset + variants.length) % variants.length;
+            const item = variants[idx];
+            const isActive = offset === 0;
+
             return (
               <button
-                key={idx}
+                key={`${offset}-${idx}`}
                 type="button"
-                onClick={() => setActive(idx)}
+                onClick={() => !isActive && setActive(idx)}
                 className="flex flex-col items-center border-0 bg-transparent p-0 transition-all duration-500 ease-out"
                 style={{
                   opacity: isActive ? 1 : 0.35,
-                  transform: isActive ? "translateY(0) scale(1)" : "translateY(10px) scale(0.85)",
-                  width: isActive ? "clamp(14rem, 35vw, 26rem)" : "clamp(8rem, 20vw, 14rem)",
+                  transform: isActive ? "translateY(0) scale(1)" : "translateY(10px) scale(0.82)",
+                  width: isActive ? "clamp(12rem, 30vw, 24rem)" : "clamp(6rem, 17vw, 12rem)",
                   cursor: isActive ? "default" : "pointer",
                 }}
                 aria-label={`Chọn màu ${item.label}`}
