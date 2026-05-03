@@ -21,6 +21,7 @@ const LucyColorCarousel = () => {
 
   return (
     <section
+      data-lucy-carousel
       className="py-4 sm:py-6 lg:py-8 overflow-hidden"
       style={{ backgroundColor: "hsl(0 0% 100%)" }}
     >
