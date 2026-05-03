@@ -160,7 +160,7 @@ const ProductLucy = () => {
 
 
     <section className="w-full">
-      <img src={nomadKolBanner} alt="Kinis Lucy KOL" className="w-full block" loading="lazy" />
+      <img src={lucyLifestyleBanner} alt="Kinis Lucy Lifestyle" className="w-full block" loading="lazy" />
     </section>
 
     {/* Guide Section - Dark */}
