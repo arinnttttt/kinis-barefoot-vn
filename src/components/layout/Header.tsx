@@ -28,7 +28,6 @@ const navigation = [
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [headerTheme, setHeaderTheme] = useState<"dark" | "light">("dark");
 
   useEffect(() => {
     if (mobileOpen) {
@@ -41,26 +40,8 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 20);
-
-      const headerHeight = 80;
-      const elements = document.elementsFromPoint(window.innerWidth / 2, headerHeight);
-      const section = elements.find(
-        (el) => el.tagName === "SECTION" || el.tagName === "FOOTER"
-      );
-
-      if (section) {
-        const bg = window.getComputedStyle(section).backgroundColor;
-        const match = bg.match(/\d+/g);
-        if (match) {
-          const [r, g, b] = match.map(Number);
-          const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-          setHeaderTheme(luminance < 0.5 ? "dark" : "light");
-        }
-      }
+      setScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
