@@ -1,23 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const variants = [
-  { src: "", label: "Đen", color: "hsl(0 0% 15%)" },
-  { src: "", label: "Trắng", color: "hsl(40 30% 90%)" },
-  { src: "", label: "Xám", color: "hsl(0 0% 60%)" },
-  { src: "", label: "Cam", color: "hsl(27 100% 52%)" },
+  { src: "https://kinis.vn/wp-content/uploads/2026/05/apollo-black-scaled.png", label: "Đen", color: "hsl(0 0% 15%)" },
+  { src: "https://kinis.vn/wp-content/uploads/2026/05/apollo-orange-scaled.png", label: "Cam", color: "hsl(27 100% 52%)" },
 ];
-
-const visibleOffsets = [-1, 0, 1] as const;
 
 const ApolloColorCarousel = () => {
   const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setActive((prev) => (prev + 1) % variants.length);
-    }, 3000);
-    return () => window.clearInterval(timer);
-  }, []);
 
   return (
     <section
@@ -26,43 +15,31 @@ const ApolloColorCarousel = () => {
       style={{ backgroundColor: "hsl(0 0% 100%)" }}
     >
       <div className="mx-auto max-w-6xl px-2 sm:px-4">
-        <div className="flex items-end justify-center gap-0 sm:gap-2 md:gap-4 lg:gap-6">
-          {visibleOffsets.map((offset) => {
-            const idx = (active + offset + variants.length) % variants.length;
-            const item = variants[idx];
-            const isActive = offset === 0;
-
+        <div className="flex items-end justify-center gap-2 sm:gap-4 md:gap-8 lg:gap-12">
+          {variants.map((item, idx) => {
+            const isActive = idx === active;
             return (
               <button
-                key={`${offset}-${idx}`}
+                key={idx}
                 type="button"
-                onClick={() => !isActive && setActive(idx)}
+                onClick={() => setActive(idx)}
                 className="flex flex-col items-center border-0 bg-transparent p-0 transition-all duration-500 ease-out"
                 style={{
                   opacity: isActive ? 1 : 0.35,
-                  transform: isActive ? "translateY(0) scale(1)" : "translateY(10px) scale(0.82)",
-                  width: isActive ? "clamp(12rem, 30vw, 24rem)" : "clamp(6rem, 17vw, 12rem)",
+                  transform: isActive ? "translateY(0) scale(1)" : "translateY(10px) scale(0.85)",
+                  width: isActive ? "clamp(14rem, 35vw, 26rem)" : "clamp(8rem, 20vw, 14rem)",
                   cursor: isActive ? "default" : "pointer",
                 }}
                 aria-label={`Chọn màu ${item.label}`}
               >
-                {item.src ? (
-                  <img
-                    src={item.src}
-                    alt={`Kinis Apollo Pro ${item.label}`}
-                    className="block w-full h-auto object-contain select-none"
-                    draggable={false}
-                    loading="eager"
-                    decoding="async"
-                  />
-                ) : (
-                  <div
-                    className="block w-full bg-muted rounded-xl flex items-center justify-center select-none"
-                    style={{ aspectRatio: "1/1" }}
-                  >
-                    <span className="text-xs text-muted-foreground">Ảnh sắp có</span>
-                  </div>
-                )}
+                <img
+                  src={item.src}
+                  alt={`Kinis Apollo Pro ${item.label}`}
+                  className="block w-full h-auto object-contain select-none"
+                  draggable={false}
+                  loading="eager"
+                  decoding="async"
+                />
                 <div
                   className="mt-3 flex items-center gap-2 transition-opacity duration-300"
                   style={{ opacity: isActive ? 1 : 0 }}
