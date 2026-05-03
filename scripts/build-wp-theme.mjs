@@ -22,6 +22,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const DIST = join(ROOT, "dist");
 const THEME_DIR = join(ROOT, "wp-theme", "kinis");
+const THEME_VERSION = "5.0.1";
 
 // Route config: path → WP page template name + title
 const routes = [
@@ -36,6 +37,44 @@ const routes = [
   { path: "/doi-tuong/ban-chan-bet", template: "page-doi-tuong-ban-chan-bet", title: "Bàn chân bẹt" },
   { path: "/faq", template: "page-faq", title: "FAQ" },
 ];
+
+function optimizeThemeImages() {
+  execSync(`python3 - <<'PY'
+from pathlib import Path
+from PIL import Image
+root = Path('wp-theme/kinis/assets/images')
+caps = {
+  'richmond-bizsense-D0pjS6m4.png': 900,
+  'apma-badge-dPw7mhCG.png': 1100,
+  'elevation-outdoors-C_Zl9G28.png': 640,
+  'food-travelist-CzdzNeYY.png': 640,
+  'william-mary-2b0t7oBN.png': 900,
+  'video-frame-lSJOxxyK.png': 1280,
+}
+for p in root.iterdir():
+    if p.suffix.lower() not in ['.png', '.jpg', '.jpeg']:
+        continue
+    before = p.stat().st_size
+    im = Image.open(p); im.load()
+    max_dim = caps.get(p.name)
+    if max_dim:
+        w, h = im.size
+        scale = min(1, max_dim / max(w, h))
+        if scale < 1:
+            im = im.resize((round(w * scale), round(h * scale)), Image.Resampling.LANCZOS)
+    if p.suffix.lower() == '.png':
+        if im.mode in ('RGBA', 'LA'):
+            im.convert('RGBA').quantize(colors=192, method=Image.Quantize.FASTOCTREE).save(p, optimize=True)
+        else:
+            im.save(p, optimize=True, compress_level=9)
+    else:
+        if im.mode != 'RGB': im = im.convert('RGB')
+        im.save(p, quality=82, optimize=True, progressive=True, subsampling=1)
+    after = p.stat().st_size
+    if after < before:
+        print(p.name + ': ' + str(round(before/1024, 1)) + 'KB -> ' + str(round(after/1024, 1)) + 'KB')
+PY`, { cwd: ROOT, stdio: "inherit" });
+}
 
 // Simple static server
 function startServer(port) {
@@ -109,35 +148,34 @@ async function build() {
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
 
-  // Clean old assets and recreate directories
+  // Clean the whole assets folder first. Older builds left hashed images directly
+  // under assets/, which made the WP ZIP exceed upload limits.
+  const themeAssetsDir = join(THEME_DIR, "assets");
+  if (existsSync(themeAssetsDir)) rmSync(themeAssetsDir, { recursive: true, force: true });
   for (const sub of ["css", "images", "js", "videos"]) {
-    const dir = join(THEME_DIR, "assets", sub);
-    if (existsSync(dir)) rmSync(dir, { recursive: true, force: true });
-    mkdirSync(dir, { recursive: true });
+    mkdirSync(join(themeAssetsDir, sub), { recursive: true });
   }
 
   // Videos are hosted externally - no local video copying needed
 
-  // Copy all assets from dist/assets/
+  // Copy only the assets the static WP templates need. React chunk JS is not
+  // enqueued in WP; interactions are recreated below with small vanilla scripts.
   const assetsDir = join(DIST, "assets");
   if (existsSync(assetsDir)) {
     for (const file of readdirSync(assetsDir)) {
       const ext = extname(file).toLowerCase();
       if ([".css"].includes(ext)) {
         cpSync(join(assetsDir, file), join(THEME_DIR, "assets", "css", file));
-      } else if ([".js"].includes(ext)) {
-        cpSync(join(assetsDir, file), join(THEME_DIR, "assets", "js", file));
-      } else {
+      } else if (![".js", ".map"].includes(ext)) {
         cpSync(join(assetsDir, file), join(THEME_DIR, "assets", "images", file));
       }
     }
   }
 
-  // Also ship source assets with their stable filenames. The static WP templates may
-  // contain browser-rendered hashed names from older renders; keeping both hashed
-  // Vite assets and original asset names prevents missing images after updates.
+  // Source assets are intentionally not copied wholesale. The current pre-rendered
+  // WP templates reference hashed Vite images, so stable duplicates only add size.
   const sourceAssetsDir = join(ROOT, "src", "assets");
-  if (existsSync(sourceAssetsDir)) {
+  if (false && existsSync(sourceAssetsDir)) {
     for (const file of readdirSync(sourceAssetsDir)) {
       const ext = extname(file).toLowerCase();
       if ([".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".ico", ".avif"].includes(ext)) {
@@ -436,7 +474,7 @@ Theme URI: https://kinis.com
 Author: Arin Như Trương
 Author URI: https://kinis.com
 Description: Hệ sinh thái chăm sóc sức khỏe vận động - Giày barefoot Kinis
-Version: 5.0.1
+Version: ${THEME_VERSION}
 License: Proprietary
 Text Domain: kinis
 */
@@ -462,15 +500,15 @@ function kinis_enqueue_assets() {
     if (!empty($css_files)) {
         sort($css_files);
         $css_file = basename(end($css_files));
-        wp_enqueue_style('kinis-main', get_template_directory_uri() . '/assets/css/' . $css_file, array(), '5.0.1');
+        wp_enqueue_style('kinis-main', get_template_directory_uri() . '/assets/css/' . $css_file, array(), '${THEME_VERSION}');
     }
     
     // Theme stylesheet
-    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '5.0.1');
+    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '${THEME_VERSION}');
     
     // Header scroll behavior (vanilla JS - replaces React scroll handler)
-    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '5.0.1', true);
-    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '5.0.1', true);
+    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '${THEME_VERSION}', true);
+    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '${THEME_VERSION}', true);
 }
 add_action('wp_enqueue_scripts', 'kinis_enqueue_assets');
 
@@ -1819,6 +1857,9 @@ ${content}
     console.log("\n🔄 Running postprocess for dynamic FAQ + Testimonial...");
     execSync(`python3 "${postprocessScript}"`, { stdio: "inherit" });
   }
+
+  console.log("\n🗜️ Optimizing WP theme images for upload-size limits...");
+  optimizeThemeImages();
 
   console.log("\n✅ WordPress theme generated in wp-theme/kinis/");
   console.log("📁 Theme structure:");
