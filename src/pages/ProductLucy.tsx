@@ -162,7 +162,7 @@ const ProductLucy = () => {
 
 
     <section className="w-full">
-      <img src={lucyLifestyleBanner} alt="Kinis Lucy Lifestyle" className="w-full block" loading="lazy" />
+      <img src={lucyLifestyleBannerUrl} alt="Kinis Lucy Lifestyle" className="w-full block" loading="lazy" />
     </section>
 
     {/* Guide Section - Dark */}
