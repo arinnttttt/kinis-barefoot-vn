@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import { Zap, Compass, Radio, Shield, Feather, Wind, SprayCan, Check, AlertTriangle } from "lucide-react";
+import { Zap, Compass, Radio, Shield, Feather, Wind, SprayCan, Check, AlertTriangle, Activity, ShieldCheck } from "lucide-react";
 import lucyImage from "@/assets/lucy-showcase-v3.png";
 import audienceGymImg from "@/assets/audience-gym-weightlifting.jpg";
 import audiencePostureImg from "@/assets/audience-posture.jpg";
@@ -16,18 +16,23 @@ const ACCENT = "hsl(27,100%,52%)";
 const benefits = [
   {
     icon: Zap,
-    title: "Hỗ trợ vòm chân 3 điểm",
-    description: "Công nghệ hỗ trợ vòm chân 3 điểm phân bổ áp lực đều, giảm đau và mỏi khi đứng lâu hoặc di chuyển nhiều.",
+    title: "Tăng sức mạnh cơ bàn chân đến 57,4%",
+    description: "Trung bình sau 6 tháng sử dụng giày tối giản theo nghiên cứu trên Scientific Reports (Nature, 2021).",
+  },
+  {
+    icon: Activity,
+    title: "Cải thiện khả năng thăng bằng",
+    description: "Đế mỏng truyền tải tín hiệu mặt đất, giúp hệ thần kinh phản xạ tốt hơn.",
   },
   {
     icon: Compass,
-    title: "Cải thiện dáng đi tự nhiên",
-    description: "Thiết kế ergonomic giúp cơ thể căn chỉnh tư thế đứng và di chuyển đúng sinh cơ học.",
+    title: "Hỗ trợ dáng đi tự nhiên",
+    description: "Thiết kế zero-drop (đế phẳng) giúp cơ thể tự căn chỉnh tư thế khi di chuyển.",
   },
   {
-    icon: Radio,
-    title: "Giảm chấn động hiệu quả",
-    description: "Lớp đệm EVA cao cấp hấp thụ lực chấn động, bảo vệ khớp gối và cột sống khi vận động.",
+    icon: ShieldCheck,
+    title: "Giảm nguy cơ té ngã",
+    description: "Tăng cường cảm nhận mặt đất và phản xạ thăng bằng, hạn chế chấn thương.",
   },
 ];
 
@@ -78,14 +83,14 @@ const ProductLucy = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-fade-up">
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">
-            Tại sao bạn cần <span style={{ color: ACCENT }}>Kinis Lucy</span>?
+            Lý do bạn nên chọn <span style={{ color: ACCENT }}>Kinis Lucy</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
             Được thiết kế dựa trên khoa học bàn chân, Kinis Lucy hỗ trợ vòm chân hoàn hảo, giúp bạn vận động thoải mái và giảm thiểu chấn thương.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 mb-10 sm:mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 mb-10 sm:mb-12">
           {benefits.map((b, i) => (
             <div key={b.title} className="rounded-2xl p-6 sm:p-8 bg-card border border-border animate-fade-up" style={{ animationDelay: `${i * 100}ms`, boxShadow: "0 4px 24px -4px rgba(0,0,0,0.06)" }}>
               <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ backgroundColor: "hsl(27 100% 52% / 0.1)" }}>
