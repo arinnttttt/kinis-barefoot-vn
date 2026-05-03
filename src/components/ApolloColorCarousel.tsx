@@ -1,12 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const variants = [
-  { src: "https://kinis.vn/wp-content/uploads/2026/05/apollo-black-scaled.png", label: "Cam", color: "hsl(27 100% 52%)" },
-  { src: "https://kinis.vn/wp-content/uploads/2026/05/apollo-orange-scaled.png", label: "Đen", color: "hsl(0 0% 15%)" },
+  { src: "https://kinis.vn/wp-content/uploads/2026/05/apollo-black-scaled.png", label: "Đen", color: "hsl(0 0% 15%)" },
+  { src: "https://kinis.vn/wp-content/uploads/2026/05/apollo-orange-scaled.png", label: "Cam", color: "hsl(27 100% 52%)" },
 ];
 
 const ApolloColorCarousel = () => {
   const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActive((prev) => (prev + 1) % variants.length);
+    }, 3000);
+    return () => window.clearInterval(timer);
+  }, []);
 
   return (
     <section
