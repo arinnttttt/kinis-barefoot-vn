@@ -158,7 +158,7 @@ const ProductApollo = () => {
             {[
               { num: "1", time: "Tuần 1 – 2", subtitle: "Làm quen", tasks: ["Mang tập nhẹ 1–2 giờ mỗi buổi", "Tránh bài tập cường độ cao ngay lập tức"] },
               { num: "2", time: "Tuần 3 – 4", subtitle: "Tăng cường", tasks: ["Bắt đầu các bài compound nhẹ", "Tăng dần thời gian và cường độ tập"] },
-              { num: "3", time: "Sau 1 – 2 tháng", subtitle: "Bứt phá", tasks: ["Sử dụng cho mọi bài tập cường độ cao", "Cảm nhận sự ổn định và truyền lực tối ưu"] },
+              { num: "3", time: "Sau 1 – 2 tháng", subtitle: "Bứt phá", tasks: ["Sử dụng cho mọi bài tập chuyên biệt", "Cảm nhận sự ổn định và truyền lực tối ưu"] },
             ].map((stage, i) => (
               <div key={stage.num} className="flex flex-col items-center animate-fade-up" style={{ animationDelay: `${i * 120}ms` }}>
                 <div className="relative select-none mb-5" style={{ height: "clamp(5rem, 10vw, 8rem)" }}>
