@@ -11,6 +11,7 @@ import TestimonialSection from "@/components/TestimonialSection";
 import ApolloColorCarousel from "@/components/ApolloColorCarousel";
 
 const apolloImage = "https://kinis.vn/wp-content/uploads/2026/04/kinis-apollo-1.png";
+const heroApollo = "https://kinis.vn/wp-content/uploads/2026/05/apollo-hero-scaled.png";
 const apolloLifestyleBannerUrl = ""; // placeholder - sẽ thêm sau
 const ACCENT = "hsl(27,100%,52%)";
 
@@ -46,13 +47,16 @@ const ProductApollo = () => {
         <div className="flex items-center animate-fade-up px-4 sm:px-6 lg:px-8 xl:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] pt-32 sm:pt-40 lg:pt-52 pb-6 sm:pb-8 lg:pb-20">
           <div>
             <p className="text-sm sm:text-base font-body uppercase tracking-widest mb-3 text-muted-foreground">
-              Giày tập luyện chuyên biệt
+              Kinis Apollo Pro
             </p>
             <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-foreground">
-              Tối ưu{" "}
+              Giày tập luyện{" "}
               <br className="sm:hidden" />
-              <span style={{ color: ACCENT }}>hiệu suất</span> tập luyện
+              <span style={{ color: ACCENT }}>chuyên biệt</span>
             </h1>
+            <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground max-w-md">
+              Tăng cường hiệu suất luyện tập tối đa
+            </p>
             <div className="mt-6 sm:mt-8">
               <a
                 href="https://byebeoshop.com/san-pham-2/"
@@ -67,7 +71,7 @@ const ProductApollo = () => {
           </div>
         </div>
         <div className="animate-fade-up [animation-delay:150ms] self-end">
-          <img src={apolloImage} alt="Kinis Apollo Pro" className="w-full h-auto block max-h-[60vh] object-contain lg:max-h-none" />
+          <img src={heroApollo} alt="Kinis Apollo Pro" className="w-full h-auto block max-h-[60vh] object-contain lg:max-h-none" />
         </div>
       </div>
     </section>
