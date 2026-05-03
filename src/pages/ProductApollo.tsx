@@ -34,7 +34,7 @@ const ProductApollo = () => {
   return (
   <Layout>
     {/* Hero Section */}
-    <section style={{ backgroundColor: "#FFFFFF" }}>
+    <section className="relative overflow-hidden -mt-16 lg:-mt-20" style={{ backgroundColor: "#FFFFFF" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 items-center min-h-[70vh] pt-24 pb-12 sm:py-14 lg:py-20">
           <div className="animate-fade-up">
