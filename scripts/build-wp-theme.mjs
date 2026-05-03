@@ -22,7 +22,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const DIST = join(ROOT, "dist");
 const THEME_DIR = join(ROOT, "wp-theme", "kinis");
-const THEME_VERSION = "5.0.5";
+const THEME_VERSION = "5.0.6";
 
 // Route config: path → WP page template name + title
 const routes = [
