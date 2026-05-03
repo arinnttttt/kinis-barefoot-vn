@@ -20,7 +20,7 @@ const benefits = [
   },
   {
     icon: Compass,
-    title: "Ổn định tối đa khi nâng tạ",
+    title: "Ổn định tối đa cho bài tập chuyên biệt",
     description: "Wide toe-box cho phép ngón chân xòe tự nhiên, tạo nền tảng vững chắc khi thực hiện các bài tập cường độ cao.",
   },
   {
