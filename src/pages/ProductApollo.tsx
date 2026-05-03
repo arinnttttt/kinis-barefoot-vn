@@ -59,7 +59,6 @@ const ProductApollo = () => {
             </div>
           </div>
         </div>
-        </div>
         <div className="animate-fade-up [animation-delay:150ms] self-end">
           <img src={apolloImage} alt="Kinis Apollo Pro" className="w-full h-auto block" />
         </div>
