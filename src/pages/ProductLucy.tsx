@@ -51,7 +51,7 @@ const ProductLucy = () => {
     {/* Hero Section */}
     <section style={{ backgroundColor: "#FFFFFF" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 items-center min-h-[70vh] pt-24 pb-12 sm:py-14 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-4 md:gap-6 lg:gap-8 items-center min-h-[70vh] pt-24 pb-12 sm:py-14 lg:py-20">
           <div className="animate-fade-up">
             <p className="text-sm sm:text-base font-body uppercase tracking-widest mb-3 text-muted-foreground">
               Giày đi bộ barefoot
@@ -80,8 +80,8 @@ const ProductLucy = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-center animate-fade-up [animation-delay:150ms]">
-            <img src={heroLucy} alt="Kinis Lucy" className="w-full max-w-3xl lg:max-w-4xl object-contain" />
+          <div className="flex items-center justify-end animate-fade-up [animation-delay:150ms] md:-mr-8 lg:-mr-12">
+            <img src={heroLucy} alt="Kinis Lucy" className="w-full h-auto object-contain max-h-[75vh]" />
           </div>
         </div>
       </div>
