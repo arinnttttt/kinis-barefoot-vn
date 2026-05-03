@@ -196,12 +196,12 @@ const ProductApollo = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {[
-            { img: audienceGymImg, title: "HIIT & CrossFit", desc: "Đế bám sàn vượt trội, hỗ trợ chuyển động đa hướng nhanh và mạnh." },
-            { img: audiencePostureImg, title: "Weightlifting", desc: "Đế zero-drop truyền lực tối ưu khi squat, deadlift và clean & jerk." },
-            { img: audienceFunctionalImg, title: "Functional Training", desc: "Linh hoạt cho mọi bài tập từ box jump đến rope climb." },
-            { img: audienceFlatfeetImg, title: "Powerlifting", desc: "Nền tảng ổn định tuyệt đối cho các bài nâng tạ nặng." },
-            { img: audienceYogaImg, title: "Calisthenics", desc: "Nhẹ và linh hoạt, hỗ trợ các bài tập thể lực với trọng lượng cơ thể." },
-            { img: audienceTrailRunnerImg, title: "Obstacle Course Racing", desc: "Bám sàn và bền bỉ, phù hợp các thử thách vượt chướng ngại vật." },
+            { img: audienceGymImg, title: "HIIT & CrossFit", desc: "Đế bám sàn vượt trội, hỗ trợ chuyển động đa hướng nhanh và mạnh cho bài tập chuyên biệt." },
+            { img: audiencePostureImg, title: "Weightlifting", desc: "Đế Pro zero-drop truyền lực tối ưu khi squat, deadlift và clean & jerk." },
+            { img: audienceFunctionalImg, title: "Functional Training", desc: "Linh hoạt cho mọi bài tập chuyên biệt từ box jump đến rope climb." },
+            { img: audienceFlatfeetImg, title: "Powerlifting", desc: "Nền tảng ổn định tuyệt đối cho các bài tập chuyên biệt nặng." },
+            { img: audienceYogaImg, title: "Calisthenics", desc: "Nhẹ và linh hoạt, hỗ trợ bài tập chuyên biệt với trọng lượng cơ thể." },
+            { img: audienceTrailRunnerImg, title: "OCR Training", desc: "Bám sàn và bền bỉ, phù hợp các bài tập chuyên biệt vượt chướng ngại vật." },
           ].map((item, i) => (
             <div key={item.title} className="rounded-2xl overflow-hidden bg-card border border-border animate-fade-up" style={{ animationDelay: `${i * 80}ms`, boxShadow: "0 4px 24px -4px rgba(0,0,0,0.06)" }}>
               <img src={item.img} alt={item.title} loading="lazy" width={1824} height={512} className="w-full object-cover" style={{ aspectRatio: "32/9" }} />
