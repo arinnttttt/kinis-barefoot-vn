@@ -49,7 +49,10 @@ ready(function(){
   }
 
   // Detect hero background luminance ONCE on page load
-  var heroDark=true;
+  // Default based on page path: Home and FAQ have dark heroes
+  var curPath=normPath(window.location.pathname);
+  var darkPages=['/','/faq','/hoi-dap'];
+  var heroDark=darkPages.indexOf(curPath)!==-1;
   function detectHero(){
     var h=window.innerWidth>=1024?80:64;
     var els=document.elementsFromPoint(Math.max(1,window.innerWidth/2),h+1);
