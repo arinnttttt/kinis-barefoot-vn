@@ -128,18 +128,19 @@ const ProductApollo = () => {
             </div>
           </div>
           <div className="animate-fade-up [animation-delay:150ms]">
-            <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: ACCENT }}>Sức mạnh tối ưu</span>
+            <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: ACCENT }}>Chất liệu</span>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight text-foreground">
-              Thiết kế <span style={{ color: ACCENT }}>chuyên biệt</span> Pro
+              Chất liệu <span style={{ color: ACCENT }}>cao cấp</span>
             </h2>
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
-              Kinis Apollo Pro được thiết kế riêng cho vận động chuyên biệt, kết hợp đế zero-drop với chất liệu upper thoáng khí và đế cao su bám sàn vượt trội.
+              Kinis Apollo được chế tác từ những sợi kĩ thuật độc quyền với công nghệ dệt 360° Flex-knit. Bên trong là hệ thống lót đa tầng tự nhiên: da cao cấp kết hợp lõi bần (cork), mang đến trải nghiệm êm ái, kiểm soát nhiệt độ và tôn vinh từng bước chạm của bạn.
             </p>
             <div className="mt-8 sm:mt-10 space-y-4">
               {[
-                { icon: Shield, text: "Đế Pro zero-drop – Truyền lực tối ưu khi nâng tạ" },
-                { icon: Feather, text: "Upper thoáng khí – Bền bỉ qua từng buổi tập" },
-                { icon: Wind, text: "Wide toe-box – Ngón chân xòe tự nhiên, ổn định hơn" },
+                { icon: Wind, text: "Thoáng khí và nhanh khô" },
+                { icon: Feather, text: "Nhẹ và linh hoạt" },
+                { icon: Shield, text: "Êm ái tuyệt đối" },
+                { icon: Check, text: "Bền bỉ theo thời gian" },
               ].map((item, i) => (
                 <div key={item.text} className="flex items-center gap-4 animate-fade-up" style={{ animationDelay: `${200 + i * 100}ms` }}>
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(27 100% 52% / 0.1)" }}>
