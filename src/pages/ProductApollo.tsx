@@ -58,6 +58,10 @@ const ProductApollo = () => {
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground max-w-md">
               Tăng cường hiệu suất luyện tập tối đa
             </p>
+            <div className="mt-4 flex flex-col sm:flex-row lg:flex-col sm:items-center lg:items-start items-start gap-2 sm:gap-3 lg:gap-2">
+              <span className="text-xs sm:text-sm font-body font-semibold uppercase tracking-widest text-muted-foreground">Chứng nhận bởi Hiệp hội Y khoa Bàn chân Hoa Kỳ</span>
+              <img src={apmabadge} alt="APMA Seal of Acceptance" className="h-12 sm:h-14 w-auto" />
+            </div>
             <div className="mt-6 sm:mt-8">
               <a
                 href="https://byebeoshop.com/san-pham-2/"
