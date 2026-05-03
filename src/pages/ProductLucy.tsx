@@ -5,12 +5,12 @@ import apmaSeal from "@/assets/apma-seal.png";
 
 const heroLucy = "https://kinis.vn/wp-content/uploads/2026/05/hero-lucy-1-scaled.png";
 const lucyLifestyleBannerUrl = "https://kinis.vn/wp-content/uploads/2026/05/lucy-lifestyle.png";
-const audienceGymImg = "https://kinis.vn/wp-content/uploads/2026/05/gym.avif";
-const audiencePostureImg = "https://kinis.vn/wp-content/uploads/2026/05/dang-di-scaled.jpg";
-const audienceYogaImg = "https://kinis.vn/wp-content/uploads/2026/05/yoga-1-scaled.png";
-const audienceFlatfeetImg = "https://kinis.vn/wp-content/uploads/2026/05/flat-feet-scaled.jpg";
-const audienceFunctionalImg = "https://kinis.vn/wp-content/uploads/2026/05/squat.avif";
-const audienceTrailRunnerImg = "https://kinis.vn/wp-content/uploads/2026/05/runner-1.png";
+const audienceGymImg = "https://kinis.vn/wp-content/uploads/2026/05/gym.png";
+const audiencePostureImg = "https://kinis.vn/wp-content/uploads/2026/05/dang-di.png";
+const audienceYogaImg = "https://kinis.vn/wp-content/uploads/2026/05/yoga.png";
+const audienceFlatfeetImg = "https://kinis.vn/wp-content/uploads/2026/05/flat-feet.png";
+const audienceFunctionalImg = "https://kinis.vn/wp-content/uploads/2026/05/training.png";
+const audienceTrailRunnerImg = "https://kinis.vn/wp-content/uploads/2026/05/runner.png";
 import apmabadge from "@/assets/apma-badge.png";
 import iconNoRunning from "@/assets/icon-no-running.png";
 import iconNoWet from "@/assets/icon-no-wet.png";
