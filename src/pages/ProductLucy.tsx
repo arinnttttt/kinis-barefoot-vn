@@ -79,7 +79,7 @@ const ProductLucy = () => {
           </div>
 
           <div className="flex items-center justify-center animate-fade-up [animation-delay:150ms]">
-            <img src={lucyImage} alt="Kinis Lucy" className="w-full md:w-[90%] max-w-2xl lg:max-w-3xl object-contain" />
+            <img src={heroLucy} alt="Kinis Lucy" className="w-full md:w-[90%] max-w-2xl lg:max-w-3xl object-contain" />
           </div>
         </div>
       </div>
