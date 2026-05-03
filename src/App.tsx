@@ -13,6 +13,7 @@ const ProductApollo = lazy(() => import("./pages/ProductApollo"));
 const Science = lazy(() => import("./pages/Science"));
 const TargetAudience = lazy(() => import("./pages/TargetAudience"));
 const FAQ = lazy(() => import("./pages/FAQ"));
+const ComingSoon = lazy(() => import("./pages/ComingSoon"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ const App = () => (
             <Route path="/doi-tuong/chay-bo" element={<TargetAudience variant="runner" />} />
             <Route path="/doi-tuong/ban-chan-bet" element={<TargetAudience variant="flat-feet" />} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/coming-soon" element={<ComingSoon />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
