@@ -35,9 +35,9 @@ const ProductApollo = () => {
   <Layout>
     {/* Hero Section */}
     <section className="relative overflow-hidden -mt-16 lg:-mt-20" style={{ backgroundColor: "#FFFFFF" }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 items-center min-h-[70vh] pt-24 pb-12 sm:py-14 lg:py-20">
-          <div className="animate-fade-up">
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[70vh]">
+        <div className="flex items-center animate-fade-up px-4 sm:px-6 lg:px-8 xl:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] pt-24 pb-12 sm:py-14 lg:py-20">
+          <div>
             <p className="text-sm sm:text-base font-body uppercase tracking-widest mb-3 text-muted-foreground">
               Giày tập luyện chuyên biệt
             </p>
@@ -58,10 +58,7 @@ const ProductApollo = () => {
               </a>
             </div>
           </div>
-
-          <div className="flex items-center justify-center animate-fade-up [animation-delay:150ms]">
-            <img src={apolloImage} alt="Kinis Apollo Pro" className="w-full md:w-[90%] max-w-2xl lg:max-w-3xl object-contain" />
-          </div>
+        </div>
         </div>
         <div className="animate-fade-up [animation-delay:150ms] self-end">
           <img src={apolloImage} alt="Kinis Apollo Pro" className="w-full h-auto block" />
