@@ -349,11 +349,15 @@ ready(function(){
 
 
 
-  // Copy favicon to assets/images
-  if (existsSync(join(DIST, "favicon.ico"))) {
-    cpSync(join(DIST, "favicon.ico"), join(THEME_DIR, "assets", "images", "favicon.ico"));
-  } else if (existsSync(join(ROOT, "public", "favicon.ico"))) {
-    cpSync(join(ROOT, "public", "favicon.ico"), join(THEME_DIR, "assets", "images", "favicon.ico"));
+  // Copy favicon to both theme root and assets/images for maximum WP/browser compatibility
+  const faviconSource = existsSync(join(DIST, "favicon.ico"))
+    ? join(DIST, "favicon.ico")
+    : existsSync(join(ROOT, "public", "favicon.ico"))
+      ? join(ROOT, "public", "favicon.ico")
+      : null;
+  if (faviconSource) {
+    cpSync(faviconSource, join(THEME_DIR, "assets", "images", "favicon.ico"));
+    cpSync(faviconSource, join(THEME_DIR, "favicon.ico"));
   }
 
   console.log(`\n🎨 Pre-rendering ${routes.length} routes into WP templates...\n`);
