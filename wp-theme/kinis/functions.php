@@ -14,15 +14,15 @@ function kinis_enqueue_assets() {
     if (!empty($css_files)) {
         sort($css_files);
         $css_file = basename(end($css_files));
-        wp_enqueue_style('kinis-main', get_template_directory_uri() . '/assets/css/' . $css_file, array(), '5.1.5');
+        wp_enqueue_style('kinis-main', get_template_directory_uri() . '/assets/css/' . $css_file, array(), '5.2.0');
     }
     
     // Theme stylesheet
-    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '5.1.5');
+    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '5.2.0');
     
     // Header scroll behavior (vanilla JS - replaces React scroll handler)
-    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '5.1.5', true);
-    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '5.1.5', true);
+    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '5.2.0', true);
+    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '5.2.0', true);
 }
 add_action('wp_enqueue_scripts', 'kinis_enqueue_assets');
 
@@ -371,7 +371,7 @@ add_action('save_post_kinis_testimonial', 'kinis_save_testimonial_meta');
 
 // Auto-seed testimonial data on theme activation (versioned re-seed)
 function kinis_seed_testimonials() {
-    $current_version = '5.1.5';
+    $current_version = '5.2.0';
     $seeded_version = get_option('kinis_testimonials_seeded_version', '');
     if ($seeded_version === $current_version) return;
     
@@ -410,7 +410,7 @@ add_action('after_switch_theme', 'kinis_seed_testimonials', 35);
 
 // Also run seed on init to catch theme updates without re-activation
 function kinis_maybe_reseed_testimonials() {
-    $current_version = '5.1.5';
+    $current_version = '5.2.0';
     $seeded_version = get_option('kinis_testimonials_seeded_version', '');
     if ($seeded_version !== $current_version) {
         kinis_seed_testimonials();
@@ -871,3 +871,44 @@ Lưu ý quan trọng:
     update_option('kinis_faq_seeded', true);
 }
 add_action('after_switch_theme', 'kinis_seed_faq_data', 30);
+
+// ============================================
+// Coming Soon: redirect draft/pending pages
+// ============================================
+function kinis_coming_soon_redirect() {
+    if (!is_404()) return;
+    
+    // Get the requested path
+    \$request_uri = trim(parse_url(\$_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+    if (empty(\$request_uri)) return;
+    
+    // Check if there's a page with this slug in draft/pending/future status
+    \$slug = basename(\$request_uri);
+    \$found = get_posts(array(
+        'name'        => \$slug,
+        'post_type'   => 'page',
+        'post_status' => array('draft', 'pending', 'future'),
+        'numberposts' => 1,
+    ));
+    
+    // Also check parent/child slugs (e.g. san-pham/new-shoe)
+    if (empty(\$found)) {
+        \$all_segments = explode('/', \$request_uri);
+        foreach (\$all_segments as \$seg) {
+            \$found = get_posts(array(
+                'name'        => \$seg,
+                'post_type'   => 'page',
+                'post_status' => array('draft', 'pending', 'future'),
+                'numberposts' => 1,
+            ));
+            if (!empty(\$found)) break;
+        }
+    }
+    
+    if (!empty(\$found)) {
+        status_header(200);
+        get_template_part('page-coming-soon');
+        exit;
+    }
+}
+add_action('template_redirect', 'kinis_coming_soon_redirect');
