@@ -456,8 +456,14 @@ function kinis_enqueue_assets() {
     // Google Fonts - swap display for faster rendering
     wp_enqueue_style('kinis-fonts', 'https://fonts.googleapis.com/css2?family=Phudu:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap', array(), null);
     
-    // Main CSS (from Vite build)
-${cssFiles.map((f, i) => `    wp_enqueue_style('kinis-main${i > 0 ? '-' + i : ''}', get_template_directory_uri() . '/assets/css/${f}', array(), '5.0.1');`).join("\n")}
+    // Main CSS (from Vite build) - auto-detect filename for WP-safe installs
+    $css_dir = get_template_directory() . '/assets/css/';
+    $css_files = glob($css_dir . 'index-*.css');
+    if (!empty($css_files)) {
+        sort($css_files);
+        $css_file = basename(end($css_files));
+        wp_enqueue_style('kinis-main', get_template_directory_uri() . '/assets/css/' . $css_file, array(), '5.0.1');
+    }
     
     // Theme stylesheet
     wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '5.0.1');
