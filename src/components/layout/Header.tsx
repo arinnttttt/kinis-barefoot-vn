@@ -66,7 +66,14 @@ const Header = () => {
     // Delay slightly to ensure page has rendered
     setTimeout(detectHero, 100);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Re-detect on route change
+    const onHashChange = () => setTimeout(detectHero, 200);
+    window.addEventListener("hashchange", onHashChange);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("hashchange", onHashChange);
+    };
   }, []);
 
   const closeMobile = useCallback(() => setMobileOpen(false), []);
