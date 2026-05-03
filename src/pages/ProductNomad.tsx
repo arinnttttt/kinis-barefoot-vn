@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import { Zap, Compass, Radio, Shield, Feather, Wind, SprayCan, Check, AlertTriangle } from "lucide-react";
-const nomadImage = "https://kinis.vn/wp-content/uploads/2026/05/nomad-hero-scaled.png";
+const nomadImage = "https://kinis.vn/wp-content/uploads/2026/05/nomad-hero-1-scaled.png";
 import audienceGymImg from "@/assets/audience-gym-weightlifting.jpg";
 import audiencePostureImg from "@/assets/audience-posture.jpg";
 import audienceYogaImg from "@/assets/audience-yoga.jpg";
@@ -62,11 +62,11 @@ const ProductNomad = () => {
   return (
   <Layout>
     {/* Hero Section - White, 2 columns */}
-    <section style={{ backgroundColor: "#FFFFFF" }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 items-center min-h-[70vh] pt-24 pb-12 sm:py-14 lg:py-20">
-          {/* Text column */}
-          <div className="animate-fade-up">
+    <section className="relative overflow-hidden" style={{ backgroundColor: "#FFFFFF" }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[70vh]">
+        {/* Text column */}
+        <div className="flex items-center animate-fade-up px-4 sm:px-6 lg:px-8 xl:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] pt-24 pb-12 sm:py-14 lg:py-20">
+          <div>
             <p className="text-sm sm:text-base font-body uppercase tracking-widest mb-3 text-muted-foreground">
               Giày tập luyện chân trần chuyên nghiệp
             </p>
@@ -87,15 +87,15 @@ const ProductNomad = () => {
               </a>
             </div>
           </div>
+        </div>
 
-          {/* Image column */}
-          <div className="flex items-end justify-center animate-fade-up [animation-delay:150ms] h-full overflow-hidden">
-            <img
-              src={nomadImage}
-              alt="Kinis Nomad"
-              className="w-full object-cover h-full max-h-[70vh]"
-            />
-          </div>
+        {/* Image column - flush right & bottom */}
+        <div className="animate-fade-up [animation-delay:150ms] self-end">
+          <img
+            src={nomadImage}
+            alt="Kinis Nomad"
+            className="w-full h-auto block"
+          />
         </div>
       </div>
     </section>
