@@ -1,54 +1,391 @@
 import Layout from "@/components/layout/Layout";
-import { Check } from "lucide-react";
+import { Zap, Compass, Radio, Shield, Feather, Wind, SprayCan, Check, AlertTriangle } from "lucide-react";
+import audienceGymImg from "@/assets/audience-gym-weightlifting.jpg";
+import audiencePostureImg from "@/assets/audience-posture.jpg";
+import audienceYogaImg from "@/assets/audience-yoga.jpg";
+import audienceFlatfeetImg from "@/assets/audience-flatfeet-strength.jpg";
+import audienceFunctionalImg from "@/assets/audience-functional.jpg";
+import audienceTrailRunnerImg from "@/assets/audience-trail-runner.jpg";
+import TestimonialSection from "@/components/TestimonialSection";
 
 const apolloImage = "https://kinis.vn/wp-content/uploads/2026/04/kinis-apollo.png";
 
-const specs = [
-  "Đế zero-drop tối ưu cho bài tập compound",
-  "Chất liệu upper thoáng khí, bền bỉ",
-  "Lớp đế ngoài cao su bám sàn vượt trội",
-  "Thiết kế wide toe-box cho sự ổn định",
-  "Phù hợp: HIIT, CrossFit, Weightlifting",
-  "Size: 36–46",
+const benefits = [
+  {
+    icon: Zap,
+    title: "Đế zero-drop tối ưu hiệu suất",
+    description:
+      "Thiết kế đế phẳng zero-drop giúp truyền lực trực tiếp từ bàn chân xuống mặt sàn, tối ưu cho các bài tập compound như squat và deadlift.",
+  },
+  {
+    icon: Compass,
+    title: "Ổn định tối đa khi nâng tạ",
+    description:
+      "Wide toe-box cho phép ngón chân xòe tự nhiên, tạo nền tảng vững chắc khi thực hiện các bài tập cường độ cao.",
+  },
+  {
+    icon: Radio,
+    title: "Bám sàn vượt trội",
+    description:
+      "Đế ngoài cao su đặc biệt mang đến khả năng bám sàn tuyệt vời, giúp bạn tự tin trong mọi bài tập.",
+  },
 ];
 
-const ProductApollo = () => (
+const ProductApollo = () => {
+  return (
   <Layout>
-    <section className="pt-20 sm:pt-24 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 bg-background">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-          <div className="rounded-2xl overflow-hidden bg-muted animate-fade-up">
-            <img src={apolloImage} alt="Kinis Apollo" className="w-full h-full object-cover" />
+    {/* Hero Section */}
+    <section style={{ backgroundColor: "#FFFFFF" }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 items-center min-h-[70vh] pt-24 pb-12 sm:py-14 lg:py-20">
+          <div className="animate-fade-up">
+            <p className="text-sm sm:text-base font-body uppercase tracking-widest mb-3 text-muted-foreground">
+              Giày tập luyện cường độ cao
+            </p>
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-foreground">
+              Tối ưu
+              <br />
+              <span style={{ color: "hsl(220,70%,50%)" }}>hiệu suất</span> tập luyện
+            </h1>
+            <div className="mt-6 sm:mt-8">
+              <a
+                href="https://byebeoshop.com/san-pham-2/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 md:px-8 md:py-3.5 font-body font-semibold text-sm rounded-xl text-white transition-opacity hover:opacity-90"
+                style={{ backgroundColor: "hsl(220,70%,50%)" }}
+              >
+                Mua Trực Tiếp Tại Đại Lý
+              </a>
+            </div>
           </div>
 
-          <div className="animate-fade-up [animation-delay:200ms]">
-            <span className="text-xs sm:text-sm font-display font-semibold text-secondary uppercase tracking-wider">Sản phẩm</span>
-            <h1 className="mt-2 font-display text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight">
-              Kinis Apollo
-            </h1>
-            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Được thiết kế dành riêng cho những buổi tập luyện cường độ cao — Kinis Apollo kết hợp triết lý barefoot với công nghệ hỗ trợ vận động, giúp bạn tối ưu hiệu suất trong mọi bài tập.
+          <div className="flex items-center justify-center animate-fade-up [animation-delay:150ms]">
+            <img
+              src={apolloImage}
+              alt="Kinis Apollo"
+              className="w-full md:w-[90%] max-w-2xl lg:max-w-3xl object-contain"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Why Kinis Apollo Section */}
+    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "hsl(0,0%,98%)" }}>
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-fade-up">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+            Tại sao bạn cần <span style={{ color: "hsl(220,70%,50%)" }}>Kinis Apollo</span>?
+          </h2>
+          <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
+            Kết hợp triết lý barefoot với công nghệ hỗ trợ vận động, Kinis Apollo giúp bạn tối ưu hiệu suất trong mọi bài tập.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 mb-10 sm:mb-12">
+          {benefits.map((b, i) => (
+            <div
+              key={b.title}
+              className="rounded-2xl p-6 sm:p-8 bg-card border border-border animate-fade-up"
+              style={{
+                animationDelay: `${i * 100}ms`,
+                boxShadow: "0 4px 24px -4px rgba(0,0,0,0.06)",
+              }}
+            >
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ backgroundColor: "hsl(220 70% 50% / 0.1)" }}>
+                <b.icon className="w-6 h-6" style={{ color: "hsl(220,70%,50%)" }} />
+              </div>
+              <h3 className="font-display text-lg sm:text-xl font-semibold mb-2 text-foreground">
+                {b.title}
+              </h3>
+              <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
+                {b.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex justify-center">
+          <div
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-full"
+            style={{
+              background: "linear-gradient(135deg, hsl(220 60% 95%), hsl(0 0% 100%), hsl(0 80% 95%))",
+              border: "1px solid hsl(220 40% 85%)",
+            }}
+          >
+            <svg className="w-8 h-6 flex-shrink-0" viewBox="0 0 60 30" aria-label="Cờ Hoa Kỳ">
+              <rect width="60" height="30" fill="#B22234"/>
+              <rect y="2.3" width="60" height="2.3" fill="#fff"/>
+              <rect y="6.9" width="60" height="2.3" fill="#fff"/>
+              <rect y="11.5" width="60" height="2.3" fill="#fff"/>
+              <rect y="16.2" width="60" height="2.3" fill="#fff"/>
+              <rect y="20.8" width="60" height="2.3" fill="#fff"/>
+              <rect y="25.4" width="60" height="2.3" fill="#fff"/>
+              <rect width="24" height="16.15" fill="#3C3B6E"/>
+              <g fill="#fff" fontSize="3">
+                <text x="2" y="4">★ ★ ★ ★ ★</text>
+                <text x="4" y="7">★ ★ ★ ★</text>
+                <text x="2" y="10">★ ★ ★ ★ ★</text>
+                <text x="4" y="13">★ ★ ★ ★</text>
+              </g>
+            </svg>
+            <span className="text-sm font-body font-semibold uppercase tracking-wider" style={{ color: "hsl(220,50%,30%)" }}>
+              Sản phẩm nhập khẩu chính hãng từ Hoa Kỳ
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Technology Section */}
+    <section className="relative pt-10 sm:pt-14 lg:pt-16 pb-4 sm:pb-6 lg:pb-8 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "#FFFFFF" }}>
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="flex items-center justify-center animate-fade-up">
+            <img
+              src={apolloImage}
+              alt="Kinis Apollo Technology"
+              className="w-full max-w-md object-contain"
+            />
+          </div>
+
+          <div className="animate-fade-up [animation-delay:150ms]">
+            <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: "hsl(220,70%,50%)" }}>
+              Công nghệ
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight text-foreground">
+              Thiết kế
+              <br />
+              <span style={{ color: "hsl(220,70%,50%)" }}>chuyên biệt</span>
+            </h2>
+            <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
+              Kinis Apollo được thiết kế riêng cho vận động cường độ cao, kết hợp đế zero-drop với chất liệu upper thoáng khí và đế cao su bám sàn vượt trội.
             </p>
 
-            <ul className="mt-6 sm:mt-8 space-y-3">
-              {specs.map((s) => (
-                <li key={s} className="flex items-start gap-3">
-                  <div className="mt-0.5 w-5 h-5 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3 h-3 text-secondary" />
+            <div className="mt-8 sm:mt-10 space-y-4">
+              {[
+                { icon: Shield, text: "Đế zero-drop – Truyền lực tối ưu khi nâng tạ" },
+                { icon: Feather, text: "Upper thoáng khí – Bền bỉ qua từng buổi tập" },
+                { icon: Wind, text: "Wide toe-box – Ngón chân xòe tự nhiên, ổn định hơn" },
+                { icon: SprayCan, text: "Đế cao su – Bám sàn vượt trội cho mọi bài tập" },
+              ].map((item, i) => (
+                <div
+                  key={item.text}
+                  className="flex items-center gap-4 animate-fade-up"
+                  style={{ animationDelay: `${200 + i * 100}ms` }}
+                >
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(220 70% 50% / 0.1)" }}>
+                    <item.icon className="w-5 h-5" style={{ color: "hsl(220,70%,50%)" }} />
                   </div>
-                  <span className="text-sm sm:text-base text-foreground">{s}</span>
-                </li>
+                  <span className="text-sm sm:text-base font-medium text-foreground">{item.text}</span>
+                </div>
               ))}
-            </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <button className="btn-primary-dark mt-8 sm:mt-10 w-full sm:w-auto px-8 py-3.5 font-body font-semibold text-sm sm:text-base rounded-xl" style={{ backgroundColor: "hsl(0,0%,10%)", color: "#ffffff" }}>
-              Liên hệ mua hàng
-            </button>
+    {/* Adaptation Roadmap Section - Dark */}
+    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-fade-up">
+          <span className="inline-block text-xs sm:text-sm font-body font-semibold uppercase tracking-wider mb-3" style={{ color: "hsl(220,70%,50%)" }}>
+            Lộ trình thích nghi
+          </span>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
+            Kinis Apollo giúp bạn tập luyện hiệu quả hơn
+          </h2>
+          <p className="mt-4 text-base sm:text-lg leading-relaxed" style={{ color: "hsl(0,0%,65%)" }}>
+            Cần thời gian để bàn chân thích nghi với đế zero-drop. Hãy kiên nhẫn theo lộ trình 3–6 tuần.
+          </p>
+        </div>
+
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 text-center">
+            {[
+              {
+                num: "1",
+                time: "Tuần 1 – 2",
+                subtitle: "Làm quen",
+                tasks: ["Mang tập nhẹ 1–2 giờ mỗi buổi", "Tránh bài tập cường độ cao ngay lập tức"],
+              },
+              {
+                num: "2",
+                time: "Tuần 3 – 4",
+                subtitle: "Tăng cường",
+                tasks: ["Bắt đầu các bài compound nhẹ", "Tăng dần thời gian và cường độ tập"],
+              },
+              {
+                num: "3",
+                time: "Sau 1 – 2 tháng",
+                subtitle: "Bứt phá",
+                tasks: ["Sử dụng cho mọi bài tập cường độ cao", "Cảm nhận sự ổn định và truyền lực tối ưu"],
+              },
+            ].map((stage, i) => (
+              <div
+                key={stage.num}
+                className="flex flex-col items-center animate-fade-up"
+                style={{ animationDelay: `${i * 120}ms` }}
+              >
+                <div className="relative select-none mb-5" style={{ height: "clamp(5rem, 10vw, 8rem)" }}>
+                  <span
+                    className="font-display font-bold leading-none block"
+                    style={{
+                      fontSize: "clamp(5rem, 10vw, 8rem)",
+                      color: "hsl(220,70%,50%)",
+                      maskImage: "linear-gradient(180deg, rgba(0,0,0,1) 45%, rgba(0,0,0,0.2) 55%, rgba(0,0,0,0.05) 85%)",
+                      WebkitMaskImage: "linear-gradient(180deg, rgba(0,0,0,1) 45%, rgba(0,0,0,0.2) 55%, rgba(0,0,0,0.05) 85%)",
+                    }}
+                  >
+                    {stage.num}
+                  </span>
+                  <div
+                    className="absolute left-1/2 -translate-x-1/2 w-[120%] h-px"
+                    style={{
+                      top: "50%",
+                      backgroundColor: "hsl(220,70%,50%)",
+                      boxShadow: "0 0 8px hsla(220,70%,50%,0.4)",
+                    }}
+                  />
+                </div>
+
+                <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-1">
+                  {stage.time}
+                </h3>
+                <p className="text-sm sm:text-base font-semibold mb-4" style={{ color: "hsl(220,70%,60%)" }}>
+                  {stage.subtitle}
+                </p>
+                <ul className="space-y-3 text-left">
+                  {stage.tasks.map((t) => (
+                    <li key={t} className="flex items-start gap-2.5">
+                      <Check className="w-4.5 h-4.5 mt-0.5 flex-shrink-0" style={{ color: "hsl(220,70%,50%)" }} />
+                      <span className="text-sm sm:text-base" style={{ color: "hsl(0,0%,70%)" }}>{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p className="text-center text-base sm:text-lg mt-10 sm:mt-12 max-w-2xl mx-auto animate-fade-up" style={{ color: "hsl(0,0%,55%)" }}>
+          ⚡ Vệ sinh bằng khăn ẩm sau mỗi buổi tập. Phơi nơi thoáng mát để giữ độ bền tối ưu.
+        </p>
+      </div>
+    </section>
+
+    {/* Đối tượng Phù hợp Section */}
+    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "hsl(0,0%,98%)" }}>
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-fade-up">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+            Đối tượng <span style={{ color: "hsl(220,70%,50%)" }}>phù hợp</span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          {[
+            { img: audienceGymImg, title: "HIIT & CrossFit", desc: "Đế bám sàn vượt trội, hỗ trợ chuyển động đa hướng nhanh và mạnh." },
+            { img: audiencePostureImg, title: "Weightlifting", desc: "Đế zero-drop truyền lực tối ưu khi squat, deadlift và clean & jerk." },
+            { img: audienceFunctionalImg, title: "Functional Training", desc: "Linh hoạt cho mọi bài tập từ box jump đến rope climb." },
+            { img: audienceFlatfeetImg, title: "Powerlifting", desc: "Nền tảng ổn định tuyệt đối cho các bài nâng tạ nặng." },
+            { img: audienceYogaImg, title: "Calisthenics", desc: "Nhẹ và linh hoạt, hỗ trợ các bài tập thể lực với trọng lượng cơ thể." },
+            { img: audienceTrailRunnerImg, title: "Obstacle Course Racing", desc: "Bám sàn và bền bỉ, phù hợp các thử thách vượt chướng ngại vật." },
+          ].map((item, i) => (
+            <div
+              key={item.title}
+              className="rounded-2xl overflow-hidden bg-card border border-border animate-fade-up"
+              style={{ animationDelay: `${i * 80}ms`, boxShadow: "0 4px 24px -4px rgba(0,0,0,0.06)" }}
+            >
+              <img src={item.img} alt={item.title} loading="lazy" width={1824} height={512} className="w-full object-cover" style={{ aspectRatio: "32/9" }} />
+              <div className="p-5 sm:p-6">
+                <h3 className="font-display text-lg sm:text-xl font-semibold mb-2 text-foreground">{item.title}</h3>
+                <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Testimonial Section */}
+    <TestimonialSection page="apollo" title={<>Mọi người nghĩ gì về <span style={{ color: "hsl(220,70%,50%)" }}>Kinis Apollo</span></>} subtitle={null} />
+
+    {/* Quote CTA Section - Dark */}
+    <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "hsl(0,0%,5%)" }}>
+      <div className="max-w-3xl mx-auto text-center animate-fade-up">
+        <div className="mb-3" style={{ color: "hsl(220,70%,50%)" }}>
+          <svg className="w-10 h-10 mx-auto opacity-40" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C9.591 11.69 11 13.166 11 15c0 1.933-1.567 3.5-3.5 3.5-1.172 0-2.324-.566-2.917-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C19.591 11.69 21 13.166 21 15c0 1.933-1.567 3.5-3.5 3.5-1.172 0-2.324-.566-2.917-1.179z"/></svg>
+        </div>
+        <p className="font-display text-xl sm:text-2xl md:text-3xl font-bold leading-snug text-white mb-3">
+          Kinis Apollo không chỉ là một đôi giày tập luyện.
+        </p>
+        <p className="text-base sm:text-lg leading-relaxed mb-10" style={{ color: "hsl(0,0%,60%)" }}>
+          Đó là công cụ giúp bạn đạt hiệu suất tối đa trong mọi bài tập cường độ cao, từ HIIT đến Weightlifting.
+        </p>
+        <a
+          href="https://byebeoshop.com/san-pham-2/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:px-10 sm:py-4 font-body font-semibold text-sm sm:text-base rounded-xl text-white transition-opacity hover:opacity-90"
+          style={{ backgroundColor: "hsl(220,70%,50%)" }}
+        >
+          Mua Trực Tiếp Tại Đại Lý
+        </a>
+      </div>
+    </section>
+
+    {/* Disclaimer Section */}
+    <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 bg-background">
+      <div className="max-w-4xl mx-auto">
+        <div
+          className="rounded-2xl p-6 sm:p-8 lg:p-10 animate-fade-up"
+          style={{
+            backgroundColor: "hsl(0 80% 97%)",
+            border: "1px solid hsl(0 70% 90%)",
+          }}
+        >
+          <div className="flex items-start gap-4 mb-6">
+            <div
+              className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+              style={{ backgroundColor: "hsl(0 70% 55%)", color: "#fff" }}
+            >
+              <AlertTriangle className="w-5 h-5" />
+            </div>
+            <div>
+              <h2 className="font-display text-xl sm:text-2xl font-bold" style={{ color: "hsl(0 70% 35%)" }}>
+                Lưu ý – Khuyến nghị quan trọng
+              </h2>
+              <p className="text-sm sm:text-base mt-1" style={{ color: "hsl(0 40% 45%)" }}>
+                Để đảm bảo an toàn và hiệu quả tập luyện, vui lòng lưu ý:
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            {[
+              { text: "Không sử dụng để chạy bộ đường dài" },
+              { text: "Cần thời gian thích nghi với đế zero-drop" },
+              { text: "Không dùng khi đang có chấn thương bàn chân cấp tính" },
+              { text: "Tham khảo ý kiến chuyên gia nếu có vấn đề về khớp" },
+            ].map((item) => (
+              <div
+                key={item.text}
+                className="flex items-center gap-3 px-4 py-3 rounded-xl"
+                style={{ backgroundColor: "hsl(0 60% 94%)" }}
+              >
+                <AlertTriangle className="w-5 h-5 flex-shrink-0" style={{ color: "hsl(0 70% 55%)" }} />
+                <span className="text-sm sm:text-base font-medium" style={{ color: "hsl(0 50% 30%)" }}>{item.text}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </section>
   </Layout>
-);
+  );
+};
 
 export default ProductApollo;
