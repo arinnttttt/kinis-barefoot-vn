@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
-import audienceGym from "@/assets/audience-gym.jpg";
-import audienceFlatfeet from "@/assets/audience-flatfeet.jpg";
-import audienceRunner from "@/assets/audience-runner.jpg";
+const audienceGym = "https://kinis.vn/wp-content/uploads/2026/05/gym.avif";
+const audienceFlatfeet = "https://kinis.vn/wp-content/uploads/2026/05/flat-feet-scaled.jpg";
+const audienceRunner = "https://kinis.vn/wp-content/uploads/2026/05/runner-1.png";
 
 const audiences = [
   {

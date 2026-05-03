@@ -1,11 +1,11 @@
 import Layout from "@/components/layout/Layout";
 import { Zap, Compass, Activity, Shield, Feather, Wind, Check, AlertTriangle, Footprints, Dumbbell, ArrowRightLeft, PersonStanding, Weight, Trophy, Shirt } from "lucide-react";
-import audienceGymImg from "@/assets/audience-gym-weightlifting.jpg";
-import audiencePostureImg from "@/assets/audience-posture.jpg";
-import audienceYogaImg from "@/assets/audience-yoga.jpg";
-import audienceFlatfeetImg from "@/assets/audience-flatfeet-strength.jpg";
-import audienceFunctionalImg from "@/assets/audience-functional.jpg";
-import audienceTrailRunnerImg from "@/assets/audience-trail-runner.jpg";
+const audienceGymImg = "https://kinis.vn/wp-content/uploads/2026/05/gym.avif";
+const audiencePostureImg = "https://kinis.vn/wp-content/uploads/2026/05/dang-di-scaled.jpg";
+const audienceYogaImg = "https://kinis.vn/wp-content/uploads/2026/05/yoga-1-scaled.png";
+const audienceFlatfeetImg = "https://kinis.vn/wp-content/uploads/2026/05/flat-feet-scaled.jpg";
+const audienceFunctionalImg = "https://kinis.vn/wp-content/uploads/2026/05/squat.avif";
+const audienceTrailRunnerImg = "https://kinis.vn/wp-content/uploads/2026/05/runner-1.png";
 const nomadKolBanner = "https://kinis.vn/wp-content/uploads/2026/05/nomad-kol-banner.png";
 import TestimonialSection from "@/components/TestimonialSection";
 import apmabadge from "@/assets/apma-badge.png";
