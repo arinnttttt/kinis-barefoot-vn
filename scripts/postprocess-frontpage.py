@@ -101,3 +101,20 @@ if os.path.exists(nomad_path):
         print("⚠ Testimonial section not found (Nomad page)")
 else:
     print("⚠ page-san-pham-nomad.php not found")
+
+# ===== LUCY PAGE =====
+lucy_path = os.path.join(os.path.dirname(__file__), '..', 'wp-theme', 'kinis', 'page-san-pham-lucy.php')
+if os.path.exists(lucy_path):
+    lucy = open(lucy_path, 'rb').read().decode('utf-8')
+    lt_start, lt_end, orig_lucy_testimonial = find_section(lucy, 'aria-labelledby="testimonial-heading"')
+    if lt_start is not None:
+        title = 'M\u1ECDi ng\u01B0\u1EDDi ngh\u0129 g\u00EC v\u1EC1 <span style="color: rgb(255, 120, 10);">Kinis Lucy</span>'
+        dynamic = make_testimonial_php('lucy', title)
+        dynamic_with_fallback = dynamic.replace('<?php endif; ?>', '<?php else : ?>\n' + orig_lucy_testimonial + '\n<?php endif; ?>')
+        lucy = lucy[:lt_start] + dynamic_with_fallback + lucy[lt_end:]
+        open(lucy_path, 'wb').write(lucy.encode('utf-8'))
+        print("✅ Testimonial section replaced with dynamic PHP (Lucy page)")
+    else:
+        print("⚠ Testimonial section not found (Lucy page)")
+else:
+    print("⚠ page-san-pham-lucy.php not found")
