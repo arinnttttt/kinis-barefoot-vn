@@ -48,7 +48,7 @@ const ProductLucy = () => {
               <span style={{ color: "hsl(160,60%,40%)" }}>sức khỏe</span> bàn chân
             </h1>
             <div className="mt-4 flex items-center gap-3">
-              <img src={apmaBadge} alt="APMA Seal of Acceptance" className="h-14 w-auto" />
+              <img src={apmabadge} alt="APMA Seal of Acceptance" className="h-14 w-auto" />
               <span className="text-sm text-muted-foreground font-body">Chứng nhận bởi Hiệp hội Y khoa Bàn chân Hoa Kỳ</span>
             </div>
             <div className="mt-6 sm:mt-8">
