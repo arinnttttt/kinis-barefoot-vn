@@ -11,6 +11,7 @@ import TestimonialSection from "@/components/TestimonialSection";
 import ApolloColorCarousel from "@/components/ApolloColorCarousel";
 
 const apolloImage = "https://kinis.vn/wp-content/uploads/2026/04/kinis-apollo-1.png";
+const heroApollo = "https://kinis.vn/wp-content/uploads/2026/05/apollo-hero-scaled.png";
 const apolloLifestyleBannerUrl = ""; // placeholder - sẽ thêm sau
 const ACCENT = "hsl(27,100%,52%)";
 
