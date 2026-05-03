@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
-const audienceGym = "https://kinis.vn/wp-content/uploads/2026/05/gym.avif";
-const audienceFlatfeet = "https://kinis.vn/wp-content/uploads/2026/05/flat-feet-scaled.jpg";
-const audienceRunner = "https://kinis.vn/wp-content/uploads/2026/05/runner-1.png";
+const audienceGym = "https://kinis.vn/wp-content/uploads/2026/05/gym.png";
+const audienceFlatfeet = "https://kinis.vn/wp-content/uploads/2026/05/flat-feet.png";
+const audienceRunner = "https://kinis.vn/wp-content/uploads/2026/05/runner.png";
 
 const audiences = [
   {
