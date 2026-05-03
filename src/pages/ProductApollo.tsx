@@ -74,7 +74,7 @@ const ProductApollo = () => {
             Tại sao bạn cần <span style={{ color: ACCENT }}>Kinis Apollo Pro</span>?
           </h2>
           <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
-            Kết hợp triết lý barefoot với công nghệ hỗ trợ vận động, Kinis Apollo giúp bạn tối ưu hiệu suất trong mọi bài tập.
+            Kết hợp triết lý barefoot với công nghệ hỗ trợ vận động, Kinis Apollo Pro giúp bạn tối ưu hiệu suất trong mọi bài tập.
           </p>
         </div>
 
