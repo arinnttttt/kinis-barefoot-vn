@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import { Zap, Compass, Radio, Shield, Feather, Wind, SprayCan, Check, AlertTriangle, Activity, ShieldCheck } from "lucide-react";
+import { Zap, Compass, Activity, Shield, Feather, Wind, SprayCan, Check, AlertTriangle, PersonStanding } from "lucide-react";
 import lucyImage from "@/assets/lucy-showcase-v3.png";
 import audienceGymImg from "@/assets/audience-gym-weightlifting.jpg";
 import audiencePostureImg from "@/assets/audience-posture.jpg";
@@ -30,7 +30,7 @@ const benefits = [
     description: "Thiết kế zero-drop (đế phẳng) giúp cơ thể tự căn chỉnh tư thế khi di chuyển.",
   },
   {
-    icon: ShieldCheck,
+    icon: PersonStanding,
     title: "Giảm nguy cơ té ngã",
     description: "Tăng cường cảm nhận mặt đất và phản xạ thăng bằng, hạn chế chấn thương.",
   },
@@ -86,7 +86,7 @@ const ProductLucy = () => {
             Lý do bạn nên chọn <span style={{ color: ACCENT }}>Kinis Lucy</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
-            Được thiết kế dựa trên khoa học bàn chân, Kinis Lucy hỗ trợ vòm chân hoàn hảo, giúp bạn vận động thoải mái và giảm thiểu chấn thương.
+            Lucy được thiết kế theo cấu trúc bàn chân tự nhiên, phù hợp cho những người muốn chuyển từ giày truyền thống sang giày tối giản.
           </p>
         </div>
 
