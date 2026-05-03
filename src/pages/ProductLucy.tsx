@@ -8,6 +8,10 @@ import audienceFlatfeetImg from "@/assets/audience-flatfeet-strength.jpg";
 import audienceFunctionalImg from "@/assets/audience-functional.jpg";
 import audienceTrailRunnerImg from "@/assets/audience-trail-runner.jpg";
 import apmabadge from "@/assets/apma-badge.png";
+import iconNoRunning from "@/assets/icon-no-running.png";
+import iconNoWet from "@/assets/icon-no-wet.png";
+import iconNoConstruction from "@/assets/icon-no-construction.png";
+import iconNoInjury from "@/assets/icon-no-injury.png";
 import nomadKolBanner from "@/assets/nomad-kol-banner.png";
 import TestimonialSection from "@/components/TestimonialSection";
 
@@ -240,19 +244,19 @@ const ProductLucy = () => {
               <AlertTriangle className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="font-display text-xl sm:text-2xl font-bold" style={{ color: "hsl(0 70% 35%)" }}>Lưu ý – Hướng dẫn sử dụng</h2>
-              <p className="text-sm sm:text-base mt-1" style={{ color: "hsl(0 40% 45%)" }}>Để đạt hiệu quả tốt nhất khi sử dụng Kinis Lucy, vui lòng lưu ý:</p>
+              <h2 className="font-display text-xl sm:text-2xl font-bold" style={{ color: "hsl(0 70% 35%)" }}>Lưu ý – Khuyến nghị quan trọng</h2>
+              <p className="text-sm sm:text-base mt-1" style={{ color: "hsl(0 40% 45%)" }}>Để đảm bảo an toàn và độ bền sản phẩm, Kinis Lucy không khuyến khích sử dụng trong các trường hợp sau:</p>
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {[
-              { text: "Chọn đúng size giày để lót vừa khít, không bị xô lệch" },
-              { text: "Tháo lót giày gốc trước khi sử dụng Kinis Lucy" },
-              { text: "Vệ sinh định kỳ bằng khăn ẩm, phơi khô tự nhiên" },
-              { text: "Thay mới sau 6–12 tháng sử dụng để đảm bảo hiệu quả" },
+              { text: "Không sử dụng để chạy bộ đường dài", icon: iconNoRunning },
+              { text: "Không sử dụng trong môi trường ướt hoặc trơn trượt", icon: iconNoWet },
+              { text: "Không dùng tại công trường hoặc khu vực có vật sắc nhọn", icon: iconNoConstruction },
+              { text: "Không dùng khi đang có chấn thương bàn chân cấp tính", icon: iconNoInjury },
             ].map((item) => (
               <div key={item.text} className="flex items-center gap-3 px-4 py-3 rounded-xl" style={{ backgroundColor: "hsl(0 60% 94%)" }}>
-                <Check className="w-5 h-5 flex-shrink-0" style={{ color: ACCENT }} />
+                <img src={item.icon} alt="" className="h-8 w-auto flex-shrink-0" />
                 <span className="text-sm sm:text-base font-medium" style={{ color: "hsl(0 50% 30%)" }}>{item.text}</span>
               </div>
             ))}
