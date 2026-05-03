@@ -211,12 +211,10 @@ const ProductApollo = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
           {[
-            { img: audienceGymImg, title: "HIIT & CrossFit", desc: "Đế bám sàn vượt trội, hỗ trợ chuyển động đa hướng nhanh và mạnh cho bài tập chuyên biệt." },
-            { img: audiencePostureImg, title: "Weightlifting", desc: "Đế Pro zero-drop truyền lực tối ưu khi squat, deadlift và clean & jerk." },
-            { img: audienceFunctionalImg, title: "Functional Training", desc: "Linh hoạt cho mọi bài tập chuyên biệt từ box jump đến rope climb." },
-            { img: audienceFlatfeetImg, title: "Powerlifting", desc: "Nền tảng ổn định tuyệt đối cho các bài tập chuyên biệt nặng." },
-            { img: audienceYogaImg, title: "Calisthenics", desc: "Nhẹ và linh hoạt, hỗ trợ bài tập chuyên biệt với trọng lượng cơ thể." },
-            { img: audienceTrailRunnerImg, title: "OCR Training", desc: "Bám sàn và bền bỉ, phù hợp các bài tập chuyên biệt vượt chướng ngại vật." },
+            { img: audienceGymImg, title: "Vận động viên chuyên nghiệp", desc: "Chất liệu bền và thoáng khí, thiết kế mang tinh thần \"barefoot\" bám đất ưu việt. Là lựa chọn hoàn hảo cho vận động viên chuyên nghiệp." },
+            { img: audiencePostureImg, title: "Người tập Gym/Fitness", desc: "Sử dụng như đôi giày luyện tập cho các bài tập hạng nặng như squat, deadlift, weightlifting, HIT." },
+            { img: audienceTrailRunnerImg, title: "Runner luyện tập trước giải chạy", desc: "Thay thế giày tập luyện tăng cường sức mạnh và sức bền cơ bắp trước các giải chạy." },
+            { img: audienceFlatfeetImg, title: "Người cần cải thiện sức khỏe bàn chân", desc: "Giúp tăng cường thăng bằng và cải thiện chức năng vận động của bàn chân, đặc biệt người có bàn chân bẹt." },
           ].map((item, i) => (
             <div key={item.title} className="rounded-2xl overflow-hidden bg-card border border-border animate-fade-up" style={{ animationDelay: `${i * 80}ms`, boxShadow: "0 4px 24px -4px rgba(0,0,0,0.06)" }}>
               <img src={item.img} alt={item.title} loading="lazy" width={1824} height={512} className="w-full object-cover" style={{ aspectRatio: "32/9" }} />
