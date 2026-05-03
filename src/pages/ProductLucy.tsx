@@ -127,14 +127,13 @@ const ProductLucy = () => {
               Chất liệu<br /><span style={{ color: ACCENT }}>cao cấp</span>
             </h2>
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
-              Kinis Lucy được chế tác từ chất liệu EVA cao cấp kết hợp TPU ổn định, mang đến sự hỗ trợ hoàn hảo cho vòm chân trong mọi hoạt động.
+              Kinis Lucy được sản xuất với chất liệu vải Nylon cao cấp, mang lại sự thoải mái và độ bền cho các hoạt động đi bộ hằng ngày.
             </p>
             <div className="mt-8 sm:mt-10 space-y-4">
               {[
-                { icon: Shield, text: "EVA cao cấp – Đệm êm, hấp thụ chấn động" },
-                { icon: Feather, text: "TPU ổn định – Hỗ trợ vòm chân chắc chắn" },
-                { icon: Wind, text: "Thoáng khí – Công nghệ kháng khuẩn kiểm soát mùi" },
-                { icon: SprayCan, text: "Thiết kế ergonomic – Ôm sát bàn chân tự nhiên" },
+                { icon: Wind, text: "Thoáng khí và nhanh khô" },
+                { icon: Feather, text: "Nhẹ và linh hoạt" },
+                { icon: Shield, text: "Độ bền cao và thân thiện với môi trường" },
               ].map((item, i) => (
                 <div key={item.text} className="flex items-center gap-4 animate-fade-up" style={{ animationDelay: `${200 + i * 100}ms` }}>
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(27 100% 52% / 0.1)" }}>
