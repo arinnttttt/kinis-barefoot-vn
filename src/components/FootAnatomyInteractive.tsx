@@ -1,4 +1,4 @@
-import footAnatomy from "@/assets/foot-anatomy.jpg";
+const footAnatomy = "https://kinis.vn/wp-content/uploads/2026/05/foot-anatomy.jpg";
 
 const hotspots = [
   {
