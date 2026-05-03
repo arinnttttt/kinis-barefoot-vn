@@ -975,6 +975,8 @@ function kinis_seed_testimonials() {
         array('name' => 'Jennifer B.', 'stars' => 5, 'category' => 'Excellent', 'pages' => array('home', 'nomad', 'lucy'), 'review' => 'Tôi rất thích cảm giác vừa vặn của đôi giày! Giày rất nhẹ và ôm chân hoàn hảo từ ngón chân đến gót chân. Tôi mang khi tập luyện và cả trong sinh hoạt hàng ngày.'),
         array('name' => 'Casey B.', 'stars' => 5, 'category' => 'Excellent', 'pages' => array('home', 'lucy'), 'review' => 'Ban đầu tôi hơi do dự khi mua, nhưng giờ rất vui vì đã chọn chúng cho hành trình làm quen với barefoot. Tôi bắt đầu cảm nhận rõ các nhóm cơ bàn chân khi đi bộ.'),
         array('name' => 'Matthew O.', 'stars' => 5, 'category' => 'Excellent', 'pages' => array('home', 'nomad', 'lucy'), 'review' => 'Đôi giày hoàn hảo với tôi. Tôi không thích mang giày và có cổ chân yếu, nhưng đôi giày này giải quyết được cả hai. Thoải mái như một đôi tất nhưng vẫn có độ bảo vệ của giày.'),
+        array('name' => 'Alejandro M.', 'stars' => 4, 'category' => 'Great', 'pages' => array('apollo'), 'review' => 'Với hầu hết các loại giày khác, rất khó cảm nhận trọng tâm cơ thể khi di chuyển. Nhưng với Kinis, tôi có thể tập luyện và cảm nhận rõ mình đang đặt trọng lượng ở đâu. Sau khi quen, mọi thứ rất tự nhiên.'),
+        array('name' => 'Ian A.', 'stars' => 4, 'category' => 'Great', 'pages' => array('apollo'), 'review' => 'Đây chính xác là đôi giày tôi đang tìm kiếm! Không thể tập gym với chân trần, nên đôi giày này là giải pháp thay thế hoàn hảo.'),
     );
     \$order = 1;
     foreach (\$testimonials as \$t) {
