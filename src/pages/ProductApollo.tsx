@@ -119,7 +119,7 @@ const ProductApollo = () => {
             </p>
             <div className="mt-8 sm:mt-10 space-y-4">
               {[
-                { icon: Shield, text: "Đế zero-drop – Truyền lực tối ưu khi nâng tạ" },
+                { icon: Shield, text: "Đế Pro zero-drop – Truyền lực tối ưu khi nâng tạ" },
                 { icon: Feather, text: "Upper thoáng khí – Bền bỉ qua từng buổi tập" },
                 { icon: Wind, text: "Wide toe-box – Ngón chân xòe tự nhiên, ổn định hơn" },
                 { icon: SprayCan, text: "Đế cao su – Bám sàn vượt trội cho mọi bài tập" },
