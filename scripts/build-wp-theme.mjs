@@ -153,6 +153,11 @@ function getAcfReplacements(template) {
 }
 
 async function build() {
+  // Step 0: Run Vite build if dist/ doesn't exist or is stale
+  console.log("🔨 Running Vite build...");
+  execSync("npx vite build", { cwd: ROOT, stdio: "inherit" });
+  console.log("✅ Vite build complete.\n");
+
   const PORT = 4174;
   const server = await startServer(PORT);
   console.log(`📡 Server on http://localhost:${PORT}`);
