@@ -1470,33 +1470,33 @@ function kinis_coming_soon_redirect() {
     if (!is_404()) return;
     
     // Get the requested path
-    \\$request_uri = trim(parse_url(\\$_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
-    if (empty(\\$request_uri)) return;
+    $request_uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+    if (empty($request_uri)) return;
     
     // Check if there's a page with this slug in draft/pending/future status
-    \\$slug = basename(\\$request_uri);
-    \\$found = get_posts(array(
-        'name'        => \\$slug,
+    $slug = basename($request_uri);
+    $found = get_posts(array(
+        'name'        => $slug,
         'post_type'   => 'page',
         'post_status' => array('draft', 'pending', 'future'),
         'numberposts' => 1,
     ));
     
     // Also check parent/child slugs (e.g. san-pham/new-shoe)
-    if (empty(\\$found)) {
-        \\$all_segments = explode('/', \\$request_uri);
-        foreach (\\$all_segments as \\$seg) {
-            \\$found = get_posts(array(
-                'name'        => \\$seg,
+    if (empty($found)) {
+        $all_segments = explode('/', $request_uri);
+        foreach ($all_segments as $seg) {
+            $found = get_posts(array(
+                'name'        => $seg,
                 'post_type'   => 'page',
                 'post_status' => array('draft', 'pending', 'future'),
                 'numberposts' => 1,
             ));
-            if (!empty(\\$found)) break;
+            if (!empty($found)) break;
         }
     }
     
-    if (!empty(\\$found)) {
+    if (!empty($found)) {
         status_header(200);
         get_template_part('page-coming-soon');
         exit;
