@@ -497,7 +497,7 @@ var apolloVariants = [
   buttons.forEach(function(btn) {
     if (btn.textContent.trim().indexOf('Mua Tr') === -1) return;
     var txt = btn.textContent.trim();
-    if (txt.indexOf('Đại') === -1 && txt.indexOf('\\u0110\\u1EA1i') === -1) return;
+    if (txt.indexOf('\u0110\u1EA1i') === -1) return;
     
     btn.addEventListener('click', function(e) { e.preventDefault(); });
     
