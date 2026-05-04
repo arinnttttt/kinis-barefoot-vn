@@ -36,7 +36,7 @@ const routes = [
   { path: "/doi-tuong/chay-bo", template: "page-doi-tuong-chay-bo", title: "Chạy bộ" },
   { path: "/doi-tuong/ban-chan-bet", template: "page-doi-tuong-ban-chan-bet", title: "Bàn chân bẹt" },
   { path: "/faq", template: "page-faq", title: "FAQ" },
-  { path: "/coming-soon", template: "page-coming-soon", title: "Coming Soon" },
+  { path: "/coming-soon", template: "page-coming-soon", title: "Coming Soon", skipPrerender: true },
 ];
 
 function optimizeThemeImages() {
