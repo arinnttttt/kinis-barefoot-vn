@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import BuyDealerButton from "@/components/BuyDealerButton";
 import { Zap, Compass, Activity, Shield, Feather, Wind, Check, AlertTriangle, PersonStanding, Footprints, Dumbbell, ArrowRightLeft } from "lucide-react";
 const lucyImage = "https://kinis.vn/wp-content/uploads/2026/05/lucy-showcase-v3.png";
 import apmaSeal from "@/assets/apma-seal.png";
@@ -69,15 +70,10 @@ const ProductLucy = () => {
               <img src={apmabadge} alt="APMA Seal of Acceptance" className="h-12 sm:h-14 w-auto" />
             </div>
             <div className="mt-6 sm:mt-8">
-              <a
-                href="https://byebeoshop.com/san-pham-2/"
-                target="_blank"
-                rel="noopener noreferrer"
+              <BuyDealerButton
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 lg:px-8 lg:py-3.5 font-body font-semibold text-sm rounded-xl text-white transition-opacity hover:opacity-90"
                 style={{ backgroundColor: ACCENT }}
-              >
-                Mua Trực Tiếp Tại Đại Lý
-              </a>
+              />
             </div>
           </div>
         </div>
@@ -269,9 +265,10 @@ const ProductLucy = () => {
         </div>
         <p className="font-display text-xl sm:text-2xl md:text-3xl font-bold leading-snug text-white mb-3">Kinis Lucy không chỉ là một đôi giày đi bộ.</p>
         <p className="text-base sm:text-lg leading-relaxed mb-10" style={{ color: "hsl(0,0%,60%)" }}>Đó là bước khởi đầu giúp bạn chăm sóc sức khỏe bàn chân và chăm sóc sức khỏe vận động bền vững mỗi ngày.</p>
-        <a href="https://byebeoshop.com/san-pham-2/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:px-10 sm:py-4 font-body font-semibold text-sm sm:text-base rounded-xl text-white transition-opacity hover:opacity-90" style={{ backgroundColor: ACCENT }}>
-          Mua Trực Tiếp Tại Đại Lý
-        </a>
+        <BuyDealerButton
+          className="inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:px-10 sm:py-4 font-body font-semibold text-sm sm:text-base rounded-xl text-white transition-opacity hover:opacity-90"
+          style={{ backgroundColor: ACCENT }}
+        />
       </div>
     </section>
 
