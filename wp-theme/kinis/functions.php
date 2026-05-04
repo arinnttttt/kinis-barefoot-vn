@@ -306,6 +306,7 @@ function kinis_register_testimonial_cpt() {
         'public' => false,
         'show_ui' => true,
         'show_in_menu' => true,
+        'show_in_rest' => true,
         'menu_icon' => 'dashicons-star-filled',
         'menu_position' => 26,
         'supports' => array('title', 'editor', 'page-attributes'),
