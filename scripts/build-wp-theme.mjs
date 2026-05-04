@@ -542,6 +542,11 @@ var apolloVariants = [
   const pages = [];
 
   for (const route of routes) {
+    // Skip routes that already have a static PHP template
+    if (route.skipPrerender) {
+      console.log(`⏭️  Skipping prerender for ${route.template} (static template)`);
+      continue;
+    }
     const hashUrl = `http://localhost:${PORT}/#${route.path}`;
     const page = await browser.newPage();
     await page.goto(hashUrl, { waitUntil: "networkidle0", timeout: 30000 });
