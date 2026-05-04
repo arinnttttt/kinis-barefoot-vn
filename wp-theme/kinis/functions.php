@@ -14,15 +14,15 @@ function kinis_enqueue_assets() {
     if (!empty($css_files)) {
         sort($css_files);
         $css_file = basename(end($css_files));
-        wp_enqueue_style('kinis-main', get_template_directory_uri() . '/assets/css/' . $css_file, array(), '5.2.1');
+        wp_enqueue_style('kinis-main', get_template_directory_uri() . '/assets/css/' . $css_file, array(), '5.2.2');
     }
     
     // Theme stylesheet
-    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '5.2.1');
+    wp_enqueue_style('kinis-theme', get_stylesheet_uri(), array(), '5.2.2');
     
     // Header scroll behavior (vanilla JS - replaces React scroll handler)
-    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '5.2.1', true);
-    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '5.2.1', true);
+    wp_enqueue_script('kinis-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', array(), '5.2.2', true);
+    wp_enqueue_script('kinis-interactions', get_template_directory_uri() . '/assets/js/kinis-interactions.js', array(), '5.2.2', true);
 }
 add_action('wp_enqueue_scripts', 'kinis_enqueue_assets');
 
@@ -371,7 +371,7 @@ add_action('save_post_kinis_testimonial', 'kinis_save_testimonial_meta');
 
 // Auto-seed testimonial data on theme activation (versioned re-seed)
 function kinis_seed_testimonials() {
-    $current_version = '5.2.1';
+    $current_version = '5.2.2';
     $seeded_version = get_option('kinis_testimonials_seeded_version', '');
     if ($seeded_version === $current_version) return;
     
@@ -410,7 +410,7 @@ add_action('after_switch_theme', 'kinis_seed_testimonials', 35);
 
 // Also run seed on init to catch theme updates without re-activation
 function kinis_maybe_reseed_testimonials() {
-    $current_version = '5.2.1';
+    $current_version = '5.2.2';
     $seeded_version = get_option('kinis_testimonials_seeded_version', '');
     if ($seeded_version !== $current_version) {
         kinis_seed_testimonials();
