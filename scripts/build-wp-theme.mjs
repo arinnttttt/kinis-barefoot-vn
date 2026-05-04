@@ -22,7 +22,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const DIST = join(ROOT, "dist");
 const THEME_DIR = join(ROOT, "wp-theme", "kinis");
-const THEME_VERSION = "5.2.3";
+const THEME_VERSION = "5.2.4";
 
 // Route config: path → WP page template name + title
 const routes = [
@@ -36,7 +36,7 @@ const routes = [
   { path: "/doi-tuong/chay-bo", template: "page-doi-tuong-chay-bo", title: "Chạy bộ" },
   { path: "/doi-tuong/ban-chan-bet", template: "page-doi-tuong-ban-chan-bet", title: "Bàn chân bẹt" },
   { path: "/faq", template: "page-faq", title: "FAQ" },
-  { path: "/coming-soon", template: "page-coming-soon", title: "Coming Soon" },
+  { path: "/coming-soon", template: "page-coming-soon", title: "Coming Soon", skipPrerender: true },
 ];
 
 function optimizeThemeImages() {
@@ -542,6 +542,11 @@ var apolloVariants = [
   const pages = [];
 
   for (const route of routes) {
+    // Skip routes that already have a static PHP template
+    if (route.skipPrerender) {
+      console.log(`⏭️  Skipping prerender for ${route.template} (static template)`);
+      continue;
+    }
     const hashUrl = `http://localhost:${PORT}/#${route.path}`;
     const page = await browser.newPage();
     await page.goto(hashUrl, { waitUntil: "networkidle0", timeout: 30000 });
