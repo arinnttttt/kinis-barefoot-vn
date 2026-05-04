@@ -505,7 +505,7 @@ var apolloVariants = [
       if (!tooltip) {
         tooltip = document.createElement('div');
         tooltip.style.cssText = 'position:fixed;z-index:99999;pointer-events:none;background:hsl(0,0%,15%);color:#fff;font-size:13px;font-family:var(--font-body,sans-serif);padding:6px 12px;border-radius:8px;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,0.3);';
-        tooltip.textContent = 'H\\u00E0ng s\\u1EAFp c\\u00F3, vui l\\u00F2ng ch\\u1EDD th\\u00EAm';
+        tooltip.textContent = 'H\u00E0ng s\u1EAFp c\u00F3, vui l\u00F2ng ch\u1EDD th\u00EAm';
         document.body.appendChild(tooltip);
       }
       tooltip.style.left = (e.clientX + 14) + 'px';
