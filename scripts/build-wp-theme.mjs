@@ -490,6 +490,34 @@ var apolloVariants = [
   });
 })();
 
+// ============ DEALER BUTTON TOOLTIP ============
+(function() {
+  var tooltip = null;
+  var buttons = document.querySelectorAll('button');
+  buttons.forEach(function(btn) {
+    if (btn.textContent.trim().indexOf('Mua Tr') === -1) return;
+    var txt = btn.textContent.trim();
+    if (txt.indexOf('Đại') === -1 && txt.indexOf('\\u0110\\u1EA1i') === -1) return;
+    
+    btn.addEventListener('click', function(e) { e.preventDefault(); });
+    
+    btn.addEventListener('mousemove', function(e) {
+      if (!tooltip) {
+        tooltip = document.createElement('div');
+        tooltip.style.cssText = 'position:fixed;z-index:99999;pointer-events:none;background:hsl(0,0%,15%);color:#fff;font-size:13px;font-family:var(--font-body,sans-serif);padding:6px 12px;border-radius:8px;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,0.3);';
+        tooltip.textContent = 'H\\u00E0ng s\\u1EAFp c\\u00F3, vui l\\u00F2ng ch\\u1EDD th\\u00EAm';
+        document.body.appendChild(tooltip);
+      }
+      tooltip.style.left = (e.clientX + 14) + 'px';
+      tooltip.style.top = (e.clientY + 14) + 'px';
+    });
+    
+    btn.addEventListener('mouseleave', function() {
+      if (tooltip) { tooltip.remove(); tooltip = null; }
+    });
+  });
+})();
+
 })();`);
 
   // Copy header-scroll.js from source
