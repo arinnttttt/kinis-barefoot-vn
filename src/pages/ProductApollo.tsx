@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import BuyDealerButton from "@/components/BuyDealerButton";
 import { Zap, Compass, Activity, Shield, Feather, Wind, Check, AlertTriangle, Footprints, Dumbbell, ArrowRightLeft, PersonStanding, Weight, Trophy, Shirt } from "lucide-react";
 const audienceGymImg = "https://kinis.vn/wp-content/uploads/2026/05/gym.png";
 const audiencePostureImg = "https://kinis.vn/wp-content/uploads/2026/05/dang-di.png";

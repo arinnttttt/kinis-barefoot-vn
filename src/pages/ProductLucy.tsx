@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import BuyDealerButton from "@/components/BuyDealerButton";
 import { Zap, Compass, Activity, Shield, Feather, Wind, Check, AlertTriangle, PersonStanding, Footprints, Dumbbell, ArrowRightLeft } from "lucide-react";
 const lucyImage = "https://kinis.vn/wp-content/uploads/2026/05/lucy-showcase-v3.png";
 import apmaSeal from "@/assets/apma-seal.png";

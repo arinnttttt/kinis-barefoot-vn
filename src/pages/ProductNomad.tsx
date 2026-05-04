@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import BuyDealerButton from "@/components/BuyDealerButton";
 import { Zap, Compass, Radio, Shield, Feather, Wind, SprayCan, Check, AlertTriangle } from "lucide-react";
 const nomadImage = "https://kinis.vn/wp-content/uploads/2026/05/hero-nomad-1-scaled.png";
 const audienceGymImg = "https://kinis.vn/wp-content/uploads/2026/05/gym.png";
